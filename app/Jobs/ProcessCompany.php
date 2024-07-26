@@ -15,7 +15,7 @@ class ProcessCompany implements ShouldQueue
     use Queueable;
     use SerializesModels;
     
-    private $apiKey = 'sk-proj-dr05XIqQg98ubcXc6DmiT3BlbkFJE9jsgaOp69wLv0VHS6xc';
+    private $apiKey = env('OPENAI_API_KEY');
     private $client;
     private $companies;
 
