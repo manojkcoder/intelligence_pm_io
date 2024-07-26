@@ -15,7 +15,6 @@ class ProcessCompany implements ShouldQueue
     use Queueable;
     use SerializesModels;
     
-    private $apiKey = env('OPENAI_API_KEY');
     private $client;
     private $companies;
 
@@ -63,7 +62,7 @@ class ProcessCompany implements ShouldQueue
         try {
             $response = $this->client->post('https://api.openai.com/v1/chat/completions', [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $this->apiKey,
+                    'Authorization' => 'Bearer ' . env('OPENAI_API_KEY'),
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
