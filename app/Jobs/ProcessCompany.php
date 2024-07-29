@@ -53,6 +53,9 @@ class ProcessCompany implements ShouldQueue
             $company->save();
                 
         }
+        if(Company::where('processed', false)->count() > 0){
+            ProcessCompany::dispatch();
+        }
     }
 
 
