@@ -1,0 +1,57 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+.btn-bg-primary, .btn-bg-secondary:hover {background: #5EA5E4;line-height: normalnpm;}
+.btn-bg-primary:hover, .btn-bg-secondary {background: #1F3042; line-height: normalnpm;}
+.btn-bg-option{background:#06851b;line-height: normalnpm;}
+.btn-bg-danger{background:#850606;line-height: normalnpm;}
+.bg-light-blue {background: #eaf8fb;}
+table.dataTable > tbody > tr > th, table.dataTable > tbody > tr > td { padding: 8px 10px;line-height: normal;}
+table.dataTable th:first-child { min-width:unset;}
+table.dataTable th{min-width:140px;}
+#dt-length-0 {min-width: 75px;}  
+#myTable_wrapper >.dt-layout-row:first-child{margin-bottom:20px;margin-top:0} 
+#myTable_wrapper >.dt-layout-row:first-child input, #myTable_wrapper > .dt-layout-row:first-child select {min-height: 42px;border-radius: 0px;padding:2px 10px;} 
+table.dataTable > tbody > tr:nth-child(2n) {background: #eaf8fb73;} 
+table.dataTable > thead > tr > th, table.dataTable > thead > tr > td {padding: 10px;border-bottom: 0px;} 
+div.dt-container .dt-paging nav button.dt-paging-button:not(.disable) {box-shadow: unset !important;background: #fff !important;border: 1px solid #5ea5e4 !important;padding: 6px 16px;}
+.dt-search {display: flex;align-items: center;}
+div.dt-container .dt-paging .dt-paging-button.current, div.dt-container .dt-paging .dt-paging-button:hover {background: #5ea5e4 !important;color: #fff !important;}
+div.dt-container .dt-paging nav button.dt-paging-button.current, div.dt-container .dt-paging nav button.dt-paging-button:hover {background: #5ea5e4 !important;}
+#country {min-width: 180px !important;}
+@media(min-width:640px) and (max-width:870px){
+    .setting-button {position: absolute;right: 0;top: calc(100% + 13px);}
+}
+
+@media(max-width:1024px){
+.data-table table { display: block; margin-top: 10px;}
+.data-table table thead { display: none;}
+.data-table table tbody { display: flex; flex-wrap: wrap; gap: 15px;}
+.data-table table tbody tr { display: flex; flex-direction: column; width: calc(100% / 3 - 10px); padding: 15px 20px; height: inherit; border: 1px solid #9993; position: relative; border-radius: 10px;}
+.data-table table tbody tr td:empty { display: none;}
+.data-table table tbody tr td { border: 0px; padding-left: 25px;}
+.data-table table tbody tr td[data-title]::before { content: attr(data-title); color: #000; font-weight: 600; margin-right: 10px;}
+.data-table table tbody tr td:first-child { position: absolute; left: 15px; top: 20px; padding: 0px;}
+.data-table table tbody tr td[data-title] { color: #6b7280; line-height: normal;}
+.data-table table tbody tr td[data-title] br{ margin:6px 0px; display:block;}
+#myTable tbody td:last-child { flex: 1; align-items: flex-end;}
+#dt-search-0 { width: 100%;}
+} 
+
+@media(max-width:860px){
+.data-table table tbody tr { width: calc(100% / 2 - 8px);}
+}
+
+@media(max-width:767px){
+.dt-search { display: flex; flex-direction:column}
+div.dt-container .dt-search input { margin-right: 3px;}
+.data-table table tbody tr { width:100%;}    
+.filter-form .flex.justify-end.gap-4 select {      flex: 1;}
+.filter-form .flex select, .filter-form .flex a, .filter-form .flex button{ padding: 5px 5px; background-position: center right !important;}
+.filter-form .flex.justify-end.gap-4 { gap: 5px; display: flex; flex-wrap: wrap; justify-content: center;}
+#myTable_wrapper .dt-layout-row { display: flex; gap: 10px;} #myTable_wrapper .dt-layout-row .dt-length { display: flex; flex-direction: column-reverse;} #myTable_wrapper  label { font-size: 15px; line-height: normal; margin-bottom: 5px; min-width: 120px;}
+}
+

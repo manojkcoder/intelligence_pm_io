@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Company;
 
 class SeedCompaniesTable extends Seeder
 {
@@ -13,16 +14,13 @@ class SeedCompaniesTable extends Seeder
     public function run(): void
     {
         // get companies data from companies.txt file stored in storage/app folder
-        $companies = file_get_contents(storage_path('app/companies.txt'));
-        $companies = explode("\n", $companies);
-        $companies = array_map(function ($company) {
-            return ['name' => $company];
-        }, $companies);
-        
-        \DB::table('companies')->truncate();
+        $companies = file_get_contents(storage_path('app/companies.json'));
+        $companies = json_decode($companies, true);
+
+        Company::truncate();
 
         foreach ($companies as $company) {
-            \DB::table('companies')->insert($company);
+            Company::create($company);
         }
     }
 }

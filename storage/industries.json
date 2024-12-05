@@ -1,0 +1,446 @@
+[
+  {
+    "branch": "Herstellung von Datenverarbeitungsgeräten, elektronischen und optischen Erzeugnissen",
+    "associated_industries": "26.11.0 Herstellung von elektronischen Bauelementen\n26.12.0 Herstellung von Leiterplatten\n26.20.0 Herstellung von Computern und peripheren Geräten\n26.30.0 Herstellung von Kommunikationsgeräten\n26.40.0 Herstellung von Unterhaltungselektronik\n26.51.0 Herstellung von Mess-, Kontroll-, Navigations- und ähnlichen Geräten\n26.52.0 Herstellung von Uhren\n26.60.0 Herstellung von Bestrahlungs- und elektrotherapeutischen Geräten und elektrodiagnostischen Geräten\n26.70.0 Herstellung von optischen und fotografischen Geräten und Instrumenten",
+    "wz_code": 26,
+    "score": 96
+  },
+  {
+    "branch": "Telekommunikation",
+    "associated_industries": "61.10.0 Drahtgebundene Telekommunikation\n61.20.0 Drahtlose Telekommunikation\n61.30.0 Satellitentelekommunikation\n61.90.0 Sonstige Telekommunikationstätigkeiten",
+    "wz_code": 61,
+    "score": 95
+  },
+  {
+    "branch": "Erbringung von Finanzdienstleistungen",
+    "associated_industries": "64.11.0 Kreditinstitute (ohne Spezialkreditinstitute)\n64.12.0 Spezialkreditinstitute\n64.19.0 Sonstige Finanzierungsinstitutionen a. n. g.\n64.20.1 Holdinggesellschaften\n64.20.2 Sonstige Kapitalbeteiligungsgesellschaften\n64.30.0 Treuhandgesellschaften\n64.91.0 Investmentfonds (ohne Immobilienfonds)\n64.92.0 Immobilienfonds\n64.99.1 Beteiligungsgesellschaften\n64.99.2 Sonstige Finanzinstitutionen a. n. g.",
+    "wz_code": 64,
+    "score": 93
+  },
+  {
+    "branch": "Herstellung von Kraftwagen und Kraftwagenteilen",
+    "associated_industries": "29.10.0 Herstellung von Kraftwagen und Kraftwagenmotoren\n29.20.0 Herstellung von Karosserien, Aufbauten und Anhängern\n29.31.0 Herstellung von elektrischen und elektronischen Ausrüstungen für Kraftwagen\n29.32.0 Herstellung von sonstigen Teilen und sonstigem Zubehör für Kraftwagen",
+    "wz_code": 29,
+    "score": 90
+  },
+  {
+    "branch": "Erbringung von Dienstleistungen der Informationstechnologie",
+    "associated_industries": "Entwicklung und Programmierung von Internetpräsentationen\nSonstige Softwareentwicklung\nErbringung von Beratungsleistungen auf dem Gebiet der Informationstechnologie\nBetrieb von Datenverarbeitungseinrichtungen für Dritte\nErbringung von sonstigen Dienstleistungen der Informationstechnologie",
+    "wz_code": 62,
+    "score": 89
+  },
+  {
+    "branch": "Herstellung von pharmazeutischen Erzeugnissen",
+    "associated_industries": "21.10.0 Herstellung von pharmazeutischen Grundstoffen\n21.20.1 Herstellung von pharmazeutischen Spezialitäten und sonstigen pharmazeutischen Erzeugnissen\n21.20.9 Herstellung von sonstigen pharmazeutischen Erzeugnissen",
+    "wz_code": 21,
+    "score": 88
+  },
+  {
+    "branch": "Maschinenbau",
+    "associated_industries": "28.11.0 Herstellung von Motoren und Turbinen, außer Flugzeug-, Kraftfahrzeug- und Motorradmotoren\n28.12.0 Herstellung von Pumpen und Kompressoren\n28.13.0 Herstellung von sonstigen Fluidkraftmaschinen\n28.14.0 Herstellung von sonstigen Geräten der allgemeinen und sonstigen Maschinentechnik\n28.21.0 Herstellung von Öfen und Brennern\n28.22.0 Herstellung von Hebezeugen und Fördermitteln\n28.23.0 Herstellung von Büro- und Ladenmaschinen\n28.24.0 Herstellung von handbetätigten Werkzeugen\n28.29.0 Herstellung von sonstigen Maschinen für die allgemeine und sonstige Maschinentechnik",
+    "wz_code": 28,
+    "score": 87
+  },
+  {
+    "branch": "Herstellung von elektrischen Ausrüstungen",
+    "associated_industries": "Herstellung von Elektromotoren, Generatoren und Transformatoren 27.11.0\n2 Herstellung von Elektrizitätsverteilungs- und -schalteinrichtungen 27.12.0\n3 Herstellung von Batterien und Akkumulatoren 27.20.0\n4 Herstellung von Glasfaserkabeln 27.31.0\n5 Herstellung von sonstigen elektronischen und elektrischen Drähten und Kabeln 27.32.0\n6 Herstellung von elektrischem Installationsmaterial 27.33.0\n7 Herstellung von elektrischen Lampen und Leuchten 27.40.0\n8 Herstellung von elektrischen Haushaltsgeräten 27.51.0\n9 Herstellung von nichtelektrischen Haushaltsgeräten 27.52.0\n10 Herstellung von sonstigen elektrischen Ausrüstungen und Geräten a. n. g. 27.90.0",
+    "wz_code": 27,
+    "score": 87
+  },
+  {
+    "branch": "Energieversorgung",
+    "associated_industries": "35.11.0 Elektrizitätserzeugung\n35.12.0 Elektrizitätsübertragung\n35.13.0 Elektrizitätsverteilung\n35.14.0 Handel mit Elektrizität\n35.21.0 Gasversorgung durch Leitungen\n35.22.0 Gasverteilung durch Leitungen\n35.23.0 Handel mit Gas durch Leitungen\n35.30.0 Wärme- und Kälteversorgung",
+    "wz_code": 35,
+    "score": 86
+  },
+  {
+    "branch": "Herstellung von chemischen Erzeugnissen",
+    "associated_industries": "20.11.0 Herstellung von Industriegasen\n20.12.0 Herstellung von Farbstoffen und Pigmenten\n20.13.0 Herstellung von sonstigen anorganischen Grundstoffen und Chemikalien\n20.14.0 Herstellung von sonstigen organischen Grundstoffen und Chemikalien\n20.15.0 Herstellung von Düngemitteln und Stickstoffverbindungen\n20.16.0 Herstellung von Kunststoffen in Primärformen\n20.17.0 Herstellung von synthetischem Kautschuk in Primärformen\n20.20.0 Herstellung von Pflanzenschutzmitteln und Schädlingsbekämpfungsmitteln\n20.30.0 Herstellung von Farben, Lacken und ähnlichen Beschichtungsmitteln, Druckfarben und Kitten\n20.41.0 Herstellung von Seifen, Reinigungs- und Poliermitteln\n20.42.0 Herstellung von Parfümerie- und Kosmetikartikeln\n20.51.0 Herstellung von Sprengstoffen\n20.52.0 Herstellung von Klebstoffen\n20.53.0 Herstellung von ätherischen Ölen\n20.59.0 Herstellung von sonstigen chemischen Erzeugnissen",
+    "wz_code": 20,
+    "score": 84
+  },
+  {
+    "branch": "Metallerzeugung und -bearbeitung",
+    "associated_industries": "24.10.0 Erzeugung von Roheisen, Stahl und Ferrolegierungen\n24.20.0 Herstellung von Rohren, Rohrform-, Rohrverschlussstücken aus Stahl\n24.31.0 Herstellung von Kaltformzeugnissen und Kaltstrangpresserzeugnissen\n24.32.0 Herstellung von kaltgewalztem Breitband\n24.33.0 Herstellung von kaltgewalzten Bändern\n24.34.0 Herstellung von Drahtwaren\n24.41.0 Herstellung von Edelstählen\n24.42.0 Herstellung von Stahlröhren\n24.43.0 Herstellung von sonstigen Rohren, Rohrform- und Rohrverschlussstücken\n24.44.0 Herstellung von Walz-, Schmiede- und Presserzeugnissen\n24.45.0 Herstellung von sonstigen Metallerzeugnissen",
+    "wz_code": 24,
+    "score": 81
+  },
+  {
+    "branch": "Sonstiger Fahrzeugbau",
+    "associated_industries": "30.11.0 Schiffbau\n30.12.0 Bau von Sport- und Freizeitbooten\n30.20.0 Schienenfahrzeugbau\n30.30.0 Luft- und Raumfahrzeugbau\n30.40.0 Bau von Militärfahrzeugen\n30.91.0 Herstellung von Krafträdern\n30.99.0 Bau von sonstigen Fahrzeugen a. n. g.",
+    "wz_code": 30,
+    "score": 80
+  },
+  {
+    "branch": "Herstellung von Metallerzeugnissen",
+    "associated_industries": "25.11.0 Herstellung von Metallkonstruktionen\n25.12.0 Herstellung von Metallbehältern, Tanks und Behältern\n25.21.0 Herstellung von Heizkörpern und Heizkesseln für Zentralheizungen\n25.29.0 Herstellung von sonstigen Behältern aus Metall\n25.30.0 Herstellung von Dampfkesseln\n25.40.0 Herstellung von Waffen und Munition\n25.50.0 Schmieden, Pressen, Stanzen und Walzen von Metall; Pulvermetallurgie\n25.61.0 Oberflächenveredelung und Wärmebehandlung\n25.62.0 Herstellung von Bolzen und Schrauben\n25.71.0 Herstellung von Schneidwaren und Bestecken\n25.72.0 Herstellung von Schlössern und Beschlägen\n25.73.0 Herstellung von Werkzeugen\n25.91.0 Herstellung von Stahlfässern und ähnlichen Behältern\n25.92.0 Herstellung von Metallverpackungen\n25.93.0 Herstellung von Drahtwaren, Ketten und Federn\n25.94.0 Herstellung von Beschlägen\n25.99.0 Herstellung von sonstigen Metallerzeugnissen a. n. g.",
+    "wz_code": 25,
+    "score": 79
+  },
+  {
+    "branch": "Herstellung von Gummi- und Kunststoffwaren",
+    "associated_industries": "22.11.0 Herstellung von Gummireifen und Schläuchen; Runderneuerung und Reparatur von Gummireifen\n22.19.0 Herstellung von sonstigen Gummiwaren\n22.21.0 Herstellung von Kunststoffplatten, -folien, -schläuchen und -profilen\n22.22.0 Herstellung von Verpackungsmitteln aus Kunststoffen\n22.23.0 Herstellung von Bau- und Möbelwaren aus Kunststoffen\n22.29.0 Herstellung von sonstigen Kunststoffwaren",
+    "wz_code": 22,
+    "score": 78
+  },
+  {
+    "branch": "Tabakverarbeitung",
+    "associated_industries": "12.00.0 Tabakverarbeitung",
+    "wz_code": 12,
+    "score": 77
+  },
+  {
+    "branch": "Informationsdienstleistungen",
+    "associated_industries": "63.11.0 Datenverarbeitung, Hosting und damit verbundene Tätigkeiten\n63.12.0 Webportale\n63.91.0 Nachrichtenagenturen\n63.99.0 Sonstige Informationsdienstleistungen",
+    "wz_code": 63,
+    "score": 76
+  },
+  {
+    "branch": "Herstellung von Nahrungs- und Futtermitteln",
+    "associated_industries": "Herstellung von Backwaren und Teigwaren 10.71\nHerstellung von Zucker 10.81\nHerstellung von Futtermitteln 10.90",
+    "wz_code": 10,
+    "score": 76
+  },
+  {
+    "branch": "Reparatur und Installation von Maschinen und Ausrüstungen",
+    "associated_industries": "33.11.0 Reparatur von Metallerzeugnissen\n33.12.0 Reparatur von Maschinen\n33.13.0 Reparatur von elektronischen und optischen Geräten\n33.14.0 Reparatur von elektrischen Ausrüstungen\n33.15.0 Reparatur und Wartung von sonstigen Ausrüstungen und Geräten\n33.16.0 Reparatur von sonstigen Ausrüstungen und Geräten der Mess-, Regel- und Steuertechnik\n33.17.0 Reparatur und Wartung von Transportmitteln\n33.19.0 Reparatur von sonstigen Ausrüstungen\n33.20.0 Installation von Maschinen und Ausrüstungen",
+    "wz_code": 33,
+    "score": 76
+  },
+  {
+    "branch": "Versicherungen, Rückversicherungen und Pensionskassen (ohne Sozial-versicherung)",
+    "associated_industries": "65.11.0 Lebensversicherungen\n65.12.0 Nicht-Lebensversicherungen\n65.20.0 Rückversicherungen\n65.30.0 Pensionskassen und -fonds",
+    "wz_code": 65,
+    "score": 74
+  },
+  {
+    "branch": "Erbringung von wirtschaftlichen Dienstleistungen für Unternehmen und Privatpersonen a. n. g.",
+    "associated_industries": "82.11.0 Erbringung von Dienstleistungen für Unternehmen\n82.19.0 Erbringung von sonstigen wirtschaftlichen Dienstleistungen für Unternehmen und Privatpersonen a. n. g.",
+    "wz_code": 82,
+    "score": 73
+  },
+  {
+    "branch": "Gewinnung von Erdöl und Erdgas",
+    "associated_industries": "",
+    "wz_code": 6,
+    "score": 73
+  },
+  {
+    "branch": "Beseitigung von Umweltverschmutzungen und sonstige Entsorgung",
+    "associated_industries": "39.00.0 Beseitigung von Umweltverschmutzungen und sonstige Entsorgung",
+    "wz_code": 39,
+    "score": 71
+  },
+  {
+    "branch": "Vermietung von beweglichen Sachen",
+    "associated_industries": "77.11.0 Vermietung von Kraftwagen\n77.12.0 Vermietung von Nutzfahrzeugen\n77.21.0 Vermietung von Freizeit- und Sportgeräten\n77.22.0 Vermietung von Videos und Datenträgern\n77.29.0 Vermietung von sonstigen beweglichen Sachen\n77.31.0 Vermietung von Landmaschinen\n77.32.0 Vermietung von Baumaschinen und -geräten\n77.33.0 Vermietung von Büromaschinen und -geräten\n77.34.0 Vermietung von Wäsche, Bekleidung und Schuhen\n77.39.0 Vermietung und Verleih von sonstigen Gebrauchsgütern",
+    "wz_code": 77,
+    "score": 71
+  },
+  {
+    "branch": "Luftfahrt",
+    "associated_industries": "51.10.0 Personenbeförderung im Luftverkehr\n51.21.0 Güterbeförderung im Luftverkehr\n51.22.0 Weltraumtransport",
+    "wz_code": 51,
+    "score": 70
+  },
+  {
+    "branch": "Verteidigung / Rüstung",
+    "associated_industries": "84.22.0 Militärische Verteidigungstätigkeiten",
+    "wz_code": 84,
+    "score": 70
+  },
+  {
+    "branch": "Herstellung von Glas und Glaswaren, Keramik, Verarbeitung von Steinen und Erden",
+    "associated_industries": "23.11.0 Herstellung von Flachglas\n23.12.0 Formen und Verarbeiten von Flachglas\n23.13.0 Herstellung von Hohlglas\n23.14.0 Herstellung von Glasfasern\n23.19.0 Herstellung und Verarbeitung von sonstigem Glas, einschließlich technischer Erzeugnisse aus Glas\n23.20.0 Herstellung von feinkeramischen Erzeugnissen\n23.31.0 Herstellung von keramischen Baustoffen\n23.32.0 Herstellung von Ziegeln und sonstigen Erzeugnissen aus gebranntem Ton\n23.41.0 Herstellung von keramischen Sanitärkeramiken\n23.42.0 Herstellung von sonstigen Erzeugnissen aus keramischen Werkstoffen\n23.43.0 Herstellung von feuerfesten keramischen Werkstoffen\n23.44.0 Herstellung von feuerfesten keramischen Erzeugnissen\n23.49.0 Herstellung von sonstigen keramischen Erzeugnissen\n23.51.0 Herstellung von Zement\n23.52.0 Herstellung von Kalk und gebranntem Gips\n23.61.0 Herstellung von Betonerzeugnissen für den Bau\n23.62.0 Herstellung von Gipserzeugnissen für den Bau\n23.63.0 Herstellung von Frischbeton\n23.64.0 Herstellung von Mörtel\n23.65.0 Herstellung von Trockenbeton\n23.69.0 Herstellung von sonstigen Erzeugnissen aus Beton, Zement und Gips\n23.70.0 Schneiden, Bearbeiten und Veredeln von Naturstein\n23.91.0 Herstellung von Schleifkörpern und Schleifmitteln\n23.99.0 Herstellung von sonstigen nichtmetallischen mineralischen Erzeugnissen",
+    "wz_code": 23,
+    "score": 69
+  },
+  {
+    "branch": "Wasserversorgung",
+    "associated_industries": "36.00.0 Wasserversorgung",
+    "wz_code": 36,
+    "score": 69
+  },
+  {
+    "branch": "Getränkeherstellung",
+    "associated_industries": "11.01.0 Herstellung von alkoholischen Getränken\n11.02.0 Herstellung von Weinen\n11.03.0 Herstellung von Apfelweinen und anderen Fruchtweinen\n11.04.0 Herstellung von anderen nicht destillierten alkoholischen Getränken\n11.05.0 Herstellung von Bier\n11.06.0 Herstellung von Malz\n11.07.0 Herstellung von nichtalkoholischen Getränken, ausgenommen Mineralwasser\n11.08.0 Herstellung von Mineralwasser und Erfrischungsgetränken",
+    "wz_code": 11,
+    "score": 69
+  },
+  {
+    "branch": "Herstellung von sonstigen Waren",
+    "associated_industries": "32.11.0 Herstellung von Münzen\n32.12.0 Herstellung von Schmuck und verwandten Erzeugnissen\n32.13.0 Herstellung von Bestecken\n32.20.0 Herstellung von Musikinstrumenten\n32.30.0 Herstellung von Sportgeräten\n32.40.0 Herstellung von Spielen und Spielzeug\n32.50.0 Herstellung von medizinischen und zahnmedizinischen Apparaten und Materialien\n32.91.0 Herstellung von Besen und Bürsten\n32.99.0 Herstellung von sonstigen Waren a. n. g.",
+    "wz_code": 32,
+    "score": 68
+  },
+  {
+    "branch": "Herstellung von Papier, Pappe und Waren daraus",
+    "associated_industries": "17.11.0 Herstellung von Zellstoff\n17.12.0 Herstellung von Papier und Pappe\n17.21.0 Herstellung von Wellpapier und Wellpappe\n17.22.0 Herstellung von Papierwaren",
+    "wz_code": 17,
+    "score": 67
+  },
+  {
+    "branch": "Herstellung von Bekleidung",
+    "associated_industries": "14.11.0 Herstellung von Lederbekleidung\n14.12.0 Herstellung von Arbeits- und Berufsbekleidung\n14.13.0 Herstellung von sonstiger Oberbekleidung\n14.14.0 Herstellung von Unterbekleidung\n14.19.0 Herstellung von sonstiger Bekleidung und Bekleidungszubehör",
+    "wz_code": 14,
+    "score": 67
+  },
+  {
+    "branch": "Erzbergbau",
+    "associated_industries": "07.10.0 Gewinnung von Eisenerz\n07.21.0 Gewinnung von Uran- und Thoriumerzen\n07.29.0 Gewinnung von sonstigen NE-Metallerzen",
+    "wz_code": 7,
+    "score": 66
+  },
+  {
+    "branch": "Erbringung von sonstigen überwiegend persönlichen Dienstleistungen",
+    "associated_industries": "96.01.0 Wäscheservice\n96.02.0 Friseursalons und Kosmetiksalons\n96.03.0 Bestattungswesen\n96.04.0 Erbringung von sonstigen überwiegend persönlichen Dienstleistungen a. n. g.",
+    "wz_code": 96,
+    "score": 66
+  },
+  {
+    "branch": "Erbringung von Dienstleistungen für den Bergbau und für die Gewinnung von Steinen und Erden",
+    "associated_industries": "09.10.0 Erbringung von Dienstleistungen für den Bergbau zur Gewinnung von Erdöl und Erdgas\n09.90.0 Erbringung von Dienstleistungen für den sonstigen Bergbau und für die Gewinnung von Steinen und Erden",
+    "wz_code": 9,
+    "score": 65
+  },
+  {
+    "branch": "Spiel-, Wett- und Lotteriewesen",
+    "associated_industries": "92.00.0 Spiel-, Wett- und Lotteriewesen",
+    "wz_code": 92,
+    "score": 65
+  },
+  {
+    "branch": "Rundfunkveranstalter",
+    "associated_industries": "60.10.0 Rundfunkveranstalter\n60.20.0 Fernsehveranstalter",
+    "wz_code": 60,
+    "score": 65
+  },
+  {
+    "branch": "Einzelhandel (ohne Handel mit Kraftfahrzeugen)",
+    "associated_industries": "47.11.0 Einzelhandel mit Waren verschiedener Art, Hauptrichtung Nahrungsmittel, Getränke und Tabakwaren\n47.19.0 Sonstiger Einzelhandel mit Waren verschiedener Art\n47.21.0 Einzelhandel mit Obst, Gemüse und Kartoffeln\n47.22.0 Einzelhandel mit Fleisch und Fleischwaren\n47.23.0 Einzelhandel mit Fisch, Krusten- und Weichtieren\n47.24.0 Einzelhandel mit Brot, Back- und Süßwaren\n47.25.0 Einzelhandel mit Getränken\n47.26.0 Einzelhandel mit Tabakwaren\n47.29.0 Sonstiger Einzelhandel mit Nahrungsmitteln\n47.30.0 Einzelhandel mit kosmetischen und pharmazeutischen Erzeugnissen, medizinischen und orthopädischen Artikeln\n47.41.0 Einzelhandel mit Textilien\n47.42.0 Einzelhandel mit Bekleidung und Schuhen\n47.43.0 Einzelhandel mit kosmetischen und Körperpflegemitteln\n47.51.0 Einzelhandel mit Möbeln, Einrichtungsgegenständen und Haushaltsgeräten\n47.52.0 Einzelhandel mit Elektrogeräten\n47.53.0 Einzelhandel mit Teppichen, Vorhängen und Bodenbelägen\n47.54.0 Einzelhandel mit Haushaltsgeräten und Haushaltsgegenständen\n47.59.0 Einzelhandel mit sonstigen Haushaltsgegenständen\n47.61.0 Einzelhandel mit Büchern\n47.62.0 Einzelhandel mit Zeitungen und Schreibwaren\n47.63.0 Einzelhandel mit Musikinstrumenten und Musikalien\n47.64.0 Einzelhandel mit Sport- und Campingartikeln\n47.65.0 Einzelhandel mit Spielwaren\n47.71.0 Einzelhandel mit Uhren und Schmuck\n47.72.0 Einzelhandel mit Blumen, Pflanzen, Saatgut, Düngemitteln, zoologischen Erzeugnissen\n47.73.0 Einzelhandel mit Bekleidung und Schuhen\n47.74.0 Einzelhandel mit optischen und fotografischen Erzeugnissen\n47.75.0 Einzelhandel mit Kunstgegenständen, Kunsthandwerk und Kirchenbedarf\n47.76.0 Einzelhandel mit Spielsachen und Spielen\n47.77.0 Einzelhandel mit Musikinstrumenten und Musikalien\n47.78.0 Einzelhandel mit Sport- und Campingartikeln\n47.79.0 Einzelhandel mit sonstigen Haushaltsgegenständen",
+    "wz_code": 47,
+    "score": 64
+  },
+  {
+    "branch": "Herstellung von Möbeln",
+    "associated_industries": "31.01.0 Herstellung von Büromöbeln und Ladenmöbeln\n31.02.0 Herstellung von Küchenmöbeln\n31.03.0 Herstellung von Matratzen\n31.09.0 Herstellung von sonstigen Möbeln",
+    "wz_code": 31,
+    "score": 64
+  },
+  {
+    "branch": "Hochbau",
+    "associated_industries": "41.10.0 Hochbau\n41.20.0 Errichtung von Gebäuden",
+    "wz_code": 41,
+    "score": 64
+  },
+  {
+    "branch": "Mit Finanz- und Versicherungsdienstleistungen verbundene Tätigkeiten",
+    "associated_industries": "66.11.0 Verwaltung von Finanzmärkten\n66.12.0 Vermittlung von Wertpapieren und Waren\n66.19.0 Sonstige Tätigkeiten des Kredit- und Versicherungsgewerbes\n66.21.0 Risikobewertung und -bewältigung\n66.22.0 Versicherungsmakler und -agenten\n66.29.0 Sonstige mit Versicherungen und Pensionskassen verbundene Tätigkeiten",
+    "wz_code": 66,
+    "score": 63
+  },
+  {
+    "branch": "Landverkehr und Transport in Rohrfernleitungen",
+    "associated_industries": "49.10.0 Eisenbahnverkehr\n49.20.0 Güterbeförderung im Eisenbahnverkehr\n49.31.0 Personenbeförderung im Eisenbahn-Nahverkehr\n49.32.0 Personenbeförderung im Eisenbahn-Fernverkehr\n49.41.0 Güterbeförderung im Straßenverkehr\n49.42.0 Umzugsverkehr\n49.50.0 Rohrfernleitungen",
+    "wz_code": 49,
+    "score": 63
+  },
+  {
+    "branch": "Herstellung von Leder, Lederwaren und Schuhen",
+    "associated_industries": "15.11.0 Gerben und Zurichten von Leder\n15.12.0 Herstellung von Reise- und Handtaschen sowie Sattlerwaren\n15.20.0 Herstellung von Schuhen",
+    "wz_code": 15,
+    "score": 63
+  },
+  {
+    "branch": "Großhandel (ohne Handel mit Kraftfahrzeugen)",
+    "associated_industries": "46.11.0 Großhandel mit landwirtschaftlichen Rohstoffen und lebenden Tieren\n46.12.0 Großhandel mit Getreide, Rohtabak, Saatgut und Futtermitteln\n46.13.0 Großhandel mit lebenden Tieren\n46.14.0 Großhandel mit pflanzlichen Ölen, Fetten und Ölen\n46.15.0 Großhandel mit chemischen Erzeugnissen\n46.16.0 Großhandel mit Textilien, Bekleidung und Schuhen\n46.17.0 Großhandel mit Nahrungs- und Genussmitteln, Getränken und Tabakwaren\n46.18.0 Großhandel mit sonstigen Halbwaren, Reststoffen und Abfällen\n46.19.0 Großhandel mit sonstigen Halbwaren und Rohstoffen a. n. g.\n46.21.0 Großhandel mit elektronischen Bauteilen und Geräten der Telekommunikationstechnik\n46.22.0 Großhandel mit optischen Geräten und Zubehör\n46.23.0 Großhandel mit radio- und fernsehtechnischen Geräten\n46.24.0 Großhandel mit Haushaltsgeräten, elektrischen und elektronischen Geräten für den Haushalt\n46.25.0 Großhandel mit anderen Haushaltsgeräten\n46.31.0 Großhandel mit landwirtschaftlichen Maschinen und Geräten\n46.32.0 Großhandel mit Baumaschinen\n46.33.0 Großhandel mit Bergwerks-, Bau- und Baustoffmaschinen\n46.34.0 Großhandel mit Maschinenausrüstungen\n46.35.0 Großhandel mit Werkzeugmaschinen\n46.36.0 Großhandel mit Maschinen für die Textil- und Bekleidungsindustrie\n46.37.0 Großhandel mit Maschinen für die Papier- und Druckindustrie\n46.38.0 Großhandel mit sonstigen Maschinen für die Industrie\n46.39.0 Großhandel mit sonstigen Maschinen\n46.41.0 Großhandel mit Kraftwagen\n46.42.0 Großhandel mit Kraftwagenteilen und -zubehör\n46.43.0 Großhandel mit Motorrädern, deren Teilen und Zubehör\n46.44.0 Großhandel mit Bekleidung und Schuhen\n46.45.0 Großhandel mit pharmazeutischen Erzeugnissen\n46.46.0 Großhandel mit Papier, Pappe und Waren daraus\n46.47.0 Großhandel mit Möbeln, Einrichtungsgegenständen und Haushaltswaren\n46.48.0 Großhandel mit Bekleidung und Schuhen\n46.49.0 Großhandel mit sonstigen Gebrauchs- und Verbrauchsgütern",
+    "wz_code": 46,
+    "score": 62
+  },
+  {
+    "branch": "Vorbereitende Baustellenarbeiten, Bauinstallation und sonstiges Ausbaugewerbe",
+    "associated_industries": "43.11.0 Abbrucharbeiten und vorbereitende Baustellenarbeiten\n43.12.0 Bauinstallation\n43.13.0 Bauinstallationen\n43.21.0 Elektroinstallation\n43.22.0 Gas-, Wasser-, Heizungs- und Lüftungsinstallation\n43.29.0 Sonstige Bauinstallation\n43.31.0 Verputzarbeiten\n43.32.0 Zimmerei- und Ingenieurholzbau\n43.33.0 Boden- und Wandverlegung\n43.34.0 Maler- und Lackierarbeiten\n43.39.0 Sonstige Ausbaugewerbe",
+    "wz_code": 43,
+    "score": 62
+  },
+  {
+    "branch": "Erbringung von Dienstleistungen des Sports, der Unterhaltung und der Erholung",
+    "associated_industries": "93.11.0 Betrieb von Sportanlagen\n93.12.0 Betrieb von Sportvereinen\n93.13.0 Betrieb von Fitnesszentren\n93.19.0 Sonstige mit Sport verbundene Tätigkeiten\n93.21.0 Vergnügungs- und Themenparks\n93.29.0 Sonstige Unterhaltung und Erholung a. n. g.",
+    "wz_code": 93,
+    "score": 62
+  },
+  {
+    "branch": "Post-, Kurier- und Expressdienste",
+    "associated_industries": "53.10.0 Nationale Postdienste, die unter dem Weltpostvertrag fallen\n53.20.0 Sonstige Post-, Kurier- und Expressdienste",
+    "wz_code": 53,
+    "score": 62
+  },
+  {
+    "branch": "Forstwirtschaft und Holzeinschlag",
+    "associated_industries": "02.10.0 Forstwirtschaft\n02.20.0 Dienstleistungen für die Forstwirtschaft",
+    "wz_code": 2,
+    "score": 62
+  },
+  {
+    "branch": "Tiefbau",
+    "associated_industries": "42.11.0 Bau von Straßen und Autobahnen\n42.12.0 Bau von Eisenbahnlinien und Straßenbahnen\n42.13.0 Bau von Brücken und Tunneln\n42.21.0 Bau von Rohrleitungen\n42.22.0 Bau von Versorgungsleitungen für Elektrizität und Telekommunikation\n42.91.0 Bau von Wasserbauwerken\n42.99.0 Sonstiger Tiefbau",
+    "wz_code": 42,
+    "score": 62
+  },
+  {
+    "branch": "Abwasserentsorgung",
+    "associated_industries": "37.00.0 Abwasserentsorgung",
+    "wz_code": 37,
+    "score": 62
+  },
+  {
+    "branch": "Sammlung, Behandlung und Beseitigung von Abfällen; Rückgewinnung",
+    "associated_industries": "38.11.0 Sammlung von nicht gefährlichen Abfällen\n38.12.0 Sammlung von gefährlichen Abfällen\n38.21.0 Behandlung und Beseitigung von nicht gefährlichen Abfällen\n38.22.0 Behandlung und Beseitigung von gefährlichen Abfällen\n38.31.0 Rückgewinnung sortierter Werkstoffe",
+    "wz_code": 38,
+    "score": 62
+  },
+  {
+    "branch": "Werbung und Marktforschung",
+    "associated_industries": "73.11.0 Werbeagenturen\n73.12.0 Medienvertretungen\n73.20.0 Marktforschung",
+    "wz_code": 73,
+    "score": 62
+  },
+  {
+    "branch": "Handel mit Kraftfahrzeugen; Instandhaltung und Reparatur von Kraftfahrzeugen",
+    "associated_industries": "45.11.0 Handel mit Kraftwagen\n45.19.0 Handel mit anderen Kraftfahrzeugen\n45.20.0 Instandhaltung und Reparatur von Kraftwagen\n45.31.0 Handel mit Kraftwagenteilen und -zubehör\n45.32.0 Handel mit Krafträdern und deren Teilen und Zubehör\n45.40.0 Instandhaltung und Reparatur von Krafträdern",
+    "wz_code": 45,
+    "score": 61
+  },
+  {
+    "branch": "Herstellung von Holz-, Flecht-, Korb- und Korkwaren (ohne Möbel)",
+    "associated_industries": "16.10.0 Sägewerke\n16.21.0 Herstellung von Furnier-, Sperrholz- und Holzplatten\n16.22.0 Herstellung von Holzhäusern\n16.23.0 Herstellung von Bautischlerwaren und -fertigteilen\n16.24.0 Herstellung von Verpackungsmitteln aus Holz\n16.29.0 Herstellung von sonstigen Holz-, Flecht-, Korb- und Korkwaren",
+    "wz_code": 16,
+    "score": 61
+  },
+  {
+    "branch": "Verlagswesen",
+    "associated_industries": "58.11.0 Verlegen von Büchern\n58.12.0 Verlegen von Zeitungen\n58.13.0 Verlegen von Zeitschriften\n58.14.0 Verlegen von Datenbanken und Verzeichnissen\n58.19.0 Sonstige Verlagswesen",
+    "wz_code": 58,
+    "score": 61
+  },
+  {
+    "branch": "Grundstücks- und Wohnungswesen",
+    "associated_industries": "68.10.0 Kauf und Verkauf von eigenen Grundstücken, Gebäuden und Wohnungen\n68.20.0 Vermietung, Verpachtung von eigenen oder geleasten Grundstücken, Gebäuden und Wohnungen\n68.31.0 Vermittlung von Grundstücken, Gebäuden und Wohnungen\n68.32.0 Verwaltung von Grundstücken, Gebäuden und Wohnungen",
+    "wz_code": 68,
+    "score": 61
+  },
+  {
+    "branch": "Reisebüros, Reiseveranstalter und Erbringung sonstiger Reservierungsdienstleistungen",
+    "associated_industries": "79.11.0 Reisebüros\n79.12.0 Reiseveranstalter\n79.90.0 Erbringung sonstiger Reservierungsdienstleistungen",
+    "wz_code": 79,
+    "score": 61
+  },
+  {
+    "branch": "Vermittlung und Überlassung von Arbeitskräften",
+    "associated_industries": "78.10.0 Vermittlung von Arbeitskräften\n78.20.0 Überlassung von Arbeitskräften\n78.30.0 Sonstige Überlassung von Arbeitskräften",
+    "wz_code": 78,
+    "score": 60
+  },
+  {
+    "branch": "Herstellung, Verleih und Vertrieb von Filmen und Fernsehprogrammen; Kinos; Tonstudios und Verlegen von Musik",
+    "associated_industries": "59.11.0 Herstellung von Filmen, Videofilmen und Fernsehprogrammen\n59.12.0 Verleih und Vertrieb von Filmen, Videofilmen und Fernsehprogrammen\n59.13.0 Vorführung von Filmen\n59.20.0 Tonstudios und Verlegen von Musik",
+    "wz_code": 59,
+    "score": 60
+  },
+  {
+    "branch": "Forschung und Entwicklung",
+    "associated_industries": "72.11.0 Forschung und Entwicklung im Bereich Biotechnologie\n72.19.0 Sonstige Forschung und Entwicklung im Bereich Natur-, Ingenieur-, Agrarwissenschaften und Medizin\n72.20.0 Forschung und Entwicklung im Bereich Geistes- und Sozialwissenschaften",
+    "wz_code": 72,
+    "score": 60
+  },
+  {
+    "branch": "Kokerei und Mineralölverarbeitung",
+    "associated_industries": "19.10.0 Kokerei\n19.20.0 Mineralölverarbeitung",
+    "wz_code": 19,
+    "score": 59
+  },
+  {
+    "branch": "Gesundheitswesen",
+    "associated_industries": "86.10.0 Krankenhäuser\n86.21.0 Facharztpraxen\n86.22.0 Arztpraxen\n86.23.0 Zahnarztpraxen\n86.90.0 Sonstige humanmedizinische Tätigkeiten",
+    "wz_code": 86,
+    "score": 59
+  },
+  {
+    "branch": "Gewinnung von Steinen und Erden, sonstiger Bergbau",
+    "associated_industries": "08.11.0 Gewinnung von Natursteinen und Natursteinschotter\n08.12.0 Gewinnung von Kies, Sand, Ton und Kaolin\n08.91.0 Gewinnung von Mineralien und Erden für chemische Zwecke und zur Düngemittelherstellung\n08.92.0 Gewinnung von Torf\n08.93.0 Gewinnung von Salz\n08.99.0 Gewinnung von sonstigen nichtmetallischen mineralischen Rohstoffen a. n. g.",
+    "wz_code": 8,
+    "score": 59
+  },
+  {
+    "branch": "Lagerei sowie Erbringung von sonstigen Dienstleistungen für den Verkehr",
+    "associated_industries": "52.10.0 Lagerei\n52.21.0 Erbringung von sonstigen Dienstleistungen für den Landverkehr\n52.22.0 Erbringung von Dienstleistungen für die Schifffahrt\n52.23.0 Erbringung von Dienstleistungen für die Luftfahrt\n52.24.0 Frachtumschlag\n52.29.0 Erbringung von sonstigen Dienstleistungen für den Verkehr",
+    "wz_code": 52,
+    "score": 59
+  },
+  {
+    "branch": "Schifffahrt",
+    "associated_industries": "50.10.0 Seeschifffahrt\n50.20.0 Küstenschifffahrt und Fährverkehr\n50.30.0 Binnenschifffahrt",
+    "wz_code": 50,
+    "score": 58
+  },
+  {
+    "branch": "Reparatur von Datenverarbeitungsgeräten und Gebrauchsgütern",
+    "associated_industries": "95.11.0 Reparatur von Datenverarbeitungsgeräten\n95.12.0 Reparatur von Kommunikationsgeräten\n95.21.0 Reparatur von Unterhaltungselektronik\n95.22.0 Reparatur von Haushaltsgeräten und Gartengeräten",
+    "wz_code": 95,
+    "score": 58
+  },
+  {
+    "branch": "Herstellung von Textilien",
+    "associated_industries": "13.10.0 Vorbereitung und Spinnerei von Textilfasern\n13.20.0 Weberei\n13.30.0 Veredelung von Textilien\n13.91.0 Herstellung von Geweben aus textilen Flächenerzeugnissen\n13.92.0 Herstellung von Fertigwaren aus Textilien, außer Bekleidung\n13.93.0 Herstellung von Teppichen und anderen textilen Fußbodenbelägen\n13.94.0 Herstellung von Seilen, Netzen und Tauen\n13.95.0 Herstellung von Vliesstoffen\n13.96.0 Herstellung von sonstigen technischen und industriellen Textilien\n13.99.0 Herstellung von sonstigen Textilien",
+    "wz_code": 13,
+    "score": 58
+  },
+  {
+    "branch": "Beherbergung",
+    "associated_industries": "55.10.0 Hotels, Gasthöfe und Pensionen\n55.20.0 Ferienunterkünfte und ähnliche Beherbergungsstätten\n55.30.0 Campingplätze\n55.90.0 Sonstige Beherbergungsstätten",
+    "wz_code": 55,
+    "score": 57
+  },
+  {
+    "branch": "Kreative, künstlerische und unterhaltende Tätigkeiten",
+    "associated_industries": "90.01.0 Darstellende Kunst\n90.02.0 Unterstützung der darstellenden Kunst\n90.03.0 Künstlerische und literarische Schöpfung\n90.04.0 Betrieb von Kunst- und Museen",
+    "wz_code": 90,
+    "score": 57
+  },
+  {
+    "branch": "Architektur- und Ingenieurbüros; technische, physikalische und chemische Untersuchung",
+    "associated_industries": "71.11.0 Architektur- und Ingenieurbüros\n71.12.0 Technische, physikalische und chemische Untersuchung",
+    "wz_code": 71,
+    "score": 57
+  },
+  {
+    "branch": "Erziehung und Unterricht",
+    "associated_industries": "85.10.0 Vorschulische Erziehung\n85.20.0 Primärstufe\n85.31.0 Sekundarstufe I\n85.32.0 Sekundarstufe II\n85.41.0 Universitäten\n85.42.0 Fachhochschulen\n85.51.0 Erwachsenenbildung und sonstiger Unterricht\n85.52.0 Berufsbildende weiterführende Schulen\n85.53.0 Berufsbildende berufsvorbereitende Schulen\n85.59.0 Sonstige Bildung",
+    "wz_code": 85,
+    "score": 56
+  },
+  {
+    "branch": "Herstellung von Druckerzeugnissen; Vervielfältigung von bespielten Ton-, Bild- und Datenträgern",
+    "associated_industries": "18.11.0 Druckerei\n18.12.0 Dienstleistungen der Druckerei\n18.13.0 Reproduktion von bespielten Ton-, Bild- und Datenträgern",
+    "wz_code": 18,
+    "score": 56
+  },
+  {
+    "branch": "Kohlenbergbau",
+    "associated_industries": "05.10.0 Gewinnung von Steinkohle\n05.20.0 Gewinnung von Braunkohle",
+    "wz_code": 5,
+    "score": 56
+  },
+  {
+    "branch": "Fischerei und Aquakultur",
+    "associated_industries": "03.11.0 Meeresfischerei\n03.12.0 Süßwasserfischerei\n03.21.0 Meeresfischzucht\n03.22.0 Süßwasserfischzucht",
+    "wz_code": 3,
+    "score": 53
+  },
+  {
+    "branch": "Gebäudebetreuung; Garten- und Landschaftsbau",
+    "associated_industries": "81.10.0 Allgemeine Gebäudereinigung\n81.21.0 Allgemeine Garten- und Landschaftspflege\n81.22.0 Erbringung von sonstigen Reinigungsdienstleistungen",
+    "wz_code": 81,
+    "score": 46
+  }
+]

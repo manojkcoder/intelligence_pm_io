@@ -1,0 +1,3899 @@
+[
+    {
+        "name": "monday.com",
+        "slogan": "th easy-to-use building blocks like dashboards, automations, and integrations, teams are empowered to build their ideal workflow in one intuitive workspace. The platform is flexible and adaptable by design, customizable to fit any business needs, and easily scales with your organization as it grows. \n\nWith the industry-specific products - monday work management, monday sales CRM, and monday dev - organizations can easily build solutions tailored to their exact use case and team size.\n\nMore than 180,000 customers worldwide use monday.com to run their organizations smarter, execute faster, and collaborate seamlessly across departments. \n\nGet the 14-day free trial to find out how monday.com can help your team work more efficiently and reach bigger goals.",
+        "numberOfReviews": "12,263",
+        "g2Score": "4.7",
+        "users": [
+            "Project Manager",
+            "CEO"
+        ],
+        "industries": [
+            "Marketing and Advertising",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "63% Small-Business",
+            "29% Mid-Market"
+        ],
+        "pros": [
+            "Team Collaboration",
+            "Ease of Use",
+            "Project Management",
+            "Automation",
+            "Customization"
+        ],
+        "cons": [
+            "Missing Features",
+            "Automation Difficulties",
+            "Learning Curve",
+            "Board Issues",
+            "Limited Features"
+        ],
+        "userSatisfaction": [
+            "9.2",
+            "9.1",
+            "9.0",
+            "8.7"
+        ]
+    },
+    {
+        "name": "Asana",
+        "slogan": "teams orchestrate their cross-functional work, from daily tasks to strategic initiatives. With Asana, teams have more clarity, move faster, and accomplish more with less—no matter where they’re located. \n\nAsana was built thoughtfully, so you can execute according to plan. Where other work management platforms appear to focus on quantity over quality of features, Asana is focused on the scalability and reliability of its platform—so you can always be ready to work. \n\nAsana is used by 80% of Fortune 100 companies. More than 139,000 paying organizations and millions across 200 countries rely on us to manage product launches, marketing campaigns, company objectives, and more. \n\nGet started fast with a free trial.",
+        "numberOfReviews": "10,258",
+        "g2Score": "4.4",
+        "users": [
+            "Project Manager",
+            "Software Engineer"
+        ],
+        "industries": [
+            "Marketing and Advertising",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "56% Small-Business",
+            "32% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Task Management",
+            "Project Management",
+            "Team Collaboration",
+            "Task Tracking"
+        ],
+        "cons": [
+            "Missing Features",
+            "Task Management",
+            "Learning Curve",
+            "Limited Features",
+            "Navigation Difficulty"
+        ],
+        "userSatisfaction": [
+            "8.7",
+            "8.6",
+            "8.5",
+            "8.7"
+        ]
+    },
+    {
+        "name": "ClickUp",
+        "slogan": "ized with just a few clicks, ClickUp lets teams of all types and sizes deliver work more effectively, boosting productivity to new heights.",
+        "numberOfReviews": "9,750",
+        "g2Score": "4.7",
+        "users": [
+            "CEO",
+            "Owner"
+        ],
+        "industries": [
+            "Marketing and Advertising",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "79% Small-Business",
+            "17% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Task Management",
+            "Features",
+            "Project Management",
+            "Team Collaboration"
+        ],
+        "cons": [
+            "Missing Features",
+            "Learning Curve",
+            "Limited Features",
+            "Slow Loading",
+            "Slow Performance"
+        ],
+        "userSatisfaction": [
+            "9.1",
+            "8.5",
+            "8.9",
+            "8.6"
+        ]
+    },
+    {
+        "name": "Lattice",
+        "slogan": "5,000 companies worldwide leverage Lattice's performance management, engagement, compensation, growth, goals, and analytics apps to build highly productive and efficient teams. Lattice is listed as an industry leader on G2’s 2024 Best Software Awards in multiple categories, including Highest Customer Satisfaction and HR Products.",
+        "numberOfReviews": "3,839",
+        "g2Score": "4.7",
+        "users": [
+            "Software Engineer",
+            "Customer Success Manager"
+        ],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "74% Mid-Market",
+            "13% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "1:1 Management",
+            "Goal Setting",
+            "1:1 Meetings",
+            "Feedback"
+        ],
+        "cons": [
+            "Navigation Difficulty",
+            "Goal Management",
+            "Goal Confusion",
+            "Missing Features",
+            "Feedback Issues"
+        ],
+        "userSatisfaction": [
+            "9.4",
+            "9.3",
+            "9.4",
+            "9.4"
+        ]
+    },
+    {
+        "name": "Leapsome",
+        "slogan": "As a people enablement platform, Leapsome combines tools for Goals & OKRs Management, Performance Reviews and 360s, Development Frameworks, Employee Learning & Onboarding, Employee Engagement Surveys, Feedback & Praise, Compensation & Promotions, and Meetings.\n\nLearn more: Leapsome.com",
+        "numberOfReviews": "1,648",
+        "g2Score": "4.8",
+        "users": [
+            "Software Engineer",
+            "Senior Software Engineer"
+        ],
+        "industries": [
+            "Information Technology and Services",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "66% Mid-Market",
+            "19% Enterprise"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Feedback",
+            "Goal Setting",
+            "Simple",
+            "Intuitive"
+        ],
+        "cons": [
+            "Feedback Issues",
+            "Navigation Difficulty",
+            "Not User-Friendly",
+            "Learning Curve",
+            "Not Intuitive"
+        ],
+        "userSatisfaction": [
+            "9.5",
+            "9.4",
+            "9.5",
+            "9.5"
+        ]
+    },
+    {
+        "name": "Lark",
+        "slogan": "res that teams can work efficiently from anywhere.\n\nLark is the super app for work that consolidates chats, workflows, emails, documents, sheets, project management, and meetings in one place. Your team can plan, execute, and sync on work without disruption and focus on what matters to your business.",
+        "numberOfReviews": "147",
+        "g2Score": "4.6",
+        "users": [],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "50% Small-Business",
+            "29% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Team Collaboration",
+            "All-in-one",
+            "Messaging",
+            "Remote Work"
+        ],
+        "cons": [
+            "Learning Curve",
+            "Limited Features",
+            "Missing Features",
+            "Understanding Difficulty",
+            "Integration Issues"
+        ],
+        "userSatisfaction": [
+            "9.2",
+            "9.1",
+            "8.9",
+            "9.2"
+        ]
+    },
+    {
+        "name": "Wrike",
+        "slogan": "emove complexity, increase productivity, and free people up to focus on their most purposeful work. With unmatched power, versatility, and intuitiveness, Wrike is the only work management solution an organization will ever need to scale, optimize, and move fast in a competitive world. More than 20,000 happy customers power their future and come together in Wrike, including Estée Lauder, Hootsuite, Nielsen, Ogilvy, Siemens, and Tiffany & Co. For more information, visit www.wrike.com.",
+        "numberOfReviews": "3,716",
+        "g2Score": "4.2",
+        "users": [
+            "Project Manager",
+            "Marketing Manager"
+        ],
+        "industries": [
+            "Marketing and Advertising",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "43% Mid-Market",
+            "37% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Project Management",
+            "Team Collaboration",
+            "Task Management",
+            "Task Tracking"
+        ],
+        "cons": [
+            "Learning Curve",
+            "Task Management",
+            "Navigation Difficulty",
+            "Missing Features",
+            "Notification Issues"
+        ],
+        "userSatisfaction": [
+            "8.5",
+            "8.0",
+            "8.6",
+            "8.7"
+        ]
+    },
+    {
+        "name": "Profit.co",
+        "slogan": "ter. You can plan and align OKRs at the beginning of the quarter, track your execution with weekly check-ins and reviews, promote high levels of employee engagement using our collaborative features, and use the highly structured reflect and reset process for improving organizational learning. Since Profit.co is highly customizable, organisations of any size can get started with OKRs easily. Profit.co also has strategy tracking, task management, employee engagement, and employee development inbuilt. With real-time reports and dashboards, managers can view the progress of their teams and identify potential problems early. Profit.co integrates with Slack, Microsoft Teams, Jira, Salesforce, HubSpot, and several other popular business applications. On top of this, you can develop your custom integrations using Profit.co's Integration Engine improving adoption across the organization.",
+        "numberOfReviews": "377",
+        "g2Score": "4.7",
+        "users": [
+            "CEO"
+        ],
+        "industries": [
+            "Information Technology and Services",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "54% Mid-Market",
+            "32% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "OKR Management",
+            "Customer Support",
+            "Helpful",
+            "Simple"
+        ],
+        "cons": [
+            "Learning Curve",
+            "Not User-Friendly",
+            "Poor Usability",
+            "Confusing Options",
+            "Limited Customization"
+        ],
+        "userSatisfaction": [
+            "9.4",
+            "8.6",
+            "9.6",
+            "9.0"
+        ]
+    },
+    {
+        "name": "The Predictive Index",
+        "slogan": "guide your business strategy too. We call this “talent optimization,” and every part of our modular platform is built to support it.\n\nPI HIRE: Recruit the perfect candidate for each job, each time with PI Hire. We help you narrow down your field with applicants with behavioral and cognitive assessments backed by over 60 years of science and millions of data points. Plus, we make your hiring process easy and objective with personalized interview guides.\n\nPI INSPIRE: Manage your teams to success with PI Inspire. No more guessing about how to manage someone best: Our relationship guides provide a thorough analysis of each team members’ behavior, with actionable steps on how you can help them reach their full potential. You’ll become more self-aware as a manager too, with personalized development charts that show your leadership strengths and caution areas.\n\nPI PERFORM: Never miss a goal or deadline again by adding PI Perform to your day-to-day processes. PI Perform is the only performance management software to develop your managers every day, build accountability, and engage your people—with PI’s behavioral science built right in. \n\nPI DESIGN: Assess your team’s strategic goals and behavioral style (or “Team Type”) side-by-side with the PI Design—so you can know where the team is suited to succeed and where they may need to stretch. With PI Team Discovery™, you can build teams optimized for your business strategy and beat the competition.\n\nPI DIAGNOSE: Find out if your organization is on the right path with PI Diagnose. Diagnose’s employee engagement surveys give you detailed data on where your talent strategy is succeeding and failing, broken down at every level of the organization. When you run into engagement problems, we give you actionable steps to solve them.\n\nHarness the full power of talent optimization with The Predictive Index.",
+        "numberOfReviews": "650",
+        "g2Score": "4.7",
+        "users": [
+            "Talent Acquisition Specialist",
+            "Human Resources Manager"
+        ],
+        "industries": [
+            "Information Technology and Services",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "57% Mid-Market",
+            "28% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Accuracy",
+            "Experience",
+            "Candidate Management",
+            "Assessments"
+        ],
+        "cons": [
+            "Expensive",
+            "Insufficient Information",
+            "Learning Curve",
+            "Assessment Issues",
+            "Missing Features"
+        ],
+        "userSatisfaction": [
+            "9.6",
+            "9.1",
+            "9.4",
+            "8.9"
+        ]
+    },
+    {
+        "name": "Viva Goals",
+        "slogan": "A goal-setting and objectives and key results (OKR) management solution that aligns teams to your organization’s strategic priorities, driving results and a thriving business.",
+        "numberOfReviews": "12",
+        "g2Score": "4.3",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "58% Mid-Market",
+            "33% Enterprise"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "8.3",
+            "8.6",
+            "8.3",
+            "8.1"
+        ]
+    },
+    {
+        "name": "15Five",
+        "slogan": "ders can accelerate engagement, performance and retention via 360° performance reviews, engagement surveys, goal tracking, manager development, and ongoing feedback tools like guided 1-on-1s and check-ins.",
+        "numberOfReviews": "1,769",
+        "g2Score": "4.6",
+        "users": [
+            "Software Engineer",
+            "Customer Success Manager"
+        ],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "57% Mid-Market",
+            "30% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Helpful",
+            "Goal Setting",
+            "Progress Tracking",
+            "Visibility"
+        ],
+        "cons": [
+            "Goal Confusion",
+            "Poor Customer Support",
+            "Employee Management",
+            "Low Engagement",
+            "Training Issues"
+        ],
+        "userSatisfaction": [
+            "9.2",
+            "9.3",
+            "9.2",
+            "9.3"
+        ]
+    },
+    {
+        "name": "Workleap Officevibe",
+        "slogan": "s, build a culture of meaningful recognition, and drive continuous performance management. It empowers everyone in the company to make a tangible impact on top talent retention and team performance.  \n\nOfficevibe is part of Workleap, a platform to make the work experience simpler, with over 20,000 happy customers in more than 100 countries.",
+        "numberOfReviews": "735",
+        "g2Score": "4.3",
+        "users": [
+            "Operations Manager",
+            "Director"
+        ],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "52% Mid-Market",
+            "28% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Surveys",
+            "Experience",
+            "Helpful",
+            "Employee Recognition"
+        ],
+        "cons": [
+            "Reporting Issues",
+            "Survey Issues",
+            "Insufficient Details",
+            "Feedback Issues",
+            "Limited Customization"
+        ],
+        "userSatisfaction": [
+            "8.8",
+            "9.2",
+            "8.6",
+            "9.4"
+        ]
+    },
+    {
+        "name": "Rally Software",
+        "slogan": "e delivery engine.\n\nWith Rally Software®, you can plan, prioritize, manage, track, and continuously improve your work so that you can deliver the value that your customers need with speed, quality, and efficiency. Our enterprise-class Application Lifecycle Management (ALM) SaaS platform provides visibility into progress, roadblocks, and dependencies across multiple teams, projects, and programs. This allows you to align to your strategic goals and create better business results, and to do it all in a single system of record.\n\nAccelerate time to market. Eliminate bottlenecks and blocks with data-driven planning tools and real-time visibility into work in progress. Rally Software helps you plan and build the highest-priority features and ship them without delay.\n\nConnect strategy to delivery. Link the work of agile teams to your enterprise portfolio to deliver faster, better optimize your resources, and maximize your return on investment. With Rally, you get business visibility into agile delivery\nstatus, so that you can make better portfolio-steering decisions.\n\nEmpower your teams. Equip your business with a predictable delivery engine by focusing your teams on the work that matters. Rally Software provides realtime visibility into status and performance metrics that help teams continuously improve.",
+        "numberOfReviews": "160",
+        "g2Score": "3.9",
+        "users": [
+            "Software Engineer",
+            "Project Manager"
+        ],
+        "industries": [
+            "Information Technology and Services",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "64% Enterprise",
+            "28% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "8.0",
+            "7.3",
+            "7.8",
+            "0.0"
+        ]
+    },
+    {
+        "name": "AchieveIt",
+        "slogan": "Using manual processes & disconnected systems impacts real results by limiting visibility, impacting accountability, and letting the day-to-day take over. It's part of why over 70% of key plans fail. \n\nBut there's a better way...Strategy leaders trust AchieveIt to connect, monitor, and execute their most important plans and initiatives -- improving visibility, increasing accountability, and driving collaboration.\n\nThat's why everyone from global organizations, to regional healthcare systems, to government agencies, and more, use AchieveIt for managing key plans and initiatives.\n\n\n\nAchieveIt is the Strategic Planning software that identifies and corrects the untapped potential in your planning and execution process\n\n✅  Turn manual updates into an automatic process\n\nInstead of chasing down updates at inconsistent frequencies, AchieveIt automatically requests (& collects) updates from your organization -- at the time and frequency of your choosing. This increases productivity & efficiency through immediate input & fresh data.\n\n✅  Improve visibility & understanding of progress\n\nWith automated dashboards and real-time insights, AchieveIt takes the guesswork & gruntwork out of decision-making, enabling your team to make quicker, more confident decisions.\n\n✅  Connect key information across siloes\n\nInstead of relying on separate systems and siloed updates, AchieveIt connects and aligns your teams to help the organization achieve its goals.\n\n✅  Increase team accountability \n\nInstead of wondering",
+        "numberOfReviews": "155",
+        "g2Score": "4.4",
+        "users": [],
+        "industries": [
+            "Hospital & Health Care",
+            "Government Administration"
+        ],
+        "marketSegment": [
+            "41% Mid-Market",
+            "39% Enterprise"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Tracking",
+            "Customer Support",
+            "Intuitive",
+            "Progress Tracking"
+        ],
+        "cons": [
+            "Limited Customization",
+            "Missing Features",
+            "Poor Usability",
+            "Dashboard Issues",
+            "Learning Curve"
+        ],
+        "userSatisfaction": [
+            "9.7",
+            "9.0",
+            "9.6",
+            "8.7"
+        ]
+    },
+    {
+        "name": "Coda",
+        "slogan": "with a blinking cursor on a blank page and can grow as big as your team's ambition. And it comes with a set of building blocksーlike pages for infinite depth, tables that talk to each other, and buttons that take action inside or outside your docーso anyone can make a doc as powerful as an app. People have made Coda docs that do everything from launch products to scale businesses. What will you Coda?",
+        "numberOfReviews": "453",
+        "g2Score": "4.7",
+        "users": [
+            "Product Manager",
+            "Founder"
+        ],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "55% Small-Business",
+            "30% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Team Collaboration",
+            "Flexibility",
+            "Easy Integration",
+            "Features"
+        ],
+        "cons": [
+            "Learning Curve",
+            "Missing Features",
+            "Limited Functionality",
+            "Limited Features",
+            "App Functionality"
+        ],
+        "userSatisfaction": [
+            "9.2",
+            "8.5",
+            "9.2",
+            "8.4"
+        ]
+    },
+    {
+        "name": "Mooncamp",
+        "slogan": "of all shapes and sizes create happy workplaces and embrace the New World of Work.\n\nLearn more at: mooncamp.com",
+        "numberOfReviews": "263",
+        "g2Score": "4.8",
+        "users": [
+            "CEO",
+            "Software Engineer"
+        ],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "53% Small-Business",
+            "44% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "OKR Management",
+            "Intuitive",
+            "Overview Features",
+            "Tracking"
+        ],
+        "cons": [
+            "Mobile App Issues",
+            "Poor Usability",
+            "Limited Features",
+            "Software Bugs",
+            "Language Support"
+        ],
+        "userSatisfaction": [
+            "9.6",
+            "9.3",
+            "9.7",
+            "9.3"
+        ]
+    },
+    {
+        "name": "Perdoo",
+        "slogan": "entify the most important goals > Regularly report and review progress to turn goals into results. See perdoo.com/about-perdoo/strategy-execution-flow\n\nYou don’t need complexity, but a good software that helps you stick to that process over a longer period of time. That’s how our customers consistently outperform the competition.",
+        "numberOfReviews": "408",
+        "g2Score": "4.4",
+        "users": [
+            "CEO",
+            "Product Manager"
+        ],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "51% Small-Business",
+            "44% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "OKR Management",
+            "Visibility",
+            "Goal Setting",
+            "Goal Tracking"
+        ],
+        "cons": [
+            "Navigation Difficulty",
+            "Poor Usability",
+            "Learning Curve",
+            "OKR Management Issues",
+            "Missing Features"
+        ],
+        "userSatisfaction": [
+            "8.9",
+            "8.1",
+            "9.0",
+            "8.1"
+        ]
+    },
+    {
+        "name": "Quantive Results",
+        "slogan": "an adopt an Always-on strategy that is adaptive, decentralized, and fast. Resulting in:\n\n- Fast and effective decision-making: Go from question to action plan in minutes, not weeks \n- Measurable growth:  Drive focused execution and alignment to achieve measurable results \n- Continuous agility: Adapt strategies quickly to seize fleeting market opportunities \n\nWith Quantive StrategyAI, organizations can achieve strategic agility for today’s world.",
+        "numberOfReviews": "197",
+        "g2Score": "4.6",
+        "users": [
+            "CEO"
+        ],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "49% Small-Business",
+            "40% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Customer Support",
+            "OKR Management",
+            "Tracking",
+            "Features"
+        ],
+        "cons": [
+            "OKR Management Issues",
+            "Poor Usability",
+            "Learning Curve",
+            "Limited Customization",
+            "Poor Reporting"
+        ],
+        "userSatisfaction": [
+            "9.1",
+            "8.5",
+            "9.3",
+            "8.5"
+        ]
+    },
+    {
+        "name": "Nestor",
+        "slogan": "s and technological disruptions, companies cannot afford employees with outdated skills. Skills are the foundations for all of Nestor's solutions: Skills Management, Talent and Opportunity Marketplace, Career Development and Growth Journeys, Performance and Engagement. \n\nNestor helps you collect and visualize skills in real-time, understand gaps and skill development needs, and make strategic decisions about your talent. With Nestor, you accelerate your people’s potential to meet their performance expectations and achieve their career goals, all aligned with broader organizational needs. \n\nWith a 98% adoption rate, Nestor is trusted by HR and people leaders in mid-to-large enterprises, including F500 companies, across the US, Latin America, Europe, and the Middle East.",
+        "numberOfReviews": "50",
+        "g2Score": "4.9",
+        "users": [],
+        "industries": [
+            "Computer Software",
+            "Apparel & Fashion"
+        ],
+        "marketSegment": [
+            "70% Mid-Market",
+            "22% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Goal Setting",
+            "Skill Management",
+            "Skills Development",
+            "Skills Management"
+        ],
+        "cons": [
+            "Notification Issues",
+            "Improvements Needed",
+            "Lack of Mobile App",
+            "Notification Overload",
+            "Integration Issues"
+        ],
+        "userSatisfaction": [
+            "9.9",
+            "9.6",
+            "10.0",
+            "9.9"
+        ]
+    },
+    {
+        "name": "Betterworks",
+        "slogan": "h tools that foster greater manager effectiveness and employee performance, leading to higher engagement and retention and, ultimately, better business outcomes.\n\nThe Betterworks solution combines generative AI and data analytics that enable organizations to make smart, data-informed decisions linked to performance, calibration, skill development, career development, and succession planning. \n\nAs a comprehensive, purpose-built performance management solution, it incorporates goal-setting, manager-employee conversations, feedback, employee engagement, and recognition — all accessible in the applications employees use daily in the flow of work, like email, calendars, and messaging apps. Betterworks’ modules capture structured and unstructured data to provide HR with both comprehensive and granular views of employee performance. This enables managers to easily coach employees in both performance and career development, continuously improving performance and elevating the employee experience.\n\nIncreasing manager effectiveness\nBetterworks eases the pressure managers experience by helping them more easily meet organizational and employee demands. Using conversation templates and check-in tools, managers can regularly review employee goal progress and engage in meaningful conversations around performance, recognition, and career development. This strengthens manager-employee relationships by increasing trust, transparency, and authenticity. \n\nDelivering a better employee experience with AI as co-pilot\nBusinesses achieve better outcomes when employees feel engaged, productive, accomplished, and recognized. With Betterworks AI, employees can easily develop clear goals and metrics. Employees and managers can also create personalized, comprehensive, constructive, and unbiased feedback, leading to greater trust and focused career planning. Managers can use AI to improve the quality and clarity of their communications by drawing on employee goals, feedback, recognition, and other data to confidently coach, express their expectations, and provide actionable and fair performance reviews.",
+        "numberOfReviews": "197",
+        "g2Score": "4.3",
+        "users": [],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "57% Enterprise",
+            "37% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Goal Setting",
+            "Intuitive",
+            "Progress Tracking",
+            "Customer Support"
+        ],
+        "cons": [
+            "Limited Features",
+            "Navigation Difficulty",
+            "Goal Confusion",
+            "Integration Issues",
+            "Poor Customer Support"
+        ],
+        "userSatisfaction": [
+            "9.1",
+            "8.6",
+            "9.1",
+            "9.1"
+        ]
+    },
+    {
+        "name": "Zensai (formerly Weekly10)",
+        "slogan": "helps. You're not just tracking engagement and performance, but impacting it too. \n\nThe employee check-in creates the space and time for you and your people to reflect on progress, get feedback, align their goals and so much more. All it takes is just 10 minutes.\n\nManagers have the tools to see who in their team needs support right now, not in 6 months’ time. And employees know how they’re performing against expectations. \n\nPerform365 is built into Microsoft Teams and Outlook. So, your people stay in the flow of work with easy access to their check-ins, performance conversations, 1 to 1s, and Goals. \n\nPerformance conversations and 1:1s used to be time and admin heavy. Not anymore.\n\nEmployees simply auto-populate their conversation agendas using reflections from their check-in and feedback they’ve received. Getting rid of 90% of meeting prep time.\n\nPerform365 displays your interactive agenda right inside your Teams meeting, helping managers and employees focus on outcomes and action.\n\nAnd when it’s time for a face-to-face conversation, Perform365 manages that too. Sending reminders and even auto scheduling your meetings for you.\n\nAnd the bonus? Check-ins power AI analytics that help you to really understand the sentiment and engagement levels of your people through real-time dashboards.\n\n\nPerform365 (formerly Weekly10 Momentum) is part of the Human Success Platform from Zensai.",
+        "numberOfReviews": "133",
+        "g2Score": "4.6",
+        "users": [],
+        "industries": [
+            "Leisure, Travel & Tourism",
+            "Non-Profit Organization Management"
+        ],
+        "marketSegment": [
+            "50% Small-Business",
+            "39% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Communication",
+            "Goal Setting",
+            "Feedback System",
+            "Easy Tracking"
+        ],
+        "cons": [
+            "Goal Confusion",
+            "Notification Issues",
+            "Time-Consuming",
+            "Limited Reporting",
+            "Organizational Issues"
+        ],
+        "userSatisfaction": [
+            "9.8",
+            "9.4",
+            "9.4",
+            "9.4"
+        ]
+    },
+    {
+        "name": "WorkBoard",
+        "slogan": "eneca, National Grid, 3M, Workday, and many others rely on WorkBoard's platform, playbook, and expertise to drive predictable, profitable strategy execution. More than 15,000 people are certified in WorkBoard's Outcome Mindset Methodology™ for OKR Coaching and fuel a vibrant community of strategy leaders. The company is funded by Andreessen Horowitz, SoftBank, GGV, Workday Ventures, Intel Ventures, Capital One Ventures, and others.",
+        "numberOfReviews": "96",
+        "g2Score": "4.7",
+        "users": [],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "44% Mid-Market",
+            "31% Enterprise"
+        ],
+        "pros": [
+            "Meeting Management",
+            "OKR Management"
+        ],
+        "cons": [
+            "Connectivity Issues"
+        ],
+        "userSatisfaction": [
+            "9.8",
+            "8.6",
+            "9.8",
+            "8.2"
+        ]
+    },
+    {
+        "name": "IBM Targetprocess (formerly Apptio Targetprocess)",
+        "slogan": "at all levels to dynamically plan and manage work, resources, investments, programs, and portfolios while ensuring continuous alignment to the enterprise strategy in a single source of truth. The combination of flexible architecture and Solutions Library ensure the fastest time to value for every solution. Targetprocess is the only EAP platform that integrates directly with the industry-leading IBM Apptio financial management platform, enabling organizations to model true product TCO and more holistically manage the value of technology investments and innovation. \n\nSolutions:\n\nTargetprocess brings a solutions-led strategy to the market that makes Enterprise Agile easy, allowing teams to take a building-block style approach to their agile transformation.  Strategic planning solutions allow business leaders to capture strategy and OKRs in a single source of truth, and even update priorities with confidence that portfolio, product managers, and even autonomous Agile teams will see and align their work to the new priorities. Resource Management solutions allow portfolio and product teams to plan and forecast capacity and dynamically manage resources while minimizing risks and optimizing resource utilization.  The Portfolio budgeting solutions enabled by Targetprocess partner financial teams with product and portfolio managers to enable a shift to continuous product funding, and Program Management solutions ensure the successful execution of Agile programs across hybrid and strategic portfolios. \n\nStrategic Planning:\n\nAlign work, labor, and investments to the strategic objectives of the business and maximize execution.\n\n• Capture and communicate corporate objectives in a persistent tool visible by the entire organization. \n\n• Link specific elements of execution to strategic objectives  (i.e. initiatives, epics, features, teams, budgets, etc.).\n\n• View the split between Run-the-Business and Change-the-Business goals and pivot investments. \n\n• Easily track and view progress of strategic objectives. \n\nPortfolio Budgeting:\n\nAlign with finance as you shift from annual funding of projects to continuous product funding.\n\n• View portfolio totals, actuals, OpEx, and CapEx, budgeted costs, and labor and non-labor costs  in one place. \n\n• One source of truth to view portfolio budgets and their initiatives. \n\n• View the split between labor and non-labor actuals on a monthly basis. \n\n• Quickly change Funded costs and labor/non-labor costs in the initiative breakdown. \n\nResource Management:\n\nOptimize resources, capacity, and demand to reduce risk and maximize utilization of headcount.\n\n• Monitor the impact of changes in real-time, with multiple views of reports to minimize inefficiency and overutilization.\n\n• Dashboards allow optimization of incoming demand against capacity.\n\n• Connect resource bill rates, team rates, and blended rates and utilization with automatic cost forecasting. \n\nProgram Management:\n\nDigitize and automate quarterly business and program increment planning. \n\n• Seamlessly setup PI Planning with connected backlogs for Portfolio, Product, and Teams. \n\n• Visualize key metrics and flow of value with Flow metrics in a customizable dashboard.\n\n• Execute confidently by easily tracking progress in real-time, quickly identifying dependencies, and adapting to changes through the Program Board. \n\n Market Differentiators:\n\n- Flexible architecture: Targetprocess flexible architecture adapts to your organizations operating models – no matter how unique.\n\n- Time to value: Targetprocess Solutions Library minimizes administrative overhead and delivers rapid time to value for every solution. \n\n- Holistic financials: Targetprocess and ApptioOne provide visibility to labor and non-labor costs for planning and managing investments.",
+        "numberOfReviews": "231",
+        "g2Score": "4.3",
+        "users": [
+            "Software Developer"
+        ],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "42% Mid-Market",
+            "37% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Customization",
+            "Flexibility",
+            "Project Management",
+            "Customer Support"
+        ],
+        "cons": [
+            "Learning Curve",
+            "Missing Features",
+            "Filtering Issues",
+            "Limited Features",
+            "Navigation Difficulty"
+        ],
+        "userSatisfaction": [
+            "9.0",
+            "7.9",
+            "8.9",
+            "7.2"
+        ]
+    },
+    {
+        "name": "Inspire",
+        "slogan": "oals and OKRs in a dynamic workspace, which fosters accountability and drives clear business results. Inspire has been proven to increase employee engagement, leading to outstanding outcomes like doubled revenue and a 35% decrease in employee attrition. Transform your culture and perform your best with Inspire Software.",
+        "numberOfReviews": "107",
+        "g2Score": "4.7",
+        "users": [],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "52% Mid-Market",
+            "36% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Goal Setting",
+            "Goal Management",
+            "Goal Tracking",
+            "Progress Tracking"
+        ],
+        "cons": [
+            "Learning Difficulty",
+            "Learning Curve",
+            "Limited Customization",
+            "Navigation Difficulty",
+            "OKR Management Issues"
+        ],
+        "userSatisfaction": [
+            "9.6",
+            "9.2",
+            "9.8",
+            "9.2"
+        ]
+    },
+    {
+        "name": "Asanify",
+        "slogan": "tartups and fast-growing businesses.\n\nYou can get started for free with our hire-to-retire system. The 1-click payroll application allows you to execute your payroll and transfer money, not just for your local Employees but also for Global Contractors. Our integrations with Slack, Excel, Google Suite, and Whatsapp make accessing your HRMS delightfully convenient and chat-friendly.\n\nOur flexible and completely configurable platform, combined with 24*7 customer support will make people management super easy for your organization.",
+        "numberOfReviews": "179",
+        "g2Score": "4.9",
+        "users": [],
+        "industries": [
+            "Information Technology and Services",
+            "Financial Services"
+        ],
+        "marketSegment": [
+            "61% Small-Business",
+            "39% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Attendance Management",
+            "Attendance Tracking",
+            "Leave Management",
+            "Simple"
+        ],
+        "cons": [
+            "Limited Customization",
+            "Employee Management",
+            "Missing Features",
+            "Limited Features",
+            "HR Issues"
+        ],
+        "userSatisfaction": [
+            "9.4",
+            "9.8",
+            "9.8",
+            "10.0"
+        ]
+    },
+    {
+        "name": "Hive",
+        "slogan": "ss customizations, Hive offers project management on your terms, success guaranteed. \n\nJoin thousands of companies moving faster with Hive’s powerful project and process management software.",
+        "numberOfReviews": "540",
+        "g2Score": "4.6",
+        "users": [
+            "Project Manager",
+            "Graphic Designer"
+        ],
+        "industries": [
+            "Marketing and Advertising",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "61% Small-Business",
+            "28% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Project Management",
+            "Team Collaboration",
+            "Features",
+            "Task Management"
+        ],
+        "cons": [
+            "Missing Features",
+            "App Functionality",
+            "Limited Features",
+            "Navigation Difficulty",
+            "Task Management"
+        ],
+        "userSatisfaction": [
+            "9.4",
+            "9.0",
+            "9.2",
+            "9.8"
+        ]
+    },
+    {
+        "name": "Rhythm",
+        "slogan": "y meetings more productive. \n\nPowered by AI, Rhythm Systems offers a built-in AI goal-writing coach, automated quarterly plan audits, and advanced integration capabilities. We also offer industry benchmarking for execution, providing you with the tools you need to stay ahead of the competition.\n\nWe also offer strategic planning facilitation, CEO Coaching, and Business Strategy Coaching, turning your strategy sessions into actionable plans for your team to execute with discipline and focus.\n\nWe guarantee wins within 30 days, promising an overwhelming execution improvement. If you don’t see improvements after 30 days, we’ll give you double your money back. Schedule a demo to speak with a Rhythm Expert today.",
+        "numberOfReviews": "340",
+        "g2Score": "4.4",
+        "users": [
+            "CEO",
+            "Executive Assistant"
+        ],
+        "industries": [
+            "Hospital & Health Care",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "57% Mid-Market",
+            "27% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Team Collaboration",
+            "Progress Tracking",
+            "Planning",
+            "Tracking"
+        ],
+        "cons": [
+            "Poor Usability",
+            "Learning Difficulty",
+            "Learning Curve",
+            "Missing Features",
+            "Not Intuitive"
+        ],
+        "userSatisfaction": [
+            "9.7",
+            "8.2",
+            "9.3",
+            "8.6"
+        ]
+    },
+    {
+        "name": "Tability",
+        "slogan": "Tability, it's easy to:\n\n-- Keep your team aligned \n\n* Easily see what the top priorities are for you and your team.\n* Share progress with weekly check-ins.\n\n-- Automate accountability \n\n* Stop getting overwhelmed — Tability will let you know what you need to focus on.\n* Check-ins reminders are sent every week on your behalf.\n* No more clicking around spreadsheets — all your goals are accessible from your dashboard.\n\n-- Stay connected to your team \n\n* See how the rest of your team is doing.\n* Make sure that everyone is on track.\n* Get notified when important updates are shared.",
+        "numberOfReviews": "111",
+        "g2Score": "4.7",
+        "users": [],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "47% Mid-Market",
+            "47% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "User Interface",
+            "Intuitive",
+            "Customer Support",
+            "Features"
+        ],
+        "cons": [
+            "Missing Features",
+            "Expensive",
+            "Billing Issues",
+            "Difficult Settings",
+            "Layout Issues"
+        ],
+        "userSatisfaction": [
+            "9.5",
+            "9.1",
+            "9.4",
+            "9.0"
+        ]
+    },
+    {
+        "name": "Mirro",
+        "slogan": "ons overcome hybrid workplace disengagement by encouraging a sense of purpose and stimulating social sharing and community belonging around the globe. Teams and individuals that use Mirro are happier, highly engaged, and more productive.\n \nAs a user-friendly and highly social platform, Mirro drives more than 5k monthly interactions between team members through recognition, OKRs, continuous feedback, and meaningful performance conversations.\n\nInnovative companies like Tazz, Hochland, Free Now, E Co., and noissue. use Mirro to empower their teams and nurture healthy, solid work relationships.",
+        "numberOfReviews": "265",
+        "g2Score": "4.6",
+        "users": [
+            "Project Manager"
+        ],
+        "industries": [
+            "Information Technology and Services",
+            "Marketing and Advertising"
+        ],
+        "marketSegment": [
+            "70% Mid-Market",
+            "28% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Communication",
+            "Intuitive",
+            "Leave Management",
+            "Comprehensive Features"
+        ],
+        "cons": [
+            "Limited Customization",
+            "Missing Features",
+            "Navigation Difficulty",
+            "Not Intuitive",
+            "Not User-Friendly"
+        ],
+        "userSatisfaction": [
+            "9.5",
+            "9.2",
+            "9.4",
+            "9.0"
+        ]
+    },
+    {
+        "name": "Ally.io",
+        "slogan": ". High growth organizations of all sizes use Ally.io to align, track and measure goals and results. Users can define, share and then track their priorities online at any time on web and mobile devices. This helps users stay on track to meet their goals by identifying issues in real time and notifying teams automatically.\nOur OKR integrations include collaboration tools like Slack and Microsoft Team as well as data and human resource information system (HRIS) integrations. This allows users to seamlessly track and manage their performance using the tools they already use. Ally.io lets users both give and receive real-time feedback, as well as generate custom reports, helping teams to recognize professional achievements and understand individual or team performance. Customers that use Ally.io include Slack, Remitly, Ticketmaster, Urban Company and others.",
+        "numberOfReviews": "142",
+        "g2Score": "4.6",
+        "users": [],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "49% Mid-Market",
+            "37% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "9.2",
+            "8.7",
+            "9.3",
+            "8.8"
+        ]
+    },
+    {
+        "name": "Peoplebox",
+        "slogan": "ols, its integration with Slack/Teams goes beyond notifications and lets you do entire performance reviews, engagement surveys, and OKR check-ins right within Slack/Teams. \n\nAnother reason that makes it unique is its unmatched customization, intuitiveness and great customer support to help you tailor everything.\n\nHere are some features - Automated goal & project tracking, goal-based 360 reviews, custom weightage for goals, competency, and values, advanced formula for final rating calculation, Calibration, 9-box, personalized reminders, real-time engagement insights, KPI tracking, expert-built templates, single-form customization for different teams, and form personalization.",
+        "numberOfReviews": "300",
+        "g2Score": "4.5",
+        "users": [
+            "Software Engineer",
+            "Product Manager"
+        ],
+        "industries": [
+            "Information Technology and Services",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "69% Mid-Market",
+            "16% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Goal Setting",
+            "Goal Tracking",
+            "Goal Management",
+            "OKR Management"
+        ],
+        "cons": [
+            "Poor Usability",
+            "Not User-Friendly",
+            "Limited Features",
+            "Integration Issues",
+            "Missing Features"
+        ],
+        "userSatisfaction": [
+            "9.4",
+            "8.8",
+            "8.8",
+            "8.8"
+        ]
+    },
+    {
+        "name": "Teamwork.com",
+        "slogan": "chaos, and understand profitability, all in one platform. Headquartered in Cork, Ireland and founded by a team who have run an agency before, Teamwork.com has more than 20,000 customers around the world with a global team of over 350 employees. Learn more at teamwork.com.",
+        "numberOfReviews": "1,129",
+        "g2Score": "4.4",
+        "users": [
+            "Project Manager",
+            "Owner"
+        ],
+        "industries": [
+            "Marketing and Advertising",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "56% Small-Business",
+            "31% Mid-Market"
+        ],
+        "pros": [
+            "Team Collaboration",
+            "Ease of Use",
+            "Project Management",
+            "Task Management",
+            "Time Tracking"
+        ],
+        "cons": [
+            "Limited Features",
+            "Missing Features",
+            "Task Management",
+            "Learning Curve",
+            "Complexity"
+        ],
+        "userSatisfaction": [
+            "9.0",
+            "8.5",
+            "8.8",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Twiser",
+        "slogan": "ith OKRs\n• AI-based OKR assistant\n• Competency management\n• Performance monitoring and management\n• Succession planning\n• LMS\n\nWhat sets Twiser apart is its adaptability. Every feature can be customized to reflect your organization's unique culture and processes, ensuring a truly bespoke talent management experience. Elevate your talent strategy with Twiser.",
+        "numberOfReviews": "37",
+        "g2Score": "4.9",
+        "users": [],
+        "industries": [
+            "Automotive"
+        ],
+        "marketSegment": [
+            "43% Enterprise",
+            "32% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Simple",
+            "Customer Support",
+            "Helpful",
+            "Comprehensive Features"
+        ],
+        "cons": [
+            "Missing Features"
+        ],
+        "userSatisfaction": [
+            "10.0",
+            "9.9",
+            "9.9",
+            "9.5"
+        ]
+    },
+    {
+        "name": "JOP",
+        "slogan": "eam commitment. It also helps you to set up aspirational goals and track them.\n\nJOP takes companies from strategy to execution by spotlighting the highest-impact objectives and key results, which really move the business forward. By aligning company priorities down to teams and individuals, employees understand their role in the company’s mission and become more effective much quicker. The platform includes gamified feedback channels which encourage teams to collaborate cross-functionally and offer input to help each other improve. JOP also creates an Insight dashboard that combines the lead and lag indicators emerging from the company’s data to offer useful analytics which flag areas that need improvement. \n\nJOP is ideal for companies who are looking to scale up exponentially or may have just experienced a growth spurt. Along with an agile performance management tool, we support data-driven decision-making and creating structures that cut through the chaos that goes into scaling a business.",
+        "numberOfReviews": "122",
+        "g2Score": "4.7",
+        "users": [],
+        "industries": [
+            "Information Technology and Services",
+            "Staffing and Recruiting"
+        ],
+        "marketSegment": [
+            "72% Mid-Market",
+            "27% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "8.1",
+            "9.1",
+            "9.2",
+            "8.8"
+        ]
+    },
+    {
+        "name": "Hirebook",
+        "slogan": "ace to share progress and discuss employee development, and integrates OKRs into everything your team does to align strategy across the company. Hirebook’s strategic offerings of check-ins, OKRs, KPIs, and tasks, all tied into a comprehensive meeting tool, are a winning combination for any organization looking to improve both engagement and performance. \n\nCheck-Ins: \nHirebook’s check-in feature makes it easy for managers and their teams to share progress and future plans while removing blockers for their teams. Our check-ins help managers understand how their teams are feeling in order to better support and guide them. By customizing questions to your organization’s culture, Hirebook allows you to drill deep into engagement and productivity while fostering stronger relationships between managers and employees. \n\nMeetings: \nHirebook provides an easy-to-use framework for team meetings and one-on-ones, helping you get on the same page with your team to improve both efficiency and effectiveness by streamlining topics, tracking progress, and focusing on employee development. Quickly schedule a recurring meeting, create agendas, and link your OKRs, KPIs, Action items, with our software to focus on having more fruitful conversations.\n\nOKRs:\nHirebook helps you clearly define your objectives and key results to ensure your team is clear on expectations. Our easy to use dashboards benefit teams by showcasing project status, so that they can celebrate wins or push at-risk projects. Our grading scale allows organizations to assess whether objectives were achieved or if they should be reassessed for the next quarter. \n\nBenefits: \nEngage and empower your team with Hirebook in order to achieve strategic goals and improve employee engagement. Our tools help you promote accountability, achievement, and accessibility - the winning combination for any successful team.",
+        "numberOfReviews": "309",
+        "g2Score": "4.9",
+        "users": [
+            "Sales Development Representative",
+            "Data Researcher"
+        ],
+        "industries": [
+            "Marketing and Advertising",
+            "Outsourcing/Offshoring"
+        ],
+        "marketSegment": [
+            "81% Mid-Market",
+            "11% Enterprise"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Collaboration",
+            "Customer Support",
+            "Efficiency",
+            "Intuitive"
+        ],
+        "cons": [
+            "Calendar Integration",
+            "Connectivity Issues",
+            "Integration Issues",
+            "Meeting Management",
+            "Software Bugs"
+        ],
+        "userSatisfaction": [
+            "10.0",
+            "9.8",
+            "9.8",
+            "9.7"
+        ]
+    },
+    {
+        "name": "Weekdone",
+        "slogan": "ovative market leader since 2013, Weekdone is trusted and loved by thousands of customers. We've built the easiest-to-use OKR software.\n\nUsing Objectives and Key Results, Weekdone provides the structure you need to set and manage goals throughout the company.\n\nYour OKRs are always visible and top-of-mind so employees know what’s expected of them as they start planning their weekly activities.\n\nAutomated weekly and quarterly status reports and live dashboards give leaders a total overview. Collaboration features, transparency of information, and project management features improve communication within teams. Leaders can encourage team members and provide personalized feedback. \n\nSet structured goals to align activities throughout your organisation via OKRs. Track weekly progress, provide feedback, and move everyone in a unified direction.\n\nWeekdone facilitates integrations with tools you already use, such as MS Teams, Slack, Jira, Asana and more. Custom third-party integrations are available via Zapier.\n\nPersonalized OKR coaching by our experts is included in all paid plans.",
+        "numberOfReviews": "37",
+        "g2Score": "4.1",
+        "users": [],
+        "industries": [
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "54% Small-Business",
+            "38% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "8.8",
+            "8.2",
+            "8.5",
+            "8.9"
+        ]
+    },
+    {
+        "name": "Workpath",
+        "slogan": "empower them to execute reliably on efficiency and savings goals, identify unseen waste, course-correct quickly and focus resources where they matter most so that they can bounce back to growth. \n\nWe do this by setting in place the corporate performance infrastructure (platform) that allows them to focus on clear goals, company-wide alignment, execution tracking, and fast adjustments.",
+        "numberOfReviews": "11",
+        "g2Score": "4.9",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "55% Mid-Market",
+            "18% Enterprise"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "9.8",
+            "8.8",
+            "9.8",
+            "9.0"
+        ]
+    },
+    {
+        "name": "Range",
+        "slogan": "know:\n\n– Know who’s working on what, who needs help, and how they’re feeling\n– Answer daily team questions, share moods, and give thanks to build trust and strengthen the foundations of teamwork\n– Connect the tools you use like Slack, Microsoft Teams, GSuite, and Asana power up your Check-ins\n\nFor managers, Range means no more micromanaging, no more unproductive status meetings, no more wondering how work is moving forward.\n\nSee why teams at companies like Twitter, Medium, and CircleCI use Range to fuel great teamwork.",
+        "numberOfReviews": "74",
+        "g2Score": "4.6",
+        "users": [],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "68% Small-Business",
+            "27% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "9.8",
+            "9.3",
+            "9.6",
+            "8.5"
+        ]
+    },
+    {
+        "name": "FlowyTeam",
+        "slogan": "Rewards • Attendance • Leave • LMS • \n\nOutperform your Peers by executing your strategies and achieving your key metrics effectively via 🎯Strategies, OKRs & KPIs -\n\nMake faster & smarter decisions in this agile business world by generating via a click of a button real-time Reports & KPI Dashboards -\n\n🙂Engage & motivate your employees & teams via the reward system, weekly check-ins, 1-on-1s, and internal rankings - \n\nHave a total overview of your projects via the easy-to-apply & effective project (incl. Gantt Chart) & task (incl. Kanban) management; generate project invoices easily -\n\n💡Brainstorm and plan via our Whiteboards and templates -\n\nTrack & convert your leads into sales & clients via our CRM module -\n\nClose skill gaps of your team members via the Learning💡Hub; upload your own file/video content to enable personal & company growth & easy onboarding - \n\nTrack the Attendance of employees & measure per Timelog the efficiency of projects, key results & tasks - \n\nDrag & Drop Forms & Surveys enable easy data & information collection and analytics -\n\nFlowyTeam is the best fit for organizations with 5 - 1,000+ employees - \n\nFlowyTeam supports & serves 1,000+ organizations in over 90🌏countries - \n\nFlowyTeam software is available in the following languages: English, German, Portuguese, Italian, Spanish, French, Chinese, Arabic, Bahasa, Indonesian, Vietnamese, Thai, Persian, Greek, Turkish, Russian, Hindi, Korean, Japanese, Slovenian, Slovak, Serbian, Croatian, Polish, Hungarian, Czech, Ukrainian, Romanian, Bulgarian - \n\nOur amazing💐clients are Roche, ADDX, buddyboss, Turknet, Runcloud, pandai.org, Liebherr, and many more...flowyteam.com\n\nYou need OKR Coaching: FlowyTeam recommends the OKR Institute - okrinstitute.org",
+        "numberOfReviews": "124",
+        "g2Score": "4.9",
+        "users": [],
+        "industries": [
+            "Health, Wellness and Fitness",
+            "Education Management"
+        ],
+        "marketSegment": [
+            "72% Small-Business",
+            "28% Mid-Market"
+        ],
+        "pros": [
+            "Easy Tracking",
+            "Tracking Ease",
+            "Comprehensive Features",
+            "Goal Setting",
+            "Goal Tracking"
+        ],
+        "cons": [
+            "Integration Issues",
+            "Expensive",
+            "Insufficient Training",
+            "Lack of Clarity",
+            "Limited Features"
+        ],
+        "userSatisfaction": [
+            "9.8",
+            "9.8",
+            "9.9",
+            "10.0"
+        ]
+    },
+    {
+        "name": "Dragonboat",
+        "slogan": "re product operating model, Dragonboat enables everyone–from product leaders to cross-functional teams– to align on strategies, evaluate opportunities, allocate resources, manage trade-offs, and collaborate to deliver maximum business impact. Learn more at http://dragonboat.io/",
+        "numberOfReviews": "15",
+        "g2Score": "4.8",
+        "users": [],
+        "industries": [
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "60% Mid-Market",
+            "27% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Customer Support",
+            "Helpful",
+            "Customization",
+            "Efficiency"
+        ],
+        "cons": [
+            "Confusing Options",
+            "Learning Curve",
+            "Learning Difficulty",
+            "Limited Customization",
+            "Missing Features"
+        ],
+        "userSatisfaction": [
+            "9.8",
+            "7.3",
+            "10.0",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Teamflect",
+        "slogan": "performance reviews, share feedback and recognitions. Create high-performing and engaged teams - even when people are remote.",
+        "numberOfReviews": "38",
+        "g2Score": "4.8",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "53% Mid-Market",
+            "39% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Goal Setting",
+            "Communication",
+            "Integrations",
+            "Simple"
+        ],
+        "cons": [
+            "Improvements Needed",
+            "Software Bugs",
+            "Task Management",
+            "Difficult Usability",
+            "Data Loss"
+        ],
+        "userSatisfaction": [
+            "9.6",
+            "9.3",
+            "9.2",
+            "10.0"
+        ]
+    },
+    {
+        "name": "WorkDove",
+        "slogan": "e business results. \n\nThe WorkDove platform empowers customers to align the organization (around Core Values and Cascading OKRs/Goals), execute and document regular coaching and development (Check-ins, IDPs), increase employee engagement and dialogue (employee sentiment/pulse, recognition, surveys), automate performance reviews and 360 feedback, and streamline leadership succession (9-box).\n\nBy combining easy-to-use, powerful software with our world-class customer success team, we build long-lasting relationships with our customers.  As an ADP Marketplace Gold Partner, WorkDove can connect directly to your people data with a dedicated ADP Talent Bundle, while also working with many other HRIS systems.",
+        "numberOfReviews": "77",
+        "g2Score": "4.4",
+        "users": [
+            "Director of Human Resources"
+        ],
+        "industries": [
+            "Non-Profit Organization Management",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "66% Mid-Market",
+            "29% Small-Business"
+        ],
+        "pros": [
+            "Customer Support",
+            "Ease of Use",
+            "Performance Management",
+            "Feedback",
+            "Helpful"
+        ],
+        "cons": [
+            "Improvements Needed",
+            "Goal Confusion",
+            "Slow Performance",
+            "Difficult Usability",
+            "Employee Management"
+        ],
+        "userSatisfaction": [
+            "9.5",
+            "8.0",
+            "9.5",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Goals",
+        "slogan": "Set Goals, Plan Strategy, Involve Your Team, and Achieve Big Results. Manage the future with our Leading Goal Management Software. Try KEEPSOLID GOALS Today!",
+        "numberOfReviews": "19",
+        "g2Score": "4.7",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "89% Small-Business",
+            "11% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "9.6",
+            "9.5",
+            "9.4",
+            "8.1"
+        ]
+    },
+    {
+        "name": "PeopleCues",
+        "slogan": "ce:\n\n1. Employee Engagement: Consistently measure and improve the organisation’s health & morale with eNPS\n2. Objectives & Key Results (OKRs): Get a bird’s-eye view of your organisation’s goals and align teams\n3. Performance management: Integrate the company’s performance philosophy with your people’s expectations",
+        "numberOfReviews": "52",
+        "g2Score": "4.4",
+        "users": [],
+        "industries": [
+            "Financial Services",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "62% Mid-Market",
+            "23% Enterprise"
+        ],
+        "pros": [
+            "Goal Setting",
+            "Goal Tracking",
+            "Visibility",
+            "Customer Support",
+            "Ease of Use"
+        ],
+        "cons": [
+            "Limited Customization",
+            "Limited Features",
+            "Navigation Difficulty",
+            "Time-Consuming",
+            "Download"
+        ],
+        "userSatisfaction": [
+            "8.9",
+            "8.4",
+            "9.1",
+            "9.2"
+        ]
+    },
+    {
+        "name": "Swit",
+        "slogan": "ive Employee Connection Where It Counts.\n\nBring your entire company together on a unified platform that supports communication, work management, task tracking, goal setting, and so much more! Swit is flexible and scalable to meet the needs of any organization of any size.\n\nDrag and drop emails into Channels or convert them into task cards. \nDrag and drop task cards into Channels or DMs. \nAttach Approvals or OKRs directly to task cards. \n\nSee why Swit is loved by organizations of all sizes from Small Businesses to Enterprise customers.",
+        "numberOfReviews": "360",
+        "g2Score": "4.7",
+        "users": [
+            "CEO",
+            "Deputy General Manager"
+        ],
+        "industries": [
+            "Airlines/Aviation",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "49% Small-Business",
+            "42% Mid-Market"
+        ],
+        "pros": [
+            "Team Collaboration",
+            "Project Management",
+            "Easy Sharing",
+            "Task Management",
+            "Easy Integration"
+        ],
+        "cons": [
+            "Navigation Difficulty",
+            "Missing Features",
+            "Notification Issues",
+            "App Functionality",
+            "Task Management"
+        ],
+        "userSatisfaction": [
+            "8.9",
+            "9.0",
+            "9.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "OKR Board for Jira & Confluence",
+        "slogan": "w, making it suitable for even the most sensitive projects. Both Jira Cloud and Jira Server versions are available with a 30-day trial.\n\nOKR Board is a perfect system for those who want to implement OKRs in their company. It allows you to set up your OKRs in only a couple of clicks, automatically tracks linked JIRA issues and tasks, and places all your performance metrics on a single Dashboard.\n\nFeatures:\n✔️ Custom OKR levels: Strategic, Company, Department, Group, etc.;\n✔️ Custom OKR weights and types: Binary, Number, Percentile;\n✔️ Custom OKR breakdown periods: Year>Quarter>Month;\n✔️ Public and private Workspaces with user roles;\n✔️ Automated Dashboards for reports and analytics;\n✔️ Public API for data export.\n\nOKR Board can be further powered up by installing the Confluence plugin and implementing an OKR knowledge base.",
+        "numberOfReviews": "12",
+        "g2Score": "4.6",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "58% Mid-Market",
+            "33% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Efficiency",
+            "Intuitive",
+            "Tracking",
+            "Visibility"
+        ],
+        "cons": [
+            "Limited Customization",
+            "Integration Difficulty",
+            "Learning Curve",
+            "Limited Features",
+            "Poor Visualization"
+        ],
+        "userSatisfaction": [
+            "10.0",
+            "9.8",
+            "9.6",
+            "9.0"
+        ]
+    },
+    {
+        "name": "Datalligence",
+        "slogan": "r and assess progress in real-time, while visualizing alignment across your team. By using our platform, you can effectively translate your organization's strategies into actionable and measurable goals, effectively communicating your purpose through attainable milestones. Our software facilitates multi-directional alignment, enabling you to connect and engage teams and share feedback quickly and seamlessly. With Datalligence, you can promote teamwork and streamline communication to drive organizational success.",
+        "numberOfReviews": "22",
+        "g2Score": "4.8",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "64% Mid-Market",
+            "27% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "9.7",
+            "9.3",
+            "10.0",
+            "9.3"
+        ]
+    },
+    {
+        "name": "Fibery",
+        "slogan": ", and close the feedback loop — all within the same tool.\n\nStart your free 14-day trial on fibery.io. 💖",
+        "numberOfReviews": "119",
+        "g2Score": "4.8",
+        "users": [
+            "Founder",
+            "CEO"
+        ],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "66% Small-Business",
+            "13% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Flexibility",
+            "Features",
+            "Customization Options",
+            "Customizability"
+        ],
+        "cons": [
+            "Missing Features",
+            "Learning Curve",
+            "Limited Features",
+            "Lack of Features",
+            "Learning Difficulty"
+        ],
+        "userSatisfaction": [
+            "9.9",
+            "8.6",
+            "9.7",
+            "8.7"
+        ]
+    },
+    {
+        "name": "ShareFile",
+        "slogan": "ients and each other. With ShareFile, use any device to securely access files, share data, and create time-saving workflows. Simple, quick set-up – no IT required.\n\nShare, send any size file on any device: Whether you're in the office or on the go, you'll have secure access to your files anywhere, any time with cloud storage. Know your files are always safe: Bank-level encryption protects your files, emails and attachments in transit and at rest. Collaborate securely: Audit trails and configurable permissions to know and control who is accessing your data. Optimize the client and employee onboarding process: Time-saving workflows reduce manual paperwork all within a single point of collaboration. Secure FTP site alternative: No software installations - for you or your clients.",
+        "numberOfReviews": "1,421",
+        "g2Score": "4.2",
+        "users": [
+            "Owner",
+            "Office Manager"
+        ],
+        "industries": [
+            "Accounting",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "36% Small-Business",
+            "32% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "File Sharing",
+            "Sharing",
+            "Security",
+            "Easy Sharing"
+        ],
+        "cons": [
+            "Slow Performance",
+            "Difficult Learning",
+            "Learning Curve",
+            "Login Issues",
+            "Security Issues"
+        ],
+        "userSatisfaction": [
+            "8.6",
+            "8.5",
+            "8.2",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Mesh",
+        "slogan": "ation's roles account for 95% of its ability to deliver business results. A complete strategy today requires elevating every individual's performance. But, traditional performance management processes and technology do nothing to build talent density as a moat.   \n\nMesh helps organizations build a culture of performance enablement through its goals/OKRs, continuous feedback, manager 1:1s, career conversations, performance reviews/360s, and employee engagement functionalities. With Mesh, organizations easily make timely performance conversations an org-wide habit :\n\n1) Social interface that drives the next best action \n\n2) Habit-forming moments through AI nudges\n\n3) Actionable insights rooted in People Science\n\n4) Delivered in the flow of work through integrations with email, chat, productivity, and other business software. \n\nMesh assists organizations in improving their chances of hitting business goals by improving the density of its high performers from 5% to ~10-20%. For talent, it helps them get clear visibility on their growth and development through transparent career paths, timely coaching, and feedback from their teams, peers, and managers alike",
+        "numberOfReviews": "255",
+        "g2Score": "4.2",
+        "users": [
+            "Software Engineer",
+            "Manager"
+        ],
+        "industries": [
+            "Information Technology and Services",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "64% Mid-Market",
+            "31% Enterprise"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Goal Setting",
+            "Goal Tracking",
+            "Progress Tracking",
+            "Easy Tracking"
+        ],
+        "cons": [
+            "Not User-Friendly",
+            "Navigation Difficulty",
+            "Goal Confusion",
+            "Limited Features",
+            "Missing Features"
+        ],
+        "userSatisfaction": [
+            "8.6",
+            "7.9",
+            "8.5",
+            "8.5"
+        ]
+    },
+    {
+        "name": "GoalSpan",
+        "slogan": "ls, shares ideas, and gets real-time feedback. This allows employees to perform their best because they are motivated by a clear vision, and understand how they contribute to that vision. Come be a part of our growing community where the world of digital performance is at your fingertips.",
+        "numberOfReviews": "81",
+        "g2Score": "4.2",
+        "users": [],
+        "industries": [
+            "Biotechnology",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "70% Mid-Market",
+            "23% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Performance Management",
+            "Goal Setting",
+            "Customer Support",
+            "Comprehensive Features"
+        ],
+        "cons": [
+            "Formatting Issues",
+            "Integration Issues",
+            "Clarity Issues",
+            "Dashboard Issues",
+            "Document Management"
+        ],
+        "userSatisfaction": [
+            "10.0",
+            "8.2",
+            "8.9",
+            "9.0"
+        ]
+    },
+    {
+        "name": "10xWinners OKR",
+        "slogan": "you can align your team's efforts with your organization's strategic goals, improve communication, and boost engagement.\n\nWhat sets 10xWinners apart is its integration with ChatGPT, a powerful language model trained by OpenAI. With ChatGPT, you can get OKR suggestions and advice in real-time, without leaving the platform. Simply type in a keyword or phrase, and ChatGPT will provide you with relevant OKRs, benchmarks, and best practices.\n\n10xWinners also features a customizable dashboard that displays your team's progress and performance metrics. You can set up notifications and reminders to keep everyone on track, and easily update your OKRs as priorities shift. Plus, 10xWinners offers built-in analytics and reporting tools that provide insights into your team's productivity and ROI.\n\nOverall, 10xWinners OKR Software is an essential tool for any organization that wants to improve goal-setting, alignment, and performance. Try it today and see the results for yourself!",
+        "numberOfReviews": "13",
+        "g2Score": "4.7",
+        "users": [],
+        "industries": [
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "77% Small-Business",
+            "23% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "10.0",
+            "10.0",
+            "10.0",
+            "9.8"
+        ]
+    },
+    {
+        "name": "Frankli",
+        "slogan": "nce Management, simplifying the process for people managers and enhancing engagement.  Our mission is to make Performance Management easy, efficient, and enjoyable, fostering continuous improvement in organisations.\n\nThe Challenge:\n\nDespite HR's role, 70% admit employees lack sufficient feedback. Managers, in the rush, set goals in isolation (52% believe right behaviours go unrewarded). HR struggles with performance metrics visibility (45% seek more insight).\n\nHow Frankli Addresses Challenges:\n\n1-on-1 Support: Equips managers with templates, talking points, and note-taking for frequent, constructive feedback.\n\nTransparent Goal-Setting: Suggests realistic goals, ensuring alignment with organizational priorities.\n\nIn-Depth Reporting: Offers insights into meetings for a deeper understanding of employee productivity.\n\nUser-Friendly Platform: Rated #1 for Quality of Support on G2, loved by managers.\n\nBenefits:\n\nAutomated Meeting Reminders: Promote meaningful 1:1s for increased accountability.\n\nContinuous Feedback: Cultivate a real-time, constructive engagement culture.\n\nCoaching & Mentoring: Encourage skill-building, key projects, and connections.\n\nShared OKR Goals: Ensure team alignment, faster benchmark achievement.\n\nReview Cycles: Modernize reviews with user-friendly continuous feedback.\n\nPeople Analytics: Utilize real-time, multi-sourced data for performance and engagement insights.\n\nTestimonial:",
+        "numberOfReviews": "23",
+        "g2Score": "4.8",
+        "users": [],
+        "industries": [
+            "Marketing and Advertising",
+            "Staffing and Recruiting"
+        ],
+        "marketSegment": [
+            "52% Small-Business",
+            "35% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Goal Setting",
+            "1:1 Management",
+            "Intuitive",
+            "Goal Tracking"
+        ],
+        "cons": [
+            "Integration Issues",
+            "Navigation Difficulty",
+            "Scheduling Issues",
+            "Slow Loading",
+            "Navigation Issues"
+        ],
+        "userSatisfaction": [
+            "10.0",
+            "8.9",
+            "9.4",
+            "9.2"
+        ]
+    },
+    {
+        "name": "Hypercontext",
+        "slogan": "e.\n\nManagers use our app to run their 1:1s, team meetings, and OKRs in one workflow that increases the odds of their team hitting their goals by 95%.\n\nExecs & HR get a performance enablement platform, that gets used daily by their managers, aiding in building a performance culture. Supported by AI assisted performance reviews and realtime goal reporting.\n\nIntegrated into HRIS, SSO, and thousands of productivity tools your management team is using like: Jira, Figma, Asana, Clickup, Linear, Miro, CRMs, and more",
+        "numberOfReviews": "49",
+        "g2Score": "4.4",
+        "users": [],
+        "industries": [
+            "Computer Software",
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "59% Small-Business",
+            "37% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "1:1 Management",
+            "Goal Setting",
+            "Note-taking",
+            "Task Management"
+        ],
+        "cons": [
+            "Integration Issues",
+            "Meeting Management",
+            "Calendar Integration",
+            "Data Management",
+            "Goal Confusion"
+        ],
+        "userSatisfaction": [
+            "9.6",
+            "9.0",
+            "9.0",
+            "5.8"
+        ]
+    },
+    {
+        "name": "Bloom Growth™",
+        "slogan": "th their own dreams, teams, and hurdles. Our ecosystem for growth will ensure wellness and health throughout your organization and get every person functioning like a leader. With a flexible set of online business tools, Bloom is here to support you in your unique journey by providing world-class meeting software, project management capabilities, business plan-building functionalities, unparalleled support, and unlimited training.\n\nWhat can Bloom do for your organization?\n- Boost collaboration during meetings\n- Share your company’s vision with your team\n- Track your KPIs, spot trends and opportunities\n- Set and manage short and long-term goals\n- Manage processes, save time, and avoid confusion\n- Get free unlimited support and training",
+        "numberOfReviews": "33",
+        "g2Score": "4.3",
+        "users": [],
+        "industries": [
+            "Accounting"
+        ],
+        "marketSegment": [
+            "82% Small-Business",
+            "15% Mid-Market"
+        ],
+        "pros": [
+            "Collaboration",
+            "Ease of Use",
+            "Efficiency",
+            "Action Items",
+            "Dashboard Analytics"
+        ],
+        "cons": [
+            "Meeting Management",
+            "Poor User Experience",
+            "Bugs",
+            "Inaccuracy",
+            "Insufficient Information"
+        ],
+        "userSatisfaction": [
+            "7.9",
+            "8.5",
+            "8.4",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Synergita",
+        "slogan": "ies across the globe including IT/ITES, Manufacturing, Pharma, Financial Services/FinTech, Retail and Non-Profit sectors trust Synergita for their employee performance management and engagement.\n\nOur platform is industry agnostic and can be configurable to adapt to the customers’ unique performance and engagement culture, and strategies.",
+        "numberOfReviews": "47",
+        "g2Score": "4.6",
+        "users": [],
+        "industries": [
+            "Information Technology and Services",
+            "Internet"
+        ],
+        "marketSegment": [
+            "36% Enterprise",
+            "34% Mid-Market"
+        ],
+        "pros": [
+            "Customer Support",
+            "Easy Navigation"
+        ],
+        "cons": [
+            "Poor Customer Support"
+        ],
+        "userSatisfaction": [
+            "9.7",
+            "9.3",
+            "8.5",
+            "9.2"
+        ]
+    },
+    {
+        "name": "Digno",
+        "slogan": ", week by week basis to create streamlined performance management protocols for both management and employees. Digno positively impacts employee behaviors and employee-management relationships through built-in transparently, reward system, and avenues of feedback. \n\nDigno’s aim is to revolutionize performance management by replacing the often black box of evaluation with transparency and open communication between management and team members. In doing so, management is empowered to easily find and mend inefficiencies - a task previously time-consuming and inundated; and employees receive feedback needed to unlock their full productivity-potential. The result is an organization with an engaged, nurturing, and proactive company culture.\n\nDigno was founded in 2020 to relieve post-pandemic gaps in HR, communication, and team engagement to better safeguard bottom-line revenue.",
+        "numberOfReviews": "31",
+        "g2Score": "4.6",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "71% Small-Business",
+            "23% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Easy Tracking",
+            "Goal Setting",
+            "Progress Tracking",
+            "Dashboard Usability"
+        ],
+        "cons": [
+            "Integration Issues",
+            "Limited Features",
+            "Mobile Functionality",
+            "Goal Management",
+            "Improvements Needed"
+        ],
+        "userSatisfaction": [
+            "9.1",
+            "9.3",
+            "9.6",
+            "10.0"
+        ]
+    },
+    {
+        "name": "culture.easy",
+        "slogan": ", employee performance management, and employee engagement. By pushing teams into the high-performance mode, culture.easy helps organizations execute their audacious goals.\n\nFoster alignment and drive people in the right direction with OKRs. Once the alignment is in place, choose the combination of features to seamlessly address the performance, feedback, recognition aspects and pave way for better aligned and engaged teams.\n\nFor a personalized demo and a free 30-day trial, visit us at https://culture.easy.xyz/",
+        "numberOfReviews": "23",
+        "g2Score": "5.0",
+        "users": [
+            "Software Engineer"
+        ],
+        "industries": [
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "83% Small-Business",
+            "9% Enterprise"
+        ],
+        "pros": [
+            "Goal Setting",
+            "Visibility",
+            "Ease of Use",
+            "Easy Navigation",
+            "Goal Tracking"
+        ],
+        "cons": [
+            "Feedback Issues"
+        ],
+        "userSatisfaction": [
+            "10.0",
+            "9.8",
+            "9.4",
+            "9.8"
+        ]
+    },
+    {
+        "name": "Lattice",
+        "slogan": "Enterprise solutions for model-based process planning, validation and technical communications for manufacturing companies.",
+        "numberOfReviews": "26",
+        "g2Score": "4.4",
+        "users": [],
+        "industries": [
+            "Marketing and Advertising"
+        ],
+        "marketSegment": [
+            "88% Mid-Market",
+            "4% Enterprise"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "8.9",
+            "8.8",
+            "9.0",
+            "9.1"
+        ]
+    },
+    {
+        "name": "#stratapp",
+        "slogan": "tratapp helps users achieve productivity, work-life balance, engagement and strategy execution.",
+        "numberOfReviews": "12",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "67% Small-Business",
+            "8% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Team Collaboration",
+            "Collaboration Ease",
+            "Experience",
+            "User Interface"
+        ],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "9.7",
+            "9.7",
+            "10.0"
+        ]
+    },
+    {
+        "name": "entomo (formerly KPISOFT)",
+        "slogan": "s that help organisations reimagine performance, skill and personal health of their workforce while enabling access to financial tools.\n\nentomo’s clients include Global fortune 500 and large enterprises and Governments across Asia and MEA. entomo is also voted as a leader in G2 software marketplace across multiple categories. \n\nTo know more, visit https://entomo.co/request-demo/",
+        "numberOfReviews": "83",
+        "g2Score": "4.6",
+        "users": [],
+        "industries": [
+            "Information Technology and Services",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "46% Small-Business",
+            "42% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Centralization",
+            "Dashboard Usability",
+            "Data Centralization",
+            "Easy Access"
+        ],
+        "cons": [
+            "Editing Restrictions",
+            "Employee Management",
+            "Expensive",
+            "Job Insecurity",
+            "Limited Options"
+        ],
+        "userSatisfaction": [
+            "9.6",
+            "8.7",
+            "9.1",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Jell",
+        "slogan": "emo: https://jell.com/site/demo",
+        "numberOfReviews": "10",
+        "g2Score": "3.8",
+        "users": [],
+        "industries": [
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "60% Small-Business",
+            "50% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "10.0",
+            "9.2",
+            "8.7",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Elate",
+        "slogan": "impact of any company’s operating framework and serve as a competitive advantage for continued growth.\n\nBy combining your strategic plan with real-time performance in one succinct view, Elate makes achieving your long-term vision easier than ever.\n\nBuild your strategic plan, increase visibility, and drive engagement leveraging Elate's Dynamic Strategic Planning platform. Connect long-term vision, annual goals, and quarterly objectives with ease. \n\nStrategy & Operations leaders of high growth companies have been ignored for far too long. It’s time we change that. Let’s tackle strategic planning together, and give your strategy the focus it deserves.\n\nRequest a demo to see how Elate can unlock the full potential of your strategic plan.",
+        "numberOfReviews": "11",
+        "g2Score": "4.9",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "27% Mid-Market",
+            "18% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "10.0",
+            "10.0",
+            "10.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "SPACE OKR",
+        "slogan": "n of your goals. Execution is tied to people so there are filters to see anyone’s and everyone’s progress in relation to their goals. While the tool provides easy goal management, daily and weekly reminders make sure you are never off-track and help you in timely decision making.",
+        "numberOfReviews": "10",
+        "g2Score": "4.2",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "7.5",
+            "9.4",
+            "6.7",
+            "7.5"
+        ]
+    },
+    {
+        "name": "Actioned",
+        "slogan": "N/A",
+        "numberOfReviews": "11",
+        "g2Score": "3.9",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "55% Mid-Market",
+            "55% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "10.0",
+            "9.2",
+            "9.0",
+            "6.7"
+        ]
+    },
+    {
+        "name": "Peoplelogic",
+        "slogan": "r Organizational Network Analysis Graph (ONA) you have everything you need to nurture high performing teams, uncover internal collaboration patterns, identify silos and bottlenecks, and highlight the most connected and disconnected employees. With Peoplelogic you'll have all the data and insights you need to make impactful business decisions.",
+        "numberOfReviews": "27",
+        "g2Score": "4.9",
+        "users": [],
+        "industries": [
+            "Information Technology and Services",
+            "Computer Software"
+        ],
+        "marketSegment": [
+            "59% Mid-Market",
+            "37% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Helpful",
+            "Customer Support",
+            "Insights",
+            "Insights"
+        ],
+        "cons": [
+            "Technical Issues",
+            "Dashboard Issues",
+            "Data Management",
+            "Improvements Needed",
+            "Limitations"
+        ],
+        "userSatisfaction": [
+            "10.0",
+            "9.3",
+            "9.8",
+            "9.2"
+        ]
+    },
+    {
+        "name": "Ninety.io",
+        "slogan": "ing tools helps remote, hybrid, and in-person teams focus, align, and thrive. Get more real-time work done, in less time, with less miscommunication.",
+        "numberOfReviews": "22",
+        "g2Score": "4.5",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "68% Small-Business",
+            "14% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Goal Setting",
+            "Goal Tracking",
+            "Meeting Management",
+            "Meetings Management"
+        ],
+        "cons": [
+            "Feature Issues",
+            "Missing Features",
+            "Software Bugs",
+            "Connectivity Issues",
+            "Data Management"
+        ],
+        "userSatisfaction": [
+            "10.0",
+            "9.0",
+            "9.6",
+            "10.0"
+        ]
+    },
+    {
+        "name": "huminos",
+        "slogan": "he desired outcomes even when working remotely. Huminos helps measure, reflect and calibrate the performance of your people using a variety tools. Connecting with several other applications to automate progress tracking data administration scheduling collaboration in one platform will allow teams maintain their focus on achieving growth.\nHuminos integrates with popular tools such as Slack, Microsoft Teams, Atlassian JIRA, Microsoft Excel, Word, PowerPoint, Outlook, Google Workspace, HubSpot, Freshdesk, and more. Huminos has a forever-free plan for SMBs and small teams, as well as a usage based pricing option that fits the requirement of any size company!",
+        "numberOfReviews": "6",
+        "g2Score": "4.7",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "67% Mid-Market",
+            "17% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "10.0",
+            "9.6",
+            "9.6",
+            "9.2"
+        ]
+    },
+    {
+        "name": "JustOKRs",
+        "slogan": "cs or Sheets to track your OKRs, JustOKRs adds the ablility to easily score OKRs, assign ownership and align your OKRs.\n\nJustOKRs is fast, easy, cheap and likely exactly what you need and nothing more.",
+        "numberOfReviews": "6",
+        "g2Score": "4.9",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "83% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "10.0",
+            "10.0"
+        ]
+    },
+    {
+        "name": "Possibleworks",
+        "slogan": "uild high-performance teams with real-time visibility into what is getting done on outcomes that matter. A ready-to-use platform that is designed to seamlessly become part of your teams’ daily workflows with out-of-the-box integrations with Microsoft & G-suit. Schedule a demo at PossibleWorks.com.",
+        "numberOfReviews": "10",
+        "g2Score": "4.6",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "60% Mid-Market",
+            "40% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Customization Ability",
+            "Easy Navigation",
+            "Easy Tracking",
+            "Goal Setting"
+        ],
+        "cons": [
+            "Missing Features",
+            "Employee Management",
+            "Integration Issues",
+            "Limited Features",
+            "Module Issues"
+        ],
+        "userSatisfaction": [
+            "8.9",
+            "9.0",
+            "9.2",
+            "7.5"
+        ]
+    },
+    {
+        "name": "1-3-5® OKR Software",
+        "slogan": "claro 1-3-5® OKR software allows leaders to cascade their strategic vision, objectives and key results throughout the entire business to ensure everyone knows where to focus their efforts daily to move the business forward at pace. Providing laser-like focus and combininig visibility, transparency and accountability through clear real-time progress and performance dials presented in one single view, providing one single source of truth.",
+        "numberOfReviews": "5",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "60% Mid-Market",
+            "40% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "10.0",
+            "9.6",
+            "10.0",
+            "10.0"
+        ]
+    },
+    {
+        "name": "Omnistrat",
+        "slogan": "le.\n\nRunning a business is hard. Having a plan your team can follow makes all the difference. Omnistrat makes strategic planning and execution simple and social, with everyone on the same page, driving their decisions daily, and dramatically improving your organization's ability to achieve goals.\n\nMost strategic planning applications are over-engineered and target large enterprise accounts. Omnistrat was purpose-built for small to midsize companies to make life easy.",
+        "numberOfReviews": "15",
+        "g2Score": "4.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "40% Mid-Market",
+            "33% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "7.6",
+            "7.9",
+            "7.6",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Team Coaches",
+        "slogan": "Entrepreneurship community software that helps coaches, mentors and educators innovate ideas, track tasks, metrics, OKRs, centralized Education and more.",
+        "numberOfReviews": "4",
+        "g2Score": "4.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "75% Small-Business",
+            "25% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "8.3",
+            "6.7",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Tita OKR",
+        "slogan": "ulate key results, and decompose specific implementation plans \n- Performance management: work results can be assessed, combined with OKR, KPI, 360, full-scene, digital support for closed-loop performance management, and help enterprises accelerate the performance management change \n- Project management: split milestones by phase, statistical data report, realize project risk warning, efficient collaboration and control \n- Planning/task management: quantify costs, estimate work hours, and provide feedback on progress, so that team management can be more orderly and manageable. Plan/task management: cost quantification, work hour estimation, progress feedback, orderly promotion of work planning, so that team management is more agile and efficient \n- Continuous communication, feedback and incentive culture support: interaction, evaluation, praise, reward, all-round support for the team to realize the construction of a continuous performance management culture.",
+        "numberOfReviews": "4",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "50% Mid-Market",
+            "50% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "10.0",
+            "10.0",
+            "10.0",
+            "10.0"
+        ]
+    },
+    {
+        "name": "Businessmap",
+        "slogan": "gement through Objectives and Key Results (OKRs), and Work Management. Such optimization enables affordable deployment at scale, visibility across all projects & portfolios and alignment on goals, to deliver quality work faster. Built upon the idea that all processes evolve, Businessmap can quickly adapt to changes in your organization, regardless of whether it is a start-up or a Fortune 100 enterprise. \n\nEquipped with the most advanced feature set in the industry and a support team that is second to none, Businessmap is a trusted vendor for more than 1000 companies and 300+ partners all over the world.",
+        "numberOfReviews": "25",
+        "g2Score": "3.9",
+        "users": [],
+        "industries": [
+            "Information Technology and Services"
+        ],
+        "marketSegment": [
+            "56% Mid-Market",
+            "32% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "8.9",
+            "7.5",
+            "8.2",
+            "0.0"
+        ]
+    },
+    {
+        "name": "ConectoHub",
+        "slogan": "elp you manage your team's strategy and performance. Put objectives and link your goals with daily tasks and projects and see the progress instantly. You can also follow your projects, assign tasks to your team members, set deadlines and priorities. This will help you be aligned with your colleagues.",
+        "numberOfReviews": "3",
+        "g2Score": "4.2",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "67% Small-Business",
+            "33% Enterprise"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "DoerHRM",
+        "slogan": "t, goal-setting, employee engagement, and task management into one unified solution that can be used for coaching, employee recognition, team development, and organizational transformation. With DoerHRM, organizations can develop insights that build enviable cultures and deliver business impact.",
+        "numberOfReviews": "4",
+        "g2Score": "4.7",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "75% Small-Business",
+            "25% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "8.9",
+            "10.0",
+            "9.2"
+        ]
+    },
+    {
+        "name": "GroSum",
+        "slogan": "on the most important things\n2. Scheduled check-ins for better engagement\n3. Accountability by tangible contribution to company objectives.\n4. Lightweight reviews to understand what went well and improve\n5. Compensation linked to manager recommendation to ensure fair distribution",
+        "numberOfReviews": "3",
+        "g2Score": "3.3",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "67% Mid-Market",
+            "33% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "6.7",
+            "7.2",
+            "7.2",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Just3Things",
+        "slogan": "things that really matter.\n\nBorn from within OVO Energy - one of the UK's fastest growth Unicorn companies - Just3Things was instrumental in maintaining their competitive advantage as they rapidly scaled from five to over 12,000 people spread over six offices, and went on to become the UK's 2nd largest energy company. Just3Things saved OVO more than £3M a year in lost productivity and endless meetings, and helped them go from 172nd to 20th Best Companies To Work For. Now we're helping companies from around the world do the same, trusted by the likes of Natwest Group, Deloitte, Travis Perkins and many more.\n\nJust3Things helps organisations to prioritise goals, align teams and break down silos using our proven 3-step model:\n1 - Define the Direction\n2 - Focus on What Matters\n3 - Track Progress, Learn and Adapt",
+        "numberOfReviews": "3",
+        "g2Score": "4.3",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "67% Small-Business",
+            "33% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "8.9",
+            "8.3",
+            "10.0"
+        ]
+    },
+    {
+        "name": "Kendis: Streamlining Agile at Scale",
+        "slogan": "olution designed to support organizations in scaling their agile practices. As a versatile tool, it bridges the gap between strategic planning and tactical execution, particularly in complex, multi-team environments. Kendis excels in facilitating Program Increment (PI) Planning, a crucial component of the Scaled Agile Framework (SAFe), enabling teams to plan, commit, and execute their objectives effectively across multiple agile release trains (ARTs).\n\nIntegration is a core strength of Kendis, offering two-way, real-time syncing with popular Agile tools like Jira and Azure DevOps. This ensures that updates made in Kendis are reflected in these platforms without manual intervention, maintaining consistency and accuracy in project tracking.\n\nWhether used for distributed teams or co-located setups, Kendis supports remote PI Planning through its online boards that simulate the physical planning experience. This feature is essential for global enterprises seeking to maintain agility and collaboration despite geographical distances.\n\nOverall, Kendis is not just a tool but a strategic partner that enhances the agility of enterprises, allowing them to respond swiftly to market changes and innovate at scale. With its robust features for managing dependencies and identifying potential bottlenecks, it is ideal for organizations looking to implement or refine their approach to scaled agile methodologies and aligning initiatives with strategic goals. \n\n\n\nKey Features of Kendis:\n\nFor Business\n\nBusiness Roadmap: A strategic tool designed to visually outline the key initiatives, Projects, programs that drive business objectives forward. Plan and track strategic paths, ensuring alignment between long- and short-term goals.\nStrategic Themes and OKR Management: Aligns high-level strategic themes with operational goals through robust OKR (Objectives and Key Results) management capabilities.\nPhases and Milestones Management: Tracks critical phases and milestones within projects, providing clear markers of progress and success criteria.\nWork Breakdown Structure: \nKanban:  An intuitive platform to visualize your workflow, streamline processes, and portfolio level work into deliverables. With customizable columns, real-time collaboration, and powerful analytics, Kendis ensures you stay on top of every task and project.\nTwo-Way Integration with ALM Tools: Ensures seamless data consistency and workflow continuity between Kendis and critical development tools like Jira and Azure DevOps.\n\nFOR Program Increment \n\nAI-Based Analytics and Reports: Leverages artificial intelligence to provide deep insights and actionable analytics, enhancing decision-making processes.\nReal-Time Boards for PI and Big Room Planning: Facilitate both onsite and remote PI Planning sessions, supporting synchronized collaboration across distributed teams.\nPI Level Objectives and Risk Monitoring: Enables setting and monitoring specific objectives and risks at the PI level, ensuring alignment with strategic goals.\nDependency Management: Identifies and manages dependencies across teams and ARTs, crucial for anticipating and resolving potential bottlenecks.\nRisk Management: Proactively identifies and addresses risks, implementing strategies to mitigate impact on project outcomes.\nConfidence Voting: Kendis is the first online tool to offer remote confidence voting. This innovative feature enables teams to cast votes on their confidence levels regarding the PI. The feedback obtained through this voting process is crucial for adjusting plans and strategies, ensuring alignment and fostering proactive decision-making across distributed teams.\nProgram Increment Tracking Capabilities: Offers dynamic tracking of progress with real-time updates throughout the Program Increment lifecycle.\nScrum of Scrums: Enhances the effectiveness of Scrum of Scrums meetings by facilitating robust coordination and communication among multiple scrum teams. This feature provides insights into each team's progress, ensuring that all teams are aligned and informed.\nTools for Inspect and Adapt: Provides dedicated functionalities to support the Inspect and Adapt event, critical for continual improvement.\nPI Roadmaps: Visualize and plan the future steps of project delivery with detailed PI Roadmaps that outline key deliverables and timelines.\nReal-Time Flow Dashboards: Measure flow metrics in real-time, providing immediate insights into productivity and efficiency. This feature includes Cumulative Flow Diagrams (CFDs), which offer a visual representation of work items in a workflow, allowing for detailed process analysis. Additionally, it encompasses flow matrices for an in-depth examination of process efficiency, risk metrics, OKR tracking, performance charts and distribution metrics.\nReal-Time Collaboration Board: Supports instant collaboration and communication, crucial for maintaining team synergy and agile responsiveness.",
+        "numberOfReviews": "3",
+        "g2Score": "4.2",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "67% Mid-Market",
+            "33% Small-Business"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Easy Setup",
+            "Team Collaboration"
+        ],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "7.5",
+            "7.5",
+            "0.0"
+        ]
+    },
+    {
+        "name": "OnePlan",
+        "slogan": "eb, Microsoft Planner, Azure DevOps, Jira, Smartsheet and more for a complete view into all work across the enterprise.",
+        "numberOfReviews": "16",
+        "g2Score": "4.3",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "63% Mid-Market",
+            "25% Enterprise"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Project Management",
+            "Customization",
+            "Easy Integration",
+            "User-Friendly"
+        ],
+        "cons": [
+            "Software Bugs",
+            "Poor Usability",
+            "Reporting Issues",
+            "Saving Issues",
+            "User Experience"
+        ],
+        "userSatisfaction": [
+            "8.6",
+            "8.0",
+            "8.1",
+            "9.2"
+        ]
+    },
+    {
+        "name": "OnStrategy",
+        "slogan": "ifting demands that make keeping their long-term vision connected to weekly priorities chaotic. So we created a framework and app to make adapting strategy, goals, and priorities easy. When your team contributes directly to the big picture, you deliver results consistently.",
+        "numberOfReviews": "4",
+        "g2Score": "4.8",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "50% Mid-Market",
+            "25% Enterprise"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "10.0",
+            "10.0",
+            "10.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Revvi",
+        "slogan": "s People leaders to efficiently execute their people strategy; Supervisors to effectively lead their teams and Employees at large by enhancing their experience & productivity.",
+        "numberOfReviews": "11",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "91% Mid-Market",
+            "9% Enterprise"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Easy Setup"
+        ],
+        "cons": [],
+        "userSatisfaction": [
+            "9.7",
+            "10.0",
+            "9.6",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Simplamo",
+        "slogan": "g tools for effectively executing your strategies: Vision, OKRs & Goals, Scorecard, Organization Chart, Meeting, Issues, To-dos, Conversation, Process, Performance Report,...\n\nSimplamo goes beyond mere software; it provides in-depth guidance, fundamental knowledge, and practical examples to help you create your strategy, ensure alignment within your team, and track progress through weekly dashboards and reports.\n\nStart for free at: Simplamo.com",
+        "numberOfReviews": "3",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "67% Small-Business",
+            "33% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Customer Support",
+            "Easy Setup",
+            "Business Management",
+            "Collaboration Ease"
+        ],
+        "cons": [
+            "Integration Difficulty",
+            "Dashboard Issues",
+            "Limited Features"
+        ],
+        "userSatisfaction": [
+            "10.0",
+            "9.4",
+            "9.4",
+            "9.4"
+        ]
+    },
+    {
+        "name": "Ahundred",
+        "slogan": "typing a message. While completing the Ahundred report, employees can update the progress on key results throughout the given time frame.",
+        "numberOfReviews": "2",
+        "g2Score": "4.8",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "10.0",
+            "9.2"
+        ]
+    },
+    {
+        "name": "Alignment.io",
+        "slogan": "ng & automation that keeps the framework moving at the perfect pace\n\nSystem of record\nFast and simple way to see everything that’s been worked on\n\nMission alignment\nEvery team working to execute a mission with a clear plan",
+        "numberOfReviews": "2",
+        "g2Score": "4.8",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "6.7",
+            "6.7"
+        ]
+    },
+    {
+        "name": "All Elements",
+        "slogan": "N/A",
+        "numberOfReviews": "4",
+        "g2Score": "4.5",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [
+            "Comprehensive Functionality",
+            "Customization Ability",
+            "Ease of Use",
+            "Performance Management",
+            "Progress Tracking"
+        ],
+        "cons": [
+            "Limited Customization",
+            "Limited Features",
+            "Missing Features",
+            "Technical Issues",
+            "Training Issues"
+        ],
+        "userSatisfaction": [
+            "10.0",
+            "7.8",
+            "9.4",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Amby",
+        "slogan": "nutes \nYou need not be an expert or learn best practices. Automate implementation and adopt OKRs at ease. \n\n🎯 Set clear Goals together \nNo more set & forget goals. Draft, collaborate & publish clear priorities to align work. \n\n💪 Align day-to-day effort \nNo more micromanagement. Establish a clear roadmap with initiatives/projects aligned to goals \n\n📈 Follow through progress \nNo more disconnected team. Create one view towards your north star and track to adapt",
+        "numberOfReviews": "2",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "8.3",
+            "8.3",
+            "8.3",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Becafex",
+        "slogan": "e your workflow for maximum productivity. Get up to speed quickly with our intuitive interface. With Becafex, you can turn your ideas into results faster than ever before. Try it now and see what you've been missing!",
+        "numberOfReviews": "2",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "9.2",
+            "10.0",
+            "9.2",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Corvus Link",
+        "slogan": "at can produce actionable plans, build necessary capabilities, and grow a company in an ever-changing market.",
+        "numberOfReviews": "2",
+        "g2Score": "4.8",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "50% Small-Business",
+            "50% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "Versatility",
+            "Visualization"
+        ],
+        "cons": [
+            "Compatibility Issues",
+            "Delays",
+            "Interface Navigation"
+        ],
+        "userSatisfaction": [
+            "0.0",
+            "8.3",
+            "8.3",
+            "8.3"
+        ]
+    },
+    {
+        "name": "dobee",
+        "slogan": "cution power you deserve!",
+        "numberOfReviews": "2",
+        "g2Score": "3.8",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [
+            "Design",
+            "Ease of Use",
+            "Employee Engagement",
+            "User Interface"
+        ],
+        "cons": [
+            "High Complexity",
+            "Organizational Issues",
+            "Permission Management"
+        ],
+        "userSatisfaction": [
+            "8.3",
+            "8.3",
+            "9.2",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Lucidity",
+        "slogan": "ocuments, buried away in files and folders, to dynamic plans that are always accessible and up-to-date. This platform is revolutionizing how people are engaging with strategy, aligning their teams and avoiding the execution gap.\n\nWith Lucidity, you have an 'always on' strategy. Always visible, always up-to-date and always moving forward.  Everyone in the organization can easily understand the plan, see the detail, know how they fit in and manage their contribution. Using Lucidity is the best way to ensure your strategy truly drives the activities across your business.\n\nWith Lucidity you can easily track progress, measure and monitor performance and effortlessly report to stakeholders in the most engaging way. \n\nThe platform includes unique, interactive strategy models and frameworks that help you do analysis and inform your strategic thinking. You can then build out your plan in whatever way you want thanks to our fully flexible planner - from OKRs, to OGSM, to a custom structure of your creation. However you need to present your strategy, you can. \n\nWith goal management tools, a full task management system, powerful integrations and automatic communication features, Lucidity makes strategy planning, execution and reporting easier, faster and much more effective.",
+        "numberOfReviews": "2",
+        "g2Score": "4.8",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "50% Mid-Market",
+            "50% Small-Business"
+        ],
+        "pros": [
+            "Dashboard Usability",
+            "Design",
+            "Ease of Use",
+            "Features",
+            "Goal Tracking"
+        ],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "10.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "MAUS Hub",
+        "slogan": "rm, you can plan, implement, measure and grow your business. It’s not enough to simply create a plan. With Maus, you can turn your strategy into the roadmap for success while aligning with your financial and business value goals",
+        "numberOfReviews": "3",
+        "g2Score": "4.7",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [
+            "HR Management",
+            "Reporting",
+            "Reporting Efficiency",
+            "Analytics",
+            "Business Management"
+        ],
+        "cons": [
+            "Poor Customer Support"
+        ],
+        "userSatisfaction": [
+            "0.0",
+            "7.5",
+            "6.7",
+            "8.3"
+        ]
+    },
+    {
+        "name": "MetaSpark",
+        "slogan": "customizable templates, and an array of AI tools. Seamlessly integrate with 1000+ apps and collaborate effortlessly with your team, leveraging MetaSpark's collaborative features to foster effective teamwork and achieve remarkable productivity.\n\nEmpower your team to focus on strategy and execution by saving 60+ hours a month on administrative tasks. \n\nFeatures: \n-List, Kanban, Gantt views \n-AI-generated project templates\n-Company templates\n-AI-generated documents and notes\n-Goals dashboard\n-My work dashboard\n-Comments, @mentions, and collaborative workspaces\n-Recognition and rewards",
+        "numberOfReviews": "2",
+        "g2Score": "2.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "50% Mid-Market",
+            "50% Small-Business"
+        ],
+        "pros": [
+            "Efficiency Speed"
+        ],
+        "cons": [
+            "Slow Loading"
+        ],
+        "userSatisfaction": [
+            "0.0",
+            "8.3",
+            "5.0",
+            "7.5"
+        ]
+    },
+    {
+        "name": "PerformanceUp",
+        "slogan": "or their progress and improve their results. PerformanceUP offers comprehensive features to help organizations manage their OKRs, including goal setting, task management, progress tracking, and reporting.\n\nBenefits:\nAll-in-one OKR Management Software\nIntuitive Dashboard\nAutomate Goal Setting and Tracking\nCreate Unlimited OKRs\nTrack and Measure Performance\nPrioritize Objectives\nProvide Goal Framework\nMulti-Language Support\n24/5 Support",
+        "numberOfReviews": "2",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "10.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Ricotta",
+        "slogan": "KRs super easy to implement and cost-effective.\n\nEasy one-click installation of the app and on-boarding of your team. To make everyone stick to their goals, we send out weekly automated reminders to track and update progress. Define Objectives and Key Results within Slack. Update your progress, edit, or archive OKRs easily. Create lists and track them without leaving Slack. PRO TIP - Use our personal to-dos feature to create, track and update your daily lists for free.\n\nGet Ricotta to make team collaboration easier and prioritize what matters to you!",
+        "numberOfReviews": "2",
+        "g2Score": "4.3",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "10.0",
+            "10.0"
+        ]
+    },
+    {
+        "name": "ActionPlanner",
+        "slogan": "ActionPlanner is a business performance management software for business people and leaders to follow up on goals, strategies, and actions.",
+        "numberOfReviews": "1",
+        "g2Score": "4.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "3.3",
+            "3.3",
+            "5.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "CATALYST",
+        "slogan": "cess. CATALYST can help you in set, track, and conquer your objectives with our OKR-based software by aligning your team, focus on key goals, and drive results like never before.",
+        "numberOfReviews": "1",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "10.0",
+            "10.0"
+        ]
+    },
+    {
+        "name": "CoBlue",
+        "slogan": "CoBlue offers OKR software to manage progress, difficulties and ensure strategic alignment.",
+        "numberOfReviews": "1",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "10.0",
+            "10.0",
+            "8.3",
+            "10.0"
+        ]
+    },
+    {
+        "name": "Complish",
+        "slogan": "ates more asynchronous communication.",
+        "numberOfReviews": "1",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Corvisio OKR",
+        "slogan": "Objectives and Key Results Software",
+        "numberOfReviews": "1",
+        "g2Score": "4.5",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Focus",
+        "slogan": "Employee engagement and alignment are top challenges for many organizations. High-growth teams use Focus to stay in sync and to be aligned around objectives to achieve better results. And do it with a simple and intuitive interface.",
+        "numberOfReviews": "1",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "10.0",
+            "10.0"
+        ]
+    },
+    {
+        "name": "GI OKR",
+        "slogan": "OKR Performance Management tool\ntry it: giokr.com",
+        "numberOfReviews": "1",
+        "g2Score": "4.5",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "8.3",
+            "5.0",
+            "5.0"
+        ]
+    },
+    {
+        "name": "ilpApps OKR Software Suite",
+        "slogan": "ke informed decisions based on real-time data\nStore learnings for future reference\nBuild custom reports and dashboards\nIdentify issues and course-correct when needed",
+        "numberOfReviews": "1",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "10.0",
+            "10.0"
+        ]
+    },
+    {
+        "name": "Kommon",
+        "slogan": "ole team - all in one place.",
+        "numberOfReviews": "1",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "10.0",
+            "10.0",
+            "10.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Lifetick",
+        "slogan": "y. It’s so much fun, you’ll wonder why you didn’t start soone",
+        "numberOfReviews": "1",
+        "g2Score": "4.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "10.0",
+            "10.0"
+        ]
+    },
+    {
+        "name": "MyObjectives",
+        "slogan": "MyObjectives is the first team-based solution that provides real-time feedback of your teams drive toward success.",
+        "numberOfReviews": "1",
+        "g2Score": "3.5",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Enterprise"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "North",
+        "slogan": "North is a simple platform to manage your Strategy, OKRs and Initiatives.",
+        "numberOfReviews": "1",
+        "g2Score": "3.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "OKRBeri",
+        "slogan": "ay for businesses to set their objectives, where they want to head, the key results for how they will know they are making progress, and actions, the tasks needed to achieve the key results.\n\nGet alignment between what the company wants to achieve and what your employees are working on through OKRBeri.\n\nNo Bloat, No Boast! Business Essentials that Raise Impact",
+        "numberOfReviews": "1",
+        "g2Score": "4.5",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "8.3",
+            "6.7",
+            "10.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "OKR for Jira",
+        "slogan": "dd key results, and connect them to Jira issues. Now you can automatically track progress towards your goals and give everyone a clear path to success.\n \n\n Features:\n \n\n - Create and track an unlimited number of OKRs in Jira without any external tools.\n - Automatically update the progress of objectives and key results based on the status Jira tasks.\n - Use hierarchies to visually organize OKRs across the company.\n - Add labels to easily identify and filter by sprint, product, department, or anything else.\n - Choose periods for your OKRs.\n - Easily create teams and set permissions to control who can view and edit OKRs.\n - Create future OKRs and access your past objectives for reference.",
+        "numberOfReviews": "1",
+        "g2Score": "4.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "0.0",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Okri",
+        "slogan": "okri.io helps you to boost performance through engaged and strategically focused teams. Give your team members effective tools to unleash their full potential.",
+        "numberOfReviews": "1",
+        "g2Score": "3.5",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "8.3",
+            "6.7"
+        ]
+    },
+    {
+        "name": "Taskwall",
+        "slogan": "l or business goal setting. \n \n\n Taskwall supports hundreds of integration with Zapier, Slack, Trello, Jira and more which helps you take your team’s productivity to the new heights.",
+        "numberOfReviews": "1",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "8.3",
+            "10.0",
+            "10.0"
+        ]
+    },
+    {
+        "name": "Wave Nine",
+        "slogan": "emplates, and resources that energize teams, clarify strategies, and drive accountability to improve business goals and business performance. We hands-on execute your OKR Process in workshops and OKR coaching and training, from the executives to the teams that make it happen. Headquartered in Silicon Valley with offices in Germany, UK, Australia, and Portugal, we partner with the leading strategy execution platform WorkBoard to make your strategy happen.",
+        "numberOfReviews": "1",
+        "g2Score": "3.5",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "5.0",
+            "10.0",
+            "6.7"
+        ]
+    },
+    {
+        "name": "Waymaker.io",
+        "slogan": "team members receive effective coaching, and the business is better.\n\nWaymaker is a cloud-based solution to the problem of knowing how to find and execute an organization�s highest-value priorities using waymaker's smart diagnostics. We have a holistic business diagnostic to help you plan better, diagnostics that focus on CX to help you sell better, and EX to help you employ better and another that focuses on people to help you develop your leaders and lead better.\n\nGain insights in minutes then plan and build great goals using our planning and ai driven goal-setting tools.  Align the team on what matters most every quarter or half. Track metrics with scorecard dashboards and collaborate using productivity tools like tasks and task boards and the meeting module.\n\nDiagnose, plan, and deliver. Then do it again, every quarter or half to make business improvement, business as usual.",
+        "numberOfReviews": "1",
+        "g2Score": "5.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Small-Business"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "10.0",
+            "10.0",
+            "8.3"
+        ]
+    },
+    {
+        "name": "Workteam Goal Management",
+        "slogan": "Workteam Goal Management is designed to help employees plan and align their goals with corporate objectives.",
+        "numberOfReviews": "2",
+        "g2Score": "4.0",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "50% Enterprise",
+            "50% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "10.0",
+            "10.0",
+            "10.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "100pcnt",
+        "slogan": "Performance Management Platform",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "ACELERA",
+        "slogan": "ACELERA is an all-in-one agile strategy and execution platform that allows the organization's objectives to be aligned with all collaborators using the OKRs methodology as our core.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Alignment OKRs",
+        "slogan": "d on OKR progress with embedded notes and updates.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Anama",
+        "slogan": "anama.co is a continuous performance management software which helps to align, engage and coach your employees.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Appfire OKR for Jira",
+        "slogan": "N/A",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Appogee Goals",
+        "slogan": "leading companies such as Google, Linkedin, Intel, and Twitter.\n\nKey features:\n\nAlignment - Simple and easy to navigate alignment charts to display how all teams and employees are working together to meet the wider company objectives.\nTransparency - Visibility in all directions. Allow employees to see how they fit into the bigger picture. Keep on top of how your employees are contributing to the company goals.\nMeasured - Easy to see how every goal (objective) is performing through a series of Key Result metrics feeding into a total Goal completion.\nSupports Each Goal Type:\nCompany Goals - Define and share directional Company Goals (objectives) and clearly defined Key Results with your employees. Team Goals - Set clear Team Goals and align with the Company Objectives to keep Teams on track. Personal Goals - Create transparency and direction over Personal Goals with clear alignments to the larger Team & Company Goals.\n\nVisibility - Empower employees by giving full visibility of their own Personal Goals and how they fit into the Company strategy.\nCheck-ins and Shout-outs - Allow Check-Ins to keep the progress up to date and maintain motivation across the workforce. Gain constant feedback on employees through Goal driven Shout-outs. Designed to promote peer to peer assessment.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "aTalent TM",
+        "slogan": "lent Marketplace. \n\naTalent puts customers at the center of our products, leading to an NPS score of 65+. aTalent serves clients with operations in 30 different countries and more than 1,000,000 employees.We have worked with prestigious multinational and local enterprises, including HG, BMW, Shangri-la, Jabil, Tourism Australia, B/S/H, Vector, TK Elevator, DHL, TDK, and Swire Coca-Cola.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Axy OKR",
+        "slogan": "ns. By being a part of Salesforce, Axy OKR is able to provide many features that other OKR software cannot such as Salesforce report binding for automatic OKR progress measurement and much more.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Brev.io",
+        "slogan": "hythms, get organization-wide observability into team performance, and provide always-on progress updates in seconds. \n\nAI-generated reports: Generate a WBR, an MBR, or any internal review in seconds, not hours. Brev looks at your structured and unstructured data to prepare coherent always-on reports. \n\nRhythm management: Say goodbye to all of the tedious workflows to orchestrate your company's operating rhythms. Gain insights into velocity and performance.  \n\nObservability: One 'window' to understand all of your KPIs and metrics in one place.\n\nGoals: Create accountability with any type of goal framework. Leverage LLMs to help draft, coach, and auto-update progress in real-time.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Commonality",
+        "slogan": "The data-driven OKR platform that empowers your organization to achieve measurable results at scale.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "CrossLead",
+        "slogan": "orming the US counter-terrorism effort from a siloed, hierarchical apparatus into a high-performing network, we developed CrossLead to scale the adaptability of small teams to the enterprise level. It removes silos, eliminates dysfunctional practices, and dramatically increases the pace at which organizations can operate and succeed in complex environments.\n\nOur founder and CEO, David Silverman, co-authored the New York Times bestselling book Team of Teams: New Rules of Engagement for a Complex World which details the methodology that we implement with our clients. Originally founded in 2011 as McChrystal Group, LLC, CrossLead spun off in 2016 to scale our software-enabled leadership solution to empower organizations to minimize uncertainty and thrive in ambiguity. Based in Washington DC, we work with corporations and nonprofits globally.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Devokr",
+        "slogan": "bjectives for expanding these strategies to all members of the organization. \n\nDevokr is a highly customizable and easy-to-use platform to implement OKR methodology to your business sucessfully. With check-in screens and one-on-one meeting options, you can follow your OKR progress throughout the year and be aligned with your organization and keep your goals up to date. By creating OKRs that nurture Company Strategies, you can connect your goals with Company strategies and spread them throughout the organization. Thanks to our software that supports the Continuous Feedback Methodology, you can provide 360-degree feedback and create a feedback culture in your organization. Like other organizations that have adopted success, it will be inevitable for Start-up companies to be successful when they create their strategies correctly and enable the whole organization to determine their route in the light of these strategies. \n\nStart-ups can be success if they define their strategies well-organized and being all individual members aware of these strategies. So our product is free to use for start-ups.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Digite Collaborative OKRs",
+        "slogan": "ts, talk about this in our origin story:\n\nhttps://youtu.be/TvLf1mv3NOk",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Distilled",
+        "slogan": "Distilled is an Enterprise Strategy OS for empowering collaboration and transparency through efficient OKRs.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "ITIKSoft",
+        "slogan": "compuesta por una metodología de consultoría de negocios plasmada en diferentes módulos: estrategia, gestión, productividad, capital humano, consultoría de negocios, excelencia operacional, logística, planeación, programación de recursos, proyectos, recursos humanos, transporte y logística general, lean y consultoría operativa.\n\nItik está diseñada para elaborar estrategias, controlar y dar seguimiento a las iniciativas que se enfocan en cumplir todos tus objetivos empresariales. Logra controlar la operación emitiendo notificaciones a cada uno de los responsables de sus actividades, aumentando de esta manera su productividad. Puedes percibir y mejorar la satisfacción del personal por medio de evaluaciones que beneficiarán a tu clima laboral.\n\nItik brinda una gestión eficiente. Actualmente trabaja en nuevas y mejores soluciones pensadas especialmente para tu empresa.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Krezzo",
+        "slogan": "Krezzo provides OKR technology and services to help companies align better and grow faster.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Mid-Market"
+        ],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "LeanTechnique",
+        "slogan": "LeanTechnique is a platform that provides companies with data analytics and insights via real-time data monitoring and prediction.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Matilda Workspace",
+        "slogan": "globe to connect, create, coordinate, and delight their customers effortlessly. With its mission to simplify technology, Matilda empowers organisations to do more with less, making it an essential tool for startups to Fortune 500 companies alike.\n\nKey Features:\n\n-Powerful Apps Included: Matilda comes packed with a suite of powerful applications including Docs, Projects, Tables, Chat, Customers, and Copilot, ensuring that teams have all the tools they need to succeed.\n\n- Create with Ease: With Docs, teams can co-edit in real time, making document creation and coordination seamless. This feature aims to replace Google Docs, Notion, and Coda, by providing a more integrated and efficient experience.\n\n- Streamlined Project Management: Matilda's Projects feature allows for effortless management and tracking of every aspect of your projects. With capabilities like auto-scheduling, it's designed to replace tools like Jira, Trello, and Asana.\n\n- Advanced Data Management: Although Tables are coming soon, they promise to redefine data handling by syncing data from hundreds of sources or creating new collections, aiming to replace tools like Airtable, Notion, and Segment.\n\n- Seamless Communication: Chat brings all team communication into one place, integrated across projects, tasks, and docs, providing an alternative to Slack and MS Teams.\n\n- Customer Relationship Management: The soon-to-be-released Customers feature will allow teams to effortlessly track leads and manage customer interactions in one streamlined interface, aiming to replace Salesforce and Hubspot.\n\n- AI-Powered Assistance: Copilot offers custom AI assistants to help automate and streamline workflows, aiming to replace AI tools like ChatGPT and Google Bard.\n\nConclusion:\n\nMatilda Workspace stands out as an all-encompassing solution that not only promises to streamline and simplify the way teams work but also embraces the future with its AI-powered capabilities and commitment to sustainability. Whether you’re managing projects, coordinating with your team, handling customer relationships, or leveraging AI for automation, Matilda Workspace provides an intuitive, powerful, and adaptable platform for every kind of team to thrive. Try Matilda today and experience the future of work, designed to help you deliver projects on time, every time.",
+        "numberOfReviews": "14",
+        "g2Score": "4.7",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "79% Small-Business",
+            "21% Mid-Market"
+        ],
+        "pros": [
+            "Ease of Use",
+            "All-in-one",
+            "Features",
+            "Team Collaboration",
+            "Customizability"
+        ],
+        "cons": [
+            "Missing Features",
+            "Bug Issues",
+            "Learning Curve",
+            "Limited Customization",
+            "Limited Features"
+        ],
+        "userSatisfaction": [
+            "9.7",
+            "9.1",
+            "8.9",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Metrimap",
+        "slogan": "METRIMAP Predictive Performance Management.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Mojo CX",
+        "slogan": "earch, analyze and categorize demand types.\n\nAutomated Quality Assessment: Replicate your quality scorecard and score 100% of contacts in line with your own custom metrics.\n\nAuto Alerts Engine: Create alerts based on any data point so you never miss a moment.",
+        "numberOfReviews": "2",
+        "g2Score": "4.8",
+        "users": [],
+        "industries": [],
+        "marketSegment": [
+            "100% Enterprise"
+        ],
+        "pros": [
+            "Efficiency",
+            "Analytics",
+            "Customer Engagement",
+            "Ease of Use",
+            "Innovation"
+        ],
+        "cons": [
+            "Language Limitations"
+        ],
+        "userSatisfaction": [
+            "10.0",
+            "9.2",
+            "8.3",
+            "0.0"
+        ]
+    },
+    {
+        "name": "NOQX",
+        "slogan": "dual goals with company objectives. The platform offers intuitive features for setting company-wide goals and cascading them down to teams and individuals, ensuring alignment across the organization. Users can collaborate on projects and sprints, set lower-level goals and actions, and track progress towards overarching objectives. Leveraging artificial intelligence, NOQX streamlines goal-setting processes and provides valuable insights into progress, empowering teams to work efficiently towards shared goals. With its user-friendly interface and robust functionalities, NOQX enhances teamwork, drives organizational success, and fosters a positive work culture.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "OKR Board for Salesforce",
+        "slogan": "extreme customization options and advanced security features, it is the best OKR Salesforce software on the AppExchange.\nIn addition to OKR management, OKR Board also offers reporting and analytics tools with a real-time Dashboard that can be set to show any intervals or teams. This data can be easily exported into third-party visualization tools or presented in an executive report as-is with a shareable link.\n\nFeatures:\n✔️ OKR levels to reflect your company’s structure;\n✔️ Multiple OKR types and weights options;\n✔️ Breakdowns of yearly OKRs into monthly OKRs;\n✔️ Adjustable roles and private workspaces;\n✔️ Extensive analytics and real-time Dashboards;\n✔️ Public API with official support.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "OKRify",
+        "slogan": "OKR Goal Management Application in Salesforce. \nGet all the benefits by managing your strategy and executing your goals right in your Salesforce CRM.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "OKRs by Managerly",
+        "slogan": "The first Slack OKR micro-app. One-click installation with no integrations or external websites.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "OKRs Tool",
+        "slogan": "t various levels within the organization. The tool includes features for creating and updating OKRs, monitoring progress in real-time, and generating reports and analytics to evaluate performance. It also offers in-app guidance to support users in effectively implementing the OKRs methodology, promoting transparency, accountability, and continuous improvement across teams.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Pembio",
+        "slogan": "Pembio is the next generation work productivity software, enabling teams and individuals to plan work and goals in virtual rooms",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "pulsatio",
+        "slogan": "Pulsatio enables the heartbeat of high performing teams by seamlessly connecting team members, the most important metrics and decision making.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Saberr",
+        "slogan": "teamwork. \n \nWhether you’re looking to provide high impact leadership coaching or transform the approach you take to manage performance or change, Saberr’s unique approach to blending experiential with digital coaching will help shift mindsets and improve the performance of both leaders and teams. \n \nBest of all, Saberr’s award-winning technology seamlessly integrates with tools you’re already using.\n\nTeams using Saberr typically see the following within just six months: \n\n- 20%+ improvement in performance \n- 12%+ improvement in employee engagement \n- 40%+ improvement in psychological safety",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Samewave",
+        "slogan": "Find order in the chaos. Capture, track and report on your commitments to each other and move your work forward with Samewave.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Simitive",
+        "slogan": "Global leader in Organisational Effectiveness.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Skills2Talent",
+        "slogan": "xperience Design), Mobile Apps, Data Migration and Custom IT solutions across various domain.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Skop.es",
+        "slogan": "ng, project Objectives remains challenging.\nSkop.es supports a data driven driven approach to Objectives Setting, Scope Definition, Verifying Objectives Attainability, System Selection, Implementation Oversight, Adoption Programs & Benefits (Objectives) Realisation.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Smartcove",
+        "slogan": "Employee Performance. Simplified.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Squadlytics",
+        "slogan": "Team analytics for product teams",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Steer",
+        "slogan": "Modern Employee Engagement and Performance Software OKR Goals, Weekly Check-ins and Daily Stand-ups to help you build and maintain engaged, aligned and productive teams no matter where they are.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Striveeo",
+        "slogan": "om",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "UnlockOKR",
+        "slogan": "Unlock:OKR is a top-rated OKR company; providing a unique combination of intuitive software and consulting; designed to shorten onboarding timelines, decrease complexity, and maximize results.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Upshotly",
+        "slogan": "People-centric performance management software that helps you unleash every employee's potential.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Workload.ai",
+        "slogan": "o the mainstream due to remote work and the need for better alignment. By unifying premium online training experiences, on-demand consulting, and a purpose-built platform, customers can now improve strategic visibility and alignment at scale with OKRs in a much more effective and engaging way.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    },
+    {
+        "name": "Workteam OKR",
+        "slogan": "ide feedback and coaching to help their teams achieve successful outcomes.",
+        "numberOfReviews": "N/A",
+        "g2Score": "Save to My Lists",
+        "users": [],
+        "industries": [],
+        "marketSegment": [],
+        "pros": [],
+        "cons": [],
+        "userSatisfaction": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ]
+    }
+]
