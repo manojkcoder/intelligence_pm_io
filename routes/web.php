@@ -167,7 +167,7 @@ Route::get('/de_dupe_companies',function() {
         $companyIds = $companies->pluck('id')->toArray();
         $chunks = array_chunk($companyIds, 100);
         foreach($chunks as $chunk){
-            \App\Jobs\ClassifyCompaniesJob::dispatchSync($chunk);
+            \App\Jobs\ClassifyCompaniesJob::dispatch($chunk);
         }
     });
     
