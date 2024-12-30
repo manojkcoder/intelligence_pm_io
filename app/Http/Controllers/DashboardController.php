@@ -10,6 +10,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use GuzzleHttp\Client;
 use App\Models\LikeComment;
 use Illuminate\Support\Str;
+use App\Jobs\ClassifyCompaniesJob;
 
 
 class DashboardController extends Controller
@@ -53,7 +54,7 @@ class DashboardController extends Controller
         $search = $request->has('search') ? $request->search['value'] : "";
         $offset = $request->start ? $request->start : 0;
         $limit = $request->length ? $request->length : 100;
-        if($request->has('wz_code')){
+        if($request->has('wz_code') && $request->wz_code != "Total" && $request->wz_code != ""){
             $companies = $companies->where('wz_code','LIKE',$request->wz_code.'%');
         }
         if($request->has('export')){
@@ -70,6 +71,10 @@ class DashboardController extends Controller
                     $companies = $companies->where(function($q){
                         $q->where('revenue',null)->orWhere('headcount',null)->orWhere('wz_code',null);
                     });
+                }else if($type == "no_wz_code"){
+                    $companies = $companies->where(function($q){
+                        $q->whereNull('wz_code')->orWhere('wz_code','');
+                    });
                 }else if($type == "tam"){
                     $class = CompanyClassification::where('name','TAM')->first();
                     $companies->whereHas('classifications',function($q) use ($class){
@@ -85,21 +90,47 @@ class DashboardController extends Controller
                     $companies->whereHas('classifications',function($q) use ($class){
                         $q->where('company_classification_id',$class->id);
                     });
-                }else if($type == "som_samson4"){
-                    $class = CompanyClassification::where('name','SOM - Samson 4')->first();
+                }else if($type == "tam_samson4"){
+                    $class = CompanyClassification::where('name','TAM - 4')->first();
                     $companies->whereHas('classifications',function($q) use ($class){
                         $q->where('company_classification_id',$class->id);
                     });
-                }else if($type == "tam_samson4"){
-                    $class = CompanyClassification::where('name','TAM - Samson 4')->first();
+                }else if($type == "som_samson4"){
+                    $class = CompanyClassification::where('name','SOM - 4')->first();
                     $companies->whereHas('classifications',function($q) use ($class){
                         $q->where('company_classification_id',$class->id);
                     });
                 }else if($type == "sam_samson4"){
-                    $class = CompanyClassification::where('name','SAM - Samson 4')->first();
+                    $class = CompanyClassification::where('name','SAM - 4')->first();
                     $companies->whereHas('classifications',function($q) use ($class){
                         $q->where('company_classification_id',$class->id);
                     });
+                }else if($type == "som_samson4_oversized"){
+                    $class = CompanyClassification::where('name','SOM - 4 Oversized')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "sam_samson4_oversized"){
+                    $class = CompanyClassification::where('name','SAM - 4 Oversized')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "sam_4_diff"){
+                    $query = clone $companies;
+                    $companyIds = $query->whereHas('classifications',function($qy){
+                        $qy->where('company_classification_id',5);
+                    })->get()->pluck('id');
+                    $companies->whereHas('classifications',function($q){
+                        $q->where('company_classification_id',2)->where('company_classification_id',"!=",5);
+                    })->whereNotIn('id',$companyIds);
+                }else if($type == "som_4_diff"){
+                    $query = clone $companies;
+                    $companyIds = $query->whereHas('classifications',function($qy){
+                        $qy->where('company_classification_id',6);
+                    })->get()->pluck('id');
+                    $companies->whereHas('classifications',function($q){
+                        $q->where('company_classification_id',3);
+                    })->whereNotIn('id',$companyIds);
                 }
             })->orWhere('custom_classification', strtoupper($type));       
         }
@@ -289,9 +320,15 @@ class DashboardController extends Controller
     public function updateCompany(Request $request,$id){
         $company = Company::find($id);
         $company->revenue = $request->input('revenue');
+        $company->name = $request->input('name');
         $company->headcount = $request->input('headcount');
         $company->wz_code = $request->input('wz_code');
+        $company->domain = $request->input('domain');
+        $company->country = $request->input('country');
+        $company->legal_name = $request->input('legal_name');
         $company->save();
+        $company->classifications()->detach();
+        ClassifyCompaniesJob::dispatchSync([$company->id]);
         return redirect()->route('dashboard');
     }
     public function deleteCompany($id){
@@ -325,56 +362,82 @@ class DashboardController extends Controller
         if($request->has('flag') && $request->flag != "all" && $request->flag != ""){
             $query = $query->where('flag',$request->flag);
         }
-        if($request->has('filter') && $request->filter != "all"){
-            $type = $request->filter;
-            if($type == "tam"){
-                $class = CompanyClassification::where('name','TAM')->first();
-            }else if($type == "sam"){
-                $class = CompanyClassification::where('name','SAM')->first();
-            }else if($type == "som"){
-                $class = CompanyClassification::where('name','SOM')->first();
-            }else if($type == "som_samson4"){
-                $class = CompanyClassification::where('name','SOM - Samson 4')->first();
-            }else if($type == "tam_samson4"){
-                $class = CompanyClassification::where('name','TAM - Samson 4')->first();
-            }else if($type == "sam_samson4"){
-                $class = CompanyClassification::where('name','SAM - Samson 4')->first();
-            }
-            $wzCodes = $class->wz_codes ? json_decode($class->wz_codes) : [];
-            $query = $query->where('revenue','>=',$class->revenue_threshold)->where('revenue','<=',$class->revenue_max)->where('headcount','>=',$class->employee_threshold)->where('headcount','<',$class->employee_max);
-            if(count($wzCodes)){
-                $query = $query->where(function($query) use ($wzCodes){
-                    $query->where('wz_code','LIKE',$wzCodes[0].'%');
-                    for($i=1;$i<count($wzCodes);$i++){
-                        $query->orWhere('wz_code', 'LIKE', $wzCodes[$i].'%');
-                    }
-                });
-            }
-        }
-        $wz_codes = $query->get()->pluck('wz_code');
+        $classes = CompanyClassification::whereIn('name', ['SAM', 'SOM - 4', 'SOM', 'SAM - 4'])->get();
         $counts = [];
-        foreach($wz_codes as $wz_code){
-            if(strlen($wz_code) < 5){
-                continue;
+        foreach($classes as $class){
+            $q = clone $query;
+            $q->whereHas('classifications',function($q) use ($class){
+                $q->where('company_classification_id',$class->id);
+            });
+            $wz_codes = $q->get()->pluck('wz_code');
+            foreach($wz_codes as $wz_code){
+                $wz_code = strtoupper($wz_code."");
+                if(strlen($wz_code) < 5){
+                    continue;
+                }
+                $wz_code = substr($wz_code,0,2);
+                if(!isset($counts[$wz_code])){
+                    $counts[$wz_code] = [
+                        'SAM' => 0,
+                        'SAM - 4' => 0,
+                        'SAM 4 - Diff' => 0,
+                        'SOM' => 0,
+                        'SOM - 4' => 0,
+                        'SOM 4 - Diff' => 0,
+                    ];
+                }
+                if(!isset($counts[$wz_code][$class->name])){
+                    $counts[$wz_code][$class->name] = 0;
+                }
+                $counts[$wz_code][$class->name]++;
             }
-            $wz_code = substr($wz_code,0,2);
-            if(!isset($counts[$wz_code])){
-                $counts[$wz_code] = 0;
-            }
-            $counts[$wz_code]++;
         }
         ksort($counts);
+        foreach($counts as $wz_code => $data){
+            if($counts[$wz_code]['SAM'] > $counts[$wz_code]['SAM - 4']){
+                $counts[$wz_code]['SAM 4 - Diff'] = $counts[$wz_code]['SAM'] - $counts[$wz_code]['SAM - 4'];
+            }
+            if($counts[$wz_code]['SOM'] > $counts[$wz_code]['SOM - 4']){
+                $counts[$wz_code]['SOM 4 - Diff'] = $counts[$wz_code]['SOM'] - $counts[$wz_code]['SOM - 4'];
+            }
+        }
+        $total = [
+            'SAM' => 0,
+            'SAM - 4' => 0,
+            'SAM 4 - Diff' => 0,
+            'SOM' => 0,
+            'SOM - 4' => 0,
+            'SOM 4 - Diff' => 0,
+        ];
+        foreach($counts as $wz_code => $data){
+            foreach($data as $class => $count){
+                $total[$class] += $count;
+            }
+        }
         if($request->expectsJson()){
             arsort($counts);
             $counts = array_slice($counts,0,10,true);
             $data = ['labels' => [], 'data' => []];
             foreach($counts as $key => $value){
                 $data['labels'][] = $key;
-                $data['data'][] = $value;
+                $values = 0;
+                foreach($value as $k => $v){
+                    $values += $v;
+                }
+                $data['data'][] = $values;
             }
             return response()->json($data);
         }
-        return view('wz_code_status',compact('counts', 'countries', 'flags'));
+        $counts['Total'] = $total;
+        $map = [
+            'SAM' => 'sam',
+            'SAM - 4' => 'sam_samson4',
+            'SAM 4 - Diff' => 'sam_4_diff',
+            'SOM' => 'som',
+            'SOM - 4' => 'som_samson4',
+            'SOM 4 - Diff' => 'som_4_diff'
+        ];
+        return view('wz_code_status',compact('counts','countries','flags','map'));
     }
     public function gpt(){
         return view('gpt');

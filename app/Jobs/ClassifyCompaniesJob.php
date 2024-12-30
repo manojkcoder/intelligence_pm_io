@@ -41,16 +41,30 @@ class ClassifyCompaniesJob implements ShouldQueue
 
             foreach ($classifications as $classification) {
                 $wz_codes = $classification->wz_codes;
+                $negative_wz_codes = $classification->negative_wz_codes;
+
+                if (!empty($negative_wz_codes) && collect($negative_wz_codes)->contains(function ($negative_wz_code) use ($company) {
+                    return $company->wz_code == $negative_wz_code;
+                })) {
+                    continue;
+                }
 
                 $matchesRevenue = $company->revenue >= $classification->revenue_threshold && $company->revenue <= $classification->revenue_max;
                 $matchesHeadcount = $company->headcount >= $classification->employee_threshold && $company->headcount <= $classification->employee_max;
                 $matcheswz_code = empty($wz_codes) || collect($wz_codes)->contains(function ($wz_code) use ($company) {
                     return strpos($company->wz_code, $wz_code) === 0;
                 });
-
-                if ($matchesRevenue && $matchesHeadcount && $matcheswz_code) {
-                    $company->classifications()->syncWithoutDetaching([$classification->id]);
+                if(strpos($classification->name, 'Oversized') !== false){
+                    // dd('Oversized');
+                    if (($matchesRevenue || $matchesHeadcount) && $matcheswz_code) {
+                        $company->classifications()->syncWithoutDetaching([$classification->id]);
+                    }
+                }else{
+                    if ($matchesRevenue && $matchesHeadcount && $matcheswz_code) {
+                        $company->classifications()->syncWithoutDetaching([$classification->id]);
+                    }
                 }
+
                 // $matchesNaicsCode = empty($naicsCodes) || collect($naicsCodes)->contains(function ($naicsCode) use ($company) {
                 //     return strpos($company->naics_code, $naicsCode) === 0;
                 // });

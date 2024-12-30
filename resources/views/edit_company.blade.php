@@ -17,22 +17,26 @@
                             <input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ $company->name }}" required autofocus />
                         </div>
                         <div class="sm:w-1/2 sm:pl-2">
+                            <label for="name">Legal Name</label>
+                            <input id="name" class="block mt-1 w-full" type="text" name="legal_name" value="{{ $company->legal_name }}" required autofocus />
+                        </div>
+                        <div class="sm:w-1/2 sm:pr-2">
                             <label for="domain">Domain</label>
                             <input id="domain" class="block mt-1 w-full" type="text" name="domain" value="{{ $company->domain }}" required />
                         </div>
-                        <div class="sm:w-1/2 sm:pr-2">
+                        <div class="sm:w-1/2 sm:pl-2">
                             <label for="country">Country</label>
                             <input id="country" class="block mt-1 w-full" type="text" name="country" value="{{ $company->country }}" required />
                         </div>
-                        <div class="sm:w-1/2 sm:pl-2">
+                        <div class="sm:w-1/2 sm:pr-2">
                             <label for="revenue">Revenue in Mio. Euro</label>
                             <input id="revenue" class="block mt-1 w-full" type="text" name="revenue" value="{{ $company->revenue }}" />
                         </div>
-                        <div class="sm:w-1/2 sm:pr-2">
+                        <div class="sm:w-1/2 sm:pl-2">
                             <label for="wz_code">WZ Code</label>
                             <input id="wz_code" class="block mt-1 w-full" type="text" name="wz_code" value="{{ $company->wz_code }}" />
                         </div>
-                        <div class="sm:w-1/2 sm:pl-2">
+                        <div class="sm:w-1/2 sm:pr-2">
                             <label for="headcount">Headcount</label>
                             <input id="headcount" class="block mt-1 w-full" type="text" name="headcount" value="{{ $company->headcount }}" />
                         </div>

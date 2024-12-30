@@ -12,12 +12,17 @@
                         <option @if(request()->input('filter') == 'all') selected @endif value="all">All Types</option>
                         <option @if(request()->input('filter') == 'deleted') selected @endif value="deleted">Deleted</option>
                         <option  @if(request()->input('filter') == 'incomplete') selected @endif value="incomplete">Incomplete</option>
-                        <option  @if(request()->input('filter') == 'tam') selected @endif value="tam">TAM</option>
-                        <option  @if(request()->input('filter') == 'sam') selected @endif value="sam">SAM</option>
-                        <option  @if(request()->input('filter') == 'som') selected @endif value="som">SOM</option>
-                        <option  @if(request()->input('filter') == 'tam_samson4') selected @endif value="tam_samson4">TAM Samson 4</option>
-                        <option  @if(request()->input('filter') == 'sam_samson4') selected @endif value="sam_samson4">SAM Samson 4</option>
-                        <option  @if(request()->input('filter') == 'som_samson4') selected @endif value="som_samson4">SOM Samson 4</option>
+                        <option  @if(request()->input('filter') == 'no_wz_code') selected @endif value="no_wz_code">No WZ Code</option>
+                        <option  @if(request()->input('filter') == 'tam') selected @endif value="tam">TAM 2</option>
+                        <option  @if(request()->input('filter') == 'sam') selected @endif value="sam">SAM 2</option>
+                        <option  @if(request()->input('filter') == 'som') selected @endif value="som">SOM 2</option>
+                        <option  @if(request()->input('filter') == 'tam_samson4') selected @endif value="tam_samson4">TAM 4</option>
+                        <option  @if(request()->input('filter') == 'sam_samson4') selected @endif value="sam_samson4">SAM 4</option>
+                        <option  @if(request()->input('filter') == 'som_samson4') selected @endif value="som_samson4">SOM 4</option>
+                        <option  @if(request()->input('filter') == 'sam_samson4_oversized') selected @endif value="sam_samson4_oversized">SAM 4 Oversized</option>
+                        <option  @if(request()->input('filter') == 'som_samson4_oversized') selected @endif value="som_samson4_oversized">SOM 4 Oversized</option>                       
+                        <option  @if(request()->input('filter') == 'sam_4_diff') selected @endif value="sam_4_diff">SAM 4 - Diff</option>
+                        <option  @if(request()->input('filter') == 'som_4_diff') selected @endif value="som_4_diff">SOM 4 - Diff</option>
                     </select>
                     <select name="dream" id="dream" class="bg-white   py-2 px-4 border border-transparent flex-1 ">
                         <option value="all">All</option>

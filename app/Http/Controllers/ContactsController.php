@@ -9,7 +9,6 @@ use App\Models\CompanyClassification;
 
 class ContactsController extends Controller
 {
-
     public function getContacts(Request $request){
         $contactsCountQuery = Contact::query();
         $contactsQuery = Contact::with('company');
@@ -39,7 +38,6 @@ class ContactsController extends Controller
                 });
             }
         }
-
         $country = ($request->country ? $request->country : "");
         if($country && $country != "all"){
             $contactsCountQuery->where('country', $country);
@@ -66,13 +64,13 @@ class ContactsController extends Controller
         if($request->input('filter') && $request->input('filter') != "all"){
             if($request->input('filter') == 'tam'){
                 $class = CompanyClassification::where('name','TAM')->first();
-                $wz_codes = $class->wz_codes ? json_decode($class->wz_codes) : [];
+                $wz_codes = $class->wz_codes ?? [];
             }else if($request->input('filter') == 'sam'){
                 $class = CompanyClassification::where('name','SAM')->first();
-                $wz_codes = $class->wz_codes ? json_decode($class->wz_codes) : [];
+                $wz_codes = $class->wz_codes ?? [];
             }else if($request->input('filter') == 'som'){
                 $class = CompanyClassification::where('name','SOM')->first();
-                $wz_codes = $class->wz_codes ? json_decode($class->wz_codes) : [];
+                $wz_codes = $class->wz_codes ?? [];
             }
             $contactsCountQuery->whereHas('company', function($query) use ($wz_codes){
                 $query->where('wz_code','LIKE','%'. $wz_codes[0]);
@@ -89,7 +87,7 @@ class ContactsController extends Controller
         }
         $contactsQuery->withCount(['likeComments as likes_count' => function($query){
             $query->where('is_like', 1);
-        }, 'likeComments as comments_count' => function($query){
+        },'likeComments as comments_count' => function($query){
             $query->where('is_comment', 1);
         }]);
         $search = $request->has('search') ? $request->search['value'] : "";
@@ -99,7 +97,6 @@ class ContactsController extends Controller
         $contacts = $contactsQuery->orderBy("comments_count", "DESC")->offset($offset)->take($limit)->get();
         return json_encode(["recordsTotal" => $totalRecords,"recordsFiltered" => $totalRecords,"data" => $contacts]);
     }
-
     public function allContacts(Request $request){
         $countries = Company::select('country')->distinct()->get()->pluck('country');
         $flags = Company::select('flag')->distinct()->get()->pluck('flag');
@@ -108,7 +105,6 @@ class ContactsController extends Controller
         $pageUrl = route('contacts.get', $params);
         return view('contacts',compact("pageUrl", "companies", "countries", "flags"));
     }
-
     public function contacts(Request $request, $id){
         $company = Company::find($id);
         $contact = new Contact();

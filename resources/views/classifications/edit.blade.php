@@ -93,6 +93,56 @@
                         <x-input-error class="mt-2" :messages="$errors->get('wz_codes')"/>
                     </div>
                     <div class="mb-6">
+                        <x-input-label :value="__('Exclude WZ Codes')"/>
+                        <div class="mb-6">
+                            <div class="data-table overflow-auto">
+                            <table class="mt-2 dataTable data-table" id="table3">
+                                <thead class="bg-light-blue">
+                                    <tr>
+                                        <th class="p-2">Select</th>
+                                        <th class="p-2 flex justify-between">Code</th>
+                                        <th class="p-2">Branch</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($industries as $industry)
+                                        @if(in_array($industry['wz_code'],$classification->negative_wz_codes))
+                                            <tr class="border-b">
+                                                <td data-title="Select" class="p-2">
+                                                    <x-text-input name="negative_wz_codes[]" type="checkbox" :value="$industry['wz_code']" :id="'code-'.$industry['wz_code']" :checked="in_array($industry['wz_code'],$classification->negative_wz_codes)"/>
+                                                </td>
+                                                <td  data-title="Code" class="p-2 flex fle-wrap">
+                                                    <x-input-label :for="'code-'.$industry['wz_code']" :value="$industry['wz_code']"/>
+                                                </td>
+                                                <td data-title="Branch"  class="p-2">
+                                                    <x-input-label :for="'code-'.$industry['wz_code']" :value="$industry['branch']"/>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                    @foreach($industries as $industry)
+                                        @if(!in_array($industry['wz_code'],$classification->negative_wz_codes))
+                                            <tr class="border-b">
+                                                <td data-title="Select" class="p-2">
+                                                    <x-text-input name="negative_wz_codes[]" type="checkbox" :value="$industry['wz_code']" :id="'code-'.$industry['wz_code']" :checked="in_array($industry['wz_code'],$classification->negative_wz_codes)"/>
+                                                </td>
+                                                <td  data-title="Code" class="p-2 flex fle-wrap">
+                                                    <x-input-label :for="'code-'.$industry['wz_code']" :value="$industry['wz_code']"/>
+                                                </td>
+                                                <td data-title="Branch"  class="p-2">
+                                                    <x-input-label :for="'code-'.$industry['wz_code']" :value="$industry['branch']"/>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                            <x-input-error class="mt-2" :messages="$errors->get('negative_wz_codes')"/>
+                        </div>
+                        <x-input-error class="mt-2" :messages="$errors->get('negative_wz_codes')"/>
+                    </div>
+                    <div class="mb-6">
                         <x-input-label :value="__('NAICS Codes')"/>
                         <div class="mb-6">
                             <div class="data-table overflow-auto">
@@ -155,6 +205,7 @@
         $(document).ready(function(){
             table1 = $('#table1').DataTable();
             table2 = $('#table2').DataTable();
+            table3 = $('#table3').DataTable();
         });
         function save(){
             formdata = $('form').serialize();
@@ -164,6 +215,11 @@
                 }
             });
             table2.$('input[type="checkbox"]').each(function(){
+                if($(this).is(':checked')){
+                    formdata += '&'+$(this).attr('name')+'='+$(this).val();
+                }
+            });
+            table3.$('input[type="checkbox"]').each(function(){
                 if($(this).is(':checked')){
                     formdata += '&'+$(this).attr('name')+'='+$(this).val();
                 }

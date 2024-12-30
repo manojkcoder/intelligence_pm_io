@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 class Industry extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'branch',
         'associated_industries',
