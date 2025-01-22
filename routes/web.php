@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CompanyClassifications;
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\IndustryController;
@@ -66,7 +67,7 @@ Route::post('/naics-industries',[NAICSIndustryController::class,'updateIndustrie
 Route::get('/wz_code_status',[DashboardController::class,'wz_code_status'])->middleware(['auth','verified'])->name('wz_code_status');
 Route::get('/gpt',[DashboardController::class,'gpt'])->middleware(['auth','verified'])->name('gpt');
 Route::post('/prompt',[DashboardController::class,'prompt'])->middleware(['auth','verified'])->name('prompt');
-
+Route::get('/settings',[SettingController::class,'index'])->middleware(['auth','verified'])->name('settings');
 // Route::get('/collate_contacts',function(){
     // list all folders under storage/contacts
     // $folders = Storage::directories('contacts');

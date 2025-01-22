@@ -15,14 +15,8 @@
         <script src="https://cdn.datatables.net/buttons/3.1.1/js/buttons.dataTables.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/3.1.1/js/buttons.html5.min.js"></script>
-        
-        <!-- fontawesome 5.15.3 -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-         
-
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-     
+        @vite(['resources/css/app.css','resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
