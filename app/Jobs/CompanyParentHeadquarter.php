@@ -160,7 +160,7 @@ class CompanyParentHeadquarter implements ShouldQueue
                     "messages" => [
                         [
                             "role" => "user",
-                            "content" => "Based on the company name '".$company."', provide only the location of the parent company's headquarters as the output."
+                            "content" => "Provide only the location of the parent company's headquarters based on '".$company."'. Do not provide any extra info."
                         ]
                     ],
                     "max_tokens" => 2000,

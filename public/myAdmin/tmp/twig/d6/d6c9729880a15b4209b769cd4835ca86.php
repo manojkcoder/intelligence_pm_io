@@ -178,6 +178,6 @@ echo _gettext("Git information missing!");
 
     public function getSourceContext()
     {
-        return new Source("", "footer.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/footer.twig");
+        return new Source("", "footer.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/footer.twig");
     }
 }

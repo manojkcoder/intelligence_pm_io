@@ -86,6 +86,6 @@ echo _gettext("No tables found in database.");
 
     public function getSourceContext()
     {
-        return new Source("", "navigation/tree/path.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/navigation/tree/path.twig");
+        return new Source("", "navigation/tree/path.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/navigation/tree/path.twig");
     }
 }

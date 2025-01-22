@@ -89,6 +89,6 @@ echo _gettext("Go");
 
     public function getSourceContext()
     {
-        return new Source("", "table/insert/get_head_and_foot_of_insert_row_table.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/table/insert/get_head_and_foot_of_insert_row_table.twig");
+        return new Source("", "table/insert/get_head_and_foot_of_insert_row_table.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/table/insert/get_head_and_foot_of_insert_row_table.twig");
     }
 }

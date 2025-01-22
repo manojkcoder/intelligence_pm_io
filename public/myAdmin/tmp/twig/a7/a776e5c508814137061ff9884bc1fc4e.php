@@ -118,6 +118,6 @@ echo _gettext("No");
 
     public function getSourceContext()
     {
-        return new Source("", "table/delete/confirm.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/table/delete/confirm.twig");
+        return new Source("", "table/delete/confirm.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/table/delete/confirm.twig");
     }
 }

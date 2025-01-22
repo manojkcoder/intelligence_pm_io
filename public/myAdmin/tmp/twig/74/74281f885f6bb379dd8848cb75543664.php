@@ -282,6 +282,6 @@ class __TwigTemplate_90dd9ce295651132b37d822c7c4a899e extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/checkbox_and_links.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/display/results/checkbox_and_links.twig");
+        return new Source("", "display/results/checkbox_and_links.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/display/results/checkbox_and_links.twig");
     }
 }

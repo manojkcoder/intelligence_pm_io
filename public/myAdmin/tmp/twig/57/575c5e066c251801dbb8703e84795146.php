@@ -115,6 +115,6 @@ echo _gettext("Go back");
 
     public function getSourceContext()
     {
-        return new Source("", "modals/index_dialog_modal.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/modals/index_dialog_modal.twig");
+        return new Source("", "modals/index_dialog_modal.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/modals/index_dialog_modal.twig");
     }
 }

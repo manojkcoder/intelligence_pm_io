@@ -489,6 +489,6 @@ echo _gettext("Edit partitioning");
 
     public function getSourceContext()
     {
-        return new Source("", "table/structure/display_partitions.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/table/structure/display_partitions.twig");
+        return new Source("", "table/structure/display_partitions.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/table/structure/display_partitions.twig");
     }
 }

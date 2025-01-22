@@ -215,6 +215,6 @@ echo _pgettext("Last page", "End");
 
     public function getSourceContext()
     {
-        return new Source("", "list_navigator.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/list_navigator.twig");
+        return new Source("", "list_navigator.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/list_navigator.twig");
     }
 }

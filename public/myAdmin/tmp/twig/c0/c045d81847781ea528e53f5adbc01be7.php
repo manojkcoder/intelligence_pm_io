@@ -60,6 +60,6 @@ class __TwigTemplate_6b965c234ea03d43250a2e015c7fb944 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "table/insert/get_html_for_insert_edit_form_header.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/table/insert/get_html_for_insert_edit_form_header.twig");
+        return new Source("", "table/insert/get_html_for_insert_edit_form_header.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/table/insert/get_html_for_insert_edit_form_header.twig");
     }
 }

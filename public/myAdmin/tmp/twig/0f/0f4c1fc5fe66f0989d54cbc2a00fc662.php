@@ -72,6 +72,6 @@ echo _gettext("There are no favorite tables.");
 
     public function getSourceContext()
     {
-        return new Source("", "recent_favorite_table_no_tables.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/recent_favorite_table_no_tables.twig");
+        return new Source("", "recent_favorite_table_no_tables.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/recent_favorite_table_no_tables.twig");
     }
 }

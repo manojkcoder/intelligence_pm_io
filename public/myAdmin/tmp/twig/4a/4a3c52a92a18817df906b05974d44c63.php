@@ -227,6 +227,6 @@ echo _gettext("Continue");
 
     public function getSourceContext()
     {
-        return new Source("", "database/structure/check_all_tables.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/database/structure/check_all_tables.twig");
+        return new Source("", "database/structure/check_all_tables.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/database/structure/check_all_tables.twig");
     }
 }

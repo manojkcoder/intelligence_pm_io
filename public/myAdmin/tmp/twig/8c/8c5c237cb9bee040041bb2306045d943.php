@@ -85,6 +85,6 @@ echo _gettext("Close");
 
     public function getSourceContext()
     {
-        return new Source("", "modals/preview_sql_confirmation.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/modals/preview_sql_confirmation.twig");
+        return new Source("", "modals/preview_sql_confirmation.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/modals/preview_sql_confirmation.twig");
     }
 }

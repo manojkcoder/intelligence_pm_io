@@ -71,6 +71,6 @@ class __TwigTemplate_8bab762677d90d3596e46d27a13f06b1 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/row_data.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/display/results/row_data.twig");
+        return new Source("", "display/results/row_data.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/display/results/row_data.twig");
     }
 }

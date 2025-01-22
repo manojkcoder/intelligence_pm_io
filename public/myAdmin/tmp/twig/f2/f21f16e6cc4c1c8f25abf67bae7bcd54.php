@@ -1510,6 +1510,6 @@ echo _gettext("Partitions");
 
     public function getSourceContext()
     {
-        return new Source("", "table/structure/display_structure.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/table/structure/display_structure.twig");
+        return new Source("", "table/structure/display_structure.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/table/structure/display_structure.twig");
     }
 }

@@ -250,6 +250,6 @@ echo _gettext("Switch to dark theme");
 
     public function getSourceContext()
     {
-        return new Source("", "console/display.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/console/display.twig");
+        return new Source("", "console/display.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/console/display.twig");
     }
 }

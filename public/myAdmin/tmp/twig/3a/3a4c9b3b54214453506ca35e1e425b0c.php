@@ -289,6 +289,6 @@ echo _gettext("Default");
 
     public function getSourceContext()
     {
-        return new Source("", "database/structure/body_for_table_summary.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/database/structure/body_for_table_summary.twig");
+        return new Source("", "database/structure/body_for_table_summary.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/database/structure/body_for_table_summary.twig");
     }
 }

@@ -98,6 +98,6 @@ echo _gettext("Query results operations");
 
     public function getSourceContext()
     {
-        return new Source("", "sql/no_results_returned.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/sql/no_results_returned.twig");
+        return new Source("", "sql/no_results_returned.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/sql/no_results_returned.twig");
     }
 }

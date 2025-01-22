@@ -93,6 +93,6 @@ class __TwigTemplate_5c374806bfae443ad96ce8f5b8b59107 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/table_navigation_button.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/display/results/table_navigation_button.twig");
+        return new Source("", "display/results/table_navigation_button.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/display/results/table_navigation_button.twig");
     }
 }

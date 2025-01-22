@@ -61,6 +61,6 @@ class __TwigTemplate_563c36ccde0505afd4a212dde54ebb53 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "login/footer.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/login/footer.twig");
+        return new Source("", "login/footer.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/login/footer.twig");
     }
 }

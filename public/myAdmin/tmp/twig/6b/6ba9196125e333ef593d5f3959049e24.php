@@ -88,6 +88,6 @@ echo _gettext("Create");
 
     public function getSourceContext()
     {
-        return new Source("", "database/create_table.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/database/create_table.twig");
+        return new Source("", "database/create_table.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/database/create_table.twig");
     }
 }

@@ -57,6 +57,6 @@ class __TwigTemplate_084ae912bcb5aeea7ae0888e7bb733e5 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/empty_display.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/display/results/empty_display.twig");
+        return new Source("", "display/results/empty_display.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/display/results/empty_display.twig");
     }
 }

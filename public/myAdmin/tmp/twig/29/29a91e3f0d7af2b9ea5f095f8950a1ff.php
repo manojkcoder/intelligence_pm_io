@@ -59,6 +59,6 @@ class __TwigTemplate_3e039bc1d307b818aa42ada048c5e614 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "database/structure/collation_definition.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/database/structure/collation_definition.twig");
+        return new Source("", "database/structure/collation_definition.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/database/structure/collation_definition.twig");
     }
 }

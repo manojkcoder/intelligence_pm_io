@@ -69,6 +69,6 @@ class __TwigTemplate_f5dc621fa283e801c04e7848ff2721a1 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/page_selector.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/display/results/page_selector.twig");
+        return new Source("", "display/results/page_selector.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/display/results/page_selector.twig");
     }
 }

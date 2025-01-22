@@ -332,7 +332,6 @@ Route::get('/update-contacts-qa',function(){
     //     }
     // }
 });
-
 Route::get('/update-contacts-profile',function(){
     $contacts = Contact::whereNotNull('profile_response')->where('processed',0)->get();
     foreach($contacts as $contact){

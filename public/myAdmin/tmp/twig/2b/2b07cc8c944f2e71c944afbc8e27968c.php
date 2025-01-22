@@ -79,6 +79,6 @@ echo _gettext("With selected:");
 
     public function getSourceContext()
     {
-        return new Source("", "select_all.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/select_all.twig");
+        return new Source("", "select_all.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/select_all.twig");
     }
 }

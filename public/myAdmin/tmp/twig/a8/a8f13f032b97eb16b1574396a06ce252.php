@@ -264,6 +264,6 @@ echo _gettext("Action");
 
     public function getSourceContext()
     {
-        return new Source("", "database/structure/table_header.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/database/structure/table_header.twig");
+        return new Source("", "database/structure/table_header.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/database/structure/table_header.twig");
     }
 }

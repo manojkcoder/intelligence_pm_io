@@ -136,6 +136,6 @@ class __TwigTemplate_3de4523cca3d73fef80bb4f9734d691a extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "database/structure/index.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/database/structure/index.twig");
+        return new Source("", "database/structure/index.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/database/structure/index.twig");
     }
 }

@@ -67,6 +67,6 @@ class __TwigTemplate_9db430d4ab18802b0183880db5d39ab3 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "config/form_display/group_header.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/config/form_display/group_header.twig");
+        return new Source("", "config/form_display/group_header.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/config/form_display/group_header.twig");
     }
 }

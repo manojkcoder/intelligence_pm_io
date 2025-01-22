@@ -64,6 +64,6 @@ class __TwigTemplate_fe827019cb9e487f8c3927b719c65fef extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "table/search/column_comparison_operators.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/table/search/column_comparison_operators.twig");
+        return new Source("", "table/search/column_comparison_operators.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/table/search/column_comparison_operators.twig");
     }
 }

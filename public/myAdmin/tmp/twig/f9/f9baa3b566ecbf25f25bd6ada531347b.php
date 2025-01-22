@@ -72,6 +72,6 @@ echo _gettext("Containing the word:");
 
     public function getSourceContext()
     {
-        return new Source("", "filter.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/filter.twig");
+        return new Source("", "filter.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/filter.twig");
     }
 }

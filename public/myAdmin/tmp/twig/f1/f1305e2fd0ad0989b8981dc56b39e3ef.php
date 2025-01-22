@@ -485,6 +485,6 @@ echo _gettext("Close");
 
     public function getSourceContext()
     {
-        return new Source("", "sql/query.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/sql/query.twig");
+        return new Source("", "sql/query.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/sql/query.twig");
     }
 }

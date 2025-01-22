@@ -87,6 +87,6 @@ echo _gettext("Delete settings");
 
     public function getSourceContext()
     {
-        return new Source("", "preferences/autoload.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/preferences/autoload.twig");
+        return new Source("", "preferences/autoload.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/preferences/autoload.twig");
     }
 }

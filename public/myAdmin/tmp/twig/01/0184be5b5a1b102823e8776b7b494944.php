@@ -177,6 +177,6 @@ echo _gettext("Close");
 
     public function getSourceContext()
     {
-        return new Source("", "table/insert/actions_panel.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/table/insert/actions_panel.twig");
+        return new Source("", "table/insert/actions_panel.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/table/insert/actions_panel.twig");
     }
 }

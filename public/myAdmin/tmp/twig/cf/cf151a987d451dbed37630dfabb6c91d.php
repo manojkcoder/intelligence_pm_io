@@ -114,6 +114,6 @@ class __TwigTemplate_904307a5a5f694a38d058a83a4fa8120 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "table/insert/continue_insertion_form.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/table/insert/continue_insertion_form.twig");
+        return new Source("", "table/insert/continue_insertion_form.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/table/insert/continue_insertion_form.twig");
     }
 }

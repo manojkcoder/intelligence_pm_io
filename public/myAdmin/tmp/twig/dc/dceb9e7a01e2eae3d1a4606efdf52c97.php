@@ -105,6 +105,6 @@ echo _gettext("Error");
 
     public function getSourceContext()
     {
-        return new Source("", "error/generic.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/error/generic.twig");
+        return new Source("", "error/generic.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/error/generic.twig");
     }
 }

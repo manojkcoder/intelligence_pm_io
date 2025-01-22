@@ -66,7 +66,7 @@ class CompanyParentName implements ShouldQueue
                     "messages" => [
                         [
                             "role" => "user",
-                            "content" => "Based on the company name '".$company."', output only the parent company's name."
+                            "content" => "Output only the parent company's name based on '".$company."'. Do not provide any extra info."
                         ]
                     ],
                     "max_tokens" => 2000,

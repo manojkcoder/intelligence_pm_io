@@ -638,6 +638,6 @@ echo _gettext("Binary - do not edit");
 
     public function getSourceContext()
     {
-        return new Source("", "table/insert/column_row.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/table/insert/column_row.twig");
+        return new Source("", "table/insert/column_row.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/table/insert/column_row.twig");
     }
 }

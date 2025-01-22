@@ -471,6 +471,6 @@ echo _gettext("Last check");
 
     public function getSourceContext()
     {
-        return new Source("", "table/structure/display_table_stats.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/table/structure/display_table_stats.twig");
+        return new Source("", "table/structure/display_table_stats.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/table/structure/display_table_stats.twig");
     }
 }

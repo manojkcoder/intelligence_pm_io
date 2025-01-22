@@ -150,6 +150,6 @@ echo _gettext("Pick from Central Columns");
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/column_name.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/columns_definitions/column_name.twig");
+        return new Source("", "columns_definitions/column_name.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/columns_definitions/column_name.twig");
     }
 }

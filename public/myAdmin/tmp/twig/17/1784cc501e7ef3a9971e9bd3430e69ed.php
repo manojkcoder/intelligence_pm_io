@@ -558,6 +558,6 @@ echo _gettext("in use");
 
     public function getSourceContext()
     {
-        return new Source("", "database/structure/structure_table_row.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/database/structure/structure_table_row.twig");
+        return new Source("", "database/structure/structure_table_row.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/database/structure/structure_table_row.twig");
     }
 }

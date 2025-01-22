@@ -115,6 +115,6 @@ class __TwigTemplate_5145b2efc254bde36d37001dbe5e8f76 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/column_attribute.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/columns_definitions/column_attribute.twig");
+        return new Source("", "columns_definitions/column_attribute.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/columns_definitions/column_attribute.twig");
     }
 }

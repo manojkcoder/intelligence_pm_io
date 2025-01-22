@@ -308,6 +308,6 @@ class __TwigTemplate_3fd4b8b02146817fcbd06403ccd5cfd3 extends Template
 
     public function getSourceContext()
     {
-        return new Source("", "table/search/input_box.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/table/search/input_box.twig");
+        return new Source("", "table/search/input_box.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/table/search/input_box.twig");
     }
 }

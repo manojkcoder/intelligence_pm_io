@@ -759,6 +759,6 @@ echo _gettext("Query results operations");
 
     public function getSourceContext()
     {
-        return new Source("", "display/results/table.twig", "/home/forge/kimia.solution21-websites.com/public/myAdmin/templates/display/results/table.twig");
+        return new Source("", "display/results/table.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/display/results/table.twig");
     }
 }
