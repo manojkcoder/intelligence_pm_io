@@ -22,7 +22,7 @@ class DashboardController extends Controller
         $pageUrl = route('companies.all',$params);
         return view('dashboard',compact("pageUrl","countries","flags"));
     }
-    public function dream($id, Request $request){
+    public function dream($id,Request $request){
         $company = Company::find($id);
         $company->dream = $request->input('checked') == 'true' ? 1 : 0;
         $company->save();
@@ -134,9 +134,8 @@ class DashboardController extends Controller
                 }
             })->orWhere('custom_classification', strtoupper($type));       
         }
-
         $totalRecords = $companies->select("id")->count();
-        $companies = $companies->select(["id","dream","name","domain","legal_name","country","revenue","wz_code","headcount","processed"])->orderBy("name","ASC")->offset($offset)->take($limit)->get();
+        $companies = $companies->select(["id","dream","name","domain","legal_name","country","revenue","wz_code","headcount","processed","custom_classification"])->orderBy("name","ASC")->offset($offset)->take($limit)->get();
         if(!$request->has('export')){
             $companies = $companies->map(function($company){
                 $accountType = [];
@@ -310,7 +309,7 @@ class DashboardController extends Controller
         return json_encode(["recordsTotal" => count($outputData),"recordsFiltered" => count($outputData),"data" => $outputData]);
     }
     public function viewCompany($id){
-        $company = Company::with('contacts')->withTrashed()->find($id);
+        $company = Company::with('contacts','quiz')->withTrashed()->find($id);
         return view('company',compact('company'));
     }
     public function editCompany($id){
@@ -377,7 +376,9 @@ class DashboardController extends Controller
                 }
                 $wz_code = substr($wz_code,0,2);
                 if(!isset($counts[$wz_code])){
+                    $industry = Industry::where('wz_code',$wz_code)->first();
                     $counts[$wz_code] = [
+                        "name" => ($industry ? $industry->branch : $wz_code),
                         'SAM' => 0,
                         'SAM - 4' => 0,
                         'SAM 4 - Diff' => 0,
@@ -402,6 +403,7 @@ class DashboardController extends Controller
             }
         }
         $total = [
+            "name" => "",
             'SAM' => 0,
             'SAM - 4' => 0,
             'SAM 4 - Diff' => 0,
@@ -411,7 +413,9 @@ class DashboardController extends Controller
         ];
         foreach($counts as $wz_code => $data){
             foreach($data as $class => $count){
-                $total[$class] += $count;
+                if($class != "name"){
+                    $total[$class] += $count;
+                }
             }
         }
         if($request->expectsJson()){
@@ -422,7 +426,9 @@ class DashboardController extends Controller
                 $data['labels'][] = $key;
                 $values = 0;
                 foreach($value as $k => $v){
-                    $values += $v;
+                    if($k != "name"){
+                        $values += $v;
+                    }
                 }
                 $data['data'][] = $values;
             }
@@ -476,4 +482,3 @@ class DashboardController extends Controller
         
     }
 }
-

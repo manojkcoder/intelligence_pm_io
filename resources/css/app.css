@@ -3,7 +3,7 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
-
+.capitalize{text-transform:capitalize;}
 .btn-bg-primary, .btn-bg-secondary:hover {background: #5EA5E4;line-height: normalnpm;}
 .btn-bg-primary:hover, .btn-bg-secondary {background: #1F3042; line-height: normalnpm;}
 .btn-bg-option{background:#06851b;line-height: normalnpm;}

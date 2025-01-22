@@ -25,15 +25,15 @@ class IndustryController extends Controller
             $industries = Industry::all();
         }else if($request->has('tam')){
             $class = CompanyClassification::where('name','TAM')->first();
-            $class->wz_codes = $class->wz_codes ? json_decode($class->wz_codes) : [];
+            $class->wz_codes = $class->wz_codes ? $class->wz_codes : [];
             $industries = Industry::whereIn('wz_code',$class->wz_codes)->get();
         }else if($request->has('sam')){
             $class = CompanyClassification::where('name','SAM')->first();
-            $class->wz_codes = $class->wz_codes ? json_decode($class->wz_codes) : [];
+            $class->wz_codes = $class->wz_codes ? $class->wz_codes : [];
             $industries = Industry::whereIn('wz_code',$class->wz_codes)->get();
         }else if($request->has('som')){
             $class = CompanyClassification::where('name','SOM')->first();
-            $class->wz_codes = $class->wz_codes ? json_decode($class->wz_codes) : [];
+            $class->wz_codes = $class->wz_codes ? $class->wz_codes : [];
             $industries = Industry::whereIn('wz_code',$class->wz_codes)->get();
         }else{
             $industries = Industry::all();

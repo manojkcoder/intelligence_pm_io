@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -9,21 +8,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\NAICSIndustryController;
+use App\Models\Activity;
 use App\Models\Company;
+use App\Models\CompanyClassification;
 use App\Models\Industry;
 use App\Models\Contact;
+use App\Models\ContactJob;
+use App\Models\ContactLicence;
+use App\Models\ContactSchool;
 use App\Models\LikeComment;
+use App\Models\QuizResponse;
+use App\Models\School;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use GuzzleHttp\Client;
 
 Route::get('/',function(){
     return view('welcome');
 });
-
 Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware(['auth','verified'])->name('dashboard');
 Route::get('/companies/all',[DashboardController::class,'companies'])->middleware(['auth','verified'])->name('companies.all');
 Route::get('/stats',[DashboardController::class,'stats'])->middleware(['auth','verified'])->name('stats');
 Route::any('/stats/all',[DashboardController::class,'allStats'])->middleware(['auth','verified'])->name('stats.all');
-
 Route::get('/accounts/{id}',[DashboardController::class,'viewCompany'])->middleware(['auth','verified'])->name('viewCompany');
 Route::delete('/deleteCompany/{id}',[DashboardController::class,'deleteCompany'])->middleware(['auth','verified'])->name('deleteCompany');
 Route::delete('/trashedCompany/{id}',[DashboardController::class,'trashedCompany'])->middleware(['auth','verified'])->name('trashedCompany');
@@ -35,6 +41,7 @@ Route::delete('/accounts/edit/{id}',[DashboardController::class,'destroyCompany'
 
 Route::get('/contacts',[ContactsController::class,'allContacts'])->middleware(['auth','verified'])->name('contacts.all');
 Route::get('/getContacts',[ContactsController::class,'getContacts'])->middleware(['auth','verified'])->name('contacts.get');
+Route::get('/contact/{id}',[ContactsController::class,'viewContact'])->middleware(['auth','verified'])->name('viewContact');
 Route::get('/accounts/{id}/contacts',[ContactsController::class,'contacts'])->middleware(['auth','verified'])->name('contacts');
 Route::post('/accounts/{id}/contacts',[ContactsController::class,'createContact'])->middleware(['auth','verified'])->name('createContact');
 Route::get('/accounts/{id}/contacts/edit/{contact_id}',[ContactsController::class,'editContact'])->middleware(['auth','verified'])->name('editContact');
@@ -57,40 +64,37 @@ Route::patch('/naics-industries/update/{id}',[NAICSIndustryController::class,'up
 Route::post('/naics-industries',[NAICSIndustryController::class,'updateIndustriesStatus'])->middleware(['auth','verified'])->name('naics_industries.updateStatus');
 
 Route::get('/wz_code_status',[DashboardController::class,'wz_code_status'])->middleware(['auth','verified'])->name('wz_code_status');
-
 Route::get('/gpt',[DashboardController::class,'gpt'])->middleware(['auth','verified'])->name('gpt');
 Route::post('/prompt',[DashboardController::class,'prompt'])->middleware(['auth','verified'])->name('prompt');
 
-
 // Route::get('/collate_contacts',function(){
-//     // list all folders under storage/contacts
-//     $folders = Storage::directories('contacts');
-//     foreach($folders as $folder){
-//         $company_id = basename($folder);
-//         echo 'Collating contacts for company ' . $company_id . '<br>';
-//         // check if already collated
-//         if(Storage::exists('contacts/'.$company_id.'.json')){
-//             echo 'Contacts for company ' . $company_id . ' already collated <br>';
-//             continue;
-//         }
-//         $contacts = [];
-//         $files = Storage::files('contacts/'.$company_id);
-//         foreach($files as $file){
-//             $file_data = Storage::get($file);
-//             $json_data = json_decode($file_data,true);
-//             $contacts = array_merge($contacts,$json_data);
-//         }
-//         // filter duplicate contacts based on id
-//         try{
-//             $contacts = collect($contacts)->unique('id')->values()->all();
-//             Storage::disk('local')->put('contacts/'.$company_id.'.json',json_encode($contacts));
-//             echo 'Collated contacts for company ' . $company_id .',total: '.count($contacts). '<br>';
-//         }catch(\Exception $e){
-//             echo 'Error collating contacts for company ' . $company_id . ' ' . $e->getMessage() . '<br>';
-//         }
-//     }
+    // list all folders under storage/contacts
+    // $folders = Storage::directories('contacts');
+    // foreach($folders as $folder){
+    //     $company_id = basename($folder);
+    //     echo 'Collating contacts for company ' . $company_id . '<br>';
+    //     // check if already collated
+    //     if(Storage::exists('contacts/'.$company_id.'.json')){
+    //         echo 'Contacts for company ' . $company_id . ' already collated <br>';
+    //         continue;
+    //     }
+    //     $contacts = [];
+    //     $files = Storage::files('contacts/'.$company_id);
+    //     foreach($files as $file){
+    //         $file_data = Storage::get($file);
+    //         $json_data = json_decode($file_data,true);
+    //         $contacts = array_merge($contacts,$json_data);
+    //     }
+    //     // filter duplicate contacts based on id
+    //     try{
+    //         $contacts = collect($contacts)->unique('id')->values()->all();
+    //         Storage::disk('local')->put('contacts/'.$company_id.'.json',json_encode($contacts));
+    //         echo 'Collated contacts for company ' . $company_id .',total: '.count($contacts). '<br>';
+    //     }catch(\Exception $e){
+    //         echo 'Error collating contacts for company ' . $company_id . ' ' . $e->getMessage() . '<br>';
+    //     }
+    // }
 // });
-
 Route::get('/map_classifications',function(){
     $classifications = \App\Models\CompanyClassification::get();
     $map = Storage::get('wz_code_map.json');
@@ -158,7 +162,7 @@ Route::get('/missing_wz_codes',function(){
 });
 Route::get('/de_dupe_companies',function(){
     $duplicates = Company::select('legal_name',DB::raw('COUNT(*) as count'))->whereNotNull('legal_name')->groupBy('legal_name')->having('count','>',1)->pluck('legal_name');
-    foreach ($duplicates as $legalName){
+    foreach($duplicates as $legalName){
         $companies = Company::where('legal_name',$legalName)->get();
         $companies = $companies->sortBy(function ($company){
             return $company->getAttributesCount();
@@ -195,7 +199,6 @@ Route::get('/classify',function(){
     }
     dd('Classifications have been scheduled');
 })->name('classify');
-    
 Route::get('/import_cognism_companies',function(){
     $data = Storage::disk('local')->get('companies/all.json');
     $companies = json_decode($data,true);
@@ -254,24 +257,416 @@ Route::get('/import_likes_comments',function(){
     }
 
 });
+Route::post('/store-linkedin-profile-data',function(){
+    $data = request()->all();
+    $linkedinUrl = rtrim(urldecode($data['payload']['url']),'/');
+    $linkedinUrl = str_replace('https://www.linkedin.com','https://linkedin.com',$linkedinUrl);
+    $contact = Contact::where('linkedin',$linkedinUrl)->first();
+    if($contact){
+        $contact->connections_data = json_encode($data['payload']['results']);
+        $contact->connection_processed = 1;
+        \App\Jobs\ContactConnection::dispatch($contact->id,$data['payload']['results']);
+        $contact->save();
+    }
+    return json_encode(["status" => "success","message" => "Data successfully stored in the database"]);
+})->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+Route::get('/update-contacts',function(){
+    // $contacts = Contact::where('processed',1)->whereNull('company_id')->take(100)->get();
+    // foreach($contacts as $contact){
+        // $dataResponse = json_decode($contact->profile_response,true);
+        // if(isset($dataResponse['jobs']) && !empty($dataResponse['jobs'])){
+        //     $job = $dataResponse['jobs'][0];
+        //     if(isset($job['jobTitle']) && !empty($job['jobTitle'])){
+        //         $contact->position = $job['jobTitle'];
+        //     }
+        // }
+        // \App\Jobs\GenderResearch::dispatch($contact->id,$contact->first_name . ' '. $contact->last_name,$contact->company_name);
+        // \App\Jobs\DomainResearch::dispatch($contact->id,$contact->first_name . ' '. $contact->last_name,$contact->contact,$contact->company_name);
+        // $company = Company::whereRaw('LOWER(legal_name) = ?',[trim(strtolower($contact->company_name))])->first();
+        // if($company){
+        //     $contact->company_id = $company->id;
+        //     $contact->domain = $company->domain;
+        //     $contact->save();
+        // }
+        // $company = Company::where('domain',$contact->domain)->first();
+        // if($company){
+        //     $contact->company_id = $company->id;
+        //     $contact->domain = $company->domain;
+        //     $contact->save();
+        // }
+        // $company = Company::where('id',$contact->company_id)->first();
+        // if($company){
+        //     $contact->company_id = $company->id;
+        //     $contact->domain = $company->domain;
+        //     $contact->company_name = $company->name;
+        //     $contact->save();
+        // }
+    // }
+    $jsonPath = Storage::path('public/profiles2.json');
+    $contacts = json_decode(File::get($jsonPath),true);
+    foreach($contacts as $contact){
+        if(isset($contact['general']) && isset($contact['general']['profileUrl'])){
+            $linkedinUrl = rtrim(urldecode($contact['general']['profileUrl']),'/');
+            $linkedinUrl = str_replace('https://www.linkedin.com','https://linkedin.com',$linkedinUrl);
+            $contactExist = Contact::where('linkedin',$linkedinUrl)->first();
+            if($contactExist){
+                if($contactExist->processed == 0 || empty($contactExist->profile_response)){
+                    $contactExist->profile_response = json_encode($contact);
+                    $contactExist->save();
+                }
+            }else{
+                $contactData = new Contact();
+                $contactData->profile_response = json_encode($contact);
+                $contactData->processed = 0;
+                $contactData->save();
+            }
+        }
+    }
+});
+Route::get('/update-contacts-qa',function(){
+    // $parentCompanies = QuizResponse::where('question_id',15)->where('answer','yes')->orderBy('company_id','asc')->get();
+    // foreach($parentCompanies as $parentCompany){
+    //     $companyHeadquarter = QuizResponse::where('company_id',$parentCompany->company_id)->where('question_id',17)->first();
+    //     if(!$companyHeadquarter){
+    //         \App\Jobs\CompanyParentHeadquarter::dispatch($parentCompany->company_id)->onQueue('perplexity');
+    //     }
+    // }
+    // $parentCompanies = QuizResponse::where('question_id',16)->where('answer','LIKE','%**%')->orderBy('company_id','asc')->get();
+    // foreach($parentCompanies as $parentCompany){
+    //     $companyName = explode('**',$parentCompany->answer);
+    //     $parentCompany->answer = $companyName[1];
+    //     $parentCompany->save();
+    // }
+    // $parentCompanies = QuizResponse::where('question_id',16)->where('answer','LIKE','%[%')->orderBy('company_id','asc')->get();
+    // foreach($parentCompanies as $parentCompany){
+    //     $answer = str_replace(['[1]','[2]','[3]','[4]','[5]','[6]','[7]','[8]','[9]'],'',$parentCompany->answer);
+    //     $parentCompany->answer = $answer;
+    //     $parentCompany->save();
+    // }
 
-// Route::get('/import_contacts',function(){
-//     $path = Storage::path('contacts.csv');
-//     $csv = fopen($path,'r');
-//     $header = fgetcsv($csv,1000,',');
-//     while($row = fgetcsv($csv,1000,',')){
-//         Contact::create([
-//             'first_name' => $row[1],
-//             'last_name' => $row[2],
-//             'email_domain' => $row[3],
-//             'approach' => $row[5],
-//             'target_category' => $row[6],
-//             'linkedin_hub_url' => $row[7],
-//             'linkedin' => $row[8],
-//             'country' => $row[9] ?? 'Germany',
-//         ]);
+    // $parentCompanies = QuizResponse::where('question_id',16)->where('answer','LIKE','The parent company of%')->whereRaw('LENGTH(answer) < ?',[80])->orderBy('company_id','asc')->get();
+    // foreach($parentCompanies as $parentCompany){
+    //     $parts = explode(" is ",$parentCompany->answer);
+    //     if(count($parts) > 1){
+    //         $answer = trim(trim($parts[1],'.'));
+    //         $parentCompany->answer = $answer;
+    //         $parentCompany->save();
+    //     }
+    // }
+    // $parentCompanies = QuizResponse::where('question_id',16)->where('answer','LIKE','%is the parent%')->whereRaw('LENGTH(answer) < ?',[80])->orderBy('company_id','asc')->get();
+    // foreach($parentCompanies as $parentCompany){
+    //     $parts = explode(" is the parent",$parentCompany->answer);
+    //     if(count($parts) > 1){
+    //         $answer = trim(trim($parts[1],'.'));
+    //         $parentCompany->answer = $answer;
+    //         $parentCompany->save();
+    //     }
+    // }
+
+    // $parentCompanies = QuizResponse::where('question_id',16)->where('answer','LIKE','The parent company of%')->where('answer','NOT LIKE','%is not explicitly%')->whereRaw('LENGTH(answer) > ?',[80])->orderBy('company_id','asc')->get();
+    // foreach($parentCompanies as $parentCompany){
+    //     $parts = explode(" is ",$parentCompany->answer);
+    //     if(count($parts) > 1){
+    //         $answer = $parts[1];
+    //         if(str_contains($answer,'ltd') || str_contains($answer,'inc.')){
+    //             $answer = explode('.',$answer)[0];
+    //         }else if(str_contains($answer,', ')){
+    //             $answer = explode(', ',$answer)[0];
+    //         }{
+    //             $answer = explode('.',$answer)[0];
+    //         }
+    //         $parentCompany->answer = $answer;
+    //         $parentCompany->save();
+    //     }
+    // }
+
+    // $parentCompanies = QuizResponse::where('question_id',16)->where('answer','LIKE','%is the parent%')->whereRaw('LENGTH(answer) > ?',[80])->orderBy('company_id','asc')->get();
+    // foreach($parentCompanies as $parentCompany){
+    //     $parts = explode(" is the parent",$parentCompany->answer);
+    //     if(count($parts) > 1){
+    //         $parentCompany->answer = trim($parts[1]);
+    //         $parentCompany->save();
+    //     }
+    // }
+
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%**%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('**',$parentCompany->answer);
+        $parentCompany->answer = $companyName[1];
+        $parentCompany->save();
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%is headquartered in%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('is headquartered in',$parentCompany->answer);
+        $answer = $companyName[1];
+        if(str_contains($answer,'.')){
+            $answer = explode('.',$answer)[0];
+        }
+        $parentCompany->answer = trim($answer);
+        $parentCompany->save();
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%is located in%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('is located in',$parentCompany->answer);
+        $answer = $companyName[1];
+        if(str_contains($answer,'.')){
+            $answer = explode('.',$answer)[0];
+        }
+        $parentCompany->answer = trim($answer);
+        $parentCompany->save();
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%is based in%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('is based in',$parentCompany->answer);
+        $answer = $companyName[1];
+        if(str_contains($answer,'.')){
+            $answer = explode('.',$answer)[0];
+        }
+        $parentCompany->answer = trim($answer);
+        $parentCompany->save();
+    }
+    // $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%headquarters located in%')->orderBy('company_id','asc')->get();
+    // foreach($parentCompanies as $parentCompany){
+    //     $companyName = explode('headquarters located in',$parentCompany->answer);
+    //     $answer = $companyName[1];
+    //     if(str_contains($answer,'.')){
+    //         $answer = explode('.',$answer)[0];
+    //     }
+    //     $parentCompany->answer = trim($answer);
+    //     $parentCompany->save();
+    // }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%headquarters located at%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('headquarters located at',$parentCompany->answer);
+        $answer = $companyName[1];
+        if(str_contains($answer,'.')){
+            $answer = explode('.',$answer)[0];
+        }
+        $parentCompany->answer = trim($answer);
+        $parentCompany->save();
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%is headquartered at%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('is headquartered at',$parentCompany->answer);
+        $answer = $companyName[1];
+        if(str_contains($answer,'.')){
+            $answer = explode('.',$answer)[0];
+        }
+        $parentCompany->answer = trim($answer);
+        $parentCompany->save();
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%is located at%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('is located at',$parentCompany->answer);
+        $answer = $companyName[1];
+        if(str_contains($answer,'.')){
+            $answer = explode('.',$answer)[0];
+        }
+        $parentCompany->answer = trim($answer);
+        $parentCompany->save();
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%eadquarters in%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('eadquarters in',$parentCompany->answer);
+        if(count($companyName) > 1){
+            $answer = $companyName[1];
+            if(str_contains($answer,'.')){
+                $answer = explode('.',$answer)[0];
+            }
+            $parentCompany->answer = trim($answer);
+            $parentCompany->save();
+        }
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%eadquarters at%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('eadquarters at',$parentCompany->answer);
+        if(count($companyName) > 1){
+            $answer = $companyName[1];
+            if(str_contains($answer,'.')){
+                $answer = explode('.',$answer)[0];
+            }
+            $parentCompany->answer = trim($answer);
+            $parentCompany->save();
+        }
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%headquarters are located in%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('headquarters are located in',$parentCompany->answer);
+        if(count($companyName) > 1){
+            $answer = $companyName[1];
+            if(str_contains($answer,'.')){
+                $answer = explode('.',$answer)[0];
+            }
+            $parentCompany->answer = trim($answer);
+            $parentCompany->save();
+        }
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%are located at%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('are located at',$parentCompany->answer);
+        if(count($companyName) > 1){
+            $answer = $companyName[1];
+            if(str_contains($answer,'.')){
+                $answer = explode('.',$answer)[0];
+            }
+            $parentCompany->answer = trim($answer);
+            $parentCompany->save();
+        }
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%headquarters located at%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('headquarters located at',$parentCompany->answer);
+        if(count($companyName) > 1){
+            $answer = $companyName[1];
+            if(str_contains($answer,'.')){
+                $answer = explode('.',$answer)[0];
+            }
+            $parentCompany->answer = trim($answer);
+            $parentCompany->save();
+        }
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%headquarters is in%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('headquarters is in',$parentCompany->answer);
+        if(count($companyName) > 1){
+            $answer = $companyName[1];
+            if(str_contains($answer,'.')){
+                $answer = explode('.',$answer)[0];
+            }
+            $parentCompany->answer = trim($answer);
+            $parentCompany->save();
+        }
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%is headquartered near%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('is headquartered near',$parentCompany->answer);
+        if(count($companyName) > 1){
+            $answer = $companyName[1];
+            if(str_contains($answer,'.')){
+                $answer = explode('.',$answer)[0];
+            }
+            $parentCompany->answer = trim($answer);
+            $parentCompany->save();
+        }
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%headquarters based in%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode('headquarters based in',$parentCompany->answer);
+        if(count($companyName) > 1){
+            $answer = $companyName[1];
+            if(str_contains($answer,'.')){
+                $answer = explode('.',$answer)[0];
+            }
+            $parentCompany->answer = trim($answer);
+            $parentCompany->save();
+        }
+    }
+    
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%, but specific%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $companyName = explode(', but specific',$parentCompany->answer);
+        if(count($companyName) > 1){
+            $parentCompany->answer = trim($companyName[0]);
+            $parentCompany->save();
+        }
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%[%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $answer = str_replace(['[1]','[2]','[3]','[4]','[5]','[6]','[7]','[8]','[9]'],'',$parentCompany->answer);
+        $parentCompany->answer = $answer;
+        $parentCompany->save();
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%The query does not provide any information about the location%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $parentCompany->answer = '-';
+        $parentCompany->save();
+    }
+    $parentCompanies = QuizResponse::where('question_id',17)->where('answer','LIKE','%The information provided does not specify the location%')->orderBy('company_id','asc')->get();
+    foreach($parentCompanies as $parentCompany){
+        $parentCompany->answer = '-';
+        $parentCompany->save();
+    }
+});
+
+Route::get('/update-contacts-profile',function(){
+    $contacts = Contact::whereNotNull('profile_response')->where('processed',0)->get();
+    foreach($contacts as $contact){
+        $dataResponse = json_decode($contact->profile_response,true);
+        \App\Jobs\ContactProfile::dispatch($contact->id,$dataResponse);
+    }
+});
+Route::get('/update-contacts-age',function(){
+    $contacts = Contact::whereNotNull('age')->where('age','unknown')->get();
+    foreach($contacts as $contact){
+        \App\Jobs\GenderResearch::dispatch($contact->id,$contact->first_name . ' '. $contact->last_name,$contact->company_name);
+    }
+});
+Route::get('/update-contacts-connections',function(){
+    $contacts = Contact::whereNotNull('connections_data')->where("connection_processed",0)->get();
+    echo count($contacts) . ' contacts found<br>';
+    foreach($contacts as $contact){
+        $dataResponse = json_decode($contact->connections_data,true);
+        \App\Jobs\ContactConnection::dispatch($contact->id,$dataResponse);
+        $contact->connection_processed = 1;
+        $contact->save();
+    }
+});
+// Route::get('/update-companies-qa-parent',function(){
+//     $companiesIds = Company::whereNotNull('qa_responses')->orderBy('id','asc')->get()->pluck('id')->toArray();
+//     foreach($companiesIds as $companyId){
+//         \App\Jobs\CompanyQAParent::dispatch($companyId)->onQueue('perplexity');
+//         // \App\Jobs\CompanyHeadcount::dispatch($companyId)->onQueue('perplexity');
 //     }
-
+// });
+// Route::get('/update-companies',function(){
+//     $samClass = CompanyClassification::where('name','SAM')->first();
+//     $somClass = CompanyClassification::where('name','SOM')->first();
+//     $tamClass = CompanyClassification::where('name','TAM')->first();
+//     $companiesIds = Company::withTrashed()->where('processed',1)->whereHas('classifications',function($q) use ($samClass,$somClass,$tamClass){
+//         // $q->where('company_classification_id',$samClass->id)->orWhere('company_classification_id',$somClass->id)->orWhere('company_classification_id',$tamClass->id);
+//         $q->where('company_classification_id',$tamClass->id);
+//     })->whereNull('qa_responses')->orderBy('id','asc')->get()->pluck('id')->unique()->toArray();
+//     echo count($companiesIds) . ' companies found<br>';
+//     foreach($companiesIds as $companyId){
+//         // \App\Jobs\CompanyQAs::dispatch($companyId)->onQueue('perplexity');
+//         \App\Jobs\CompanyQAParent::dispatch($companyId)->onQueue('perplexity');
+//         \App\Jobs\CompanyRevenue::dispatch($companyId)->onQueue('perplexity');
+//         \App\Jobs\CompanyHeadcount::dispatch($companyId)->onQueue('perplexity');
+//     }
+// });
+// Route::get('/activity-keywords',function(){
+    // $activities = Activity::whereNull('is_relevant')->take(5000)->get();
+    // foreach($activities as $activity){
+    //     \App\Jobs\KeywordsResearch::dispatch($activity->id,$activity->post_content);
+    // }
+// });
+// Route::get('/import-activities',function(){
+    // $jsonPath = Storage::path('public/activities.json');
+    // $activities = json_decode(File::get($jsonPath),true);
+    // foreach($activities as $activity){
+    //     $activityData = new Activity();
+    //     $activityData->response = json_encode($activity);
+    //     $activityData->save();
+    // }
+// });
+// Route::get('/update-activities',function(){
+    // $activities = Activity::whereNotNull('response')->where('processed',0)->get();
+    // foreach($activities as $activity){
+    //     $dataResponse = json_decode($activity->response,true);
+    //     \App\Jobs\ContactActivity::dispatch($activity->id,$dataResponse);
+    // }
+// });
+// Route::get('/assign-activities',function(){
+    // $activities = Activity::whereNull('contact_id')->get();
+    // foreach($activities as $activity){
+    //     if(!empty($activity->profile_url)){
+    //         $contact = Contact::where('linkedin',$activity->profile_url)->first();
+    //         if($contact){
+    //             $activity->contact_id = $contact->id;
+    //             $activity->save();
+    //         }
+    //     }
+    // }
 // });
 Route::get('/fix_wz_codes',function(){
     $companies = Company::where('wz_code','Like','%.')->get();
@@ -285,11 +680,9 @@ Route::get('/bing',function(){
     $subscriptionKey = '5680f63eb06a4fe586658ca3d595916a';
     $endpoint = 'https://api.bing.microsoft.com/v7.0/search';
     $query = 'Company Plan Do See America, Inc 2023 financial report';
-
     $headers = [
         "Ocp-Apim-Subscription-Key: $subscriptionKey"
     ];
-
     $params = [
         'q' => $query,
         'count' => 10,
@@ -297,30 +690,24 @@ Route::get('/bing',function(){
         'textDecorations' => 'true',
         'textFormat' => 'HTML'
     ];
-
     $url = $endpoint . '?' . http_build_query($params);
-
     $ch = curl_init($url);
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
     curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
-
     $response = curl_exec($ch);
-
     if(curl_errno($ch)){
         echo 'Error:' . curl_error($ch);
-    } else {
+    }else{
         $searchResults = json_decode($response,true);
         echo 'Search results for query: ' . $query . '<br><br>';
-        // Print the names and URLs of the search results
-        if (isset($searchResults['webPages']['value'])){
-            foreach ($searchResults['webPages']['value'] as $result){
+        if(isset($searchResults['webPages']['value'])){
+            foreach($searchResults['webPages']['value'] as $result){
                 echo '<a href="' . $result['url'] . '">' . $result['name'] . '</a><br>';
             }
-        } else {
+        }else{
             echo "No results found.\n";
         }
     }
-
     curl_close($ch);
 });
 Route::get('/wz_import',function(){
@@ -331,7 +718,6 @@ Route::get('/wz_import',function(){
         $parent = Industry::where('wz_code',$parent)->first();
         if($parent){
             if(Industry::where('wz_code',$wz_code)->first()){
-                //update industry
                 $sub_industry = Industry::where('wz_code',$wz_code)->first();
                 $sub_industry->branch = $industry->industry;
                 $sub_industry->parent_industry_id = $parent->id;
@@ -346,7 +732,7 @@ Route::get('/wz_import',function(){
                     'parent_industry_id' => $parent->id
                 ]);
                 echo 'Added ' . $industry->branch . ' under ' . $parent->branch . '<br>';
-        }
+            }
         }
         else{
             $industry = Industry::create([
@@ -369,7 +755,6 @@ Route::get('/updates',function(){
         $wz_code = $row[4];
         $headcount = $row[5];
         $company = Company::where('name',$row[0])->first();
-        // update only empty fields
         if($company){
             try{
                 if(!$company->legal_name){
@@ -405,21 +790,15 @@ Route::get('/dupes',function(){
         ->orderBy('count','desc')
         ->take(200)
         ->get();
-    foreach ($companies as $companyGroup){
+    foreach($companies as $companyGroup){
         $name = $companyGroup->name;
-
-        // Fetch all companies with the same name
         $duplicates = Company::where('name',$name)->get();
-
-        // Determine the company to retain (the one with the most non-null fields)
         $companyToRetain = $duplicates->sortByDesc(function ($company){
             return count(array_filter($company->toArray(),function ($value){
                 return !is_null($value);
             }));
         })->first();
-
-        // Delete all other duplicates
-        foreach ($duplicates as $duplicate){
+        foreach($duplicates as $duplicate){
             if ($duplicate->id !== $companyToRetain->id){
                 $duplicate->delete();
             }
@@ -470,7 +849,6 @@ Route::get('/import',function(){
     }
 });
 Route::get('/temp',function(){
-    // get all json files from storage raw folder
     $companies = [];
     $files = Storage::files('raw');
     foreach($files as $file){
@@ -524,17 +902,13 @@ Route::get('/temp',function(){
     }
     fclose($csv);
 })->name('export');
-
 Route::get('/companies/process/{id}',function($id){
     \App\Jobs\ProcessCompany::dispatchSync($id);
     return redirect()->back();
 })->middleware(['auth','verified'])->name('companies.process');
-
 Route::middleware('auth')->group(function(){
     Route::get('/profile',[ProfileController::class,'edit'])->name('profile.edit');
     Route::patch('/profile',[ProfileController::class,'update'])->name('profile.update');
     Route::delete('/profile',[ProfileController::class,'destroy'])->name('profile.destroy');
 });
 require __DIR__.'/auth.php';
-
-// SELECT `id`,`title`,`description`,`code`,`market_size_competitive_intensity`,`market_size_competitive_intensity_weight`,`regulatory_framework_evaluation`,`regulatory_framework_evaluation_weight`,`technology_adoption`,`technology_adoption_weight`,`pressure_for_change`,`pressure_for_change_weight`,`consulting_affinity`,`consulting_affinity_weight`,`cost_pressure`,`cost_pressure_weight`,`financial_strength`,`financial_strength_weight`,`openness_to_innovation`,`openness_to_innovation_weight`,`agility_index`,`agility_index_weight`,`urge_for_diversification`,`urge_for_diversification_weight` FROM `naics_industries` WHERE 1

@@ -32,7 +32,11 @@
                         <tr>
                             <th class="px-4 py-2">WZ Code</th>
                             @foreach ($counts["26"] as $class => $class_count)
-                                <th class="px-4 py-2">{{ $class }}</th>
+                                @if($class == "name")
+                                    <th class="px-4 py-2">WZ Code Name</th>
+                                @else
+                                    <th class="px-4 py-2">{{ $class }}</th>
+                                @endif
                             @endforeach
                         </tr>
                     </thead>
@@ -41,7 +45,11 @@
                             <tr>
                                 <td data-title="WZ Code" class="border px-4 py-2">{{ $wz_code }}</td>
                                 @foreach($count as $class => $class_count)
-                                    <td data-title="Count" class="border px-4 py-2"><a target="_blank" href="{{route('dashboard', ['wz_code' => $wz_code, 'country' => request()->input('country'), 'filter' => $map[$class]])}}" class="text-blue-500 hover:text-blue-700">{{ $class_count }}</a></td>
+                                    @if($class == "name")
+                                        <td data-title="Name" class="border px-4 py-2">{{ $class_count }}</td>
+                                    @else
+                                        <td data-title="Count" class="border px-4 py-2"><a target="_blank" href="{{route('dashboard', ['wz_code' => $wz_code, 'country' => request()->input('country'), 'filter' => $map[$class]])}}" class="text-blue-500 hover:text-blue-700">{{ $class_count }}</a></td>
+                                    @endif
                                 @endforeach
                             </tr>
                         @endforeach

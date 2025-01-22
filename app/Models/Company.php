@@ -3,6 +3,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Contact;
+use App\Models\CompanyClassification;
+use App\Models\QuizResponse;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
@@ -21,9 +23,13 @@ class Company extends Model
         return $this->belongsToMany(CompanyClassification::class,'company_company_classification');
     }
     public function getCompanyClassificationsAttribute(){
-        if($this->custom_classification){
-            return array_push($this->classifications->pluck('name')->toArray(),$this->custom_classification);
+        $classifications = $this->classifications->pluck('name')->toArray();
+        if($this->custom_classification && !in_array($this->custom_classification,$classifications)){
+            $classifications[] = $this->custom_classification;
         }
-        return $this->classifications->pluck('name')->toArray();
+        return $classifications;
+    }
+    public function quiz(){
+        return $this->hasMany(QuizResponse::class,'company_id');
     }
 }

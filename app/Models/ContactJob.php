@@ -4,10 +4,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Contact;
 
-class LikeComment extends Model
+class ContactJob extends Model
 {
     use HasFactory;
-    protected $fillable = ['contact_id','profile_link','first_name','last_name','post_url','comment','is_comment','is_like'];
+    protected $guarded = [];
+    protected $hidden = ["updated_at"];
     public function contact(){
         return $this->belongsTo(Contact::class);
     }

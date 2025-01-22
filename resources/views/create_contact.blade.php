@@ -4,7 +4,6 @@
             {{ __('Edit Account') }}
         </h2>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto py-4 px-6">
             <div class="bg-white overflow-hidden shadow-sm rounded p-6">
@@ -41,7 +40,7 @@
                         <div class="flex justify-between mt-4">
                             <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-4">Add Contact</h2>
                         </div>
-                        <form method="POST" action="{{ route('createContact', $company->id) }}">
+                        <form method="POST" action="{{ route('createContact',$company->id) }}">
                             @csrf
                             <table class="table-auto w-full table-2" id="myTable">
                                 <thead>
@@ -95,21 +94,11 @@
             </div>
         </div>
     </div>
-<style>
-.btn-bg-secondary {
-	line-height: normal;
-}
-@media(max-width:640px){
-.table-2 tr {
-display: flex;
-flex-direction: column;
-gap: 0px;
-margin: 12px 0px;
-}
-.table-2 tr td {
-padding: 0px;
-}
-}
-</style>    
-
+    <style>
+        .btn-bg-secondary{line-height:normal;}
+        @media(max-width:640px){
+            .table-2 tr{display:flex;flex-direction:column;gap:0;margin:12px 0;}
+            .table-2 tr td{padding:0;}
+        }
+    </style>
 </x-app-layout>
