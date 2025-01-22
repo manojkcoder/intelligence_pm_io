@@ -31,6 +31,20 @@ class CompanyParentName implements ShouldQueue
                 $QuizResponse->company_id = $company->id;
                 $QuizResponse->question_id = 16;
             }
+            if(str_contains($output,':**')){
+                $output = explode(':**',$output)[1];
+                if(str_contains($output,'**')){
+                    $output = explode('**',$output)[0];
+                }
+                $output = trim(trim($output,'.'));
+            }else if(str_contains($output,'**')){
+                $output = explode('**',$output)[1];
+                $output = trim(trim($output,'.'));
+            }else if(str_contains($output,'##')){
+                $output = explode('##',$output)[1];
+                $output = trim(trim($output,'.'));
+            }
+            $output = str_replace(['[1]','[2]','[3]','[4]','[5]','[6]','[7]','[8]','[9]','[10]','[11]','[12]','[13]','[14]','[15]','[16]','[17]','[18]','[19]','[20]'],'',$output);
             $QuizResponse->answer = $output;
             $QuizResponse->save();
             // $qaResponses[] = ['question' => 'Name of the parent company.','answer' => $output];
@@ -52,7 +66,7 @@ class CompanyParentName implements ShouldQueue
                     "messages" => [
                         [
                             "role" => "user",
-                            "content" => "Based on the company name '".$company."', provide only the parent company's name as the output."
+                            "content" => "Based on the company name '".$company."', output only the parent company's name."
                         ]
                     ],
                     "max_tokens" => 2000,
