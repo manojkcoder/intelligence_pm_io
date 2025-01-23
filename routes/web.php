@@ -209,7 +209,6 @@ Route::get('/import_cognism_companies',function(){
             dd($company);
         }
         try{
-            // change revenue to million
             $company['revenue'] = round($company['revenue'] ? $company['revenue'] / 1000000 : 0,2);
             Company::updateOrCreate([
                 'name' => $company['name']
@@ -221,7 +220,6 @@ Route::get('/import_cognism_companies',function(){
                 'country' => 'Germany',
                 'wz_code' => isset($company['sic']) && count($company['sic']) > 0 ? $company['sic'][count($company['sic']) - 1] : '',
             ]);
-
         }catch(\Exception $e){
             echo $company['name'] . ' ' . $e->getMessage() . '<br>';
             continue;
@@ -356,6 +354,22 @@ Route::get('/update-contacts-connections',function(){
         $contact->connection_processed = 1;
         $contact->save();
     }
+});
+Route::get('/fetch-cognism-companies',function(){
+    \App\Jobs\GetCognismATCompanies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismCHCompanies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismDE51Companies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismDE501Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismDE1001Companies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismES50Companies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismES200Companies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismES500Companies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismIT51Companies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismIT200Companies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismUK51Companies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismUK201Companies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismUK1000Companies::dispatch()->onQueue('cognism');
+    \App\Jobs\GetCognismUK5000Companies::dispatch()->onQueue('cognism');
 });
 // Route::get('/update-companies-qa-parent',function(){
 //     $companiesIds = Company::whereNotNull('qa_responses')->orderBy('id','asc')->get()->pluck('id')->toArray();

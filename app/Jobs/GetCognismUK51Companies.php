@@ -7,46 +7,59 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
 
-class GetCognismCompanyContacts implements ShouldQueue
+class GetCognismUK51Companies implements ShouldQueue
 {
     use Dispatchable,InteractsWithQueue,Queueable,SerializesModels;
     public $timeout = 100000;
-    private $company_id;
-    public function __construct($company_id){
-        $this->company_id = $company_id;
+    public function __construct(){
+        //
     }
     public function handle(): void{
-        \Log::info('Fetching contacts for company '.$this->company_id);
-        // put contacts in storage/company_id/contacts.json
-        $path = storage_path('app/contacts/'.$this->company_id);
-        if(!file_exists(($path))){
-            mkdir(($path),0777,true);
-        }        
-        $cStart = 0;
+        \Log::info('Fetching United Kingdom companies');
+        $start = 0;
+        $totalCompanies = 0;
+        $perRequest = 100;
+        $path = Storage::path('companies/uk51.json');
+        $fileExists = file_exists($path);
+        if(!file_exists(dirname($path))){
+            mkdir(dirname($path),0777,true);
+        }
+        $file = fopen($path,'c+');
+        if($file === false){
+            \Log::error('Failed to open file for appending');
+            return;
+        }
+        if($fileExists){
+            fseek($file,-1,SEEK_END);
+            fwrite($file,',');
+        }else{
+            fwrite($file,'[');
+        }
+        $firstRecord = !$fileExists;
         do{
-            $skip = 0;
-            if(file_exists($path.'/'.$cStart.'.json')){
-                \Log::info('Skipping contacts for company '.$this->company_id.' from '.$cStart.' to '.($cStart+100));
-                $cStart += 100;
-                $skip = 1;
-                continue;
+            $coms = $this->fetchCompanies($start,$perRequest);
+            if(isset($coms->totalResults)){
+                $totalCompanies = $coms->totalResults;
+                if(isset($coms->results) && count($coms->results)){
+                    foreach($coms->results as $index => $company){
+                        GetCognismCompanyContacts::dispatch($company->id)->onQueue('cognism');
+                        if(!$firstRecord){
+                            fwrite($file,',' . PHP_EOL);
+                        }
+                        fwrite($file,json_encode($company));
+                        $firstRecord = false;
+                    }
+                }
+                $start += $perRequest;
             }
-            $comContacts = $this->fetchCompanyContacts($this->company_id,$cStart,100);
-            if($comContacts == null){
-                $comContacts = $this->fetchCompanyContacts($this->company_id,$cStart,100);
-            }
-            if($comContacts == null){
-                break;
-            }
-            \Log::info('Fetching contacts for company '.$this->company_id.' from '.$cStart.' to '.($cStart+100).' total '.$comContacts->totalResults);
-            file_put_contents($path.'/'.$cStart.'.json',json_encode($comContacts->results));
-            if(isset($comContacts->totalResults)){
-                $cStart += 100;
-            }
-        }while($skip == 1 || count($comContacts->results) > 0);
+        }while($start < $totalCompanies);
+        fwrite($file,']');
+        fclose($file);
+        \Log::info('United Kingdom Companies fetched and written to file');
     }
-    public function fetchCompanyContacts($companyId,$from = 0,$limit = 100){
-        $url = 'https://app.cognism.com/api/graph/person/search?indexFrom='.$from.'&indexSize='.$limit;
+    public function fetchCompanies($from = 0,$limit = 20){
+        \Log::info('Fetching United Kingdom companies from '.$from.' to '.($from+$limit));
+        $url = 'https://app.cognism.com/api/graph/company/search?indexFrom='.$from.'&indexSize='.$limit;
         $curl = curl_init();
         curl_setopt_array($curl,[
             CURLOPT_URL => $url,
@@ -57,33 +70,12 @@ class GetCognismCompanyContacts implements ShouldQueue
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS =>'{
-                "company": {
-                    "ids": ["'.$companyId.'"],
-                    "options": {
-                        "match_exact_company_name": false,
-                        "match_exact_domain": false,
-                        "filter_domain": "exists",
-                        "location_Type": "ALL",
-                        "events_operator": "OR",
-                        "sort_fields": ["weight","revenue"],
-                        "merge_industries": false,
-                        "include_events": false,
-                        "show_max_events": 100,
-                        "show_max_techs": 0
-                    }
-                },
-                "options": {
-                    "match_exact_job_title": false,
-                    "show_company_events": true,
-                    "show_contact_data": false,
-                    "ai_job_title": true,
-                    "sort_fields": ["com.profile_score;DESC","com.email.src.at;DESC"],
-                    "operators": {}
-                },
-                "icpSearch": [],
-                "integrations": [],
-                "titles": ["CEO","CFO"]
+            CURLOPT_POSTFIELDS => '{
+                "revenue": {"from": 100000000},
+                "multiOfficeLocations": {"includeCountries": ["United Kingdom"]},
+                "excludeIndustries": ["Religious Institutions","Political Organization","Government Administration","Civil Engineering","Architecture & Planning","Hospitality","Hospital & Health Care","Civic & Social Organization"],
+                "sizes": ["D"],
+                "options": {"match_exact_company_name": false,"match_exact_domain": false,"filter_domain": "exists","location_Type": "ALL","events_operator": "OR","sort_fields": ["weight","revenue"],"merge_industries": false,"include_events": false,"show_max_events": 100,"operators": {},"show_max_techs": 0}
             }',
             CURLOPT_HTTPHEADER => array(
               'accept: application/json, text/plain, */*',
