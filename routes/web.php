@@ -68,6 +68,7 @@ Route::get('/wz_code_status',[DashboardController::class,'wz_code_status'])->mid
 Route::get('/gpt',[DashboardController::class,'gpt'])->middleware(['auth','verified'])->name('gpt');
 Route::post('/prompt',[DashboardController::class,'prompt'])->middleware(['auth','verified'])->name('prompt');
 Route::get('/settings',[SettingController::class,'index'])->middleware(['auth','verified'])->name('settings');
+Route::post('/settings',[SettingController::class,'update'])->middleware(['auth','verified'])->name('updateSetting');
 // Route::get('/collate_contacts',function(){
     // list all folders under storage/contacts
     // $folders = Storage::directories('contacts');
