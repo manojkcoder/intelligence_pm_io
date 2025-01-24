@@ -37,8 +37,7 @@ class ProcessCompany2 implements ShouldQueue
         $this->client = new Client();
         if($this->id){
             $this->companies = [Company::find($this->id)];
-        }
-        else{
+        }else{
             $this->companies = Company::where('processed', false)->orderBy('id', $this->reverse ? 'desc' : 'asc')->limit(10)->get();
         }
         foreach ($this->companies as $company) {
@@ -77,13 +76,9 @@ class ProcessCompany2 implements ShouldQueue
             ProcessCompany2::dispatch(null, $this->reverse);
         }
     }
-
-
-
-    private function fetchCompanyInfo($companyName, $country)
-    {
+    private function fetchCompanyInfo($companyName,$country){
         try {
-            $response = $this->client->post('https://api.openai.com/v1/chat/completions', [
+            $response = $this->client->post('https://api.openai.com/v1/chat/completions',[
                 'headers' => [
                     'Authorization' => 'Bearer ' . env('OPENAI_API_KEY'),
                     'Content-Type' => 'application/json',
@@ -103,29 +98,24 @@ Utilize the company’s annual reports or other reliable internet sources, or el
                     'max_tokens' => 200,
                 ],
             ]);
-            
             $body = $response->getBody();
             $data = json_decode($body, true);
-
             \Log::info('API Response: ', $data);
             // Assuming you have a Company model and the company record is already fetched
             $company = Company::where('name', $companyName)->first();
-            if ($company) {
+            if($company){
                 $revenue = trim($data['choices'][0]['message']['content']);
                 $revenue = (float) $revenue;
                 $revenue = floatval($revenue / 1000000);
                 $company->revenue = $revenue;
                 $company->save();
             }
-
-        } catch (\Exception $e) {
+        }catch(\Exception $e){
             \Log::error('API Error: ' . $e->getMessage());
             return 'Error';
         }
     }
-
-    private function fetchCompanyWebsite($companyName, $country)
-    {
+    private function fetchCompanyWebsite($companyName, $country){
         try {
             $response = $this->client->post('https://api.openai.com/v1/chat/completions', [
                 'headers' => [
@@ -164,9 +154,7 @@ Utilize the company’s annual reports or other reliable internet sources, or el
             return 'Error';
         }
     }
-
-    public function fetchCompanyHeadCount($companyName, $country)
-    {
+    public function fetchCompanyHeadCount($companyName, $country){
         try {
             $response = $this->client->post('https://api.openai.com/v1/chat/completions', [
                 'headers' => [
@@ -204,9 +192,7 @@ Utilize the company’s annual reports or other reliable internet sources, or el
             return 'Error';
         }
     }
-
-    public function fetchCompanyIndustry($companyName, $country)
-    {
+    public function fetchCompanyIndustry($companyName,$country){
         try {
             $response = $this->client->post('https://api.openai.com/v1/chat/completions', [
                 'headers' => [
@@ -243,5 +229,4 @@ Utilize the company’s annual reports or other reliable internet sources, or el
         }
         
     }
-
 }

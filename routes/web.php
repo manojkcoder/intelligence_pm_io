@@ -201,31 +201,6 @@ Route::get('/classify',function(){
     }
     dd('Classifications have been scheduled');
 })->name('classify');
-Route::get('/import_cognism_companies',function(){
-    $data = Storage::disk('local')->get('companies/all.json');
-    $companies = json_decode($data,true);
-    foreach($companies as $company){
-        if(!isset($company['sic'])){
-            dd($company);
-        }
-        try{
-            $company['revenue'] = round($company['revenue'] ? $company['revenue'] / 1000000 : 0,2);
-            Company::updateOrCreate([
-                'name' => $company['name']
-            ],[
-                'domain' => $company['domain'] ?? '',
-                'industry' => $company['li_industry'] ?? '',
-                'headcount' => $company['headcounts'] ?? '',
-                'revenue' => $company['revenue'] ?? '',
-                'country' => 'Germany',
-                'wz_code' => isset($company['sic']) && count($company['sic']) > 0 ? $company['sic'][count($company['sic']) - 1] : '',
-            ]);
-        }catch(\Exception $e){
-            echo $company['name'] . ' ' . $e->getMessage() . '<br>';
-            continue;
-        }
-    }
-});
 Route::get('/match_likes_comments',function(){
     $likes_comments = LikeComment::all();
     foreach($likes_comments as $like_comment){
@@ -356,21 +331,44 @@ Route::get('/update-contacts-connections',function(){
     }
 });
 Route::get('/fetch-cognism-companies',function(){
-    \App\Jobs\GetCognismATCompanies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismCHCompanies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismDE51Companies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismDE501Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismATCompanies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismCHCompanies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismDE51Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismDE501Companies::dispatch()->onQueue('cognism');
     // \App\Jobs\GetCognismDE1001Companies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismES50Companies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismES200Companies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismES500Companies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismIT51Companies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismIT200Companies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismUK51Companies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismUK201Companies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismUK1000Companies::dispatch()->onQueue('cognism');
-    \App\Jobs\GetCognismUK5000Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismES50Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismES200Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismES500Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismIT51Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismIT200Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismUK51Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismUK201Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismUK1000Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismUK5000Companies::dispatch()->onQueue('cognism');
+
+    // $directory = storage_path('app/contacts');
+    // $folders = array_filter(glob($directory.'/*'),'is_dir');
+    // foreach($folders as $folder){
+    //     $files = array_filter(glob($folder.'/*'),'is_file');
+    //     foreach($files as $file){
+    //         $companyId = basename($folder);
+    //         $fileName = 'contacts/' . $companyId .'/' . basename($file);
+    //         \App\Jobs\ImportCognismContacts::dispatch($companyId,$fileName)->onQueue('cognism');
+    //     }
+    // }
 });
+// Route::get('/fetch-companies-revenue',function(){
+//     $companiesIds = Company::where('country',"Germany")->whereNull('revenue')->orderBy('id','asc')->get()->pluck('id')->toArray();
+//     foreach($companiesIds as $companyId){
+//         \App\Jobs\CompanyRevenue::dispatch($companyId)->onQueue('perplexity');
+//     }
+// });
+// Route::get('/fetch-companies-headcount',function(){
+//     $companiesIds = Company::where('country',"Germany")->whereNull('headcount')->orderBy('id','asc')->get()->pluck('id')->toArray();
+//     foreach($companiesIds as $companyId){
+//         \App\Jobs\CompanyHeadcount::dispatch($companyId)->onQueue('perplexity');
+//     }
+// });
 // Route::get('/update-companies-qa-parent',function(){
 //     $companiesIds = Company::whereNotNull('qa_responses')->orderBy('id','asc')->get()->pluck('id')->toArray();
 //     foreach($companiesIds as $companyId){

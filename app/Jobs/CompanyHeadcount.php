@@ -21,7 +21,7 @@ class CompanyHeadcount implements ShouldQueue
         $this->client = new Client();
         $company = Company::withTrashed()->where('id',$this->id)->first();
         if($company){
-            $output = $this->fetchCompanyInfo($company->name);
+            $output = $this->fetchCompanyInfo($company->name,$company->country);
             $headcount = trim(str_replace([',','[1]','[2]','[3]','[4]','[5]','[6]','[7]','[8]','[9]'],'',$output));
             if(is_numeric($headcount)){
                 $company->headcount = trim($output);
@@ -30,7 +30,7 @@ class CompanyHeadcount implements ShouldQueue
             sleep(2);
         }
     }
-    private function fetchCompanyInfo($company){
+    private function fetchCompanyInfo($companyName,$country){
         try{
             $response = $this->client->post("https://api.perplexity.ai/chat/completions",[
                 "headers" => [
@@ -42,7 +42,7 @@ class CompanyHeadcount implements ShouldQueue
                     "messages" => [
                         [
                             "role" => "user",
-                            "content" => "Provide the headcount for the company named '".$company."' as a numeric value only, without any additional text."
+                            "content" => "As a research assistant for a consultancy company, you are tasked to research the headcount for a company named $companyName based in $country. Please respond with only the numeric value without any additional text, explanations, or labels."
                         ]
                     ],
                     "max_tokens" => 2000,

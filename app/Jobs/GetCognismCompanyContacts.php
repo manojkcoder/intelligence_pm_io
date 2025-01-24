@@ -6,44 +6,37 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
+use App\Jobs\ImportCognismContacts;
 
 class GetCognismCompanyContacts implements ShouldQueue
 {
     use Dispatchable,InteractsWithQueue,Queueable,SerializesModels;
     public $timeout = 100000;
-    private $company_id;
-    public function __construct($company_id){
-        $this->company_id = $company_id;
+    private $companyId;
+    public function __construct($companyId){
+        $this->companyId = $companyId;
     }
     public function handle(): void{
-        \Log::info('Fetching contacts for company '.$this->company_id);
-        // put contacts in storage/company_id/contacts.json
-        $path = storage_path('app/contacts/'.$this->company_id);
-        if(!file_exists(($path))){
-            mkdir(($path),0777,true);
-        }        
+        \Log::info('Fetching contacts for company '.$this->companyId);      
         $cStart = 0;
+        $totalContacts = 0;
+        $perRequest = 100;
         do{
-            $skip = 0;
-            if(file_exists($path.'/'.$cStart.'.json')){
-                \Log::info('Skipping contacts for company '.$this->company_id.' from '.$cStart.' to '.($cStart+100));
-                $cStart += 100;
-                $skip = 1;
-                continue;
-            }
-            $comContacts = $this->fetchCompanyContacts($this->company_id,$cStart,100);
+            $comContacts = $this->fetchCompanyContacts($this->companyId,$cStart,$perRequest);
             if($comContacts == null){
-                $comContacts = $this->fetchCompanyContacts($this->company_id,$cStart,100);
+                $comContacts = $this->fetchCompanyContacts($this->companyId,$cStart,$perRequest);
             }
             if($comContacts == null){
                 break;
             }
-            \Log::info('Fetching contacts for company '.$this->company_id.' from '.$cStart.' to '.($cStart+100).' total '.$comContacts->totalResults);
-            file_put_contents($path.'/'.$cStart.'.json',json_encode($comContacts->results));
             if(isset($comContacts->totalResults)){
-                $cStart += 100;
+                $totalContacts = $comContacts->totalResults;
+                if(isset($comContacts->results) && count($comContacts->results)){
+                    ImportCognismContacts::dispatch($this->companyId,json_encode($comContacts->results))->onQueue('cognism');
+                }
+                $cStart += $perRequest;
             }
-        }while($skip == 1 || count($comContacts->results) > 0);
+        }while($cStart < $totalContacts);
     }
     public function fetchCompanyContacts($companyId,$from = 0,$limit = 100){
         $url = 'https://app.cognism.com/api/graph/person/search?indexFrom='.$from.'&indexSize='.$limit;

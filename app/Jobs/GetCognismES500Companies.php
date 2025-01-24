@@ -6,6 +6,8 @@ use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
+use App\Jobs\GetCognismCompanyProfile;
+use App\Jobs\GetCognismCompanyContacts;
 
 class GetCognismES500Companies implements ShouldQueue
 {
@@ -19,42 +21,19 @@ class GetCognismES500Companies implements ShouldQueue
         $start = 0;
         $totalCompanies = 0;
         $perRequest = 100;
-        $path = Storage::path('companies/es500.json');
-        $fileExists = file_exists($path);
-        if(!file_exists(dirname($path))){
-            mkdir(dirname($path),0777,true);
-        }
-        $file = fopen($path,'c+');
-        if($file === false){
-            \Log::error('Failed to open file for appending');
-            return;
-        }
-        if($fileExists){
-            fseek($file,-1,SEEK_END);
-            fwrite($file,',');
-        }else{
-            fwrite($file,'[');
-        }
-        $firstRecord = !$fileExists;
         do{
             $coms = $this->fetchCompanies($start,$perRequest);
             if(isset($coms->totalResults)){
                 $totalCompanies = $coms->totalResults;
                 if(isset($coms->results) && count($coms->results)){
                     foreach($coms->results as $index => $company){
+                        // GetCognismCompanyProfile::dispatch($company->id,"Spain")->onQueue('cognism');
                         GetCognismCompanyContacts::dispatch($company->id)->onQueue('cognism');
-                        if(!$firstRecord){
-                            fwrite($file,',' . PHP_EOL);
-                        }
-                        fwrite($file,json_encode($company));
-                        $firstRecord = false;
                     }
                 }
                 $start += $perRequest;
             }
         }while($start < $totalCompanies);
-        fwrite($file,']');
-        fclose($file);
         \Log::info('Spain Companies fetched and written to file');
     }
     public function fetchCompanies($from = 0,$limit = 20){

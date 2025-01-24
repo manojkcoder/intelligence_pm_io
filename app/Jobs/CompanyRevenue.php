@@ -21,16 +21,14 @@ class CompanyRevenue implements ShouldQueue
         $this->client = new Client();
         $company = Company::withTrashed()->where('id',$this->id)->first();
         if($company){
-            $output = $this->fetchCompanyInfo($company->name);
-            $revenue = trim(str_replace([',','[1]','[2]','[3]','[4]','[5]','[6]','[7]','[8]','[9]'],'',$output));
-            if(is_numeric($revenue)){
-                $company->revenue = trim($output);
-                $company->save();
-            }
-            sleep(2);
+            $output = $this->fetchCompanyRevenue($company->name,$company->country);
+            $revenue = (float) $output;
+            $revenue = floatval($revenue / 1000000);
+            $company->revenue = $revenue;
+            $company->save();
         }
     }
-    private function fetchCompanyInfo($company){
+    private function fetchCompanyInfo($companyName,$country){
         try{
             $response = $this->client->post("https://api.perplexity.ai/chat/completions",[
                 "headers" => [
@@ -42,7 +40,7 @@ class CompanyRevenue implements ShouldQueue
                     "messages" => [
                         [
                             "role" => "user",
-                            "content" => "Provide the yearly revenue (in millions) for the company named '".$company."' as a numeric value only, without any additional text"
+                            "content" => "As a research assistant for a consultancy company, you are tasked to research the yearly revenue (in millions) for a company named $companyName based in $country. providing only the numeric value without any additional text, explanations, or labels"
                         ]
                     ],
                     "max_tokens" => 2000,
@@ -66,6 +64,33 @@ class CompanyRevenue implements ShouldQueue
             \Log::error("API Error: " . $e->getMessage());
             dd($e);
             return "Error";
+        }
+    }
+    private function fetchCompanyRevenue($companyName,$country){
+        try{
+            $response = $this->client->post('https://api.openai.com/v1/chat/completions',[
+                'headers' => [
+                    'Authorization' => 'Bearer ' . env('OPENAI_API_KEY'),
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => [
+                    'model' => 'gpt-4o',
+                    'messages' => [
+                        [
+                            'role' => 'user',
+                            'content' => "As a research assistant for a consultancy company, you are tasked to research the following details for a company named $companyName based in $country: \n\n1.	Yearly revenue.\n\nUtilize the company’s annual reports or other reliable internet sources, or else make an educated guess. Please respond with each detail on a separate line, providing only the numeric value without any additional text, explanations, or labels."
+                        ],
+                    ],
+                    'max_tokens' => 200
+                ],
+            ]);
+            $body = $response->getBody();
+            $data = json_decode($body,true);
+            \Log::info('API Response: ',$data);
+            return trim($data['choices'][0]['message']['content']);
+        }catch(\Exception $e){
+            \Log::error('API Error: ' . $e->getMessage());
+            return 'Error';
         }
     }
 }
