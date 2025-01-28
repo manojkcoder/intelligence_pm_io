@@ -1,8 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Account') }}
-        </h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ __('Edit Account') }}</h2>
     </x-slot>
     <div class="py-12 px-6">
         <div class="max-w-7xl mx-auto">
@@ -58,6 +56,14 @@
                                     <td class="px-4 py-2">Headcount:</td>
                                     <td class="px-4 py-2">{{ $company->headcount }}</td>
                                 </tr>
+                                <tr>
+                                    <td class="px-4 py-2">HS ID:</td>
+                                    <td class="px-4 py-2">
+                                        @if($company->hubspot_id)
+                                            <a href="https://app.hubspot.com/contacts/26548368/company/{{ $company->hubspot_id }}" target="_blank">{{ $company->hubspot_id }}</a>
+                                        @endif
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="flex justify-between mb-4 items-center mt-6">
@@ -73,10 +79,12 @@
                                     <th class="px-4 py-2">Phone</th>
                                     <th class="px-4 py-2">Position</th>
                                     <th class="px-4 py-2">Location</th>
+                                    <th class="px-4 py-2">Target Category</th>
                                     <th class="px-4 py-2">Age</th>
                                     <th class="px-4 py-2">Gender</th>
                                     <th class="px-4 py-2">LinkedIn</th>
                                     <th class="px-4 py-2">URL</th>
+                                    <th class="px-4 py-2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -88,6 +96,7 @@
                                         <td data-title="Phone" class="px-4 py-2">{{ $contact->phone }}</td>
                                         <td data-title="Position" class="px-4 py-2">{{ $contact->position }}</td>
                                         <td data-title="Location" class="px-4 py-2">{{ $contact->location }}</td>
+                                        <td data-title="Target Category" class="px-4 py-2">{{ $contact->target_category }}</td>
                                         <td data-title="Age" class="px-4 py-2">{{ $contact->age }}</td>
                                         <td data-title="Gender" class="px-4 py-2">{{ $contact->gender }}</td>
                                         <td data-title="LinkedIn" class="px-4 py-2">{{ $contact->linkedin }}</td>

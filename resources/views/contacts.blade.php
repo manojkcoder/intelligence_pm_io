@@ -1,8 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Contacts') }}
-        </h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ __('Contacts') }}</h2>
     </x-slot>
     <div class="contacts main-wrapper px-6 py-12">
         <div class="mx-auto">
@@ -37,6 +35,7 @@
                                 <option @if(request()->input('country') == $country) selected @endif value="{{$country}}">{{$country}}</option>
                             @endforeach
                         </select>
+                        <!-- <input name="wz_code" id="wz_code" class="py-2 px-4 border border-transparent flex-1" value="{{ request()->input('wz_code') ?? '' }}" placeholder="WZ Code"/> -->
                         <button type="submit" class="btn-bg-primary text-white py-2 px-4 flex-1">Filter</button>
                     </div>
                 </form>
@@ -62,6 +61,7 @@
                                 <th>Likes</th>
                                 <th>Comments</th>
                                 <th>Country</th>
+                                <th>Trigger</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -85,25 +85,26 @@
                 processing: true,
                 serverSide: true,
                 columns:[
-                    {data: 'approach', name: 'approach'},
-                    {data: 'first_name', name: 'first_name'},
-                    {data: 'last_name', name: 'last_name'},
-                    {data: 'linkedin', name: 'linkedin'},
-                    {data: 'company', name: 'company'},
-                    {data: 'position', name: 'Position'},
-                    {data: 'location', name: 'Location'},
-                    {data: 'age', name: 'Age'},
-                    {data: 'gender', name: 'Gender'},
-                    {data: 'activity_rate', name: 'Activity Rate'},
-                    {data: 'email_domain', name: 'email_domain'},
-                    {data: 'target_category', name: 'target_category'},
-                    {data: 'linkedin_hub_url', name: 'linkedin_hub_url'},
-                    {data: 'likes_count', name: 'likes_count'},
-                    {data: 'comments_count', name: 'comments_count'},
-                    {data: 'country', name: 'country'},
-                    {data: 'actions', name: 'Action'}
+                    {data: 'approach',name: 'approach'},
+                    {data: 'first_name',name: 'first_name'},
+                    {data: 'last_name',name: 'last_name'},
+                    {data: 'linkedin',name: 'linkedin'},
+                    {data: 'company',name: 'company'},
+                    {data: 'position',name: 'Position'},
+                    {data: 'location',name: 'Location'},
+                    {data: 'age',name: 'Age'},
+                    {data: 'gender',name: 'Gender'},
+                    {data: 'activity_rate',name: 'Activity Rate'},
+                    {data: 'email_domain',name: 'email_domain'},
+                    {data: 'target_category',name: 'target_category'},
+                    {data: 'linkedin_hub_url',name: 'linkedin_hub_url'},
+                    {data: 'likes_count',name: 'likes_count'},
+                    {data: 'comments_count',name: 'comments_count'},
+                    {data: 'country',name: 'country'},
+                    {data: 'triggers',name: 'Trigger'},
+                    {data: 'actions',name: 'Action'}
                 ],
-                lengthMenu: [[10, 25, 50, 100], [10, 25, 50, 100]],
+                lengthMenu: [[10,25,50,100],[10,25,50,100]],
                 pageLength: 50,
                 columnDefs: [
                     {targets: [4],render: function(data,type,row){

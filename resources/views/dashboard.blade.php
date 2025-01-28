@@ -1,8 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Account Intelligence') }}
-        </h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ __('Account Intelligence') }}</h2>
     </x-slot>
     <div class="main-wrapper px-6 py-12">
         <div class="mx-auto mb-4">
@@ -52,6 +50,7 @@
                     <thead class="bg-light-blue">
                         <tr>
                             <th class="px-2 py-2 border border-transparent"></th>
+                            <th class="px-2 py-2">Existing Client</th>
                             <th class="px-2 py-2">Name</th>
                             <th class="px-2 py-2">Domain</th>
                             <th class="px-2 py-2">Legal Name</th>
@@ -85,6 +84,7 @@
                 serverSide: true,
                 columns:[
                     {data: "dream"},
+                    {data: "existing_client"},
                     {data: "name"},
                     {data: "domain"},
                     {data: "legal_name"},
@@ -97,12 +97,12 @@
                 ],
                 lengthMenu: [[10,25,50,100],[10,25,50,100]],
                 columnDefs: [
-                    {
-                        targets: 0,
-                        render: function(data,type,row){
-                            return '<input type="checkbox"  value="'+row.id+'" class="dream" '+(row.dream == 1 ? 'checked' : '')+'>';
-                        }
-                    }
+                    {targets: 0,render: function(data,type,row){
+                        return '<input type="checkbox"  value="'+row.id+'" class="dream" '+(row.dream == 1 ? 'checked' : '')+'>';
+                    }},
+                    {targets: 1,render: function(data,type,row){
+                        return '<input type="checkbox"  value="'+row.id+'" class="existing-client" '+(row.existing_client == 1 ? 'checked' : '')+'>';
+                    }}
                 ],
                 pageLength: 50
             });
@@ -133,6 +133,18 @@
                 var checked = $(this).prop('checked');
                 $.ajax({
                     url: '/dream/' + id,
+                    type: 'POST',
+                    data: {_token: '{{csrf_token()}}',checked: checked},
+                    success: function(data){
+                        console.log(data);
+                    }
+                });
+            });
+            $('#myTable').on('change','.existing-client',function(){
+                var id = $(this).val();
+                var checked = $(this).prop('checked');
+                $.ajax({
+                    url: '/existing-client/' + id,
                     type: 'POST',
                     data: {_token: '{{csrf_token()}}',checked: checked},
                     success: function(data){

@@ -134,18 +134,18 @@ class ContactsController extends Controller
         Company::find($id)->contacts()->create($request->all());
         return redirect()->route('viewCompany',$id);
     }
-    public function editContact(Request $request,$id){
-        $contact = Contact::find($id);
+    public function editContact(Request $request,$id,$contactId){
+        $contact = Contact::find($contactId);
         return view('edit_contact',compact("contact"));
     }
-    public function updateContact(Request $request,$id){
-        $contact = Contact::find($id);
+    public function updateContact(Request $request,$id,$contactId){
+        $contact = Contact::find($contactId);
         $contact->update($request->all());
-        return redirect()->route('contacts.all');
+        return redirect()->route('viewCompany',$id);
     }
-    public function deleteContact(Request $request,$id){
-        $contact = Contact::find($id);
+    public function deleteContact(Request $request,$id,$contactId){
+        $contact = Contact::find($contactId);
         $contact->delete();
-        return redirect()->route('contacts.all');
+        return redirect()->route('viewCompany',$id);
     }
 }

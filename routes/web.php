@@ -20,6 +20,7 @@ use App\Models\ContactSchool;
 use App\Models\LikeComment;
 use App\Models\QuizResponse;
 use App\Models\School;
+use App\Models\WzCodesNaicsMapping;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use GuzzleHttp\Client;
@@ -36,6 +37,7 @@ Route::delete('/deleteCompany/{id}',[DashboardController::class,'deleteCompany']
 Route::delete('/trashedCompany/{id}',[DashboardController::class,'trashedCompany'])->middleware(['auth','verified'])->name('trashedCompany');
 Route::post('/moveCompany/{id}',[DashboardController::class,'moveCompany'])->middleware(['auth','verified'])->name('moveCompany');
 Route::post('/dream/{id}',[DashboardController::class,'dream'])->middleware(['auth','verified'])->name('dream');
+Route::post('/existing-client/{id}',[DashboardController::class,'existingClient'])->middleware(['auth','verified'])->name('existing_client');
 Route::get('/accounts/edit/{id}',[DashboardController::class,'editCompany'])->middleware(['auth','verified'])->name('editCompany');
 Route::patch('/accounts/edit/{id}',[DashboardController::class,'updateCompany'])->middleware(['auth','verified'])->name('updateCompany');
 Route::delete('/accounts/edit/{id}',[DashboardController::class,'destroyCompany'])->middleware(['auth','verified'])->name('destroyCompany');
@@ -129,9 +131,9 @@ Route::get('/run_gpt',function(){
 Route::get('/list_duplicates',function(){
     $duplicates = Company::where('domain','!=','')->select('domain',DB::raw('COUNT(*) as count'))->groupBy('domain')->havingRaw('count(*) > 1')->orderBy('count','desc')->get();
     $dupes = Company::whereIn('domain',$duplicates->pluck('domain'))->orderBy('domain')->orderBy('revenue','asc')->get();
-    foreach($dupes as $dupe){
-        $companies[$dupe->domain][$dupe->id] = $dupe->revenue;
-    }
+    // foreach($dupes as $dupe){
+    //     $companies[$dupe->domain][$dupe->id] = $dupe->revenue;
+    // }
     return view('dupes',compact('dupes'));
 })->middleware(['auth']);
 Route::get('/missing_wz_codes',function(){
@@ -193,7 +195,7 @@ Route::get('/new-wz-code',function(){
 });
 Route::get('/classify',function(){
     DB::table('company_company_classification')->truncate();
-    $companies = Company::whereNotNull('wz_code')->get();
+    $companies = Company::withTrashed()->whereNotNull('wz_code')->orWhereNotNull('naics')->get();
     $companyIds = $companies->pluck('id')->toArray();
     $chunks = array_chunk($companyIds,100);
     foreach($chunks as $chunk){
@@ -331,20 +333,20 @@ Route::get('/update-contacts-connections',function(){
     }
 });
 Route::get('/fetch-cognism-companies',function(){
-    // \App\Jobs\GetCognismATCompanies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismCHCompanies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismDE51Companies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismDE501Companies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismDE1001Companies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismES50Companies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismES200Companies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismES500Companies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismIT51Companies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismIT200Companies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismUK51Companies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismUK201Companies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismUK1000Companies::dispatch()->onQueue('cognism');
-    // \App\Jobs\GetCognismUK5000Companies::dispatch()->onQueue('cognism');
+    // \App\Jobs\GetCognismATCompanies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismCHCompanies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismDE51Companies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismDE501Companies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismDE1001Companies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismES50Companies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismES200Companies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismES500Companies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismIT51Companies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismIT200Companies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismUK51Companies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismUK201Companies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismUK1000Companies::dispatch('profile')->onQueue('cognism');
+    // \App\Jobs\GetCognismUK5000Companies::dispatch('profile')->onQueue('cognism');
 
     // $directory = storage_path('app/contacts');
     // $folders = array_filter(glob($directory.'/*'),'is_dir');
@@ -357,6 +359,35 @@ Route::get('/fetch-cognism-companies',function(){
     //     }
     // }
 });
+Route::get('/update-categories',function(){
+    \App\Jobs\ClassifyCompaniesJob::dispatch([372]);
+});
+// Route::get('/wzcode-naics-mapping',function(){
+//     $jsonPath = Storage::path('public/wzcodemapping.json');
+//     $wzcodes = json_decode(File::get($jsonPath),true);
+//     foreach($wzcodes as $wzcodeData){
+//         WzCodesNaicsMapping::create([
+//             'wz_codes' => $wzcodeData['wz_codes'],
+//             'wz_codes_description' => $wzcodeData['wz_codes_description'],
+//             'naics_codes' => $wzcodeData['naics_codes'],
+//             'naics_description' => $wzcodeData['naics_description']
+//         ]);
+//     }
+// });
+// Route::get('/update-hubspot-ids',function(){
+//     $jsonPath = Storage::path('public/hubspotIds.json');
+//     $companies = json_decode(File::get($jsonPath),true);
+//     foreach($companies as $companyData){
+//         $company = Company::where('name',$companyData['name'])->first();
+//         if($company){
+//             if(empty($company->legal_name) || $company->legal_name != $companyData['legal_name']){
+//                 $company->legal_name = $companyData['legal_name'];
+//             }
+//             $company->hubspot_id = $companyData['hubspot_id'];
+//             $company->save();
+//         }
+//     }
+// });
 // Route::get('/fetch-companies-revenue',function(){
 //     $companiesIds = Company::where('country',"Germany")->whereNull('revenue')->orderBy('id','asc')->get()->pluck('id')->toArray();
 //     foreach($companiesIds as $companyId){

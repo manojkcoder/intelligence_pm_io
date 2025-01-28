@@ -1,8 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Duplicates') }}
-        </h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ __('Duplicates') }}</h2>
     </x-slot>
     <div class="main-wrapper px-6 py-12">
         <div class="mx-auto bg-white mb-4">
@@ -12,16 +10,25 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Domain</th>
-                        <th>Revenue</th>
-                        <th>Headcount</th>
-                        <th>Action</th>
+                        <th>Legal Name</th>
+                        <th style="width:160px;">Domain</th>
+                        <th style="width:140px;">Country</th>
+                        <th style="width:120px;">Revenue</th>
+                        <th style="width:120px;">Headcount</th>
+                        <th style="width:120px;">Action</th>
                     </tr>
-                    @foreach($dupes as $company)
+                    @foreach($dupes as $key => $company)
+                        @if($key > 0 && $company->domain != $dupes[$key-1]->domain)
+                            <tr>
+                                <td colspan="8" style="height:30px;"></td>
+                            </tr>
+                        @endif
                         <tr>
                             <td>{{ $company->id }}</td>
                             <td>{{ $company->name }}</td>
+                            <td>{{ $company->legal_name }}</td>
                             <td>{{ $company->domain }}</td>
+                            <td>{{ $company->country }}</td>
                             <td>{{ $company->revenue }}</td>
                             <td>{{ $company->headcount }}</td>
                             <td>

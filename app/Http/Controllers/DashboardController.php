@@ -22,9 +22,14 @@ class DashboardController extends Controller
         $pageUrl = route('companies.all',$params);
         return view('dashboard',compact("pageUrl","countries","flags"));
     }
-    public function dream($id,Request $request){
+    public function dream(Request $request,$id){
         $company = Company::find($id);
         $company->dream = $request->input('checked') == 'true' ? 1 : 0;
+        $company->save();
+    }
+    public function existingClient(Request $request,$id){
+        $company = Company::find($id);
+        $company->existing_client = $request->input('checked') == 'true' ? 1 : 0;
         $company->save();
     }
     private function like_match($pattern,$subject){
@@ -38,7 +43,11 @@ class DashboardController extends Controller
         if($country && $country != "all"){
             $companies = Company::where('country',$country)->where('processed',1);
         }else{
-            $companies = Company::where('processed',1);
+            if($type == "incomplete" || $type == "no_wz_code"){
+                $companies = Company::withTrashed();
+            }else{
+                $companies = Company::where('processed',1);
+            }
         }
         if($type == "deleted"){
             $companies->onlyTrashed();
@@ -135,7 +144,7 @@ class DashboardController extends Controller
             })->orWhere('custom_classification', strtoupper($type));       
         }
         $totalRecords = $companies->select("id")->count();
-        $companies = $companies->select(["id","dream","name","domain","legal_name","country","revenue","wz_code","headcount","processed","custom_classification"])->orderBy("name","ASC")->offset($offset)->take($limit)->get();
+        $companies = $companies->select(["id","dream","name","domain","legal_name","country","revenue","wz_code","headcount","processed","custom_classification","existing_client"])->orderBy("name","ASC")->offset($offset)->take($limit)->get();
         if(!$request->has('export')){
             $companies = $companies->map(function($company){
                 $accountType = [];
@@ -314,7 +323,8 @@ class DashboardController extends Controller
     }
     public function editCompany($id){
         $company = Company::find($id);
-        return view('edit_company',compact('company'));
+        $countries = Company::select('country')->distinct()->get()->pluck('country');
+        return view('edit_company',compact('company','countries'));
     }
     public function updateCompany(Request $request,$id){
         $company = Company::find($id);

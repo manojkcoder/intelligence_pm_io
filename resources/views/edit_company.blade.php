@@ -26,7 +26,12 @@
                         </div>
                         <div class="sm:w-1/2 sm:pl-2">
                             <label for="country">Country</label>
-                            <input id="country" class="block mt-1 w-full" type="text" name="country" value="{{ $company->country }}" required />
+                            <select name="country" id="country" class="block mt-1 w-full" required>
+                                <option value="">Select</option>
+                                @foreach ($countries as $country)
+                                    <option @if($company->country == $country) selected @endif value="{{$country}}">{{$country}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="sm:w-1/2 sm:pr-2">
                             <label for="revenue">Revenue in Mio. Euro</label>

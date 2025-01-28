@@ -497,6 +497,6 @@ echo _gettext("Storage engine");
 
     public function getSourceContext()
     {
-        return new Source("", "columns_definitions/partitions.twig", "/home/forge/kimiacorp.com/public/myAdmin/templates/columns_definitions/partitions.twig");
+        return new Source("", "columns_definitions/partitions.twig", "/home/forge/intelligence.progressmaker.io/public/myAdmin/templates/columns_definitions/partitions.twig");
     }
 }
