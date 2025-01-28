@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Company;
 use App\Models\Contact;
 use App\Models\Industry;
@@ -363,8 +364,9 @@ class DashboardController extends Controller
         $countries = Company::select('country')->distinct()->get()->pluck('country');
         $flags = Company::select('flag')->distinct()->get()->pluck('flag');
 
-        $query = Company::whereNot('wz_code',null);
-
+        $query = Company::where(function($q){
+            $q->whereNotNull('wz_code')->orWhereNotNull('naics');
+        });
         if($request->has('country') && $request->country != "all" && $request->country != ""){
             $query = $query->where('country',$request->country);
         }
@@ -381,10 +383,11 @@ class DashboardController extends Controller
             $wz_codes = $q->get()->pluck('wz_code');
             foreach($wz_codes as $wz_code){
                 $wz_code = strtoupper($wz_code."");
-                if(strlen($wz_code) < 5){
-                    continue;
+                if(strlen($wz_code) < 2){
+                    $wz_code = "Unknown";
+                }else{
+                    $wz_code = substr($wz_code,0,2);
                 }
-                $wz_code = substr($wz_code,0,2);
                 if(!isset($counts[$wz_code])){
                     $industry = Industry::where('wz_code',$wz_code)->first();
                     $counts[$wz_code] = [
@@ -490,5 +493,129 @@ class DashboardController extends Controller
         $data = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $data);
         return $data;
         
+    }
+    public function dupes(Request $request){
+        $countries = Company::select('country')->distinct()->get()->pluck('country');
+        $flags = Company::select('flag')->distinct()->get()->pluck('flag');
+        $params = $request->all();
+        $pageUrl = route('list_duplicates.all',$params);
+        return view('dupes',compact("pageUrl","countries","flags"));
+    }
+    public function allDupes(Request $request){
+        $type = ($request->filter ? $request->filter : "all");
+        $country = ($request->country ? $request->country : "");
+       
+        if($country && $country != "all"){
+            $companies = Company::where('country',$country)->where('processed',1);
+        }else{
+            if($type == "incomplete" || $type == "no_wz_code"){
+                $companies = Company::withTrashed();
+            }else{
+                $companies = Company::where('processed',1);
+            }
+        }
+        if($type == "deleted"){
+            $companies->onlyTrashed();
+        }
+        $dream = ($request->dream ? $request->dream : "");
+        if($dream && $dream == "1"){
+            $companies = $companies->where('dream',1);
+        }
+        $flag = ($request->flag ? $request->flag : "");
+        if($flag && $flag != "all"){
+            $companies = $companies->where('flag',$flag);
+        }
+        $search = $request->has('search') ? $request->search['value'] : "";
+        if(!empty($search)){
+            $companies = $companies->where(function($query) use ($search){
+                $query->where('name','LIKE','%'.$search.'%')->orWhere('domain','LIKE','%'.$search.'%')->orWhere('country','LIKE','%'.$search.'%')->orWhere('revenue','LIKE','%'.$search.'%')->orWhere('wz_code','LIKE','%'.$search.'%')->orWhere('headcount','LIKE','%'.$search.'%');
+            });
+        }
+        if($type !== 'all'){
+            $companies->where(function($companies) use ($type){
+                if($type == "incomplete"){
+                    $companies = $companies->where(function($q){
+                        $q->where('revenue',null)->orWhere('headcount',null)->orWhere('wz_code',null);
+                    });
+                }else if($type == "no_wz_code"){
+                    $companies = $companies->where(function($q){
+                        $q->whereNull('wz_code')->orWhere('wz_code','');
+                    });
+                }else if($type == "tam"){
+                    $class = CompanyClassification::where('name','TAM')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "sam"){
+                    $class = CompanyClassification::where('name','SAM')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "som"){
+                    $class = CompanyClassification::where('name','SOM')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "tam_samson4"){
+                    $class = CompanyClassification::where('name','TAM - 4')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "som_samson4"){
+                    $class = CompanyClassification::where('name','SOM - 4')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "sam_samson4"){
+                    $class = CompanyClassification::where('name','SAM - 4')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "som_samson4_oversized"){
+                    $class = CompanyClassification::where('name','SOM - 4 Oversized')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "sam_samson4_oversized"){
+                    $class = CompanyClassification::where('name','SAM - 4 Oversized')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "sam_4_diff"){
+                    $query = clone $companies;
+                    $companyIds = $query->whereHas('classifications',function($qy){
+                        $qy->where('company_classification_id',5);
+                    })->get()->pluck('id');
+                    $companies->whereHas('classifications',function($q){
+                        $q->where('company_classification_id',2)->where('company_classification_id',"!=",5);
+                    })->whereNotIn('id',$companyIds);
+                }else if($type == "som_4_diff"){
+                    $query = clone $companies;
+                    $companyIds = $query->whereHas('classifications',function($qy){
+                        $qy->where('company_classification_id',6);
+                    })->get()->pluck('id');
+                    $companies->whereHas('classifications',function($q){
+                        $q->where('company_classification_id',3);
+                    })->whereNotIn('id',$companyIds);
+                }
+            })->orWhere('custom_classification', strtoupper($type));       
+        }
+        $offset = $request->start ? $request->start : 0;
+        $limit = $request->length ? $request->length : 100;
+        $duplicates = Company::where('domain','!=','')->select('domain',DB::raw('COUNT(*) as count'))->groupBy('domain')->havingRaw('count(*) > 1')->orderBy('count','desc')->get();
+        $totalRecords = $companies->whereIn('domain',$duplicates->pluck('domain'))->select("id")->count();
+        $companies = $companies->whereIn('domain',$duplicates->pluck('domain'))->select(["id","dream","name","domain","legal_name","country","revenue","headcount"])->orderBy('domain')->orderBy('revenue','asc')->offset($offset)->take($limit)->get();
+        $companies = $companies->map(function($company){
+            $company->domain = str_replace('www.','',$company->domain);
+            if(!empty($company->domain)){
+                $company->domain = '<a href="//'.$company->domain.'" target="_blank">'.$company->domain.'</a>';
+            }
+            if(!empty($company->name)){
+                $company->name = '<a href="'.route('viewCompany',$company->id).'" target="_blank">'.$company->name.'</a>';
+            }
+            $company->actions = '<a href="'.route('editCompany',$company->id).'" target="_blank">Edit</a> | <a href="'.route('deleteCompanies',$company->id).'">Delete</a>';
+            return $company;
+        });
+        return json_encode(["recordsTotal" => $totalRecords,"recordsFiltered" => $totalRecords,"data" => $companies]);
     }
 }

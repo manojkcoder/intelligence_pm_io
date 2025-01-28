@@ -39,42 +39,42 @@ class ClassifyCompaniesJob implements ShouldQueue
                 $matchesRevenue = $company->revenue >= $classification->revenue_threshold && $company->revenue <= $classification->revenue_max;
                 $matchesHeadcount = $company->headcount >= $classification->employee_threshold && $company->headcount <= $classification->employee_max;
 
-                $naicsCodes = $company->naics ? json_decode($company->naics,true) : [];
-                if(count($naicsCodes)){
-                    foreach($naicsCodes as $naicsCode){
-                        $wzCodeNaicsMapping = WzCodesNaicsMapping::where('naics_codes',$naicsCode)->first();
-                        if($wzCodeNaicsMapping){
-                            // if(!empty($negative_wz_codes) && collect($negative_wz_codes)->contains(function($negative_wz_code) use ($wzCodeNaicsMapping){
-                            //     return $wzCodeNaicsMapping->wz_codes == $negative_wz_code;
-                            // })){
-                            //     continue;
-                            // }
-                            $matchesWzNaicsCode = empty($wz_codes) || collect($wz_codes)->contains(function($wz_code) use ($wzCodeNaicsMapping){
-                                return strpos($wzCodeNaicsMapping->wz_codes,$wz_code) === 0;
-                            });
-                            if(strpos($classification->name, 'Oversized') !== false){
-                                if(($matchesRevenue || $matchesHeadcount) && $matchesWzNaicsCode){
-                                    $company->classifications()->syncWithoutDetaching([$classification->id]);
-                                }
-                            }else{
-                                if($matchesRevenue && $matchesHeadcount && $matchesWzNaicsCode){
-                                    $company->classifications()->syncWithoutDetaching([$classification->id]);
-                                    if($classification->id == 2 || $classification->id == 3){
-                                        $company->classifications()->syncWithoutDetaching([1]);
-                                        if($classification->id == 3){
-                                            $company->classifications()->detach([2]);
-                                        }
-                                    }else if($classification->id == 5 || $classification->id == 6){
-                                        $company->classifications()->syncWithoutDetaching([4]);
-                                        if($classification->id == 6){
-                                            $company->classifications()->detach([5]);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                // $naicsCodes = $company->naics ? json_decode($company->naics,true) : [];
+                // if(count($naicsCodes)){
+                //     foreach($naicsCodes as $naicsCode){
+                //         $wzCodeNaicsMapping = WzCodesNaicsMapping::where('naics_codes',$naicsCode)->first();
+                //         if($wzCodeNaicsMapping){
+                //             // if(!empty($negative_wz_codes) && collect($negative_wz_codes)->contains(function($negative_wz_code) use ($wzCodeNaicsMapping){
+                //             //     return $wzCodeNaicsMapping->wz_codes == $negative_wz_code;
+                //             // })){
+                //             //     continue;
+                //             // }
+                //             $matchesWzNaicsCode = empty($wz_codes) || collect($wz_codes)->contains(function($wz_code) use ($wzCodeNaicsMapping){
+                //                 return strpos($wzCodeNaicsMapping->wz_codes,$wz_code) === 0;
+                //             });
+                //             if(strpos($classification->name, 'Oversized') !== false){
+                //                 if(($matchesRevenue || $matchesHeadcount) && $matchesWzNaicsCode){
+                //                     $company->classifications()->syncWithoutDetaching([$classification->id]);
+                //                 }
+                //             }else{
+                //                 if($matchesRevenue && $matchesHeadcount && $matchesWzNaicsCode){
+                //                     $company->classifications()->syncWithoutDetaching([$classification->id]);
+                //                     if($classification->id == 2 || $classification->id == 3){
+                //                         $company->classifications()->syncWithoutDetaching([1]);
+                //                         if($classification->id == 3){
+                //                             $company->classifications()->detach([2]);
+                //                         }
+                //                     }else if($classification->id == 5 || $classification->id == 6){
+                //                         $company->classifications()->syncWithoutDetaching([4]);
+                //                         if($classification->id == 6){
+                //                             $company->classifications()->detach([5]);
+                //                         }
+                //                     }
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
                 if($company->wz_code){
                     if(!empty($negative_wz_codes) && collect($negative_wz_codes)->contains(function($negative_wz_code) use ($company){
                         return $company->wz_code == $negative_wz_code;

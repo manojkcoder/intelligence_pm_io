@@ -11,23 +11,26 @@
                 @endif
             </div>
             <div id="companyProfile" class="tab-content bg-white overflow-hidden shadow-sm rounded p-6 active">
-                @if($company->deleted_at)
-                    <div class="">
-                        <form action="{{ route('deleteCompany', $company->id) }}" method="POST" class="inline">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="btn-bg-primary text-white  py-2 px-4">Restore</button>
-                        </form>
-                    </div>
-                @else
-                    <div class="">
-                        <form action="{{ route('deleteCompany', $company->id) }}" method="POST" class="inline">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="btn-bg-primary text-white  py-2 px-4">Delete</button>
-                        </form>
-                    </div>
-                @endif
+                <div class="flex items-center gap-2 mb-2">
+                    <a href="{{ route('editCompany',$company->id) }}" class="btn-bg-primary text-white py-2 px-4">Edit</a>
+                    @if($company->deleted_at)
+                        <div class="">
+                            <form action="{{ route('deleteCompany', $company->id) }}" method="POST" class="inline">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn-bg-primary text-white  py-2 px-4">Restore</button>
+                            </form>
+                        </div>
+                    @else
+                        <div class="">
+                            <form action="{{ route('deleteCompany', $company->id) }}" method="POST" class="inline">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn-bg-primary text-white  py-2 px-4">Delete</button>
+                            </form>
+                        </div>
+                    @endif
+                </div>
                 <div class="flex">
                     <div class="table-responsive flex-1 overflow-auto data-table top-table">
                         <table class="table-auto dataTable">
@@ -62,6 +65,12 @@
                                         @if($company->hubspot_id)
                                             <a href="https://app.hubspot.com/contacts/26548368/company/{{ $company->hubspot_id }}" target="_blank">{{ $company->hubspot_id }}</a>
                                         @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-2">Existing Client</td>
+                                    <td class="px-4 py-2">
+                                        <input type="checkbox" value="{{ $company->id }}" class="existing-client" {{(($company->existing_client == 1) ? 'checked' : '')}}/>
                                     </td>
                                 </tr>
                             </tbody>
@@ -138,6 +147,18 @@
                 $(this).addClass('active');
                 $('.tab-content').removeClass('active');
                 $('#'+$(this).data('id')).addClass('active');
+            });
+            $(document).on('change','.existing-client',function(){
+                var id = $(this).val();
+                var checked = $(this).prop('checked');
+                $.ajax({
+                    url: '/existing-client/' + id,
+                    type: 'POST',
+                    data: {_token: '{{csrf_token()}}',checked: checked},
+                    success: function(data){
+                        console.log(data);
+                    }
+                });
             });
         });
     </script>

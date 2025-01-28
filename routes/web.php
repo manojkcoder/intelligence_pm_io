@@ -34,6 +34,7 @@ Route::get('/stats',[DashboardController::class,'stats'])->middleware(['auth','v
 Route::any('/stats/all',[DashboardController::class,'allStats'])->middleware(['auth','verified'])->name('stats.all');
 Route::get('/accounts/{id}',[DashboardController::class,'viewCompany'])->middleware(['auth','verified'])->name('viewCompany');
 Route::delete('/deleteCompany/{id}',[DashboardController::class,'deleteCompany'])->middleware(['auth','verified'])->name('deleteCompany');
+Route::get('/deleteCompanies/{id}',[DashboardController::class,'deleteCompany'])->middleware(['auth','verified'])->name('deleteCompanies');
 Route::delete('/trashedCompany/{id}',[DashboardController::class,'trashedCompany'])->middleware(['auth','verified'])->name('trashedCompany');
 Route::post('/moveCompany/{id}',[DashboardController::class,'moveCompany'])->middleware(['auth','verified'])->name('moveCompany');
 Route::post('/dream/{id}',[DashboardController::class,'dream'])->middleware(['auth','verified'])->name('dream');
@@ -128,14 +129,8 @@ Route::get('/run_gpt',function(){
     }
     dd($count);
 });
-Route::get('/list_duplicates',function(){
-    $duplicates = Company::where('domain','!=','')->select('domain',DB::raw('COUNT(*) as count'))->groupBy('domain')->havingRaw('count(*) > 1')->orderBy('count','desc')->get();
-    $dupes = Company::whereIn('domain',$duplicates->pluck('domain'))->orderBy('domain')->orderBy('revenue','asc')->get();
-    // foreach($dupes as $dupe){
-    //     $companies[$dupe->domain][$dupe->id] = $dupe->revenue;
-    // }
-    return view('dupes',compact('dupes'));
-})->middleware(['auth']);
+Route::get('/list_duplicates',[DashboardController::class,'dupes'])->middleware(['auth','verified'])->name('list_duplicates');
+Route::get('/list_duplicates/all',[DashboardController::class,'allDupes'])->middleware(['auth','verified'])->name('list_duplicates.all');
 Route::get('/missing_wz_codes',function(){
     $unique_wz_codes = Company::whereNotNull('wz_code')->select('wz_code',DB::raw('COUNT(*) as count'))->groupBy('wz_code')->get()->mapWithKeys(function($item){
         return [$item->wz_code => $item->count];
@@ -374,6 +369,27 @@ Route::get('/update-categories',function(){
 //         ]);
 //     }
 // });
+Route::get('/update-wz-codes',function(){
+    $jsonPath = Storage::path('public/wz-codes.json');
+    $wzcodes = json_decode(File::get($jsonPath),true);
+    $updated = 0;
+    foreach($wzcodes as $wzcodeData){
+        $company = Company::withTrashed()->where('domain',$wzcodeData['domain'])->first();
+        if($company){
+            $companyExist = Company::whereRaw('LOWER(name) = ?',[trim(strtolower($wzcodeData['name']))])->where('id','!=',$company->id)->first();
+            if(!$companyExist){
+                $company->name = $wzcodeData['name'];
+            }else{
+                echo $company->name ." => " . $wzcodeData['name'] . "<br/>";
+            }
+            $company->wz_code = $wzcodeData['wz_code'];
+            $company->country = $wzcodeData['country'];
+            $company->save();
+            $updated++;
+        }
+    }
+    echo $updated . ' companies updated';
+});
 // Route::get('/update-hubspot-ids',function(){
 //     $jsonPath = Storage::path('public/hubspotIds.json');
 //     $companies = json_decode(File::get($jsonPath),true);
