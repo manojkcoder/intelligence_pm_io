@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Company;
+use App\Models\QuizResponse;
 use App\Models\CompanyClassification;
 use App\Models\WzCodesNaicsMapping;
 
@@ -13,6 +14,7 @@ class ClassifyCompaniesJob implements ShouldQueue
 {
     use Dispatchable,InteractsWithQueue,Queueable,SerializesModels;
     protected $companyIds;
+    protected $classifications;
 
     /**
      * Create a new job instance.
@@ -22,6 +24,7 @@ class ClassifyCompaniesJob implements ShouldQueue
      */
     public function __construct(array $companyIds){
         $this->companyIds = $companyIds;
+        $this->excludeClass = ['TAM','SAM','SOM','TAM - 4','SAM - 4','SOM - 4'];
     }
 
     /**
@@ -33,6 +36,8 @@ class ClassifyCompaniesJob implements ShouldQueue
         $companies = Company::withTrashed()->whereIn('id',$this->companyIds)->get();
         foreach($companies as $company){
             $classifications = CompanyClassification::all();
+            $largeCorporation = QuizResponse::where('company_id',$company->id)->where('question_id',1)->pluck('answer')->first();
+            $companyIndependent = QuizResponse::where('company_id',$company->id)->where('question_id',2)->pluck('answer')->first();
             foreach($classifications as $classification){
                 $wz_codes = $classification->wz_codes;
                 $negative_wz_codes = $classification->negative_wz_codes;
@@ -84,6 +89,9 @@ class ClassifyCompaniesJob implements ShouldQueue
                     $matcheswz_code = empty($wz_codes) || collect($wz_codes)->contains(function($wz_code) use ($company){
                         return strpos($company->wz_code,$wz_code) === 0;
                     });
+                    // if(in_array($classification->name,$this->excludeClass) && $largeCorporation == 'yes' && $companyIndependent == 'no'){
+                    //     continue;
+                    // }
                     if(strpos($classification->name, 'Oversized') !== false){
                         if(($matchesRevenue || $matchesHeadcount) && $matcheswz_code){
                             $company->classifications()->syncWithoutDetaching([$classification->id]);

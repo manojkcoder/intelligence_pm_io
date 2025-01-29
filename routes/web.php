@@ -30,6 +30,7 @@ Route::get('/',function(){
 });
 Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware(['auth','verified'])->name('dashboard');
 Route::get('/companies/all',[DashboardController::class,'companies'])->middleware(['auth','verified'])->name('companies.all');
+Route::get('/companies/search',[DashboardController::class,'searchCompanies'])->middleware(['auth','verified'])->name('companies.search');
 Route::get('/stats',[DashboardController::class,'stats'])->middleware(['auth','verified'])->name('stats');
 Route::any('/stats/all',[DashboardController::class,'allStats'])->middleware(['auth','verified'])->name('stats.all');
 Route::get('/accounts/{id}',[DashboardController::class,'viewCompany'])->middleware(['auth','verified'])->name('viewCompany');
@@ -374,19 +375,26 @@ Route::get('/update-wz-codes',function(){
     $wzcodes = json_decode(File::get($jsonPath),true);
     $updated = 0;
     foreach($wzcodes as $wzcodeData){
-        $company = Company::withTrashed()->where('domain',$wzcodeData['domain'])->first();
-        if($company){
-            $companyExist = Company::whereRaw('LOWER(name) = ?',[trim(strtolower($wzcodeData['name']))])->where('id','!=',$company->id)->first();
-            if(!$companyExist){
-                $company->name = $wzcodeData['name'];
-            }else{
-                echo $company->name ." => " . $wzcodeData['name'] . "<br/>";
-            }
+        $companies = Company::withTrashed()->where('name',$wzcodeData['name'])->orWhere('domain',$wzcodeData['domain'])->get();
+        foreach($companies as $company){
+            $company->domain = $wzcodeData['domain'];
             $company->wz_code = $wzcodeData['wz_code'];
             $company->country = $wzcodeData['country'];
             $company->save();
             $updated++;
         }
+        // if($company){
+        //     $companyExist = Company::withTrashed()->whereRaw('LOWER(name) = ?',[trim(strtolower($wzcodeData['name']))])->where('id','!=',$company->id)->first();
+        //     if(!$companyExist){
+        //         $company->name = $wzcodeData['name'];
+        //     }else{
+        //         echo $company->name ." => " . $wzcodeData['name'] . "<br/>";
+        //     }
+        //     $company->wz_code = $wzcodeData['wz_code'];
+        //     $company->country = $wzcodeData['country'];
+        //     $company->save();
+        //     $updated++;
+        // }
     }
     echo $updated . ' companies updated';
 });

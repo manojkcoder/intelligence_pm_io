@@ -39,24 +39,24 @@ class ContactsController extends Controller
         }
         $country = ($request->country ? $request->country : "");
         if($country && $country != "all"){
-            $contactsCountQuery->where('country', $country);
-            $contactsQuery->where('country', $country);
+            $contactsCountQuery->where('country',$country);
+            $contactsQuery->where('country',$country);
         }
         $dream = ($request->dream ? $request->dream : "");
         if($dream && $dream == "1"){
-            $contactsQuery->whereHas('company', function($query){
-                $query->where('dream', 1);
+            $contactsQuery->whereHas('company',function($query){
+                $query->where('dream',1);
             });
-            $contactsCountQuery->whereHas('company', function($query){
-                $query->where('dream', 1);
+            $contactsCountQuery->whereHas('company',function($query){
+                $query->where('dream',1);
             });
         }
         $flag = ($request->flag ? $request->flag : "");
         if($flag && $flag != "all"){
-            $contactsQuery->whereHas('company', function($query) use($flag){
+            $contactsQuery->whereHas('company',function($query) use($flag){
                 $query->where('flag',$flag);
             });
-            $contactsCountQuery->whereHas('company', function($query) use($flag){
+            $contactsCountQuery->whereHas('company',function($query) use($flag){
                 $query->where('flag',$flag);
             });
         }
@@ -65,12 +65,12 @@ class ContactsController extends Controller
             $contactsCountQuery->where(function($query) use($search){
                 $query->where('first_name','like','%'.$search.'%')
                     ->orWhere('last_name','like','%'.$search.'%')
-                    ->orWhere(DB::raw("CONCAT(first_name, ' ', last_name)"),'like','%'.$search.'%');
+                    ->orWhere(DB::raw("CONCAT(first_name,' ',last_name)"),'like','%'.$search.'%');
             });
             $contactsQuery->where(function($query) use($search){
                 $query->where('first_name','like','%'.$search.'%')
                     ->orWhere('last_name','like','%'.$search.'%')
-                    ->orWhere(DB::raw("CONCAT(first_name, ' ', last_name)"),'like','%'.$search.'%');
+                    ->orWhere(DB::raw("CONCAT(first_name,' ',last_name)"),'like','%'.$search.'%');
             });
         }
         if($request->input('filter') && $request->input('filter') != "all"){
@@ -98,15 +98,15 @@ class ContactsController extends Controller
             }
         }
         $contactsQuery->withCount(['likeComments as likes_count' => function($query){
-            $query->where('is_like', 1);
+            $query->where('is_like',1);
         },'likeComments as comments_count' => function($query){
-            $query->where('is_comment', 1);
+            $query->where('is_comment',1);
         }]);
         $search = $request->has('search') ? $request->search['value'] : "";
         $offset = $request->start ? $request->start : 0;
         $limit = $request->length ? $request->length : 100;
         $totalRecords = $contactsCountQuery->select("id")->count();
-        $contacts = $contactsQuery->orderBy("comments_count", 'DESC')->offset($offset)->take($limit)->get();
+        $contacts = $contactsQuery->orderBy("comments_count",'DESC')->offset($offset)->take($limit)->get();
         $contacts = $contacts->map(function($contact){
             $contact->actions .= '<a href="'.route('viewContact',$contact->id).'" class="btn-bg-secondary text-white font-bold py-2 px-4 mr-2"><i class="fas fa-eye"></i></a>';
             return $contact;
@@ -114,7 +114,9 @@ class ContactsController extends Controller
         return json_encode(["recordsTotal" => $totalRecords,"recordsFiltered" => $totalRecords,"data" => $contacts]);
     }
     public function allContacts(Request $request){
-        $countries = Company::select('country')->distinct()->get()->pluck('country');
+        $excludedCountries = ['Germany','Austria','Switzerland','Italy','Spain','UK','USA'];
+        $countries = Company::whereNotNull('country')->whereNotIn('country',array_merge([''],$excludedCountries))->select('country')->distinct()->orderBy('country','ASC')->get()->pluck('country');
+        $countries = collect($excludedCountries)->merge($countries);
         $flags = Company::select('flag')->distinct()->get()->pluck('flag');
         $companies = Company::whereIn('id',Contact::select('company_id')->distinct()->get())->get();
         $params = $request->all();

@@ -17,10 +17,12 @@ use App\Jobs\ClassifyCompaniesJob;
 class DashboardController extends Controller
 {
     public function dashboard(Request $request){
-        $countries = Company::select('country')->distinct()->get()->pluck('country');
+        $excludedCountries = ['DACH','Germany','Austria','Switzerland','Italy','Spain','UK','USA'];
+        $countries = Company::whereNotNull('country')->whereNotIn('country',array_merge([''],$excludedCountries))->select('country')->distinct()->orderBy('country','ASC')->get()->pluck('country');
         $flags = Company::select('flag')->distinct()->get()->pluck('flag');
         $params = $request->all();
         $pageUrl = route('companies.all',$params);
+        $countries = collect($excludedCountries)->merge($countries);
         return view('dashboard',compact("pageUrl","countries","flags"));
     }
     public function dream(Request $request,$id){
@@ -40,9 +42,13 @@ class DashboardController extends Controller
     public function companies(Request $request){
         $type = ($request->filter ? $request->filter : "all");
         $country = ($request->country ? $request->country : "");
-       
+        $revenue = (isset($request->revenue) && !empty($request->revenue) ? explode('-',$request->revenue) : []);
         if($country && $country != "all"){
-            $companies = Company::where('country',$country)->where('processed',1);
+            if($country == "DACH"){
+                $companies = Company::whereIn('country',['Germany','Austria','Switzerland']);
+            }else{
+                $companies = Company::where('country',$country)->where('processed',1);
+            }
         }else{
             if($type == "incomplete" || $type == "no_wz_code"){
                 $companies = Company::withTrashed();
@@ -53,6 +59,10 @@ class DashboardController extends Controller
         if($type == "deleted"){
             $companies->onlyTrashed();
         }
+        $parentIds = Company::whereNotNull('parent_id')->get()->pluck('parent_id');
+        if(count($parentIds)){
+            $companies = $companies->whereNotIn('id',$parentIds);
+        }
         $dream = ($request->dream ? $request->dream : "");
         if($dream && $dream == "1"){
             $companies = $companies->where('dream',1);
@@ -60,6 +70,12 @@ class DashboardController extends Controller
         $flag = ($request->flag ? $request->flag : "");
         if($flag && $flag != "all"){
             $companies = $companies->where('flag',$flag);
+        }
+        if(count($revenue)){
+            $companies = $companies->whereRaw("CAST(revenue AS UNSIGNED) >= ?", [$revenue[0]]);
+            if(count($revenue) > 1){
+                $companies = $companies->whereRaw("CAST(revenue AS UNSIGNED) <= ?", [$revenue[1]]);
+            }
         }
         $search = $request->has('search') ? $request->search['value'] : "";
         $offset = $request->start ? $request->start : 0;
@@ -125,6 +141,14 @@ class DashboardController extends Controller
                     $companies->whereHas('classifications',function($q) use ($class){
                         $q->where('company_classification_id',$class->id);
                     });
+                }else if($type == "tam_4_diff"){
+                    $query = clone $companies;
+                    $companyIds = $query->whereHas('classifications',function($qy){
+                        $qy->where('company_classification_id',4);
+                    })->get()->pluck('id');
+                    $companies->whereHas('classifications',function($q){
+                        $q->where('company_classification_id',1)->where('company_classification_id',"!=",4);
+                    })->whereNotIn('id',$companyIds);
                 }else if($type == "sam_4_diff"){
                     $query = clone $companies;
                     $companyIds = $query->whereHas('classifications',function($qy){
@@ -320,15 +344,36 @@ class DashboardController extends Controller
     }
     public function viewCompany($id){
         $company = Company::with('contacts','quiz')->withTrashed()->find($id);
+        if($company->parent_id){
+            $company->parent = Company::withTrashed()->where('id',$company->parent_id)->first();
+        }
         return view('company',compact('company'));
     }
     public function editCompany($id){
+        $allCompanies = [];
         $company = Company::find($id);
-        $countries = Company::select('country')->distinct()->get()->pluck('country');
-        return view('edit_company',compact('company','countries'));
+        if(!empty($company->parent_id)){
+            $allCompanies = Company::where('id',$company->parent_id)->get(['id','name']);
+        }
+        $excludedCountries = ['Germany','Austria','Switzerland','Italy','Spain','UK','USA'];
+        $countries = Company::whereNotNull('country')->whereNotIn('country',array_merge([''],$excludedCountries))->select('country')->distinct()->orderBy('country','ASC')->get()->pluck('country');
+        $countries = collect($excludedCountries)->merge($countries);
+        return view('edit_company',compact('company','countries','allCompanies'));
+    }
+    public function searchCompanies(Request $request){
+        $query = Company::where('processed',1);
+        if($request->has('q') && !empty($request->get('q'))){
+            $query->where('name','like','%' . $request->get('q') . '%');
+        }
+        if($request->has('company_id') && !empty($request->get('company_id'))){
+            $query->where('id','!=',$request->get('company_id'));
+        }
+        $companies = $query->get(['id','name']);
+        return response()->json($companies);
     }
     public function updateCompany(Request $request,$id){
         $company = Company::find($id);
+        $company->parent_id = $request->input('parent_id') ?? null;
         $company->revenue = $request->input('revenue');
         $company->name = $request->input('name');
         $company->headcount = $request->input('headcount');
@@ -361,19 +406,32 @@ class DashboardController extends Controller
         return json_encode(["status" => "success","message" => "Done"]);
     }
     public function wz_code_status(Request $request){
-        $countries = Company::select('country')->distinct()->get()->pluck('country');
+        $excludedCountries = ['DACH','Germany','Austria','Switzerland','Italy','Spain','UK','USA'];
+        $countries = Company::whereNotNull('country')->whereNotIn('country',array_merge([''],$excludedCountries))->select('country')->distinct()->orderBy('country','ASC')->get()->pluck('country');
+        $countries = collect($excludedCountries)->merge($countries);
         $flags = Company::select('flag')->distinct()->get()->pluck('flag');
 
         $query = Company::where(function($q){
             $q->whereNotNull('wz_code')->orWhereNotNull('naics');
         });
         if($request->has('country') && $request->country != "all" && $request->country != ""){
-            $query = $query->where('country',$request->country);
+            if($request->country == "DACH"){
+                $query = $query->whereIn('country',['Germany','Austria','Switzerland']);
+            }else{
+                $query = $query->where('country',$request->country);
+            }
         }
         if($request->has('flag') && $request->flag != "all" && $request->flag != ""){
             $query = $query->where('flag',$request->flag);
         }
-        $classes = CompanyClassification::whereIn('name', ['SAM', 'SOM - 4', 'SOM', 'SAM - 4'])->get();
+        if($request->has('revenue') && !empty($request->revenue)){
+            $revenue = explode('-',$request->revenue);
+            $query = $query->whereRaw("CAST(revenue AS UNSIGNED) >= ?", [$revenue[0]]);
+            if(count($revenue) > 1){
+                $query = $query->whereRaw("CAST(revenue AS UNSIGNED) <= ?", [$revenue[1]]);
+            }
+        }
+        $classes = CompanyClassification::whereIn('name', ['TAM','SAM','SOM','TAM - 4','SAM - 4','SOM - 4'])->get();
         $counts = [];
         foreach($classes as $class){
             $q = clone $query;
@@ -392,6 +450,9 @@ class DashboardController extends Controller
                     $industry = Industry::where('wz_code',$wz_code)->first();
                     $counts[$wz_code] = [
                         "name" => ($industry ? $industry->branch : $wz_code),
+                        'TAM' => 0,
+                        'TAM - 4' => 0,
+                        'TAM 4 - Diff' => 0,
                         'SAM' => 0,
                         'SAM - 4' => 0,
                         'SAM 4 - Diff' => 0,
@@ -414,9 +475,15 @@ class DashboardController extends Controller
             if($counts[$wz_code]['SOM'] > $counts[$wz_code]['SOM - 4']){
                 $counts[$wz_code]['SOM 4 - Diff'] = $counts[$wz_code]['SOM'] - $counts[$wz_code]['SOM - 4'];
             }
+            if($counts[$wz_code]['TAM'] > $counts[$wz_code]['TAM - 4']){
+                $counts[$wz_code]['TAM 4 - Diff'] = $counts[$wz_code]['TAM'] - $counts[$wz_code]['TAM - 4'];
+            }
         }
         $total = [
             "name" => "",
+            'TAM' => 0,
+            'TAM - 4' => 0,
+            'TAM 4 - Diff' => 0,
             'SAM' => 0,
             'SAM - 4' => 0,
             'SAM 4 - Diff' => 0,
@@ -449,6 +516,9 @@ class DashboardController extends Controller
         }
         $counts['Total'] = $total;
         $map = [
+            'TAM' => 'tam',
+            'TAM - 4' => 'tam_samson4',
+            'TAM 4 - Diff' => 'tam_4_diff',
             'SAM' => 'sam',
             'SAM - 4' => 'sam_samson4',
             'SAM 4 - Diff' => 'sam_4_diff',
@@ -495,7 +565,9 @@ class DashboardController extends Controller
         
     }
     public function dupes(Request $request){
-        $countries = Company::select('country')->distinct()->get()->pluck('country');
+        $excludedCountries = ['DACH','Germany','Austria','Switzerland','Italy','Spain','UK','USA'];
+        $countries = Company::whereNotNull('country')->whereNotIn('country',array_merge([''],$excludedCountries))->select('country')->distinct()->orderBy('country','ASC')->get()->pluck('country');
+        $countries = collect($excludedCountries)->merge($countries);
         $flags = Company::select('flag')->distinct()->get()->pluck('flag');
         $params = $request->all();
         $pageUrl = route('list_duplicates.all',$params);
@@ -504,15 +576,15 @@ class DashboardController extends Controller
     public function allDupes(Request $request){
         $type = ($request->filter ? $request->filter : "all");
         $country = ($request->country ? $request->country : "");
-       
+        $revenue = (isset($request->revenue) && !empty($request->revenue) ? explode('-',$request->revenue) : []);
         if($country && $country != "all"){
-            $companies = Company::where('country',$country)->where('processed',1);
-        }else{
-            if($type == "incomplete" || $type == "no_wz_code"){
-                $companies = Company::withTrashed();
+            if($country == "DACH"){
+                $companies = Company::whereIn('country',['Germany','Austria','Switzerland'])->where('processed',1);
             }else{
-                $companies = Company::where('processed',1);
+                $companies = Company::where('country',$country)->where('processed',1);
             }
+        }else{
+            $companies = Company::where('processed',1);
         }
         if($type == "deleted"){
             $companies->onlyTrashed();
@@ -524,6 +596,12 @@ class DashboardController extends Controller
         $flag = ($request->flag ? $request->flag : "");
         if($flag && $flag != "all"){
             $companies = $companies->where('flag',$flag);
+        }
+        if(count($revenue)){
+            $companies = $companies->whereRaw("CAST(revenue AS UNSIGNED) >= ?", [$revenue[0]]);
+            if(count($revenue) > 1){
+                $companies = $companies->whereRaw("CAST(revenue AS UNSIGNED) <= ?", [$revenue[1]]);
+            }
         }
         $search = $request->has('search') ? $request->search['value'] : "";
         if(!empty($search)){
@@ -602,9 +680,9 @@ class DashboardController extends Controller
         }
         $offset = $request->start ? $request->start : 0;
         $limit = $request->length ? $request->length : 100;
-        $duplicates = Company::where('domain','!=','')->select('domain',DB::raw('COUNT(*) as count'))->groupBy('domain')->havingRaw('count(*) > 1')->orderBy('count','desc')->get();
-        $totalRecords = $companies->whereIn('domain',$duplicates->pluck('domain'))->select("id")->count();
-        $companies = $companies->whereIn('domain',$duplicates->pluck('domain'))->select(["id","dream","name","domain","legal_name","country","revenue","headcount"])->orderBy('domain')->orderBy('revenue','asc')->offset($offset)->take($limit)->get();
+        $duplicates = $companies->where('domain','!=','')->select('domain',DB::raw('COUNT(*) as count'))->groupBy('domain')->havingRaw('count(*) > 1')->orderBy('count','desc')->get();
+        $totalRecords = Company::whereIn('domain',$duplicates->pluck('domain'))->select("id")->count();
+        $companies = Company::whereIn('domain',$duplicates->pluck('domain'))->select(["id","dream","name","domain","legal_name","country","revenue","headcount"])->orderBy('domain')->orderBy('revenue','asc')->offset($offset)->take($limit)->get();
         $companies = $companies->map(function($company){
             $company->domain = str_replace('www.','',$company->domain);
             if(!empty($company->domain)){

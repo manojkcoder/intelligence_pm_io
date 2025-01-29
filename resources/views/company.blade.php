@@ -6,6 +6,9 @@
         <div class="max-w-7xl mx-auto">
             <div class="tabs-wrapper flex text-gray-500 border-b border-gray-200 text-base">
                 <div class="tab-item p-4 border-b-2 border-transparent active" data-id="companyProfile">Company</div>
+                @if($company->parent_id)
+                    <div class="tab-item p-4 border-b-2 border-transparent" data-id="parentCompany">Parent Company</div>
+                @endif
                 @if($company->quiz->count() > 0)
                     <div class="tab-item p-4 border-b-2 border-transparent" data-id="companyQA">QA Response</div>
                 @endif
@@ -124,6 +127,54 @@
                     </div>
                 </div>
             </div>
+            @if($company->parent_id)
+                <div id="parentCompany" class="tab-content bg-white overflow-hidden shadow-sm rounded p-6">
+                    <div class="flex items-center gap-2 mb-2">
+                        <a href="{{ route('viewCompany',$company->parent_id) }}" class="btn-bg-primary text-white py-2 px-4">View</a>
+                        <a href="{{ route('editCompany',$company->parent_id) }}" class="btn-bg-primary text-white py-2 px-4">Edit</a>
+                    </div>
+                    <div class="flex">
+                        <div class="table-responsive flex-1 overflow-auto data-table top-table">
+                            <table class="table-auto dataTable">
+                                <tbody>
+                                    <tr>
+                                        <td class="px-4 py-2">Name:</td>
+                                        <td class="px-4 py-2">{{ $company->parent->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Domain:</td>
+                                        <td class="px-4 py-2">{{ $company->parent->domain }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Country:</td>
+                                        <td class="px-4 py-2">{{ $company->parent->country }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Revenue in Mio. Euro:</td>
+                                        <td class="px-4 py-2">{{ $company->parent->revenue }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">WZ Code:</td>
+                                        <td class="px-4 py-2">{{ $company->parent->wz_code }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Headcount:</td>
+                                        <td class="px-4 py-2">{{ $company->parent->headcount }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">HS ID:</td>
+                                        <td class="px-4 py-2">
+                                            @if($company->parent->hubspot_id)
+                                                <a href="https://app.hubspot.com/contacts/26548368/company/{{ $company->parent->hubspot_id }}" target="_blank">{{ $company->parent->hubspot_id }}</a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            @endif
             @if($company->quiz->count() > 0)
                 <div id="companyQA" class="tab-content bg-white overflow-hidden shadow-sm rounded p-6">
                     <div class="flex flex-col items-center">

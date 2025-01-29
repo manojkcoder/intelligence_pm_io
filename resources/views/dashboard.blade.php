@@ -19,6 +19,7 @@
                         <option  @if(request()->input('filter') == 'som_samson4') selected @endif value="som_samson4">SOM 4</option>
                         <option  @if(request()->input('filter') == 'sam_samson4_oversized') selected @endif value="sam_samson4_oversized">SAM 4 Oversized</option>
                         <option  @if(request()->input('filter') == 'som_samson4_oversized') selected @endif value="som_samson4_oversized">SOM 4 Oversized</option>                       
+                        <option  @if(request()->input('filter') == 'tam_4_diff') selected @endif value="tam_4_diff">TAM 4 - Diff</option>
                         <option  @if(request()->input('filter') == 'sam_4_diff') selected @endif value="sam_4_diff">SAM 4 - Diff</option>
                         <option  @if(request()->input('filter') == 'som_4_diff') selected @endif value="som_4_diff">SOM 4 - Diff</option>
                     </select>
@@ -37,6 +38,20 @@
                         @foreach ($countries as $country)
                             <option @if(request()->input('country') == $country) selected @endif value="{{$country}}">{{$country}}</option>
                         @endforeach
+                    </select>
+                    <select name="revenue" id="revenue" class="bg-white py-2 px-4 border border-transparent flex-1">
+                        <option value="">Revenue</option>
+                        <option @if(request()->input('revenue') == '0-49.99') selected @endif value="0-49.99">0 - 50 million</option>
+                        <option @if(request()->input('revenue') == '50-99.99') selected @endif value="50-99.99">50 - 99.99 million</option>
+                        <option @if(request()->input('revenue') == '100-299.99') selected @endif value="100-299.99">100 - 299.99 million</option>
+                        <option @if(request()->input('revenue') == '300-499.99') selected @endif value="300-499.99">300 - 499.99 million</option>
+                        <option @if(request()->input('revenue') == '500-999.99') selected @endif value="500-999.99">500 - 999.99 million</option>
+                        <option @if(request()->input('revenue') == '1000-4999.99') selected @endif value="1000-4999.99">1 - 5 billion</option>
+                        <option @if(request()->input('revenue') == '5000-9999.99') selected @endif value="5000-9999.99">5 - 10 billion</option>
+                        <option @if(request()->input('revenue') == '10000-19999.99') selected @endif value="10000-19999.99">10 - 20 billion</option>
+                        <option @if(request()->input('revenue') == '20000-49999.99') selected @endif value="20000-49999.99">20 - 50 billion</option>
+                        <option @if(request()->input('revenue') == '50000-99999.99') selected @endif value="50000-99999.99">50 - 100 billion</option>
+                        <option @if(request()->input('revenue') == '100000') selected @endif value="100000">more than 100 billion</option>
                     </select>
                     <button type="submit" class="btn-bg-primary text-white py-2 px-4 flex-1">Filter</button>
                 </div>
@@ -103,7 +118,7 @@
             });
             var ctx = document.getElementById('myChart').getContext('2d');
             $.ajax({
-                url: '/wz_code_status?@if(request()->input('filter'))&filter={{request()->input('filter')}}@endif @if(request()->input('flag'))&flag={{request()->input('flag')}}@endif @if(request()->input('country'))&country={{request()->input('country')}}@endif',
+                url: '/wz_code_status?@if(request()->input('filter'))&filter={{request()->input('filter')}}@endif @if(request()->input('flag'))&flag={{request()->input('flag')}}@endif @if(request()->input('country'))&country={{request()->input('country')}}@endif @if(request()->input('revenue'))&revenue={{request()->input('revenue')}}@endif',
                 type: 'GET',
                 success: function(data){
                     var myChart = new Chart(ctx,{

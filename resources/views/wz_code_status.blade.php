@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="main-wrapper px-6 py-12 max-w-7xl mx-auto">
+    <div class="main-wrapper px-6 py-12">
         <div class="mx-auto mb-4">
             <form action="{{route('wz_code_status')}}" method="get" class="filter-form flex justify-between flex-wrap gap-4">
                 <div class="flex justify-end gap-2">
