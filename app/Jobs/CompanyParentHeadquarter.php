@@ -11,8 +11,7 @@ use GuzzleHttp\Client;
 
 class CompanyParentHeadquarter implements ShouldQueue
 {
-    use Queueable;
-    use SerializesModels;
+    use Dispatchable,InteractsWithQueue,Queueable,SerializesModels;
     private $client;
     private $id;
     public function __construct($id){
@@ -22,7 +21,6 @@ class CompanyParentHeadquarter implements ShouldQueue
         $this->client = new Client();
         $company = Company::withTrashed()->where('id',$this->id)->first();
         if($company){
-            // $qaResponses = $company->qa_responses ? json_decode($company->qa_responses,true) : [];
             $output = $this->fetchCompanyInfo($company->name);
             $QuizResponse = QuizResponse::where('company_id',$company->id)->where('question_id',17)->first();
             if(!$QuizResponse){
@@ -142,9 +140,6 @@ class CompanyParentHeadquarter implements ShouldQueue
             }
             $QuizResponse->answer = trim($output);
             $QuizResponse->save();
-            // $qaResponses[] = ['question' => 'Location of Headquarter of parent company','answer' => $output];
-            // $company->qa_responses = json_encode($qaResponses);
-            // $company->save();
             sleep(2);
         }
     }

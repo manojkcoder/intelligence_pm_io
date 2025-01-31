@@ -7,7 +7,7 @@
             <div class="tabs-wrapper flex text-gray-500 border-b border-gray-200 text-base">
                 <div class="tab-item p-4 border-b-2 border-transparent active" data-id="companyProfile">Company</div>
                 @if($company->parent_id)
-                    <div class="tab-item p-4 border-b-2 border-transparent" data-id="parentCompany">Parent Company</div>
+                    <div class="tab-item p-4 border-b-2 border-transparent" data-id="motherCompany">Mother Company</div>
                 @endif
                 @if($company->quiz->count() > 0)
                     <div class="tab-item p-4 border-b-2 border-transparent" data-id="companyQA">QA Response</div>
@@ -128,7 +128,7 @@
                 </div>
             </div>
             @if($company->parent_id)
-                <div id="parentCompany" class="tab-content bg-white overflow-hidden shadow-sm rounded p-6">
+                <div id="motherCompany" class="tab-content bg-white overflow-hidden shadow-sm rounded p-6">
                     <div class="flex items-center gap-2 mb-2">
                         <a href="{{ route('viewCompany',$company->parent_id) }}" class="btn-bg-primary text-white py-2 px-4">View</a>
                         <a href="{{ route('editCompany',$company->parent_id) }}" class="btn-bg-primary text-white py-2 px-4">Edit</a>
@@ -177,14 +177,40 @@
             @endif
             @if($company->quiz->count() > 0)
                 <div id="companyQA" class="tab-content bg-white overflow-hidden shadow-sm rounded p-6">
-                    <div class="flex flex-col items-center">
-                        <div class="flex flex-col gap-4 mt-4">
+                    <div class="flex flex-col">
+                        <div class="flex justify-end">
+                            <button id="editButton" class="btn-bg-primary text-white py-2 px-4">Edit</button>
+                        </div>
+                        <div class="flex flex-col gap-4 mt-4" id="quizList">
                             @foreach($company->quiz as $quiz)
                                 <div class="flex flex-col">
                                     <span class="font-semibold">Q) {{ $quiz->question_name }}</span>
-                                    <span>Ans: {{ ($quiz->answer == 'yes' ? "Yes" : ($quiz->answer == 'no' ? "No" : $quiz->answer)) }}</span>
+                                    <span class="space-pre-wrap"><b>Ans:</b> {{ ($quiz->answer == 'yes' ? "Yes" : ($quiz->answer == 'no' ? "No" : $quiz->answer)) }}</span>
                                 </div>
                             @endforeach
+                        </div>
+                        <div id="editForm" class="hidden mt-4">
+                            <form action="{{ route('quiz.update') }}" method="POST">
+                                <input type="hidden" name="company_id" value="{{ $company->id }}"/>
+                                @csrf
+                                @foreach($company->quiz as $quiz)
+                                    <div class="flex flex-col mb-4">
+                                        <label for="answers-{{ $quiz->question_id }}" class="font-semibold mb-2">Q) {{ $quiz->question_name }}</label>
+                                        @if($quiz->question_id == 1 || $quiz->question_id == 2 || $quiz->question_id == 3 || $quiz->question_id == 4 || $quiz->question_id == 15)
+                                            <select name="answers[{{ $quiz->question_id }}]" id="answers-{{ $quiz->question_id }}" class="bg-white py-2 px-4 border flex-1">
+                                                <option value="yes" {{ $quiz->answer == 'yes' ? 'selected' : '' }}>Yes</option>
+                                                <option value="no" {{ $quiz->answer == 'no' ? 'selected' : '' }}>No</option>
+                                            </select>
+                                        @else
+                                            <textarea name="answers[{{ $quiz->question_id }}]" id="answers-{{ $quiz->question_id }}" class="bg-white py-2 px-4 border flex-1">{{ $quiz->answer }}</textarea>
+                                        @endif
+                                    </div>
+                                @endforeach
+                                <div class="flex justify-end gap-4 mt-4">
+                                    <button type="button" id="cancelButton" class="btn-bg-primary text-white py-2 px-4">Cancel</button>
+                                    <button type="submit" class="btn-bg-primary text-white py-2 px-4">Save</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -211,6 +237,16 @@
                     }
                 });
             });
+            document.getElementById('editButton').addEventListener('click',function(){
+                document.getElementById('editForm').classList.remove('hidden');
+                document.getElementById('quizList').classList.add('hidden');
+                document.getElementById('editButton').classList.add('hidden');
+            });
+            document.getElementById('cancelButton').addEventListener('click',function(){
+                document.getElementById('editButton').classList.remove('hidden');
+                document.getElementById('quizList').classList.remove('hidden');
+                document.getElementById('editForm').classList.add('hidden');
+            });
         });
     </script>
     <style>
@@ -220,6 +256,10 @@
         .tab-content{display:none;}
         .tab-content.active{display:block;}
         .text-left{text-align:left;}
+        .tab-content form input,
+        .tab-content form select,
+        .tab-content form textarea{border:1px solid #e2e8f0;}
+        .space-pre-wrap{white-space:pre-wrap;}
         @media(max-width:1024px){
             .data-table.top-table table tbody tr td:first-child{position:static;font-weight:600;}
             .data-table.top-table table tbody tr{gap: 5px;}

@@ -53,6 +53,11 @@
                         <option @if(request()->input('revenue') == '50000-99999.99') selected @endif value="50000-99999.99">50 - 100 billion</option>
                         <option @if(request()->input('revenue') == '100000') selected @endif value="100000">more than 100 billion</option>
                     </select>
+                    <select name="division" id="division" class="bg-white py-2 px-4 border border-transparent flex-1">
+                        <option value="">All</option>
+                        <option @if(request()->input('division') == 'independent') selected @endif value="independent">Independent</option>
+                        <option @if(request()->input('division') == 'dependent') selected @endif value="dependent">Dependent</option>
+                    </select>
                     <button type="submit" class="btn-bg-primary text-white py-2 px-4 flex-1">Filter</button>
                 </div>
                 <a href="{{$pageUrl . (strpos($pageUrl, '?') !== false ? '&' : '?')}}export" class="btn-bg-secondary text-white py-2 px-4">Export</a>
@@ -186,6 +191,8 @@
     <style>
         #myTable tbody td:last-child{display:flex !important;}
         .filter-form select{min-width:120px;}
+        .txt-mother{background:#E3AFBD;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;border-radius:50%;color:#72384C;line-height:1;margin-right:6px;}
+        .txt-daughter{background:#B3B8DD;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;border-radius:50%;color:#3E466C;line-height:1;margin-right:6px;}
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -208,9 +215,12 @@
                 <!--Body-->
                 <p>Move this company to:</p>
                 <select name="moveType" id="moveType" class="bg-white   py-2 px-4 border border-transparent flex-1">
-                    <option value="TAM">TAM</option>
-                    <option value="SAM">SAM</option>
-                    <option value="SOM">SOM</option>
+                    <option value="TAM">TAM 2</option>
+                    <option value="SAM">SAM 2</option>
+                    <option value="SOM">SOM 2</option>
+                    <option value="TAM - 4">TAM 4</option>
+                    <option value="SAM - 4">SAM 4</option>
+                    <option value="SOM - 4">SOM 4</option>
                 </select>
                 <button class="btn-bg-primary text-white py-2 px-4 mt-4" id="moveCompany">Move</button>
             </div>

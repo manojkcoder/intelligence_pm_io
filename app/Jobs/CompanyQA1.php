@@ -7,13 +7,12 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Company;
 use App\Models\QuizResponse;
-use App\Jobs\CompanyParentName;
 use GuzzleHttp\Client;
 
-class CompanyQAParent implements ShouldQueue
+class CompanyQA1 implements ShouldQueue
 {
-    use Queueable;
-    use SerializesModels;
+    use Dispatchable,InteractsWithQueue,Queueable,SerializesModels;
+    public $timeout = 100000;
     private $client;
     private $id;
     public function __construct($id){
@@ -25,11 +24,11 @@ class CompanyQAParent implements ShouldQueue
         if($company){
             $output = $this->fetchCompanyInfo($company->name);
             $output = str_contains(strtolower($output),'yes') ? 'yes' : 'no';
-            $QuizResponse = QuizResponse::where('company_id',$company->id)->where('question_id',15)->first();
+            $QuizResponse = QuizResponse::where('company_id',$company->id)->where('question_id',1)->first();
             if(!$QuizResponse){
                 $QuizResponse = new QuizResponse();
                 $QuizResponse->company_id = $company->id;
-                $QuizResponse->question_id = 15;
+                $QuizResponse->question_id = 1;
             }
             $QuizResponse->answer = $output;
             $QuizResponse->save();
@@ -48,10 +47,10 @@ class CompanyQAParent implements ShouldQueue
                     "messages" => [
                         [
                             "role" => "user",
-                            "content" => "Based on the company name '".$company."', indicate if it belongs to a parent company. Respond with 'yes' or 'no'."
+                            "content" => "Based on the company name '".$company."', is it a division of a large corporation? Please respond with 'yes' or 'no'. Do not provide any extra info."
                         ]
                     ],
-                    "max_tokens" => 2000,
+                    "max_tokens" => 200,
                     "temperature" => 0.2,
                     "top_p" => 0.9,
                     "search_domain_filter" => ["perplexity.ai"],

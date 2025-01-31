@@ -10,8 +10,7 @@ use GuzzleHttp\Client;
 
 class CompanyHeadcount implements ShouldQueue
 {
-    use Queueable;
-    use SerializesModels;
+    use Dispatchable,InteractsWithQueue,Queueable,SerializesModels;
     private $client;
     private $id;
     public function __construct($id){

@@ -12,8 +12,7 @@ use GuzzleHttp\Client;
 
 class CompanyParentName implements ShouldQueue
 {
-    use Queueable;
-    use SerializesModels;
+    use Dispatchable,InteractsWithQueue,Queueable,SerializesModels;
     private $client;
     private $id;
     public function __construct($id){
@@ -23,7 +22,6 @@ class CompanyParentName implements ShouldQueue
         $this->client = new Client();
         $company = Company::withTrashed()->where('id',$this->id)->first();
         if($company){
-            // $qaResponses = $company->qa_responses ? json_decode($company->qa_responses,true) : [];
             $output = $this->fetchCompanyInfo($company->name);
             $QuizResponse = QuizResponse::where('company_id',$company->id)->where('question_id',16)->first();
             if(!$QuizResponse){
@@ -47,9 +45,6 @@ class CompanyParentName implements ShouldQueue
             $output = str_replace(['[1]','[2]','[3]','[4]','[5]','[6]','[7]','[8]','[9]','[10]','[11]','[12]','[13]','[14]','[15]','[16]','[17]','[18]','[19]','[20]'],'',$output);
             $QuizResponse->answer = $output;
             $QuizResponse->save();
-            // $qaResponses[] = ['question' => 'Name of the parent company.','answer' => $output];
-            // $company->qa_responses = json_encode($qaResponses);
-            // $company->save();
             CompanyParentHeadquarter::dispatch($company->id)->onQueue('perplexity');
             sleep(2);
         }

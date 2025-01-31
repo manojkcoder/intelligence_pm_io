@@ -14,7 +14,7 @@ class ClassifyCompaniesJob implements ShouldQueue
 {
     use Dispatchable,InteractsWithQueue,Queueable,SerializesModels;
     protected $companyIds;
-    protected $classifications;
+    protected $excludeClass;
 
     /**
      * Create a new job instance.
@@ -89,9 +89,9 @@ class ClassifyCompaniesJob implements ShouldQueue
                     $matcheswz_code = empty($wz_codes) || collect($wz_codes)->contains(function($wz_code) use ($company){
                         return strpos($company->wz_code,$wz_code) === 0;
                     });
-                    // if(in_array($classification->name,$this->excludeClass) && $largeCorporation == 'yes' && $companyIndependent == 'no'){
-                    //     continue;
-                    // }
+                    if(in_array($classification->name,$this->excludeClass) && $largeCorporation == 'yes' && $companyIndependent == 'no'){
+                        continue;
+                    }
                     if(strpos($classification->name, 'Oversized') !== false){
                         if(($matchesRevenue || $matchesHeadcount) && $matcheswz_code){
                             $company->classifications()->syncWithoutDetaching([$classification->id]);

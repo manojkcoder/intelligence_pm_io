@@ -30,6 +30,6 @@ class Company extends Model
         return $classifications;
     }
     public function quiz(){
-        return $this->hasMany(QuizResponse::class,'company_id');
+        return $this->hasMany(QuizResponse::class,'company_id')->orderBy('question_id','asc');
     }
 }

@@ -43,6 +43,7 @@ Route::post('/existing-client/{id}',[DashboardController::class,'existingClient'
 Route::get('/accounts/edit/{id}',[DashboardController::class,'editCompany'])->middleware(['auth','verified'])->name('editCompany');
 Route::patch('/accounts/edit/{id}',[DashboardController::class,'updateCompany'])->middleware(['auth','verified'])->name('updateCompany');
 Route::delete('/accounts/edit/{id}',[DashboardController::class,'destroyCompany'])->middleware(['auth','verified'])->name('destroyCompany');
+Route::post('/quiz/update',[DashboardController::class,'updateQuiz'])->middleware(['auth','verified'])->name('quiz.update');
 
 Route::get('/contacts',[ContactsController::class,'allContacts'])->middleware(['auth','verified'])->name('contacts.all');
 Route::get('/getContacts',[ContactsController::class,'getContacts'])->middleware(['auth','verified'])->name('contacts.get');
@@ -355,31 +356,31 @@ Route::get('/fetch-cognism-companies',function(){
     //     }
     // }
 });
-Route::get('/update-categories',function(){
-    \App\Jobs\ClassifyCompaniesJob::dispatch([372]);
-});
 // Route::get('/wzcode-naics-mapping',function(){
-//     $jsonPath = Storage::path('public/wzcodemapping.json');
-//     $wzcodes = json_decode(File::get($jsonPath),true);
-//     foreach($wzcodes as $wzcodeData){
-//         WzCodesNaicsMapping::create([
-//             'wz_codes' => $wzcodeData['wz_codes'],
-//             'wz_codes_description' => $wzcodeData['wz_codes_description'],
-//             'naics_codes' => $wzcodeData['naics_codes'],
-//             'naics_description' => $wzcodeData['naics_description']
-//         ]);
-//     }
+    // $jsonPath = Storage::path('public/wzcodemapping.json');
+    // $wzcodes = json_decode(File::get($jsonPath),true);
+    // foreach($wzcodes as $wzcodeData){
+    //     WzCodesNaicsMapping::create([
+    //         'wz_codes' => $wzcodeData['wz_codes'],
+    //         'wz_codes_description' => $wzcodeData['wz_codes_description'],
+    //         'naics_codes' => $wzcodeData['naics_codes'],
+    //         'naics_description' => $wzcodeData['naics_description']
+    //     ]);
+    // }
 // });
 Route::get('/update-wz-codes',function(){
     $jsonPath = Storage::path('public/wz-codes.json');
     $wzcodes = json_decode(File::get($jsonPath),true);
     $updated = 0;
     foreach($wzcodes as $wzcodeData){
-        $companies = Company::withTrashed()->where('name',$wzcodeData['name'])->orWhere('domain',$wzcodeData['domain'])->get();
+        $companies = Company::withTrashed()->where('domain',$wzcodeData['domain'])->get();
         foreach($companies as $company){
-            $company->domain = $wzcodeData['domain'];
-            $company->wz_code = $wzcodeData['wz_code'];
-            $company->country = $wzcodeData['country'];
+            if(isset($wzcodeData['country']) && !empty($wzcodeData['country'])){
+                $company->country = $wzcodeData['country'];
+            }
+            if(isset($wzcodeData['wz_code']) && !empty($wzcodeData['wz_code'])){
+                $company->wz_code = $wzcodeData['wz_code'];
+            }
             $company->save();
             $updated++;
         }
@@ -398,54 +399,48 @@ Route::get('/update-wz-codes',function(){
     }
     echo $updated . ' companies updated';
 });
+Route::get('/company-qa',function(){
+    // \App\Jobs\CompanyQuiz::dispatch();
+    // $tamClass = CompanyClassification::where('name','TAM')->first();
+    // $samClass = CompanyClassification::where('name','SAM')->first();
+    // $somClass = CompanyClassification::where('name','SOM')->first();
+    // $tam4Class = CompanyClassification::where('name','TAM - 4')->first();
+    // $sam4Class = CompanyClassification::where('name','SAM - 4')->first();
+    // $som4Class = CompanyClassification::where('name','SOM - 4')->first();
+    // $companIds = Company::withTrashed()->whereHas('classifications',function($q) use($tamClass,$samClass,$somClass,$tam4Class,$sam4Class,$som4Class){
+    //     $q->where('company_classification_id',$tamClass->id)->orWhere('company_classification_id',$tam4Class->id);
+    //     // $q->where('company_classification_id',$samClass->id)->orWhere('company_classification_id',$sam4Class->id);
+    //     // $q->where('company_classification_id',$somClass->id)->orWhere('company_classification_id',$som4Class->id);
+    // })->whereIn('country',['Germany','Austria','Switzerland'])->orderBy('id','asc')->skip(0)->take(8000)->get(['id'])->pluck('id')->toArray();
+    // foreach($companIds as $companId){
+    //     \App\Jobs\CompanyQAs::dispatch($companId);
+    // }
+});
 // Route::get('/update-hubspot-ids',function(){
-//     $jsonPath = Storage::path('public/hubspotIds.json');
-//     $companies = json_decode(File::get($jsonPath),true);
-//     foreach($companies as $companyData){
-//         $company = Company::where('name',$companyData['name'])->first();
-//         if($company){
-//             if(empty($company->legal_name) || $company->legal_name != $companyData['legal_name']){
-//                 $company->legal_name = $companyData['legal_name'];
-//             }
-//             $company->hubspot_id = $companyData['hubspot_id'];
-//             $company->save();
-//         }
-//     }
+    // $jsonPath = Storage::path('public/hubspotIds.json');
+    // $companies = json_decode(File::get($jsonPath),true);
+    // foreach($companies as $companyData){
+    //     $company = Company::where('name',$companyData['name'])->first();
+    //     if($company){
+    //         if(empty($company->legal_name) || $company->legal_name != $companyData['legal_name']){
+    //             $company->legal_name = $companyData['legal_name'];
+    //         }
+    //         $company->hubspot_id = $companyData['hubspot_id'];
+    //         $company->save();
+    //     }
+    // }
 // });
 // Route::get('/fetch-companies-revenue',function(){
-//     $companiesIds = Company::where('country',"Germany")->whereNull('revenue')->orderBy('id','asc')->get()->pluck('id')->toArray();
-//     foreach($companiesIds as $companyId){
-//         \App\Jobs\CompanyRevenue::dispatch($companyId)->onQueue('perplexity');
-//     }
+    // $companiesIds = Company::where('country',"Germany")->whereNull('revenue')->orderBy('id','asc')->get()->pluck('id')->toArray();
+    // foreach($companiesIds as $companyId){
+    //     \App\Jobs\CompanyRevenue::dispatch($companyId)->onQueue('perplexity');
+    // }
 // });
 // Route::get('/fetch-companies-headcount',function(){
-//     $companiesIds = Company::where('country',"Germany")->whereNull('headcount')->orderBy('id','asc')->get()->pluck('id')->toArray();
-//     foreach($companiesIds as $companyId){
-//         \App\Jobs\CompanyHeadcount::dispatch($companyId)->onQueue('perplexity');
-//     }
-// });
-// Route::get('/update-companies-qa-parent',function(){
-//     $companiesIds = Company::whereNotNull('qa_responses')->orderBy('id','asc')->get()->pluck('id')->toArray();
-//     foreach($companiesIds as $companyId){
-//         \App\Jobs\CompanyQAParent::dispatch($companyId)->onQueue('perplexity');
-//         // \App\Jobs\CompanyHeadcount::dispatch($companyId)->onQueue('perplexity');
-//     }
-// });
-// Route::get('/update-companies',function(){
-//     $samClass = CompanyClassification::where('name','SAM')->first();
-//     $somClass = CompanyClassification::where('name','SOM')->first();
-//     $tamClass = CompanyClassification::where('name','TAM')->first();
-//     $companiesIds = Company::withTrashed()->where('processed',1)->whereHas('classifications',function($q) use ($samClass,$somClass,$tamClass){
-//         // $q->where('company_classification_id',$samClass->id)->orWhere('company_classification_id',$somClass->id)->orWhere('company_classification_id',$tamClass->id);
-//         $q->where('company_classification_id',$tamClass->id);
-//     })->whereNull('qa_responses')->orderBy('id','asc')->get()->pluck('id')->unique()->toArray();
-//     echo count($companiesIds) . ' companies found<br>';
-//     foreach($companiesIds as $companyId){
-//         // \App\Jobs\CompanyQAs::dispatch($companyId)->onQueue('perplexity');
-//         \App\Jobs\CompanyQAParent::dispatch($companyId)->onQueue('perplexity');
-//         \App\Jobs\CompanyRevenue::dispatch($companyId)->onQueue('perplexity');
-//         \App\Jobs\CompanyHeadcount::dispatch($companyId)->onQueue('perplexity');
-//     }
+    // $companiesIds = Company::where('country',"Germany")->whereNull('headcount')->orderBy('id','asc')->get()->pluck('id')->toArray();
+    // foreach($companiesIds as $companyId){
+    //     \App\Jobs\CompanyHeadcount::dispatch($companyId)->onQueue('perplexity');
+    // }
 // });
 // Route::get('/activity-keywords',function(){
     // $activities = Activity::whereNull('is_relevant')->take(5000)->get();
@@ -453,34 +448,15 @@ Route::get('/update-wz-codes',function(){
     //     \App\Jobs\KeywordsResearch::dispatch($activity->id,$activity->post_content);
     // }
 // });
-// Route::get('/import-activities',function(){
-    // $jsonPath = Storage::path('public/activities.json');
-    // $activities = json_decode(File::get($jsonPath),true);
-    // foreach($activities as $activity){
-    //     $activityData = new Activity();
-    //     $activityData->response = json_encode($activity);
-    //     $activityData->save();
-    // }
-// });
-// Route::get('/update-activities',function(){
-    // $activities = Activity::whereNotNull('response')->where('processed',0)->get();
-    // foreach($activities as $activity){
-    //     $dataResponse = json_decode($activity->response,true);
-    //     \App\Jobs\ContactActivity::dispatch($activity->id,$dataResponse);
-    // }
-// });
-// Route::get('/assign-activities',function(){
-    // $activities = Activity::whereNull('contact_id')->get();
-    // foreach($activities as $activity){
-    //     if(!empty($activity->profile_url)){
-    //         $contact = Contact::where('linkedin',$activity->profile_url)->first();
-    //         if($contact){
-    //             $activity->contact_id = $contact->id;
-    //             $activity->save();
-    //         }
-    //     }
-    // }
-// });
+Route::get('/import-activities',function(){
+    \App\Jobs\ImportActivities::dispatch('public/activities2.json');
+});
+Route::get('/update-activities',function(){
+    $activities = Activity::whereNotNull('response')->where('processed',0)->get();
+    foreach($activities as $activity){
+        \App\Jobs\ContactActivity::dispatch($activity->id);
+    }
+});
 Route::get('/fix_wz_codes',function(){
     $companies = Company::where('wz_code','Like','%.')->get();
     foreach($companies as $company){

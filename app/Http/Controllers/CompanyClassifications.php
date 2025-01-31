@@ -22,14 +22,18 @@ class CompanyClassifications extends Controller
     public function update(ClassificationRequest $request,$id){
         $classification = CompanyClassification::findOrFail($id);
         $classification->update($request->only("name","description","revenue_threshold","revenue_max","employee_threshold","employee_max"));
-        $wz_codes = $request->wz_codes;
+        $wz_codes = $request->wz_codes ?? [];
         $wz_codes = array_unique($wz_codes);
         sort($wz_codes);
-        $naics_codes = $request->naics_codes;
+        $naics_codes = $request->naics_codes ?? [];
         $naics_codes = array_unique($naics_codes);
         sort($naics_codes);
+        $negative_wz_codes = $request->negative_wz_codes ?? [];
+        $negative_wz_codes = array_unique($negative_wz_codes);
+        sort($negative_wz_codes);
         $classification->wz_codes = $wz_codes;
         $classification->naics_codes = $naics_codes;
+        $classification->negative_wz_codes = $negative_wz_codes;
         $classification->save();
         if($request->expectsJson()){
             return response()->json(["status"=>"Classification updated successfully."]);

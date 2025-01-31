@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Company;
+use App\Models\QuizResponse;
 use App\Models\Contact;
 use App\Models\Industry;
 use App\Models\CompanyClassification;
@@ -42,6 +43,7 @@ class DashboardController extends Controller
     public function companies(Request $request){
         $type = ($request->filter ? $request->filter : "all");
         $country = ($request->country ? $request->country : "");
+        $division = ($request->division ? $request->division : "");
         $revenue = (isset($request->revenue) && !empty($request->revenue) ? explode('-',$request->revenue) : []);
         if($country && $country != "all"){
             if($country == "DACH"){
@@ -59,10 +61,10 @@ class DashboardController extends Controller
         if($type == "deleted"){
             $companies->onlyTrashed();
         }
-        $parentIds = Company::whereNotNull('parent_id')->get()->pluck('parent_id');
-        if(count($parentIds)){
-            $companies = $companies->whereNotIn('id',$parentIds);
-        }
+        // $parentIds = Company::whereNotNull('parent_id')->get()->pluck('parent_id');
+        // if(count($parentIds)){
+        //     $companies = $companies->whereNotIn('id',$parentIds);
+        // }
         $dream = ($request->dream ? $request->dream : "");
         if($dream && $dream == "1"){
             $companies = $companies->where('dream',1);
@@ -70,6 +72,13 @@ class DashboardController extends Controller
         $flag = ($request->flag ? $request->flag : "");
         if($flag && $flag != "all"){
             $companies = $companies->where('flag',$flag);
+        }
+        if($division && $division != "all"){
+            $answer = ((strtolower($division) == "independent") ? 'yes' : 'no');
+            $cIds = QuizResponse::where('question_id',2)->where('answer',$answer)->get()->pluck('company_id')->toArray();
+            if(count($cIds)){
+                $companies = $companies->whereIn('id',$cIds);
+            }
         }
         if(count($revenue)){
             $companies = $companies->whereRaw("CAST(revenue AS UNSIGNED) >= ?", [$revenue[0]]);
@@ -169,7 +178,7 @@ class DashboardController extends Controller
             })->orWhere('custom_classification', strtoupper($type));       
         }
         $totalRecords = $companies->select("id")->count();
-        $companies = $companies->select(["id","dream","name","domain","legal_name","country","revenue","wz_code","headcount","processed","custom_classification","existing_client"])->orderBy("name","ASC")->offset($offset)->take($limit)->get();
+        $companies = $companies->select(["id","parent_id","dream","name","domain","legal_name","country","revenue","wz_code","headcount","processed","custom_classification","existing_client"])->orderBy("name","ASC")->offset($offset)->take($limit)->get();
         if(!$request->has('export')){
             $companies = $companies->map(function($company){
                 $accountType = [];
@@ -177,6 +186,11 @@ class DashboardController extends Controller
                 $company->domain = str_replace('www.','',$company->domain);
                 if(!empty($company->domain)){
                     $company->domain = '<a href="//'.$company->domain.'" target="_blank">'.$company->domain.'</a>';
+                }
+                if($company->parent_id){
+                    $company->name = ' <span class="txt-daughter">D</span>' . $company->name;
+                }else{
+                    $company->name = ' <span class="txt-mother">M</span>' . $company->name;
                 }
                 $company->actions = '<a href="'.route('editCompany',$company->id).'" class="btn-bg-primary text-white font-bold py-2 px-4 mr-2"><i class="fas fa-edit"></i></a>';
                 $company->actions .= '<a href="'.route('viewCompany',$company->id).'" class="btn-bg-secondary text-white font-bold py-2 px-4 mr-2"><i class="fas fa-eye"></i></a>';
@@ -351,14 +365,19 @@ class DashboardController extends Controller
     }
     public function editCompany($id){
         $allCompanies = [];
+        $childCompanies = [];
+        $childIds = Company::withTrashed()->where('parent_id',$id)->get()->pluck('id')->toArray();
         $company = Company::find($id);
         if(!empty($company->parent_id)){
-            $allCompanies = Company::where('id',$company->parent_id)->get(['id','name']);
+            $allCompanies = Company::withTrashed()->where('id',$company->parent_id)->get(['id','name']);
+        }
+        if(count($childIds)){
+            $childCompanies = Company::withTrashed()->whereIn('id',$childIds)->get(['id','name']);
         }
         $excludedCountries = ['Germany','Austria','Switzerland','Italy','Spain','UK','USA'];
         $countries = Company::whereNotNull('country')->whereNotIn('country',array_merge([''],$excludedCountries))->select('country')->distinct()->orderBy('country','ASC')->get()->pluck('country');
         $countries = collect($excludedCountries)->merge($countries);
-        return view('edit_company',compact('company','countries','allCompanies'));
+        return view('edit_company',compact('company','countries','allCompanies','childIds','childCompanies'));
     }
     public function searchCompanies(Request $request){
         $query = Company::where('processed',1);
@@ -372,6 +391,7 @@ class DashboardController extends Controller
         return response()->json($companies);
     }
     public function updateCompany(Request $request,$id){
+        $childIds = $request->input('child_companies') ?? [];
         $company = Company::find($id);
         $company->parent_id = $request->input('parent_id') ?? null;
         $company->revenue = $request->input('revenue');
@@ -382,6 +402,10 @@ class DashboardController extends Controller
         $company->country = $request->input('country');
         $company->legal_name = $request->input('legal_name');
         $company->save();
+        Company::withTrashed()->where('parent_id',$id)->update(['parent_id' => null]);
+        if(count($childIds)){
+            Company::withTrashed()->whereIn('id',$childIds)->update(['parent_id' => $company->id]);
+        }
         $company->classifications()->detach();
         ClassifyCompaniesJob::dispatchSync([$company->id]);
         return redirect()->route('dashboard');
@@ -695,5 +719,18 @@ class DashboardController extends Controller
             return $company;
         });
         return json_encode(["recordsTotal" => $totalRecords,"recordsFiltered" => $totalRecords,"data" => $companies]);
+    }
+    public function updateQuiz(Request $request){
+        $companyId = $request->input('company_id');
+        $answers = $request->input('answers') ?? [];
+        if(count($answers)){
+            $company = Company::withTrashed()->where('id',$companyId)->first();
+            if($company){
+                foreach($answers as $questionId => $answer){
+                    $company->quiz()->where('question_id',$questionId)->update(['answer' => trim($answer)]);
+                }
+            }
+        }
+        return redirect()->back();
     }
 }

@@ -5,27 +5,54 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\Models\Activity;
 use App\Models\Contact;
+use App\Jobs\ContactActivity;
 
-class ContactActivity implements ShouldQueue
+class ImportActivities implements ShouldQueue
 {
-    use Queueable;
-    use SerializesModels;
-    private $id;
-    public function __construct($id){
-        $this->id = $id;
+    use Dispatchable,InteractsWithQueue,Queueable,SerializesModels;
+    public $timeout = 100000;
+    private $filePath;
+    public function __construct($filePath){
+        $this->filePath = $filePath;
     }
     public function handle(): void{
         try{
-            $activity = Activity::where("id",$this->id)->first();
-            if($activity){
-                $activityData = json_decode($activity->response,true);
-                if(isset($activityData["postUrl"]) && !empty($activityData["postUrl"])){
-                    $activity->post_url = $activityData["postUrl"];
-                }else if(isset($activityData["eventUrl"]) && !empty($activityData["eventUrl"])){
-                    $activity->post_url = $activityData["eventUrl"];
+            $jsonPath = Storage::path($this->filePath);
+            if(!File::exists($jsonPath)){
+                \Log::error("Error: JSON file not found at {$jsonPath}");
+                return;
+            }
+            $activities = json_decode(File::get($jsonPath),true);
+            if(!is_array($activities)){
+                \Log::error("Error: Invalid JSON structure in file.");
+                return;
+            }
+            foreach($activities as $activityData){
+                if(!is_array($activityData)){
+                    \Log::warning("Skipping invalid activity data: " . json_encode($activityData));
+                    continue;
                 }
+                $linkedinUrl = null;
+                if(isset($activityData["profileUrl"]) && !empty($activityData["profileUrl"])){
+                    $linkedinUrl = rtrim(urldecode($activityData["profileUrl"]),'/');
+                    $linkedinUrl = str_replace('https://www.linkedin.com','https://linkedin.com',$linkedinUrl);
+                }
+                $urlKey = $activityData['postUrl'] ?? $activityData['eventUrl'] ?? null;
+                $activity = null;
+                if($urlKey){
+                    $activity = Activity::where('post_url',$urlKey)->first();
+                    if($activity && $linkedinUrl && $activity->linkedin != $linkedinUrl){
+                        $activity = new Activity();
+                    }
+                }
+                if(!$activity){
+                    $activity = new Activity();
+                }
+                $activity->post_url = $urlKey;
                 if(isset($activityData["imgUrl"]) && !empty($activityData["imgUrl"])){
                     $activity->img_url = $activityData["imgUrl"];
                 }
@@ -92,9 +119,7 @@ class ContactActivity implements ShouldQueue
                 if(isset($activityData["author"]) && !empty($activityData["author"])){
                     $activity->author = $activityData["author"];
                 }
-                if(isset($activityData["profileUrl"]) && !empty($activityData["profileUrl"])){
-                    $linkedinUrl = rtrim(urldecode($activityData["profileUrl"]),'/');
-                    $linkedinUrl = str_replace('https://www.linkedin.com','https://linkedin.com',$linkedinUrl);
+                if($linkedinUrl){
                     $activity->profile_url = $linkedinUrl;
                     $contact = Contact::where('linkedin',$linkedinUrl)->first();
                     if($contact){
@@ -107,6 +132,7 @@ class ContactActivity implements ShouldQueue
                 if(isset($activityData["postTimestamp"]) && !empty($activityData["postTimestamp"])){
                     $activity->post_timestamp = date("Y-m-d H:i:s",strtotime($activityData["postTimestamp"]));
                 }
+                $activity->response = json_encode($activityData);
                 $activity->processed = 1;
                 $activity->save();
             }
