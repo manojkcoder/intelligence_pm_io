@@ -76,6 +76,22 @@
                                         <input type="checkbox" value="{{ $company->id }}" class="existing-client" {{(($company->existing_client == 1) ? 'checked' : '')}}/>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td class="px-4 py-2">Industry score</td>
+                                    <td class="px-4 py-2">{{ $company->industry_score }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-2">Headcount score</td>
+                                    <td class="px-4 py-2">{{ $company->headcount_score }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-2">Location Match</td>
+                                    <td class="px-4 py-2">{{ $company->location_match }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-2">Revenue score</td>
+                                    <td class="px-4 py-2">{{ $company->revenue_score }}</td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="flex justify-between mb-4 items-center mt-6">

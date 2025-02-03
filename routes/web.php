@@ -357,16 +357,16 @@ Route::get('/fetch-cognism-companies',function(){
     // }
 });
 // Route::get('/wzcode-naics-mapping',function(){
-    // $jsonPath = Storage::path('public/wzcodemapping.json');
-    // $wzcodes = json_decode(File::get($jsonPath),true);
-    // foreach($wzcodes as $wzcodeData){
-    //     WzCodesNaicsMapping::create([
-    //         'wz_codes' => $wzcodeData['wz_codes'],
-    //         'wz_codes_description' => $wzcodeData['wz_codes_description'],
-    //         'naics_codes' => $wzcodeData['naics_codes'],
-    //         'naics_description' => $wzcodeData['naics_description']
-    //     ]);
-    // }
+//     $jsonPath = Storage::path('public/wzcodemapping.json');
+//     $wzcodes = json_decode(File::get($jsonPath),true);
+//     foreach($wzcodes as $wzcodeData){
+//         WzCodesNaicsMapping::create([
+//             'wz_codes' => $wzcodeData['wz_codes'],
+//             'wz_codes_description' => $wzcodeData['wz_codes_description'],
+//             'naics_codes' => $wzcodeData['naics_codes'],
+//             'naics_description' => $wzcodeData['naics_description']
+//         ]);
+//     }
 // });
 Route::get('/update-wz-codes',function(){
     $jsonPath = Storage::path('public/wz-codes.json');
@@ -417,30 +417,30 @@ Route::get('/company-qa',function(){
     // }
 });
 // Route::get('/update-hubspot-ids',function(){
-    // $jsonPath = Storage::path('public/hubspotIds.json');
-    // $companies = json_decode(File::get($jsonPath),true);
-    // foreach($companies as $companyData){
-    //     $company = Company::where('name',$companyData['name'])->first();
-    //     if($company){
-    //         if(empty($company->legal_name) || $company->legal_name != $companyData['legal_name']){
-    //             $company->legal_name = $companyData['legal_name'];
-    //         }
-    //         $company->hubspot_id = $companyData['hubspot_id'];
-    //         $company->save();
-    //     }
-    // }
+//     $jsonPath = Storage::path('public/hubspotIds.json');
+//     $companies = json_decode(File::get($jsonPath),true);
+//     foreach($companies as $companyData){
+//         $company = Company::where('name',$companyData['name'])->first();
+//         if($company){
+//             if(empty($company->legal_name) || $company->legal_name != $companyData['legal_name']){
+//                 $company->legal_name = $companyData['legal_name'];
+//             }
+//             $company->hubspot_id = $companyData['hubspot_id'];
+//             $company->save();
+//         }
+//     }
 // });
 // Route::get('/fetch-companies-revenue',function(){
-    // $companiesIds = Company::where('country',"Germany")->whereNull('revenue')->orderBy('id','asc')->get()->pluck('id')->toArray();
-    // foreach($companiesIds as $companyId){
-    //     \App\Jobs\CompanyRevenue::dispatch($companyId)->onQueue('perplexity');
-    // }
+//     $companiesIds = Company::where('country',"Germany")->whereNull('revenue')->orderBy('id','asc')->get()->pluck('id')->toArray();
+//     foreach($companiesIds as $companyId){
+//         \App\Jobs\CompanyRevenue::dispatch($companyId)->onQueue('perplexity');
+//     }
 // });
 // Route::get('/fetch-companies-headcount',function(){
-    // $companiesIds = Company::where('country',"Germany")->whereNull('headcount')->orderBy('id','asc')->get()->pluck('id')->toArray();
-    // foreach($companiesIds as $companyId){
-    //     \App\Jobs\CompanyHeadcount::dispatch($companyId)->onQueue('perplexity');
-    // }
+//     $companiesIds = Company::where('country',"Germany")->whereNull('headcount')->orderBy('id','asc')->get()->pluck('id')->toArray();
+//     foreach($companiesIds as $companyId){
+//         \App\Jobs\CompanyHeadcount::dispatch($companyId)->onQueue('perplexity');
+//     }
 // });
 // Route::get('/activity-keywords',function(){
     // $activities = Activity::whereNull('is_relevant')->take(5000)->get();
@@ -448,13 +448,30 @@ Route::get('/company-qa',function(){
     //     \App\Jobs\KeywordsResearch::dispatch($activity->id,$activity->post_content);
     // }
 // });
+Route::get('/company-scores',function(){
+    $companyIds = Company::withTrashed()->whereNotNull('industry')->where('existing_client',0)->get()->pluck('id')->toArray();
+    $chunks = array_chunk($companyIds,100);
+    foreach($chunks as $chunk){
+        \App\Jobs\CompanyScore::dispatch($chunk);
+    }
+    dd('Company Score Jobs have been scheduled');
+});
 Route::get('/import-activities',function(){
-    \App\Jobs\ImportActivities::dispatch('public/activities2.json');
+    \App\Jobs\ImportActivities::dispatch('public/activities4.json');
 });
 Route::get('/update-activities',function(){
     $activities = Activity::whereNotNull('response')->where('processed',0)->get();
     foreach($activities as $activity){
         \App\Jobs\ContactActivity::dispatch($activity->id);
+    }
+});
+Route::get('/dup-activities',function(){
+    $duplicates = DB::table('activities')->select('post_url',DB::raw('COUNT(*) as count'))->groupBy('post_url')->having('count','>',1)->orderByDesc('count')->get();
+    foreach($duplicates as $duplicate){
+        $activities = Activity::where('post_url',$duplicate->post_url)->orderBy('id','asc')->skip(1)->take(10)->get();
+        foreach($activities as $activity){
+            $activity->delete();
+        }
     }
 });
 Route::get('/fix_wz_codes',function(){

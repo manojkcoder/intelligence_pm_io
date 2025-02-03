@@ -44,7 +44,6 @@ class DashboardController extends Controller
         $type = ($request->filter ? $request->filter : "all");
         $country = ($request->country ? $request->country : "");
         $division = ($request->division ? $request->division : "");
-        $revenue = (isset($request->revenue) && !empty($request->revenue) ? explode('-',$request->revenue) : []);
         if($country && $country != "all"){
             if($country == "DACH"){
                 $companies = Company::whereIn('country',['Germany','Austria','Switzerland']);
@@ -80,11 +79,19 @@ class DashboardController extends Controller
                 $companies = $companies->whereIn('id',$cIds);
             }
         }
-        if(count($revenue)){
-            $companies = $companies->whereRaw("CAST(revenue AS UNSIGNED) >= ?", [$revenue[0]]);
-            if(count($revenue) > 1){
-                $companies = $companies->whereRaw("CAST(revenue AS UNSIGNED) <= ?", [$revenue[1]]);
-            }
+        if($request->has('revenue') && !empty($request->revenue)){
+            $revenueRanges = array_map('htmlspecialchars',(array) $request->input('revenue'));
+            $companies = $companies->where(function($query) use($revenueRanges){
+                foreach($revenueRanges as $revenueRange){
+                    $revenue = explode('-',$revenueRange);
+                    $query->orWhere(function($query1) use($revenue){
+                        $query1->whereRaw("CAST(revenue AS UNSIGNED) >= ?",[$revenue[0]]);
+                        if(count($revenue) > 1){
+                            $query1->whereRaw("CAST(revenue AS UNSIGNED) <= ?",[$revenue[1]]);
+                        }
+                    });
+                }
+            });
         }
         $search = $request->has('search') ? $request->search['value'] : "";
         $offset = $request->start ? $request->start : 0;
@@ -449,13 +456,20 @@ class DashboardController extends Controller
             $query = $query->where('flag',$request->flag);
         }
         if($request->has('revenue') && !empty($request->revenue)){
-            $revenue = explode('-',$request->revenue);
-            $query = $query->whereRaw("CAST(revenue AS UNSIGNED) >= ?", [$revenue[0]]);
-            if(count($revenue) > 1){
-                $query = $query->whereRaw("CAST(revenue AS UNSIGNED) <= ?", [$revenue[1]]);
-            }
+            $revenueRanges = array_map('htmlspecialchars',(array) $request->input('revenue'));
+            $query = $query->where(function($q) use($revenueRanges){
+                foreach($revenueRanges as $revenueRange){
+                    $revenue = explode('-',$revenueRange);
+                    $q->orWhere(function($q1) use($revenue){
+                        $q1->whereRaw("CAST(revenue AS UNSIGNED) >= ?",[$revenue[0]]);
+                        if(count($revenue) > 1){
+                            $q1->whereRaw("CAST(revenue AS UNSIGNED) <= ?",[$revenue[1]]);
+                        }
+                    });
+                }
+            });
         }
-        $classes = CompanyClassification::whereIn('name', ['TAM','SAM','SOM','TAM - 4','SAM - 4','SOM - 4'])->get();
+        $classes = CompanyClassification::whereIn('name',['TAM','SAM','SOM','TAM - 4','SAM - 4','SOM - 4'])->get();
         $counts = [];
         foreach($classes as $class){
             $q = clone $query;
@@ -600,7 +614,6 @@ class DashboardController extends Controller
     public function allDupes(Request $request){
         $type = ($request->filter ? $request->filter : "all");
         $country = ($request->country ? $request->country : "");
-        $revenue = (isset($request->revenue) && !empty($request->revenue) ? explode('-',$request->revenue) : []);
         if($country && $country != "all"){
             if($country == "DACH"){
                 $companies = Company::whereIn('country',['Germany','Austria','Switzerland'])->where('processed',1);
@@ -621,11 +634,19 @@ class DashboardController extends Controller
         if($flag && $flag != "all"){
             $companies = $companies->where('flag',$flag);
         }
-        if(count($revenue)){
-            $companies = $companies->whereRaw("CAST(revenue AS UNSIGNED) >= ?", [$revenue[0]]);
-            if(count($revenue) > 1){
-                $companies = $companies->whereRaw("CAST(revenue AS UNSIGNED) <= ?", [$revenue[1]]);
-            }
+        if($request->has('revenue') && !empty($request->revenue)){
+            $revenueRanges = array_map('htmlspecialchars',(array) $request->input('revenue'));
+            $companies = $companies->where(function($query) use($revenueRanges){
+                foreach($revenueRanges as $revenueRange){
+                    $revenue = explode('-',$revenueRange);
+                    $query->orWhere(function($query1) use($revenue){
+                        $query1->whereRaw("CAST(revenue AS UNSIGNED) >= ?",[$revenue[0]]);
+                        if(count($revenue) > 1){
+                            $query1->whereRaw("CAST(revenue AS UNSIGNED) <= ?",[$revenue[1]]);
+                        }
+                    });
+                }
+            });
         }
         $search = $request->has('search') ? $request->search['value'] : "";
         if(!empty($search)){

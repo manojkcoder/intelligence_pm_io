@@ -15,6 +15,8 @@ class ImportActivities implements ShouldQueue
 {
     use Dispatchable,InteractsWithQueue,Queueable,SerializesModels;
     public $timeout = 100000;
+    // public $tries = 5;
+    public $failOnTimeout = false;
     private $filePath;
     public function __construct($filePath){
         $this->filePath = $filePath;
@@ -36,108 +38,79 @@ class ImportActivities implements ShouldQueue
                     \Log::warning("Skipping invalid activity data: " . json_encode($activityData));
                     continue;
                 }
-                $linkedinUrl = null;
-                if(isset($activityData["profileUrl"]) && !empty($activityData["profileUrl"])){
-                    $linkedinUrl = rtrim(urldecode($activityData["profileUrl"]),'/');
-                    $linkedinUrl = str_replace('https://www.linkedin.com','https://linkedin.com',$linkedinUrl);
-                }
-                $urlKey = $activityData['postUrl'] ?? $activityData['eventUrl'] ?? null;
-                $activity = null;
-                if($urlKey){
-                    $activity = Activity::where('post_url',$urlKey)->first();
-                    if($activity && $linkedinUrl && $activity->linkedin != $linkedinUrl){
-                        $activity = new Activity();
-                    }
-                }
-                if(!$activity){
-                    $activity = new Activity();
-                }
-                $activity->post_url = $urlKey;
-                if(isset($activityData["imgUrl"]) && !empty($activityData["imgUrl"])){
-                    $activity->img_url = $activityData["imgUrl"];
-                }
-                if(isset($activityData["type"]) && !empty($activityData["type"])){
-                    $activity->type = $activityData["type"];
-                }
-                if(isset($activityData["postContent"]) && !empty($activityData["postContent"])){
-                    $activity->post_content = $activityData["postContent"];
-                }
-                if(isset($activityData["likeCount"])){
-                    $activity->like_count = $activityData["likeCount"];
-                }
-                if(isset($activityData["commentCount"])){
-                    $activity->comment_count = $activityData["commentCount"];
-                }
-                if(isset($activityData["repostCount"])){
-                    $activity->repost_count = $activityData["repostCount"];
-                }
-                if(isset($activityData["postDate"]) && !empty($activityData["postDate"])){
-                    $activity->post_date = $activityData["postDate"];
-                }
-                if(isset($activityData["commentContent"]) && !empty($activityData["commentContent"])){
-                    $activity->comment_content = $activityData["commentContent"];
-                }
-                if(isset($activityData["commentUrl"]) && !empty($activityData["commentUrl"])){
-                    $activity->comment_url = $activityData["commentUrl"];
-                }
-                if(isset($activityData["sharedPostUrl"]) && !empty($activityData["sharedPostUrl"])){
-                    $activity->shared_post_url = $activityData["sharedPostUrl"];
-                }
-                if(isset($activityData["action"]) && !empty($activityData["action"])){
-                    if($activityData["action"] == 'Post'){
-                        $activity->action = "Post";
-                    }else if(strpos($activityData["action"],'geteilt') !== false){
-                        $activity->action = "Share";
-                    }else if(strpos($activityData["action"],'gefällt') !== false){
-                        $activity->action = "Like";
-                    }else if(strpos($activityData["action"],'kommentiert') !== false || strpos($activityData["action"],'Kommentar lustig') !== false){
-                        $activity->action = "Comment";
-                    }else if(strpos($activityData["action"],'geantwortet') !== false){
-                        $activity->action = "Reply";
-                    }else if(strpos($activityData["action"],'applaudiert') !== false){
-                        $activity->action = "Applauded";
-                    }else if(strpos($activityData["action"],'findet das informativ') !== false){
-                        $activity->action = "Informative";
-                    }else if(strpos($activityData["action"],'findet das wunderbar') !== false || strpos($activityData["action"],'Network wunderbar') !== false){
-                        $activity->action = "Wonderful";
-                    }else if(strpos($activityData["action"],'findet das lustig') !== false){
-                        $activity->action = "findet das lustig";
-                    }else if(strpos($activityData["action"],'unterstützt dies') !== false){
-                        $activity->action = "Supports";
-                    }else if(strpos($activityData["action"],'Kommentar wunderbar') !== false){
-                        $activity->action = "Comment Wonderful";
-                    }else if(strpos($activityData["action"],'unterstützt') !== false){
-                        $activity->action = "Supports Comment";
-                    }else if(strpos($activityData["action"],'beigetragen') !== false){
-                        $activity->action = "Contributed";
-                    }else if(strpos($activityData["action"],'inspirierend') !== false){
-                        $activity->action = "Inspiring";
-                    }else if(strpos($activityData["action"],'Applaus reagiert') !== false){
-                        $activity->action = "Respond";
-                    }
-                }
-                if(isset($activityData["author"]) && !empty($activityData["author"])){
-                    $activity->author = $activityData["author"];
-                }
-                if($linkedinUrl){
-                    $activity->profile_url = $linkedinUrl;
-                    $contact = Contact::where('linkedin',$linkedinUrl)->first();
-                    if($contact){
-                        $activity->contact_id = $contact->id;
-                    }
-                }
-                if(isset($activityData["timestamp"]) && !empty($activityData["timestamp"])){
-                    $activity->timestamp = date("Y-m-d H:i:s",strtotime($activityData["timestamp"]));
-                }
-                if(isset($activityData["postTimestamp"]) && !empty($activityData["postTimestamp"])){
-                    $activity->post_timestamp = date("Y-m-d H:i:s",strtotime($activityData["postTimestamp"]));
-                }
-                $activity->response = json_encode($activityData);
-                $activity->processed = 1;
-                $activity->save();
+                $this->processActivity($activityData);
             }
         }catch(\Exception $e){
             \Log::error("Error: " . $e->getMessage());
         }
+    }
+    private function processActivity($activityData){
+        $linkedinUrl = isset($activityData["profileUrl"]) && !empty($activityData["profileUrl"]) ? rtrim(urldecode($activityData["profileUrl"]),"/") : null;
+        if($linkedinUrl){
+            $linkedinUrl = str_replace("https://www.linkedin.com","https://linkedin.com",$linkedinUrl);
+        }
+        $urlKey = $activityData["postUrl"] ?? $activityData["eventUrl"] ?? null;
+        $activity = $urlKey ? Activity::where("post_url",$urlKey)->first() : null;
+        if(!$activity){
+            $activity = new Activity();
+        }else if($activity && $linkedinUrl && $activity->linkedin != $linkedinUrl){
+            $activity = new Activity();
+        }
+        $type = $activityData["type"] ?? null;
+        if($type === "Video (LinkedIn Source)"){
+            $type = "Video";
+        }
+        $activity->post_url = $urlKey;
+        $activity->img_url = $activityData["imgUrl"] ?? null;
+        $activity->type = $type;
+        $activity->post_content = $activityData["postContent"] ?? null;
+        $activity->like_count = $activityData["likeCount"] ?? 0;
+        $activity->comment_count = $activityData["commentCount"] ?? 0;
+        $activity->repost_count = $activityData["repostCount"] ?? 0;
+        $activity->post_date = $activityData["postDate"] ?? null;
+        $activity->comment_content = $activityData["commentContent"] ?? null;
+        $activity->comment_url = $activityData["commentUrl"] ?? null;
+        $activity->shared_post_url = $activityData["sharedPostUrl"] ?? null;
+        $activity->action = $this->mapAction($activityData["action"] ?? null);
+        $activity->author = $activityData["author"] ?? null;
+        $activity->profile_url = $linkedinUrl;
+        if($linkedinUrl){
+            $contact = Contact::where("linkedin",$linkedinUrl)->first();
+            if ($contact) {
+                $activity->contact_id = $contact->id;
+            }
+        }
+        $activity->timestamp = isset($activityData["timestamp"]) ? date("Y-m-d H:i:s",strtotime($activityData["timestamp"])) : null;
+        $activity->post_timestamp = isset($activityData["postTimestamp"]) ? date("Y-m-d H:i:s",strtotime($activityData["postTimestamp"])) : null;
+        $activity->response = json_encode($activityData);
+        $activity->processed = 1;
+        $activity->save();
+        return $activity;
+    }
+    private function mapAction($action){
+        if(!$action){
+            return null;
+        }
+        $actionMap = [
+            "Post" => "Post",
+            "geteilt" => "Share",
+            "gefällt" => "Like",
+            "kommentiert" => "Comment",
+            "geantwortet" => "Reply",
+            "applaudiert" => "Applauded",
+            "findet das informativ" => "Informative",
+            "findet das wunderbar" => "Wonderful",
+            "findet das lustig" => "Funny",
+            "unterstützt dies" => "Supports",
+            "beigetragen" => "Contributed",
+            "inspirierend" => "Inspiring",
+            "Applaus reagiert" => "Respond"
+        ];
+        foreach($actionMap as $key => $value){
+            if(strpos($action,$key) !== false){
+                return $value;
+            }
+        }
+        return null;
     }
 }

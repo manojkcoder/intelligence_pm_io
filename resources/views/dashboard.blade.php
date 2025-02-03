@@ -39,19 +39,18 @@
                             <option @if(request()->input('country') == $country) selected @endif value="{{$country}}">{{$country}}</option>
                         @endforeach
                     </select>
-                    <select name="revenue" id="revenue" class="bg-white py-2 px-4 border border-transparent flex-1">
-                        <option value="">Revenue</option>
-                        <option @if(request()->input('revenue') == '0-49.99') selected @endif value="0-49.99">0 - 50 million</option>
-                        <option @if(request()->input('revenue') == '50-99.99') selected @endif value="50-99.99">50 - 99.99 million</option>
-                        <option @if(request()->input('revenue') == '100-299.99') selected @endif value="100-299.99">100 - 299.99 million</option>
-                        <option @if(request()->input('revenue') == '300-499.99') selected @endif value="300-499.99">300 - 499.99 million</option>
-                        <option @if(request()->input('revenue') == '500-999.99') selected @endif value="500-999.99">500 - 999.99 million</option>
-                        <option @if(request()->input('revenue') == '1000-4999.99') selected @endif value="1000-4999.99">1 - 5 billion</option>
-                        <option @if(request()->input('revenue') == '5000-9999.99') selected @endif value="5000-9999.99">5 - 10 billion</option>
-                        <option @if(request()->input('revenue') == '10000-19999.99') selected @endif value="10000-19999.99">10 - 20 billion</option>
-                        <option @if(request()->input('revenue') == '20000-49999.99') selected @endif value="20000-49999.99">20 - 50 billion</option>
-                        <option @if(request()->input('revenue') == '50000-99999.99') selected @endif value="50000-99999.99">50 - 100 billion</option>
-                        <option @if(request()->input('revenue') == '100000') selected @endif value="100000">more than 100 billion</option>
+                    <select name="revenue[]" id="revenue" class="bg-white py-2 px-4 border border-transparent flex-1" multiple>
+                        <option @if(is_array(request()->input('revenue')) && in_array('0-49.99',request()->input('revenue'))) selected @endif value="0-49.99">0 - 50 million</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('50-99.99',request()->input('revenue'))) selected @endif value="50-99.99">50 - 99.99 million</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('100-299.99',request()->input('revenue'))) selected @endif value="100-299.99">100 - 299.99 million</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('300-499.99',request()->input('revenue'))) selected @endif value="300-499.99">300 - 499.99 million</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('500-999.99',request()->input('revenue'))) selected @endif value="500-999.99">500 - 999.99 million</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('1000-4999.99',request()->input('revenue'))) selected @endif value="1000-4999.99">1 - 5 billion</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('5000-9999.99',request()->input('revenue'))) selected @endif value="5000-9999.99">5 - 10 billion</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('10000-19999.99',request()->input('revenue'))) selected @endif value="10000-19999.99">10 - 20 billion</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('20000-49999.99',request()->input('revenue'))) selected @endif value="20000-49999.99">20 - 50 billion</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('50000-99999.99',request()->input('revenue'))) selected @endif value="50000-99999.99">50 - 100 billion</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('100000',request()->input('revenue'))) selected @endif value="100000">more than 100 billion</option>
                     </select>
                     <select name="division" id="division" class="bg-white py-2 px-4 border border-transparent flex-1">
                         <option value="">All</option>
@@ -86,7 +85,6 @@
             </div>
         </div>
     </div>
-    <!-- create a pie chart -->
     <div class="py-12">
         <div class="mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg py-4 px-4">
@@ -94,6 +92,8 @@
             </div>
         </div>
     </div>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script>
         $(document).ready(function(){
             var myTable = $('#myTable').DataTable({
@@ -123,7 +123,7 @@
             });
             var ctx = document.getElementById('myChart').getContext('2d');
             $.ajax({
-                url: '/wz_code_status?@if(request()->input('filter'))&filter={{request()->input('filter')}}@endif @if(request()->input('flag'))&flag={{request()->input('flag')}}@endif @if(request()->input('country'))&country={{request()->input('country')}}@endif @if(request()->input('revenue'))&revenue={{request()->input('revenue')}}@endif',
+                url: '/wz_code_status?@if(request()->input('filter'))&filter={{request()->input('filter')}}@endif @if(request()->input('flag'))&flag={{request()->input('flag')}}@endif @if(request()->input('country'))&country={{request()->input('country')}}@endif @if(request()->has('revenue')) @foreach(request()->input('revenue') as $rev)&revenue[]={{ $rev }}@endforeach @endif',
                 type: 'GET',
                 success: function(data){
                     var myChart = new Chart(ctx,{
@@ -186,6 +186,7 @@
             $(document).on("click",".modal-close",function(){
                 document.querySelector('.modal').classList.add('hidden');
             });
+            $('#revenue').select2({width:'380px',placeholder: "Select revenue range",multiple: true});
         });
     </script>
     <style>
@@ -193,17 +194,14 @@
         .filter-form select{min-width:120px;}
         .txt-mother{background:#E3AFBD;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;border-radius:50%;color:#72384C;line-height:1;margin-right:6px;}
         .txt-daughter{background:#B3B8DD;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;border-radius:50%;color:#3E466C;line-height:1;margin-right:6px;}
+        .select2-container .select2-selection--multiple{min-height:40px;border:none;background:#FFF;}
+        .select2-container--default .select2-selection--multiple .select2-selection__choice{font-size:12px;line-height:1.5;}
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Modal in tailwindcss -->
     <div class="modal hidden fixed w-full h-full top-0 left-0 flex items-center justify-center">
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-        
         <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-        
             <div class="modal-content py-4 text-left px-6">
-                <!--Title-->
                 <div class="flex justify-between items-center pb-3">
                     <p class="text-2xl font-bold">Move Company</p>
                     <div class="modal-close cursor-pointer z-50">
@@ -212,7 +210,6 @@
                         </svg>
                     </div>
                 </div>
-                <!--Body-->
                 <p>Move this company to:</p>
                 <select name="moveType" id="moveType" class="bg-white   py-2 px-4 border border-transparent flex-1">
                     <option value="TAM">TAM 2</option>

@@ -38,19 +38,18 @@
                             <option @if(request()->input('country') == $country) selected @endif value="{{$country}}">{{$country}}</option>
                         @endforeach
                     </select>
-                    <select name="revenue" id="revenue" class="bg-white py-2 px-4 border border-transparent flex-1">
-                        <option value="">Revenue</option>
-                        <option @if(request()->input('revenue') == '0-49.99') selected @endif value="0-49.99">0 - 50 million</option>
-                        <option @if(request()->input('revenue') == '50-99.99') selected @endif value="50-99.99">50 - 99.99 million</option>
-                        <option @if(request()->input('revenue') == '100-299.99') selected @endif value="100-299.99">100 - 299.99 million</option>
-                        <option @if(request()->input('revenue') == '300-499.99') selected @endif value="300-499.99">300 - 499.99 million</option>
-                        <option @if(request()->input('revenue') == '500-999.99') selected @endif value="500-999.99">500 - 999.99 million</option>
-                        <option @if(request()->input('revenue') == '1000-4999.99') selected @endif value="1000-4999.99">1 - 5 billion</option>
-                        <option @if(request()->input('revenue') == '5000-9999.99') selected @endif value="5000-9999.99">5 - 10 billion</option>
-                        <option @if(request()->input('revenue') == '10000-19999.99') selected @endif value="10000-19999.99">10 - 20 billion</option>
-                        <option @if(request()->input('revenue') == '20000-49999.99') selected @endif value="20000-49999.99">20 - 50 billion</option>
-                        <option @if(request()->input('revenue') == '50000-99999.99') selected @endif value="50000-99999.99">50 - 100 billion</option>
-                        <option @if(request()->input('revenue') == '100000') selected @endif value="100000">more than 100 billion</option>
+                    <select name="revenue[]" id="revenue" class="bg-white py-2 px-4 border border-transparent flex-1" multiple>
+                        <option @if(is_array(request()->input('revenue')) && in_array('0-49.99',request()->input('revenue'))) selected @endif value="0-49.99">0 - 50 million</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('50-99.99',request()->input('revenue'))) selected @endif value="50-99.99">50 - 99.99 million</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('100-299.99',request()->input('revenue'))) selected @endif value="100-299.99">100 - 299.99 million</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('300-499.99',request()->input('revenue'))) selected @endif value="300-499.99">300 - 499.99 million</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('500-999.99',request()->input('revenue'))) selected @endif value="500-999.99">500 - 999.99 million</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('1000-4999.99',request()->input('revenue'))) selected @endif value="1000-4999.99">1 - 5 billion</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('5000-9999.99',request()->input('revenue'))) selected @endif value="5000-9999.99">5 - 10 billion</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('10000-19999.99',request()->input('revenue'))) selected @endif value="10000-19999.99">10 - 20 billion</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('20000-49999.99',request()->input('revenue'))) selected @endif value="20000-49999.99">20 - 50 billion</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('50000-99999.99',request()->input('revenue'))) selected @endif value="50000-99999.99">50 - 100 billion</option>
+                        <option @if(is_array(request()->input('revenue')) && in_array('100000',request()->input('revenue'))) selected @endif value="100000">more than 100 billion</option>
                     </select>
                     <button type="submit" class="btn-bg-primary text-white py-2 px-4 flex-1">Filter</button>
                 </div>
@@ -100,4 +99,15 @@
             </div>
         </div>
     </div>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#revenue').select2({width:'380px',placeholder: "Select revenue range",multiple: true});
+        });
+    </script>
+    <style>
+        .select2-container .select2-selection--multiple{min-height:40px;border:none;background:#FFF;}
+        .select2-container--default .select2-selection--multiple .select2-selection__choice{font-size:12px;line-height:1.5;}
+    </style>
 </x-app-layout>
