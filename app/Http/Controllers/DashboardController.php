@@ -17,14 +17,177 @@ use App\Jobs\ClassifyCompaniesJob;
 
 class DashboardController extends Controller
 {
-    public function dashboard(Request $request){
+    public function accounts(Request $request){
         $excludedCountries = ['DACH','Germany','Austria','Switzerland','Italy','Spain','UK','USA'];
         $countries = Company::whereNotNull('country')->whereNotIn('country',array_merge([''],$excludedCountries))->select('country')->distinct()->orderBy('country','ASC')->get()->pluck('country');
         $flags = Company::select('flag')->distinct()->get()->pluck('flag');
         $params = $request->all();
-        $pageUrl = route('companies.all',$params);
+        $pageUrl = route('accounts.all',$params);
         $countries = collect($excludedCountries)->merge($countries);
+        return view('accounts',compact("pageUrl","countries","flags"));
+    }
+    public function dashboard(Request $request){
+        $excludedCountries = ['DACH','Germany','Austria','Switzerland','Italy','Spain','UK','USA'];
+        $countries = Company::whereNotNull('country')->whereNotIn('country',array_merge([''],$excludedCountries))->select('country')->distinct()->orderBy('country','ASC')->get()->pluck('country');
+        $countries = collect($excludedCountries)->merge($countries);
+        $flags = Company::select('flag')->distinct()->get()->pluck('flag');
+        $params = $request->all();
+        $pageUrl = route('dashboard.all',$params);
         return view('dashboard',compact("pageUrl","countries","flags"));
+    }
+    public function allAccounts(Request $request){
+        $type = ($request->filter ? $request->filter : "all");
+        $country = ($request->country ? $request->country : "");
+        $division = ($request->division ? $request->division : "");
+        if($country && $country != "all"){
+            if($country == "DACH"){
+                $companies = Company::whereIn('country',['Germany','Austria','Switzerland']);
+            }else{
+                $companies = Company::where('country',$country)->where('processed',1);
+            }
+        }else{
+            if($type == "incomplete" || $type == "no_wz_code"){
+                $companies = Company::withTrashed();
+            }else{
+                $companies = Company::where('processed',1);
+            }
+        }
+        if($type == "deleted"){
+            $companies->onlyTrashed();
+        }
+        $dream = ($request->dream ? $request->dream : "");
+        if($dream && $dream == "1"){
+            $companies = $companies->where('dream',1);
+        }
+        $flag = ($request->flag ? $request->flag : "");
+        if($flag && $flag != "all"){
+            $companies = $companies->where('flag',$flag);
+        }
+        if($division && $division != "all"){
+            $answer = ((strtolower($division) == "independent") ? 'yes' : 'no');
+            $cIds = QuizResponse::where('question_id',2)->where('answer',$answer)->get()->pluck('company_id')->toArray();
+            if(count($cIds)){
+                $companies = $companies->whereIn('id',$cIds);
+            }
+        }
+        if($request->has('revenue') && !empty($request->revenue)){
+            $revenueRanges = array_map('htmlspecialchars',(array) $request->input('revenue'));
+            $companies = $companies->where(function($query) use($revenueRanges){
+                foreach($revenueRanges as $revenueRange){
+                    $revenue = explode('-',$revenueRange);
+                    $query->orWhere(function($query1) use($revenue){
+                        $query1->whereRaw("CAST(revenue AS UNSIGNED) >= ?",[$revenue[0]]);
+                        if(count($revenue) > 1){
+                            $query1->whereRaw("CAST(revenue AS UNSIGNED) <= ?",[$revenue[1]]);
+                        }
+                    });
+                }
+            });
+        }
+        $companies = $companies->where(function($query){
+            $query->whereNotNull('industry_score')->orWhereNotNull('revenue_score')->orWhereNotNull('location_match');
+        });
+        $search = $request->has('search') ? $request->search['value'] : "";
+        $offset = $request->start ? $request->start : 0;
+        $limit = $request->length ? $request->length : 100;
+        if($request->has('wz_code') && $request->wz_code != "Total" && $request->wz_code != ""){
+            $companies = $companies->where('wz_code','LIKE',$request->wz_code.'%');
+        }
+        if(!empty($search)){
+            $companies = $companies->where(function($query) use ($search){
+                $query->where('name','LIKE','%'.$search.'%')->orWhere('domain','LIKE','%'.$search.'%')->orWhere('country','LIKE','%'.$search.'%')->orWhere('revenue','LIKE','%'.$search.'%')->orWhere('wz_code','LIKE','%'.$search.'%')->orWhere('headcount','LIKE','%'.$search.'%');
+            });
+        }
+        if($type !== 'all'){
+            $companies->where(function($companies) use ($type){
+                if($type == "incomplete"){
+                    $companies = $companies->where(function($q){
+                        $q->where('revenue',null)->orWhere('headcount',null)->orWhere('wz_code',null);
+                    });
+                }else if($type == "no_wz_code"){
+                    $companies = $companies->where(function($q){
+                        $q->whereNull('wz_code')->orWhere('wz_code','');
+                    });
+                }else if($type == "tam"){
+                    $class = CompanyClassification::where('name','TAM')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "sam"){
+                    $class = CompanyClassification::where('name','SAM')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "som"){
+                    $class = CompanyClassification::where('name','SOM')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "tam_samson4"){
+                    $class = CompanyClassification::where('name','TAM - 4')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "som_samson4"){
+                    $class = CompanyClassification::where('name','SOM - 4')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "sam_samson4"){
+                    $class = CompanyClassification::where('name','SAM - 4')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "som_samson4_oversized"){
+                    $class = CompanyClassification::where('name','SOM - 4 Oversized')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "sam_samson4_oversized"){
+                    $class = CompanyClassification::where('name','SAM - 4 Oversized')->first();
+                    $companies->whereHas('classifications',function($q) use ($class){
+                        $q->where('company_classification_id',$class->id);
+                    });
+                }else if($type == "tam_4_diff"){
+                    $query = clone $companies;
+                    $companyIds = $query->whereHas('classifications',function($qy){
+                        $qy->where('company_classification_id',4);
+                    })->get()->pluck('id');
+                    $companies->whereHas('classifications',function($q){
+                        $q->where('company_classification_id',1)->where('company_classification_id',"!=",4);
+                    })->whereNotIn('id',$companyIds);
+                }else if($type == "sam_4_diff"){
+                    $query = clone $companies;
+                    $companyIds = $query->whereHas('classifications',function($qy){
+                        $qy->where('company_classification_id',5);
+                    })->get()->pluck('id');
+                    $companies->whereHas('classifications',function($q){
+                        $q->where('company_classification_id',2)->where('company_classification_id',"!=",5);
+                    })->whereNotIn('id',$companyIds);
+                }else if($type == "som_4_diff"){
+                    $query = clone $companies;
+                    $companyIds = $query->whereHas('classifications',function($qy){
+                        $qy->where('company_classification_id',6);
+                    })->get()->pluck('id');
+                    $companies->whereHas('classifications',function($q){
+                        $q->where('company_classification_id',3);
+                    })->whereNotIn('id',$companyIds);
+                }else if($type == "existing_client"){
+                    $companies->where('existing_client',1);
+                }
+            })->orWhere('custom_classification', strtoupper($type));       
+        }
+        $totalRecords = $companies->select("id")->count();
+        $companies = $companies->select(["id","parent_id","name","country","industry","revenue","wz_code","headcount","industry_score","revenue_score","total_score","location_match"])->orderBy("name","ASC")->offset($offset)->take($limit)->get();
+        $companies = $companies->map(function($company){
+            if($company->parent_id){
+                $company->name = ' <span class="txt-daughter">D</span> <a href="'.route('viewCompany',$company->id).'">' . $company->name . '</a>';
+            }else{
+                $company->name = ' <span class="txt-mother">M</span> <a href="'.route('viewCompany',$company->id).'">' . $company->name . '</a>';
+            }
+            return $company;
+        });
+        return json_encode(["recordsTotal" => $totalRecords,"recordsFiltered" => $totalRecords,"data" => $companies]);
     }
     public function dream(Request $request,$id){
         $company = Company::find($id);
@@ -181,6 +344,8 @@ class DashboardController extends Controller
                     $companies->whereHas('classifications',function($q){
                         $q->where('company_classification_id',3);
                     })->whereNotIn('id',$companyIds);
+                }else if($type == "existing_client"){
+                    $companies->where('existing_client',1);
                 }
             })->orWhere('custom_classification', strtoupper($type));       
         }
@@ -365,7 +530,7 @@ class DashboardController extends Controller
     }
     public function viewCompany($id){
         $company = Company::with('contacts','quiz')->withTrashed()->find($id);
-        if($company->parent_id){
+        if(!empty($company->parent_id)){
             $company->parent = Company::withTrashed()->where('id',$company->parent_id)->first();
         }
         return view('company',compact('company'));
@@ -415,7 +580,7 @@ class DashboardController extends Controller
         }
         $company->classifications()->detach();
         ClassifyCompaniesJob::dispatchSync([$company->id]);
-        return redirect()->route('dashboard');
+        return redirect()->route('accounts');
     }
     public function deleteCompany($id){
         $company = Company::withTrashed()->find($id);

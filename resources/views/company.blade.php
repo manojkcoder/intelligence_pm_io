@@ -77,6 +77,10 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td class="px-4 py-2">General Matching Score</td>
+                                    <td class="px-4 py-2">{{ $company->total_score }}</td>
+                                </tr>
+                                <tr>
                                     <td class="px-4 py-2">Industry score</td>
                                     <td class="px-4 py-2">{{ $company->industry_score }}</td>
                                 </tr>

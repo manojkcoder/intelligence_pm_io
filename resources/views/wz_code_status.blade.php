@@ -48,7 +48,7 @@
                                     @if($class == "name")
                                         <td data-title="Name" class="border px-4 py-2">{{ $class_count }}</td>
                                     @else
-                                        <td data-title="Count" class="border px-4 py-2"><a target="_blank" href="{{route('dashboard', ['wz_code' => $wz_code, 'country' => request()->input('country'), 'filter' => $map[$class]])}}" class="text-blue-500 hover:text-blue-700">{{ $class_count }}</a></td>
+                                        <td data-title="Count" class="border px-4 py-2"><a target="_blank" href="{{route('accounts', ['wz_code' => $wz_code, 'country' => request()->input('country'), 'filter' => $map[$class]])}}" class="text-blue-500 hover:text-blue-700">{{ $class_count }}</a></td>
                                     @endif
                                 @endforeach
                             </tr>

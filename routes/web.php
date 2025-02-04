@@ -28,8 +28,8 @@ use GuzzleHttp\Client;
 Route::get('/',function(){
     return view('welcome');
 });
-Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware(['auth','verified'])->name('dashboard');
-Route::get('/companies/all',[DashboardController::class,'companies'])->middleware(['auth','verified'])->name('companies.all');
+Route::get('/accounts',[DashboardController::class,'accounts'])->middleware(['auth','verified'])->name('accounts');
+Route::get('/companies/all',[DashboardController::class,'companies'])->middleware(['auth','verified'])->name('accounts.all');
 Route::get('/companies/search',[DashboardController::class,'searchCompanies'])->middleware(['auth','verified'])->name('companies.search');
 Route::get('/stats',[DashboardController::class,'stats'])->middleware(['auth','verified'])->name('stats');
 Route::any('/stats/all',[DashboardController::class,'allStats'])->middleware(['auth','verified'])->name('stats.all');
@@ -44,6 +44,9 @@ Route::get('/accounts/edit/{id}',[DashboardController::class,'editCompany'])->mi
 Route::patch('/accounts/edit/{id}',[DashboardController::class,'updateCompany'])->middleware(['auth','verified'])->name('updateCompany');
 Route::delete('/accounts/edit/{id}',[DashboardController::class,'destroyCompany'])->middleware(['auth','verified'])->name('destroyCompany');
 Route::post('/quiz/update',[DashboardController::class,'updateQuiz'])->middleware(['auth','verified'])->name('quiz.update');
+
+Route::get('/dashboard',[DashboardController::class,'dashboard'])->middleware(['auth','verified'])->name('dashboard');
+Route::get('/all-accounts',[DashboardController::class,'allAccounts'])->middleware(['auth','verified'])->name('dashboard.all');
 
 Route::get('/contacts',[ContactsController::class,'allContacts'])->middleware(['auth','verified'])->name('contacts.all');
 Route::get('/getContacts',[ContactsController::class,'getContacts'])->middleware(['auth','verified'])->name('contacts.get');
