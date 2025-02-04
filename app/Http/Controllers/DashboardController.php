@@ -178,12 +178,12 @@ class DashboardController extends Controller
             })->orWhere('custom_classification', strtoupper($type));       
         }
         $totalRecords = $companies->select("id")->count();
-        $companies = $companies->select(["id","parent_id","name","country","industry","revenue","wz_code","headcount","industry_score","revenue_score","total_score","location_match"])->orderBy("name","ASC")->offset($offset)->take($limit)->get();
+        $companies = $companies->select(["id","parent_id","name","country","industry","revenue","wz_code","headcount","industry_score","headcount_score","revenue_score","total_score","location_match","network_overlap_score"])->orderBy("total_score","DESC")->offset($offset)->take($limit)->get();
         $companies = $companies->map(function($company){
             if($company->parent_id){
-                $company->name = ' <span class="txt-daughter">D</span> <a href="'.route('viewCompany',$company->id).'">' . $company->name . '</a>';
+                $company->name = ' <span class="txt-daughter">D</span> <a href="'.route('viewCompany',$company->id).'" target="_blank">' . $company->name . '</a>';
             }else{
-                $company->name = ' <span class="txt-mother">M</span> <a href="'.route('viewCompany',$company->id).'">' . $company->name . '</a>';
+                $company->name = ' <span class="txt-mother">M</span> <a href="'.route('viewCompany',$company->id).'" target="_blank">' . $company->name . '</a>';
             }
             return $company;
         });

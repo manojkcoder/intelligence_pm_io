@@ -69,15 +69,17 @@
                     <thead class="bg-light-blue">
                         <tr>
                             <th class="px-2 py-2">Name</th>
-                            <th class="px-2 py-2">Country</th>
-                            <th class="px-2 py-2">Revenue in Mio.</th>
-                            <th class="px-2 py-2">WZ Code</th>
-                            <th class="px-2 py-2">Headcount</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Country</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Revenue(Mio.)</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">WZ Code</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Headcount</th>
                             <th class="px-2 py-2">Industry</th>
-                            <th class="px-2 py-2">General Matching Score</th>
-                            <!-- <th class="px-2 py-2">Industry Similarity Score</th>
-                            <th class="px-2 py-2">Revenue Similarity Score</th> -->
-                            <th class="px-2 py-2">Location / Country Matched</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">General Matching Score</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Industry Score</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Headcount Score</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Revenue Score</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Network Overlap Score</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Country Matched</th>
                         </tr>
                     </thead>
                 </table>
@@ -102,8 +104,10 @@
                     {data: "headcount"},
                     {data: "industry"},
                     {data: "total_score"},
-                    // {data: "industry_score"},
-                    // {data: "revenue_score"},
+                    {data: "industry_score"},
+                    {data: "headcount_score"},
+                    {data: "revenue_score"},
+                    {data: "network_overlap_score"},
                     {data: "location_match"}
                 ],
                 lengthMenu: [[10,25,50,100],[10,25,50,100]],
