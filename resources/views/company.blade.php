@@ -78,23 +78,23 @@
                                 </tr>
                                 <tr>
                                     <td class="px-4 py-2">General Matching Score</td>
-                                    <td class="px-4 py-2">{{ $company->total_score }}</td>
+                                    <td class="px-4 py-2">{{ $company->general_matching_score }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-4 py-2">Industry score</td>
-                                    <td class="px-4 py-2">{{ $company->industry_score }}</td>
+                                    <td class="px-4 py-2">Industry Similarity Score</td>
+                                    <td class="px-4 py-2">{{ $company->industry_similarity_score }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-4 py-2">Headcount score</td>
-                                    <td class="px-4 py-2">{{ $company->headcount_score }}</td>
+                                    <td class="px-4 py-2">Revenue Similarity Score</td>
+                                    <td class="px-4 py-2">{{ $company->revenue_similarity_score }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-4 py-2">Location Match</td>
-                                    <td class="px-4 py-2">{{ $company->location_match }}</td>
+                                    <td class="px-4 py-2">Activity Level Score</td>
+                                    <td class="px-4 py-2">{{ $company->activity_level_score }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-4 py-2">Revenue score</td>
-                                    <td class="px-4 py-2">{{ $company->revenue_score }}</td>
+                                    <td class="px-4 py-2">Location Matched</td>
+                                    <td class="px-4 py-2">{{ $company->location_matched }}</td>
                                 </tr>
                             </tbody>
                         </table>

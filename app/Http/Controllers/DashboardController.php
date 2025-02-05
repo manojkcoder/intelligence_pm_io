@@ -84,9 +84,7 @@ class DashboardController extends Controller
                 }
             });
         }
-        $companies = $companies->where(function($query){
-            $query->whereNotNull('industry_score')->orWhereNotNull('revenue_score')->orWhereNotNull('location_match');
-        });
+        $companies = $companies->whereNotNull('general_matching_score');
         $search = $request->has('search') ? $request->search['value'] : "";
         $offset = $request->start ? $request->start : 0;
         $limit = $request->length ? $request->length : 100;
@@ -178,7 +176,7 @@ class DashboardController extends Controller
             })->orWhere('custom_classification', strtoupper($type));       
         }
         $totalRecords = $companies->select("id")->count();
-        $companies = $companies->select(["id","parent_id","name","country","industry","revenue","wz_code","headcount","industry_score","headcount_score","revenue_score","total_score","location_match","network_overlap_score"])->orderBy("total_score","DESC")->offset($offset)->take($limit)->get();
+        $companies = $companies->select(["id","parent_id","name","country","industry","revenue","wz_code","headcount","general_matching_score","industry_similarity_score","revenue_similarity_score","activity_level_score","network_overlap_score","location_matched"])->orderBy("general_matching_score","DESC")->offset($offset)->take($limit)->get();
         $companies = $companies->map(function($company){
             if($company->parent_id){
                 $company->name = ' <span class="txt-daughter">D</span> <a href="'.route('viewCompany',$company->id).'" target="_blank">' . $company->name . '</a>';

@@ -75,9 +75,9 @@
                             <th class="px-2 py-2" style="width:100px;min-width:100px;">Headcount</th>
                             <th class="px-2 py-2">Industry</th>
                             <th class="px-2 py-2" style="width:100px;min-width:100px;">General Matching Score</th>
-                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Industry Score</th>
-                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Headcount Score</th>
-                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Revenue Score</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Industry Similarity Score</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Revenue Similarity Score</th>
+                            <th class="px-2 py-2" style="width:100px;min-width:100px;">Activity Level Score</th>
                             <th class="px-2 py-2" style="width:100px;min-width:100px;">Network Overlap Score</th>
                             <th class="px-2 py-2" style="width:100px;min-width:100px;">Country Matched</th>
                         </tr>
@@ -103,12 +103,12 @@
                     {data: "wz_code"},
                     {data: "headcount"},
                     {data: "industry"},
-                    {data: "total_score"},
-                    {data: "industry_score"},
-                    {data: "headcount_score"},
-                    {data: "revenue_score"},
+                    {data: "general_matching_score"},
+                    {data: "industry_similarity_score"},
+                    {data: "revenue_similarity_score"},
+                    {data: "activity_level_score"},
                     {data: "network_overlap_score"},
-                    {data: "location_match"}
+                    {data: "location_matched"}
                 ],
                 lengthMenu: [[10,25,50,100],[10,25,50,100]],
                 pageLength: 50
