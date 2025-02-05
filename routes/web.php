@@ -17,6 +17,7 @@ use App\Models\Contact;
 use App\Models\ContactJob;
 use App\Models\ContactLicence;
 use App\Models\ContactSchool;
+use App\Models\ContactConnection;
 use App\Models\LikeComment;
 use App\Models\QuizResponse;
 use App\Models\School;
@@ -452,13 +453,27 @@ Route::get('/company-qa',function(){
     // }
 // });
 Route::get('/company-scores',function(){
-    $companyIds = Company::withTrashed()->whereNotNull('industry')->where('existing_client',0)->get()->pluck('id')->toArray();
-    $chunks = array_chunk($companyIds,100);
-    foreach($chunks as $chunk){
-        \App\Jobs\CompanyScore::dispatch($chunk);
-    }
-    dd('Company Score Jobs have been scheduled');
+    // $companyIds = Company::withTrashed()->whereNotNull('industry')->where('existing_client',0)->get()->pluck('id')->toArray();
+    // $chunks = array_chunk($companyIds,100);
+    // foreach($chunks as $chunk){
+    //     \App\Jobs\CompanyScore::dispatch($chunk);
+    // }
+    // dd('Company Score Jobs have been scheduled');
 });
+// Route::get('/update-contacts-direct',function(){
+//     $data = json_decode(file_get_contents(Storage::path('public/contacts.json')),true);
+//     foreach($data as $profile){
+//         if(isset($profile['defaultProfileUrl']) && !empty($profile['defaultProfileUrl'])){
+//             $linkedinUrl = rtrim(urldecode($profile['defaultProfileUrl']),'/');
+//             $linkedinUrl = str_replace('https://www.linkedin.com','https://linkedin.com',$linkedinUrl);
+//             $contact = Contact::where('linkedin',$linkedinUrl)->first();
+//             if($contact){
+//                 $contact->is_direct = 1;
+//                 $contact->save();
+//             }
+//         }
+//     }
+// });
 Route::get('/import-activities',function(){
     \App\Jobs\ImportActivities::dispatch('public/activities4.json');
 });

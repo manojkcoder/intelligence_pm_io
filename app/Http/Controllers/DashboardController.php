@@ -7,6 +7,8 @@ use App\Models\QuizResponse;
 use App\Models\Contact;
 use App\Models\Industry;
 use App\Models\CompanyClassification;
+use App\Models\ContactConnection;
+use App\Models\Connection;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use GuzzleHttp\Client;
@@ -527,11 +529,22 @@ class DashboardController extends Controller
         return json_encode(["recordsTotal" => count($outputData),"recordsFiltered" => count($outputData),"data" => $outputData]);
     }
     public function viewCompany($id){
+        $client = null;
+        $uniqueToClients = $uniqueToCompanies = $commonConnections = [];
         $company = Company::with('contacts','quiz')->withTrashed()->find($id);
         if(!empty($company->parent_id)){
             $company->parent = Company::withTrashed()->where('id',$company->parent_id)->first();
         }
-        return view('company',compact('company'));
+        if(!empty($company->client_id)){
+            $client = Company::withTrashed()->find($company->client_id);
+            if($client){
+                $uniqueToClients = Contact::where('company_id',$client->id)->where('is_direct',1)->get();
+                $uniqueToCompanies = Contact::where('company_id',$company->id)->where('is_direct',1)->get();
+                $companyConnectionIds = ContactConnection::whereIn('contact_id',$uniqueToCompanies->pluck('id')->toArray())->pluck('connection_id')->unique();
+                $commonConnections = Connection::whereIn('id',$companyConnectionIds)->whereIn('linkedin',$uniqueToCompanies->pluck('linkedin')->toArray())->get();
+            }
+        }
+        return view('company',compact('company','client','uniqueToClients','uniqueToCompanies','commonConnections'));
     }
     public function editCompany($id){
         $allCompanies = [];

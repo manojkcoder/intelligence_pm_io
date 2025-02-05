@@ -12,6 +12,9 @@
                 @if($company->quiz->count() > 0)
                     <div class="tab-item p-4 border-b-2 border-transparent" data-id="companyQA">QA Response</div>
                 @endif
+                @if($client && (count($uniqueToClients) || count($uniqueToCompanies) || count($commonConnections)))
+                    <div class="tab-item p-4 border-b-2 border-transparent" data-id="veenDiagrams">Venn Diagram</div>
+                @endif
             </div>
             <div id="companyProfile" class="tab-content bg-white overflow-hidden shadow-sm rounded p-6 active">
                 <div class="flex items-center gap-2 mb-2">
@@ -235,6 +238,56 @@
                     </div>
                 </div>
             @endif
+            @if($client && (count($uniqueToClients) || count($uniqueToCompanies) || count($commonConnections)))
+                <div id="veenDiagrams" class="tab-content bg-white overflow-hidden shadow-sm rounded p-6">
+                    <div class="flex flex-col">
+                        <div id="chart-container" class="mb-4 align-center">
+                            <canvas id="vennChart"></canvas>
+                        </div>
+                        <div class="table-responsive flex-1 overflow-auto data-table top-table">
+                            
+                        </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+                <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-venn@3.1.0"></script>
+                <script type="text/javascript">
+                    document.addEventListener("DOMContentLoaded",function(){
+                        const clientName = "<?=$client->name;?>";
+                        const companyName = "<?=$company->name;?>";
+                        const uniqueToClients = Number(<?=json_encode(count($uniqueToClients) ?? 0);?>);
+                        const uniqueToCompanies = Number(<?=json_encode(count($uniqueToCompanies) ?? 0);?>);
+                        const commonConnections = Number(<?=json_encode(count($commonConnections) ?? 0);?>);
+                        var ctx = document.getElementById('vennChart').getContext('2d');
+                        var vennChart = new Chart(ctx, {
+                            type: 'venn',
+                            data: {
+                                labels: [clientName,companyName,'Common'],
+                                datasets: [{
+                                    label: 'Connections',
+                                    data: [{label: clientName,value: uniqueToClients},{label: companyName,value: uniqueToCompanies},{label: "Common",value: commonConnections}],
+                                    backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(75, 192, 192, 0.5)']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    legend: {
+                                        position: 'top',
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(tooltipItem){
+                                                return `Connections: ${tooltipItem.raw.value}`;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    });
+                </script>
+            @endif
         </div>
     </div>
     <script>
@@ -280,6 +333,8 @@
         .tab-content form select,
         .tab-content form textarea{border:1px solid #e2e8f0;}
         .space-pre-wrap{white-space:pre-wrap;}
+        #chart-container{width:100%;max-width:500px;max-height:400px;margin:auto;}
+        canvas{width:100% !important;max-height:400px !important;}
         @media(max-width:1024px){
             .data-table.top-table table tbody tr td:first-child{position:static;font-weight:600;}
             .data-table.top-table table tbody tr{gap: 5px;}
